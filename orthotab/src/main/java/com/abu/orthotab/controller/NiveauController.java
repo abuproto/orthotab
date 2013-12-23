@@ -9,7 +9,7 @@ import com.abu.orthotab.domain.Niveau;
 import com.abu.orthotab.service.NiveauService;
 
 @Controller
-@RequestMapping("api")
+//@RequestMapping("api")
 public class NiveauController {
 
 	NiveauService niveauService;

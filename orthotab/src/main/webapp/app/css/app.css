@@ -1,0 +1,11 @@
+/* app css stylesheet */
+
+.boutonCouleur {
+  width: 80px;
+  height: 80px;
+  margin: 30px;
+  /*display: inline;*/
+  float:left;
+}
+
+
