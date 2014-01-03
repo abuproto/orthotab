@@ -2,6 +2,19 @@
 
 /* App Module */
 var orthotabApp = angular.module('orthotabApp', ['orthotabControllers','orthotabServices']);
+
+//$scope.enregistreCouleur = function (couleur, $event) {
+	//console.log(item + ' was clicked at: ' + $event.clientX + ',' +
+	//$event.clientY);
+	//$scope.codeCouleurCourant = couleur.code;
+	//};
+
+
+	function enregistreCouleur($rootScope, $scope, couleur, $event) {
+		console.log("debut");
+		$rootScope.codeCouleurCourant = couleur.code;
+		}
+	
 /*
 var orthotabApp = angular.module('orthotabApp', [
   'ngRoute',

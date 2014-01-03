@@ -28,17 +28,17 @@
     <div ng-view class="view-frame"></div>
   </div> -->
 <h1>Niveau 1</h1>
-<!-- <div><p>1 + 2 = {{ 1 + 2 }}</p></div> -->
+
 <div id="couleurs" ng-controller="CouleursCtrl">
- <div class="boutonCouleur" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};"></div>
-<!-- <span class="boutonCouleur" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};"></span>-->
-<!-- <p class="boutonCouleur" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};"></p> -->
-<!-- 
-<ul>
-    <li ng-repeat="couleur in couleurs">
-      <p>{{couleur.code}}</p>
-    </li>
-</ul> -->
+<!--  <div class="boutonCouleur" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event)"></div> -->
+<!--<div class="boutonCouleur" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event)"></div>-->
+<!-- <div ng-class="boutonCouleurClass" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event)"></div> -->
+<button class="ng-class:getClass($index);" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event, $index)"/>
+
 </div>
+<div id="cases" ng-controller="Niveau01Ctrl">
+ <div class="boutonCase" ng-repeat="case in cases" valeur="{{case.valeur}}" type="{{case.type}}">{{case.libelle}}</div>
+</div>
+<div id="resultat">code couleur : {{codeCouleurCourant}}</div>
 </body>
 </html>

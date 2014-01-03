@@ -1,7 +1,10 @@
 package com.abu.orthotab.service;
 
-import com.abu.orthotab.domain.Niveau;
+import java.util.List;
+
+import com.abu.orthotab.domain.Case;
 
 public interface NiveauService {
-	Niveau getNiveau01();
+	//Niveau getNiveau01();
+	List<Case> getNiveau01();
 }
