@@ -17,7 +17,10 @@ public class CommunServiceImpl implements CommunService {
 		// Couleurs
 		List<Couleur> couleurs = new ArrayList<Couleur>();
 		for(int i=0;i<codeCouleurs.length;i++){
-			couleurs.add(new Couleur(codeCouleurs[i]));
+			Couleur c = new Couleur(codeCouleurs[i]);
+			c.setActive(true);
+			c.setCssClass("boutonCouleur");
+			couleurs.add(c);
 		}
 		return couleurs;
 	}

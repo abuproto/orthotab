@@ -23,13 +23,12 @@
 <h1>Niveau 1</h1>
 
 <div id="couleurs" ng-controller="CouleursCtrl">
-<button class="ng-class:getClass($index);" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event, $index)"/>
+<button class="{{couleur.cssClass}}" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event, $index)"/>
 </div>
 <div id="cases" ng-controller="Niveau01Ctrl">
- <!-- <div class="boutonCase" ng-repeat="case in cases" valeur="{{case.valeur}}" type="{{case.type}}">{{case.libelle}}</div> -->
- <button class="ng-class:getClass($index);" ng-style="{'background-color' : getBackgrdStyle($index)}" ng-repeat="case in cases" valeur="{{case.valeur}}" type="{{case.type}}" ng-click="enregistreCase(case, $event, $index)">{{case.libelle}}</button>
+<button class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-repeat="case in cases" ng-click="enregistreCase(case, $event, $index)">{{case.libelle}}</button>
 </div>
-<div id="resultat">code couleur : {{codeCouleurCourant}}</div>
+
 <div id="messageNiveau01">{{messageNiveau01}}</div>
 </body>
 </html>

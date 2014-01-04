@@ -33,8 +33,14 @@ public class NiveauServiceImpl implements NiveauService {
 		List<Case> cases = new ArrayList<Case>();
 		for(int i=1;i<=nbCombi;i++){
 			Case caseOp = new Case(Case.Type.OP.name(),i + " + " + i,i+i);
+			caseOp.setActive(true);
+			caseOp.setCssClass("boutonCase");
+			caseOp.setBackgrdStyle("#B5B276");
 			cases.add(caseOp);
 			Case caseRes = new Case(Case.Type.RES.name(),String.valueOf(i+i),i+i);
+			caseRes.setActive(true);
+			caseRes.setCssClass("boutonCase");
+			caseRes.setBackgrdStyle("#B5B276");
 			cases.add(caseRes);
 		}
 		

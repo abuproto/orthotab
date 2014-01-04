@@ -1,6 +1,6 @@
 package com.abu.orthotab.domain;
 
-public class Case {
+public class Case extends ElementJeu{
 	private String type;
 	private String libelle;
 	private int valeur;

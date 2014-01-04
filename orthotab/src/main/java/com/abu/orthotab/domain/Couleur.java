@@ -1,6 +1,6 @@
 package com.abu.orthotab.domain;
 
-public class Couleur {
+public class Couleur extends ElementJeu{
 	private String code;
 
 	public String getCode() {
