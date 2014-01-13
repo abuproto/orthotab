@@ -52,3 +52,16 @@ var orthotabControllers = angular.module('orthotabControllers', []);
 	    	}
 		}                       
   }]);
+  
+  
+  orthotabControllers.controller('AccueilCtrl', ['$rootScope','$scope', 'Accueil',
+                                                  function($rootScope, $scope, Accueil) {
+	  console.log("dans AccueilCtrl");
+	  $scope.etapes = Accueil.query();
+	  
+	  $scope.goToNiveau = function ($event, niveau) {
+		  console.log("dans goToNiveau : " + niveau);  
+	  }
+	  
+	  
+  }]);

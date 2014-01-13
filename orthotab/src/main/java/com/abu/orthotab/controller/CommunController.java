@@ -12,7 +12,7 @@ import com.abu.orthotab.service.CommunService;
 
 @Controller
 public class CommunController {
-	CommunService communService;
+	private CommunService communService;
     
     @Autowired
     public CommunController(CommunService communService) {

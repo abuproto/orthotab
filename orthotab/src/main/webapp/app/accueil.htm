@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="orthotabApp">
+<head>
+  <meta charset="utf-8">
+  <title>Orthotab : accueil</title>
+  <link rel="stylesheet" href="css/app.css">
+
+  <script src="../lib/angular.js"></script>
+  <script src="../lib/angular-resource.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+</head>
+<body>
+
+<h1>Niveau 1</h1>
+
+<!-- <div id="accueil" ng-controller="AccueilCtrl"> -->
+<div id="accueil" ng-controller="AccueilCtrl">
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
+<style type="text/css" >
+      <![CDATA[
+
+        circle.avant {
+           fill:   blue;
+        }
+       circle.apres {
+           fill:   grey;
+        }
+        
+ 		circle.actif {
+           fill:   red;
+        }
+        path.avant {
+        	stroke: blue;
+        	stroke-width: 5;
+        }
+        path.apres {
+        	stroke: grey;
+        	stroke-width: 5;
+        }
+
+      ]]>
+    </style>
+
+<circle ng-click="goToNiveau($event,1)" cx="40" cy="20" r="20" class="{{etapes[0].circleCssClass}}"/>
+<path d="M40,20 l80,0" class="{{etapes[0].pathCssClass}}"/>
+<circle cx="120" cy="20" r="20" class="{{etapes[1].circleCssClass}}"/>
+<path d="M140,20 l80,0" class="{{etapes[1].pathCssClass}}"/>
+<circle cx="200" cy="20" r="20" class="{{etapes[2].circleCssClass}}"/>
+</svg>
+
+</div>
+
+</body>
+</html>
