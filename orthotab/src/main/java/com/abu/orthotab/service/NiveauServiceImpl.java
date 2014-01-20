@@ -16,7 +16,7 @@ public class NiveauServiceImpl implements NiveauService {
 	
 	int nbCombi = 10;
 	
-	@Override
+	
 	//public Niveau getNiveau01() {
 	public List<Case> getNiveau01() {
 		

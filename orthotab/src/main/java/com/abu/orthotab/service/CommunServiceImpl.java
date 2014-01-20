@@ -12,7 +12,6 @@ public class CommunServiceImpl implements CommunService {
 
 	String[] codeCouleurs = {"#046380","#C03000","#8FCF3C","#F4FF3A","#C9001A","#495CFF","#F9A41E","#D400FF","#05966D","#FF0000"};
 	
-	@Override
 	public List<Couleur> getListeCouleurs() {
 		// Couleurs
 		List<Couleur> couleurs = new ArrayList<Couleur>();

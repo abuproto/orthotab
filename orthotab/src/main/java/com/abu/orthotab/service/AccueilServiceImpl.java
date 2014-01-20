@@ -10,7 +10,6 @@ import com.abu.orthotab.domain.Etape;
 @Service
 public class AccueilServiceImpl implements AccueilService {
 
-	@Override
 	public List<Etape> getListeEtapes() {
 		List<Etape> etapes = new ArrayList<Etape>();
 		
