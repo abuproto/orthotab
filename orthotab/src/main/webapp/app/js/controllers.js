@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var orthotabControllers = angular.module('orthotabControllers', []);
+var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 
   orthotabControllers.controller('CouleursCtrl', ['$rootScope','$scope', 'Couleurs',
   function($rootScope, $scope, Couleurs) {	  
@@ -65,3 +65,56 @@ var orthotabControllers = angular.module('orthotabControllers', []);
 	  
 	  
   }]);
+  
+  //orthotabControllers.controller('LoginCtrl', ['$rootScope','$scope', 'User',
+  //                                               function($rootScope, $scope, User) {
+  orthotabControllers.controller('LoginCtrl', ['$rootScope','$scope', 'User', '$cookieStore', '$http',
+                                                 function($rootScope, $scope, User, $cookieStore, $http) {
+	  console.log("dans LoginCtrl");
+	  //$scope.etapes = Accueil.query();
+	  //$cookieStore.put('orthotab','patient1');
+		var cookieOrthoTab = $cookieStore.get('orthotab');
+		if(cookieOrthoTab!=null){
+			// a completer avec verification User
+			$scope.isLogged = true;
+		}else{
+			$scope.isLogged = false;
+		}
+	  console.log("$scope.isLogged : " + $scope.isLogged);
+	  //$scope.isLogged = User.isLogged();
+	  $scope.message = '';
+	  
+	  //$scope.submit = function
+	  //$scope.goToNiveau = function ($event, niveau) {
+		//  console.log("dans goToNiveau : " + niveau);  
+	  //}
+	  
+	  $scope.submit = function () {
+		    $http
+		      .post('/orthotab/api/authenticate', $scope.user)
+		      .success(function (data, status, headers, config) {
+		        //$window.sessionStorage.token = data.token;
+		        $scope.isLogged = true;
+		        console.log("dans submit success");
+		        //console.log("data : " + data);
+		        console.log("data.nom : " + data.nom);
+		        
+		        //var userConnecte = JSON.parse(data);
+		        //console.log("userConnecte : " + userConnecte);
+		        //var encodedProfile = data.token.split('.')[1];
+		        //var profile = JSON.parse(url_base64_decode(encodedProfile));
+		        //$scope.welcome = 'Welcome ' + profile.first_name + ' ' + profile.last_name;
+		      })
+		      .error(function (data, status, headers, config) {
+		        // Erase the token if the user fails to log in
+		        //delete $window.sessionStorage.token;
+		        $scope.isLogged = false;
+
+		        // Handle login errors here
+		        $scope.message = 'Error: Invalid user or password';
+		        //$scope.welcome = '';
+		      });
+		  };
+	  
+	  
+ }]);

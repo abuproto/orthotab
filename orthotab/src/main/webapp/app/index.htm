@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/app.css">
 
   <script src="../lib/angular.js"></script>
+  <script src="../lib/angular-cookies.js"></script>
   <script src="../lib/angular-resource.js"></script>
 
   <script src="js/app.js"></script>
@@ -21,7 +22,19 @@
 <td width="30%" valign="top"><img alt="perroquet" src="images/perroquet.jpg" width="200" height="200"></td>
 </tr>
 <tr height="50%">
-<td><p>Bonjour !</p></td>
+<td>
+<div ng-controller="LoginCtrl" ng-if="!isLogged">
+  <span></span>
+  <form ng-submit="submit()">
+    <input ng-model="user.login" type="text" name="user" placeholder="Username" />
+    <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
+    <input type="submit" value="Login" />
+  </form>
+</div>
+<div ng-controller="LoginCtrl" ng-if="isLogged">
+<span>Bonjour !</span>
+</div>
+</td>
 <td>
 <img alt="orthotab" src="images/depart.png" width="200" height="100"/>
 </td>
