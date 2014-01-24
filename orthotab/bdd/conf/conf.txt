@@ -1,0 +1,43 @@
+*************
+DATABASE H2 *
+*************
+
+démarrage console par h2.bat
+
+conf :
+
+configuration enregistrée : Generic H2 (Server)
+
+nom de configuration : GRANT SELECT ON USER TO ORTHOTAB;
+
+Pilote JDBC : org.h2.Driver
+
+URL JDBC : jdbc:h2:tcp://localhost/file:data/orthotab
+
+Nom d'utilisateur : sa
+
+Mot de passe : <vide>
+
+génère un fichier orthotab.h2.db dans <H2_HOME>\bin\data avec :
+H2_HOME = D:\workspaces\h2\h2
+
+Pour préciser le schéma dans l'url de connexion :
+ajouter ;SCHEMA=ORTHOTAB
+http://www.h2database.com/html/grammar.html#set_schema
+
+******************
+DATASOURCE TOMCAT*
+******************
+
+- copier h2-1.3.175.jar dans <TOMCAT_HOME>\lib (installation Tomcat)
+- compléter context.xml (dans <TOMCAT_HOME>\conf) (plugin Eclipse)
+
+<Resource 
+      name="jdbc/orthotab" 
+      type="javax.sql.DataSource" 
+      url="jdbc:h2:tcp://localhost/file:data/orthotab;SCHEMA=ORTHOTAB" 
+      driverClassName="org.h2.Driver" 
+      username="ORTHOTAB" 
+      password="orthotab" 
+      maxActive="5" 
+      maxIdle="2"/> 

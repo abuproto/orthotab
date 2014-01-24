@@ -23,16 +23,18 @@
 </tr>
 <tr height="50%">
 <td>
-<div ng-controller="LoginCtrl" ng-if="!isLogged">
-  <span></span>
+<div ng-controller="LoginCtrl">
+  <div ng-hide="isLogged">
   <form ng-submit="submit()">
     <input ng-model="user.login" type="text" name="user" placeholder="Username" />
     <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
     <input type="submit" value="Login" />
   </form>
-</div>
-<div ng-controller="LoginCtrl" ng-if="isLogged">
+  <span>{{message}}</span>
+  </div>
+<div ng-show="isLogged">
 <span>Bonjour !</span>
+</div>
 </div>
 </td>
 <td>

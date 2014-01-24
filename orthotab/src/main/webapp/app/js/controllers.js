@@ -96,9 +96,19 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 		        //$window.sessionStorage.token = data.token;
 		        $scope.isLogged = true;
 		        console.log("dans submit success");
-		        //console.log("data : " + data);
-		        console.log("data.nom : " + data.nom);
-		        
+		        console.log("data : ." + data + ".");
+		        console.log("data.nom : ." + data.nom + ".");
+		        //if(data===null || data.nom==='undefined'){
+		        if(angular.isUndefined(data.nom)){
+		        	$scope.isLogged = false;
+		        	$scope.message = 'Identifiant ou mot de passe incorrect';
+		        	console.log("dans if");
+		        }else{
+		        	$scope.isLogged = true;
+		        	$scope.message = '';
+		        	console.log("dans else");
+		        }
+		        console.log("$scope.isLogged : " + $scope.isLogged);
 		        //var userConnecte = JSON.parse(data);
 		        //console.log("userConnecte : " + userConnecte);
 		        //var encodedProfile = data.token.split('.')[1];
@@ -111,7 +121,7 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 		        $scope.isLogged = false;
 
 		        // Handle login errors here
-		        $scope.message = 'Error: Invalid user or password';
+		        $scope.message = 'Identifiant ou mot de passe incorrect';
 		        //$scope.welcome = '';
 		      });
 		  };

@@ -1,0 +1,6 @@
+insert into USER values(1,'abunel','Bunel','Arnaud','abunel','ADMIN');
+insert into USER values(2,'mbunel','Bunel','Marie','mbunel','ADMIN');
+insert into USER values(3,'mbizot','Bizot','Maxime','mbizot','ADMIN');
+insert into USER values(4,'patient1','Patient1','Patient1','patient1','PATIENT');
+insert into USER values(5,'patient2','Patient2','Patient2','patient2','PATIENT');
+insert into USER values(6,'patient3','Patient3','Patient3','patient3','PATIENT');

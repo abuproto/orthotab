@@ -2,14 +2,37 @@ package com.abu.orthotab.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name="USER")
 public class User {
+	@Id
+	@Column(name = "ID")
 	private Long id;
+	
+	@Column(name = "LOGIN")
 	private String login;
+	
+	@Column(name = "NOM")
 	private String nom;
+	
+	@Column(name = "PRENOM")
 	private String prenom;
+	
+	@Column(name = "PASSWORD")
 	private String password;
-	private Date dateNaissance;
-	private boolean actif;
+	
+	//private Date dateNaissance;
+	
+	//private boolean actif;
+	
+	@Column(name = "ROLE")
 	private String role;
 
 	public Long getId() {
@@ -50,22 +73,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-
-	public boolean isActif() {
-		return actif;
-	}
-
-	public void setActif(boolean actif) {
-		this.actif = actif;
 	}
 
 	public String getRole() {
