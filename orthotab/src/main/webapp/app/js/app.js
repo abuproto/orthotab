@@ -1,6 +1,7 @@
 'use strict';
 
 /* App Module */
+//var orthotabApp = angular.module('orthotabApp', ['ngRoute','orthotabControllers','orthotabServices']);
 var orthotabApp = angular.module('orthotabApp', ['orthotabControllers','orthotabServices']);
 
 //$scope.enregistreCouleur = function (couleur, $event) {

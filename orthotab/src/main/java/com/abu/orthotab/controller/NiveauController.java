@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,11 +22,10 @@ public class NiveauController {
         this.niveauService = niveauService;
     }
  
-    @RequestMapping("niveau01")
+    @RequestMapping("niveau01/{nbCombi}")
     @ResponseBody
-    //public Niveau getNiveau01() {
-    public List<Case> getNiveau01() {
-        return niveauService.getNiveau01();
+    public List<Case> getNiveau01(@PathVariable("nbCombi") int nbCombi) {
+        return niveauService.getNiveau01(nbCombi);
     }
 	
 }

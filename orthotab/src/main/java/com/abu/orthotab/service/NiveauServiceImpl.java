@@ -14,11 +14,11 @@ public class NiveauServiceImpl implements NiveauService {
 
 	//String[] codeCouleurs = {"#046380","#C03000","#8FCF3C","#F4FF3A","#C9001A","#495CFF","#F9A41E","#D400FF","#05966D","#FF0000"};
 	
-	int nbCombi = 10;
+	//int nbCombi = 10;
 	
 	
 	//public Niveau getNiveau01() {
-	public List<Case> getNiveau01() {
+	public List<Case> getNiveau01(int nbCombi) {
 		
 		//Niveau niveau = new Niveau();
 		

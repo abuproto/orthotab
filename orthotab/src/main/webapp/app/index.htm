@@ -8,12 +8,14 @@
   <script src="../lib/angular.js"></script>
   <script src="../lib/angular-cookies.js"></script>
   <script src="../lib/angular-resource.js"></script>
+  <script src="../lib/angular-route.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/services.js"></script>
 </head>
 <body>
+<div ng-controller="LoginCtrl">
 <table>
 <tr height="50%">
 <td colspan="2" width="70%">
@@ -23,7 +25,7 @@
 </tr>
 <tr height="50%">
 <td>
-<div ng-controller="LoginCtrl">
+<!-- <div ng-controller="LoginCtrl"> -->
   <div ng-hide="isLogged">
   <form ng-submit="submit()">
     <input ng-model="user.login" type="text" name="user" placeholder="Username" />
@@ -33,15 +35,16 @@
   <span>{{message}}</span>
   </div>
 <div ng-show="isLogged">
-<span>Bonjour !</span>
+<span>Bonjour {{utilisateur}}!</span>
 </div>
-</div>
+<!-- </div> -->
 </td>
 <td>
-<img alt="orthotab" src="images/depart.png" width="200" height="100"/>
+<img alt="orthotab" src="images/depart.png" width="200" height="100" ng-click="depart()"/>
 </td>
 <td><p>JOUR 1</p></td>
 </tr>
 </table>
+</div>
 </body>
 </html>

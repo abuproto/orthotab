@@ -7,6 +7,7 @@
 
   <script src="../lib/angular.js"></script>
   <script src="../lib/angular-resource.js"></script>
+  <script src="../lib/angular-cookies.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
@@ -47,9 +48,9 @@
 
 <circle ng-click="goToNiveau($event,1)" cx="40" cy="20" r="20" class="{{etapes[0].circleCssClass}}"/>
 <path d="M40,20 l80,0" class="{{etapes[0].pathCssClass}}"/>
-<circle cx="120" cy="20" r="20" class="{{etapes[1].circleCssClass}}"/>
+<circle ng-click="goToNiveau($event,2)" cx="120" cy="20" r="20" class="{{etapes[1].circleCssClass}}"/>
 <path d="M140,20 l80,0" class="{{etapes[1].pathCssClass}}"/>
-<circle cx="200" cy="20" r="20" class="{{etapes[2].circleCssClass}}"/>
+<circle ng-click="goToNiveau($event,3)" cx="200" cy="20" r="20" class="{{etapes[2].circleCssClass}}"/>
 </svg>
 
 </div>

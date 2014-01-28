@@ -1,7 +1,5 @@
 package com.abu.orthotab.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,6 +25,9 @@ public class User {
 	
 	@Column(name = "PASSWORD")
 	private String password;
+	
+	@Column(name = "NIVCOURANT")
+	private int nivcourant;
 	
 	//private Date dateNaissance;
 	
@@ -81,6 +82,14 @@ public class User {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public int getNivcourant() {
+		return nivcourant;
+	}
+
+	public void setNivcourant(int nivcourant) {
+		this.nivcourant = nivcourant;
 	}
 
 }

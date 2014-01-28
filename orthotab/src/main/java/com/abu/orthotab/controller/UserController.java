@@ -24,10 +24,6 @@ public class UserController {
 	@RequestMapping(value = "authenticate", method = RequestMethod.POST)
     @ResponseBody
     public User authenticate(@RequestBody User user) {
-        //return accueilService.getListeEtapes();
     	return userService.authenticate(user);
     }
-	//User au
-	//, method = RequestMethod.POST
-
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,9 +20,9 @@ public class AccueilController {
 		this.accueilService = accueilService;
 	}
 
-    @RequestMapping("accueil")
+    @RequestMapping("accueil/{userid}")
     @ResponseBody
-    public List<Etape> getListEtapes() {
-        return accueilService.getListeEtapes();
+    public List<Etape> getListEtapes(@PathVariable("userid") int userid) {
+        return accueilService.getListeEtapes(userid);
     }
 }

@@ -19,4 +19,9 @@ public class UserDao extends CommonHibernateDao {
 		}
 		return user;
 	}
+	
+	public User finduserById(int id){
+		User user = (User) getCurrentSession().load(User.class, Long.valueOf(id));
+		return user;
+	}
 }

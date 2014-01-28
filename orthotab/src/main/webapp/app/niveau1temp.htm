@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en" ng-app="orthotabApp" ng-init="nivdifficulte='10'">
+<html lang="en" ng-app="orthotabApp" ng-init="nivdifficulte='3'">
 <head>
   <meta charset="utf-8">
-  <title>Orthotab : niveau 2</title>
+  <title>Orthotab : niveau 1</title>
   <link rel="stylesheet" href="css/app.css">
   <!-- <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/animations.css"> -->
@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<h1>Niveau 2</h1>
+<h1>Niveau 1</h1>
 
 <div id="couleurs" ng-controller="CouleursCtrl">
 <button class="{{couleur.cssClass}}" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event, $index)"/>
@@ -31,5 +31,6 @@
 </div>
 
 <div id="messageNiveau01">{{messageNiveau01}}</div>
+<div ng-show="niveauFini"></div>
 </body>
 </html>

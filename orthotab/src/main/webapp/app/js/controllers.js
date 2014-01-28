@@ -7,7 +7,17 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
   orthotabControllers.controller('CouleursCtrl', ['$rootScope','$scope', 'Couleurs',
   function($rootScope, $scope, Couleurs) {	  
 	
-    $scope.couleurs = Couleurs.query();
+	  //console.log("param : " + $scope.param);
+	  /*
+	  $scope.init = function(nb)
+	  {
+	    $scope.nbcouleurs = nb;
+	    console.log("dans init : " + nb);
+	  };*/
+	  //console.log("$rootScope.nbcouleurs : " + $rootScope.nbcouleurs);
+	  //console.log("$scope.nbcouleurs : " + $scope.nbcouleurs);
+	  
+    $scope.couleurs = Couleurs.query({},{'nbCouleurs':$scope.nivdifficulte});
         
     $scope.enregistreCouleur = function (couleur, $event, ind) {
     	if(couleur.active){
@@ -22,7 +32,10 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
   orthotabControllers.controller('Niveau01Ctrl', ['$rootScope','$scope', 'Niveau01',
   function($rootScope, $scope, Niveau01) {
 
-	  $scope.cases = Niveau01.query();
+	  $scope.cases = Niveau01.query({},{'nbCombi':$scope.nivdifficulte});
+	  
+	  $scope.nbCombiTrouve = 0;
+	  $rootScope.niveauFini = false;
                                                     
 	    $scope.enregistreCase = function (caseCombi, $event, ind) {
 	    	if(caseCombi.active){
@@ -47,6 +60,15 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 			    		
 			    		$rootScope.couleurCourant = null;
 			    		$rootScope.caseCombiFirst = null;
+			    		
+			    		$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
+			    		if($scope.nbCombiTrouve == $scope.nivdifficulte){
+			    			// mise à jour niveau utilisateur
+			    			
+			    			// affichage message
+			    			$rootScope.messageNiveau01 = "Bravo, tu as réussi ce niveau !";
+			    			$rootScope.niveauFini = true;
+			    		}
 		    		}
 		    	}
 	    	}
@@ -54,13 +76,28 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
   }]);
   
   
-  orthotabControllers.controller('AccueilCtrl', ['$rootScope','$scope', 'Accueil',
-                                                  function($rootScope, $scope, Accueil) {
+  orthotabControllers.controller('AccueilCtrl', ['$rootScope','$scope', 'Accueil','UserService','$window','$cookieStore',
+                                                  function($rootScope, $scope, Accueil, UserService, $window, $cookieStore) {
+	  //$scope.currentUser = UserService.currentUser();
 	  console.log("dans AccueilCtrl");
-	  $scope.etapes = Accueil.query();
+	  //$scope.etapes = Accueil.query({},{'nivcourant':$scope.currentUser.nivcourant});
+	  var cookieOrthoTab = $cookieStore.get('orthotab');
+	  if(cookieOrthoTab!=null){
+		  console.log("user.id : " + cookieOrthoTab.id);
+	  }
+		  
+	  $scope.etapes = Accueil.query({},{'nivcourant':cookieOrthoTab.id});
 	  
 	  $scope.goToNiveau = function ($event, niveau) {
-		  console.log("dans goToNiveau : " + niveau);  
+		  console.log("dans goToNiveau : " + niveau);
+		  
+		  if(niveau==1){
+			  $window.location.href = "niveau1temp.htm";
+		  }else if(niveau==2){
+			  $window.location.href = "niveau1.htm";
+		  }else{
+			  $window.alert("Ce niveau sera disponible prochainement. A bientôt.");
+		  }
 	  }
 	  
 	  
@@ -68,8 +105,8 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
   
   //orthotabControllers.controller('LoginCtrl', ['$rootScope','$scope', 'User',
   //                                               function($rootScope, $scope, User) {
-  orthotabControllers.controller('LoginCtrl', ['$rootScope','$scope', 'User', '$cookieStore', '$http',
-                                                 function($rootScope, $scope, User, $cookieStore, $http) {
+  orthotabControllers.controller('LoginCtrl', ['$rootScope','$scope', 'UserService', '$cookieStore', '$http', '$window','$timeout',
+                                                 function($rootScope, $scope, UserService, $cookieStore, $http, $window, $timeout) {
 	  console.log("dans LoginCtrl");
 	  //$scope.etapes = Accueil.query();
 	  //$cookieStore.put('orthotab','patient1');
@@ -83,13 +120,41 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 	  console.log("$scope.isLogged : " + $scope.isLogged);
 	  //$scope.isLogged = User.isLogged();
 	  $scope.message = '';
+	  $scope.utilisateur = '';
 	  
 	  //$scope.submit = function
 	  //$scope.goToNiveau = function ($event, niveau) {
 		//  console.log("dans goToNiveau : " + niveau);  
 	  //}
 	  
+	  $scope.depart = function () {
+		  console.log("dans depart");
+		  $window.location.href = "accueil.htm";
+	  };
+	  
+	  
 	  $scope.submit = function () {
+		  
+		  //var currentUser = UserService.login($scope.user);
+		  //UserService.login($scope.user);
+		  
+		  //var currentUser = $timeout(UserService.currentUser(),1000);
+		  //var currentUser.then(UserService.login($scope.user));
+		  //var currentUser = $timeout(function(){return UserService.currentUser();},1000);
+		  /*
+		  var currentUser = UserService.currentUser();
+		  
+		  if(angular.isUndefined(currentUser.nom)){
+	        	$scope.isLogged = false;
+	        	$scope.message = 'Identifiant ou mot de passe incorrect';
+	        	console.log("dans if");
+	        }else{
+	        	$scope.isLogged = true;
+	        	$scope.message = '';
+	        	$scope.utilisateur = currentUser.prenom;
+	        	console.log("dans else");
+	        }*/
+		  
 		    $http
 		      .post('/orthotab/api/authenticate', $scope.user)
 		      .success(function (data, status, headers, config) {
@@ -106,6 +171,8 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 		        }else{
 		        	$scope.isLogged = true;
 		        	$scope.message = '';
+		        	$scope.utilisateur = data.prenom;
+		        	$cookieStore.put('orthotab',data);
 		        	console.log("dans else");
 		        }
 		        console.log("$scope.isLogged : " + $scope.isLogged);

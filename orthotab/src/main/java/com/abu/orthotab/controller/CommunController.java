@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,9 +20,9 @@ public class CommunController {
         this.communService = communService;
     }
  
-    @RequestMapping("couleurs")
+    @RequestMapping("couleurs/{nbCouleurs}")
     @ResponseBody
-    public List<Couleur> getListCouleurs() {
-        return communService.getListeCouleurs();
+    public List<Couleur> getListCouleurs(@PathVariable("nbCouleurs") int nbCouleurs) {
+        return communService.getListeCouleurs(nbCouleurs);
     }
 }

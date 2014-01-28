@@ -28,11 +28,20 @@ public class UserServiceImpl implements UserService {
 		User userVerifie = null;
 		User userTemp = userDao.findUserByLogin(user.getLogin());
 		if(userTemp.getPassword().equals(user.getPassword())){
-			userVerifie = user;
-			userVerifie.setPassword(null);
+			userVerifie = userTemp;
+			//userVerifie.setPassword(null);
 		}
 		
 		return userVerifie;
+	}
+
+	@Override
+	@Transactional
+	public void miseAJourNiveau(int userid, int niveau) {
+		User user = userDao.finduserById(userid);
+		if(user!=null){
+			user.setNivcourant(niveau);
+		}
 	}
 
 }
