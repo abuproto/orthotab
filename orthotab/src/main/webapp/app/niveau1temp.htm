@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="orthotabApp" ng-init="nivdifficulte='3'">
+<html lang="en" ng-app="orthotabApp" ng-init="nivdifficulte='3';niveauid=1">
 <head>
   <meta charset="utf-8">
   <title>Orthotab : niveau 1</title>
@@ -31,6 +31,6 @@
 </div>
 
 <div id="messageNiveau01">{{messageNiveau01}}</div>
-<div ng-show="niveauFini"></div>
+<div ng-show="niveauFini"><a ng-href="/orthotab/app/accueil.htm">Retourne à l'accueil pour passer au niveau suivant</a></div>
 </body>
 </html>

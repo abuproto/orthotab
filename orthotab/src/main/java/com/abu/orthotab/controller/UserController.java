@@ -2,6 +2,7 @@ package com.abu.orthotab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,10 +21,15 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	//@RequestMapping(value = "authenticate", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@RequestMapping(value = "authenticate", method = RequestMethod.POST)
     @ResponseBody
     public User authenticate(@RequestBody User user) {
     	return userService.authenticate(user);
     }
+	
+	@RequestMapping(value = "majniveau/{userid}/{niveau}", method = RequestMethod.POST)
+    @ResponseBody
+	public User miseAJourNiveau(@PathVariable("userid") int userid, @PathVariable("niveau") int niveau){
+		return userService.miseAJourNiveau(userid, niveau);
+	}
 }

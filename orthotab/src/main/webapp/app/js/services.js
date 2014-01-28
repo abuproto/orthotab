@@ -37,6 +37,14 @@ orthotabServices.factory('Accueil', [ '$resource', function($resource) {
 
 
 
+orthotabServices.factory('UserNiveauService', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/majniveau/:userid/:niveau', {userid:'@userid', niveau:'@niveau'}, {
+		majniveau : {
+			method : 'POST'
+		}
+	});
+} ]);
+
 
 orthotabServices.factory('UserService', [ '$http', function($http, $user) {
 	

@@ -37,11 +37,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void miseAJourNiveau(int userid, int niveau) {
+	public User miseAJourNiveau(int userid, int niveau) {
 		User user = userDao.finduserById(userid);
-		if(user!=null){
+		if(user!=null && niveau>user.getNivcourant()){
 			user.setNivcourant(niveau);
 		}
+		return user;
 	}
 
 }

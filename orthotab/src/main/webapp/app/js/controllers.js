@@ -6,17 +6,7 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 
   orthotabControllers.controller('CouleursCtrl', ['$rootScope','$scope', 'Couleurs',
   function($rootScope, $scope, Couleurs) {	  
-	
-	  //console.log("param : " + $scope.param);
-	  /*
-	  $scope.init = function(nb)
-	  {
-	    $scope.nbcouleurs = nb;
-	    console.log("dans init : " + nb);
-	  };*/
-	  //console.log("$rootScope.nbcouleurs : " + $rootScope.nbcouleurs);
-	  //console.log("$scope.nbcouleurs : " + $scope.nbcouleurs);
-	  
+		  
     $scope.couleurs = Couleurs.query({},{'nbCouleurs':$scope.nivdifficulte});
         
     $scope.enregistreCouleur = function (couleur, $event, ind) {
@@ -29,8 +19,8 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
     
   }]);
   
-  orthotabControllers.controller('Niveau01Ctrl', ['$rootScope','$scope', 'Niveau01',
-  function($rootScope, $scope, Niveau01) {
+  orthotabControllers.controller('Niveau01Ctrl', ['$rootScope','$scope', 'Niveau01', 'UserNiveauService','$cookieStore',
+  function($rootScope, $scope, Niveau01, UserNiveauService, $cookieStore) {
 
 	  $scope.cases = Niveau01.query({},{'nbCombi':$scope.nivdifficulte});
 	  
@@ -64,9 +54,10 @@ var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
 			    		$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
 			    		if($scope.nbCombiTrouve == $scope.nivdifficulte){
 			    			// mise à jour niveau utilisateur
-			    			
+			    			var cookieOrthoTab = $cookieStore.get('orthotab');
+			    			UserNiveauService.majniveau({},{'userid':cookieOrthoTab.id, 'niveau':1+$scope.niveauid});
 			    			// affichage message
-			    			$rootScope.messageNiveau01 = "Bravo, tu as réussi ce niveau !";
+			    			$rootScope.messageNiveau01 = "Bravo, tu as reussi ce niveau !";
 			    			$rootScope.niveauFini = true;
 			    		}
 		    		}
