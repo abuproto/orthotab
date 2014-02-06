@@ -9,6 +9,7 @@
   <script src="../lib/angular-cookies.js"></script>
   <script src="../lib/angular-resource.js"></script>
   <script src="../lib/angular-route.js"></script>
+  <script src="../lib/angular-sanitize.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
@@ -25,24 +26,51 @@
 </tr>
 <tr height="50%">
 <td>
-<!-- <div ng-controller="LoginCtrl"> -->
-  <div ng-hide="isLogged">
+  <div ng-hide="isLogged" class="div-login">
   <form ng-submit="submit()">
-    <input ng-model="user.login" type="text" name="user" placeholder="Username" />
-    <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
-    <input type="submit" value="Login" />
+    <input ng-model="user.login" type="text" name="user" placeholder="identifiant" /><br/>
+    <input ng-model="user.password" type="password" name="pass" placeholder="mot de passe" /><br/>
+    <input type="submit" value="Connexion" class="boutonGeneral"/>
   </form>
   <span>{{message}}</span>
   </div>
-<div ng-show="isLogged">
-<span>Bonjour {{utilisateur}}!</span>
+<div ng-show="isLogged" class="div-login">
+<span>Bonjour {{utilisateur}}!</span><br/><br/>
+<button class="boutonGeneral" ng-click="changerUtilisateur()">Changer d'utilisateur</button>
 </div>
-<!-- </div> -->
 </td>
 <td>
+<div ng-show="isLogged">
 <img alt="orthotab" src="images/depart.png" width="200" height="100" ng-click="depart()"/>
+</div>
 </td>
-<td><p>JOUR 1</p></td>
+<td>
+<div ng-if="isLogged">
+<div ng-controller="AvancementCtrl" class="div-login">
+<p ng-bind-html="messageavancement"></p>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
+<style type="text/css" >
+      <![CDATA[
+      
+        line.fait {
+        	stroke: green;
+        	stroke-width: 20;
+        }
+        line.restant {
+        	stroke: grey;
+        	stroke-width: 20;
+        }
+
+      ]]>
+    </style>
+<line x1="0" y1="0" x2="{{longueurfait}}" y2="0" class="fait"/>
+<line x1="{{longueurfait}}" y1="0" x2="{{longueurbarre}}" y2="0" class="restant"/>
+
+</svg>
+</div>
+</div>
+</td>
 </tr>
 </table>
 </div>

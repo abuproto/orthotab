@@ -2,187 +2,218 @@
 
 /* Controllers */
 
-var orthotabControllers = angular.module('orthotabControllers', ['ngCookies']);
+var orthotabControllers = angular
+		.module('orthotabControllers', [ 'ngCookies' ]);
 
-  orthotabControllers.controller('CouleursCtrl', ['$rootScope','$scope', 'Couleurs',
-  function($rootScope, $scope, Couleurs) {	  
-		  
-    $scope.couleurs = Couleurs.query({},{'nbCouleurs':$scope.nivdifficulte});
-        
-    $scope.enregistreCouleur = function (couleur, $event, ind) {
-    	if(couleur.active){
-    		couleur.cssClass = "boutonCouleurActif";
-			$rootScope.messageNiveau01 = "";
-			$rootScope.couleurCourant = couleur;
-    	}
-	}
-    
-  }]);
-  
-  orthotabControllers.controller('Niveau01Ctrl', ['$rootScope','$scope', 'Niveau01', 'UserNiveauService','$cookieStore',
-  function($rootScope, $scope, Niveau01, UserNiveauService, $cookieStore) {
+orthotabControllers.controller('CouleursCtrl', [ '$rootScope', '$scope',
+		'Couleurs', function($rootScope, $scope, Couleurs) {
 
-	  $scope.cases = Niveau01.query({},{'nbCombi':$scope.nivdifficulte});
-	  
-	  $scope.nbCombiTrouve = 0;
-	  $rootScope.niveauFini = false;
-                                                    
-	    $scope.enregistreCase = function (caseCombi, $event, ind) {
-	    	if(caseCombi.active){
-		    	if($rootScope.couleurCourant==null){
-		    		$rootScope.messageNiveau01 = "Il faut d'abord selectionner une case de couleur";
-		    	}else if($rootScope.caseCombiFirst==null){
-		    		caseCombi.cssClass = "boutonCaseActif";
-		    		caseCombi.backgrdStyle = $rootScope.couleurCourant.code;
-		    		$rootScope.caseCombiFirst = caseCombi;
-		    		$rootScope.messageNiveau01 = "";
-		    	}else{
-		    		var typeCaseFirst = $rootScope.caseCombiFirst.type;
-		    		var typeCaseSecond = caseCombi.type;
-		    		if($rootScope.caseCombiFirst.valeur == caseCombi.valeur){
-			    		caseCombi.cssClass = "boutonCaseActif";
-			    		caseCombi.backgrdStyle = $rootScope.couleurCourant.code;
-			    		var couleurCourant = $rootScope.couleurCourant;
-			    		couleurCourant.active = false;
-			    		var caseFisrt = $rootScope.caseCombiFirst;
-			    		caseFisrt.active = false;
-			    		caseCombi.active = false;
-			    		
-			    		$rootScope.couleurCourant = null;
-			    		$rootScope.caseCombiFirst = null;
-			    		
-			    		$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
-			    		if($scope.nbCombiTrouve == $scope.nivdifficulte){
-			    			// mise à jour niveau utilisateur
-			    			var cookieOrthoTab = $cookieStore.get('orthotab');
-			    			UserNiveauService.majniveau({},{'userid':cookieOrthoTab.id, 'niveau':1+$scope.niveauid});
-			    			// affichage message
-			    			$rootScope.messageNiveau01 = "Bravo, tu as reussi ce niveau !";
-			    			$rootScope.niveauFini = true;
-			    		}
-		    		}
-		    	}
-	    	}
-		}                       
-  }]);
-  
-  
-  orthotabControllers.controller('AccueilCtrl', ['$rootScope','$scope', 'Accueil','UserService','$window','$cookieStore',
-                                                  function($rootScope, $scope, Accueil, UserService, $window, $cookieStore) {
-	  //$scope.currentUser = UserService.currentUser();
-	  console.log("dans AccueilCtrl");
-	  //$scope.etapes = Accueil.query({},{'nivcourant':$scope.currentUser.nivcourant});
-	  var cookieOrthoTab = $cookieStore.get('orthotab');
-	  if(cookieOrthoTab!=null){
-		  console.log("user.id : " + cookieOrthoTab.id);
-	  }
-		  
-	  $scope.etapes = Accueil.query({},{'nivcourant':cookieOrthoTab.id});
-	  
-	  $scope.goToNiveau = function ($event, niveau) {
-		  console.log("dans goToNiveau : " + niveau);
-		  
-		  if(niveau==1){
-			  $window.location.href = "niveau1temp.htm";
-		  }else if(niveau==2){
-			  $window.location.href = "niveau1.htm";
-		  }else{
-			  $window.alert("Ce niveau sera disponible prochainement. A bientôt.");
-		  }
-	  }
-	  
-	  
-  }]);
-  
-  //orthotabControllers.controller('LoginCtrl', ['$rootScope','$scope', 'User',
-  //                                               function($rootScope, $scope, User) {
-  orthotabControllers.controller('LoginCtrl', ['$rootScope','$scope', 'UserService', '$cookieStore', '$http', '$window','$timeout',
-                                                 function($rootScope, $scope, UserService, $cookieStore, $http, $window, $timeout) {
-	  console.log("dans LoginCtrl");
-	  //$scope.etapes = Accueil.query();
-	  //$cookieStore.put('orthotab','patient1');
-		var cookieOrthoTab = $cookieStore.get('orthotab');
-		if(cookieOrthoTab!=null){
-			// a completer avec verification User
-			$scope.isLogged = true;
-		}else{
-			$scope.isLogged = false;
-		}
-	  console.log("$scope.isLogged : " + $scope.isLogged);
-	  //$scope.isLogged = User.isLogged();
-	  $scope.message = '';
-	  $scope.utilisateur = '';
-	  
-	  //$scope.submit = function
-	  //$scope.goToNiveau = function ($event, niveau) {
-		//  console.log("dans goToNiveau : " + niveau);  
-	  //}
-	  
-	  $scope.depart = function () {
-		  console.log("dans depart");
-		  $window.location.href = "accueil.htm";
-	  };
-	  
-	  
-	  $scope.submit = function () {
-		  
-		  //var currentUser = UserService.login($scope.user);
-		  //UserService.login($scope.user);
-		  
-		  //var currentUser = $timeout(UserService.currentUser(),1000);
-		  //var currentUser.then(UserService.login($scope.user));
-		  //var currentUser = $timeout(function(){return UserService.currentUser();},1000);
-		  /*
-		  var currentUser = UserService.currentUser();
-		  
-		  if(angular.isUndefined(currentUser.nom)){
-	        	$scope.isLogged = false;
-	        	$scope.message = 'Identifiant ou mot de passe incorrect';
-	        	console.log("dans if");
-	        }else{
-	        	$scope.isLogged = true;
-	        	$scope.message = '';
-	        	$scope.utilisateur = currentUser.prenom;
-	        	console.log("dans else");
-	        }*/
-		  
-		    $http
-		      .post('/orthotab/api/authenticate', $scope.user)
-		      .success(function (data, status, headers, config) {
-		        //$window.sessionStorage.token = data.token;
-		        $scope.isLogged = true;
-		        console.log("dans submit success");
-		        console.log("data : ." + data + ".");
-		        console.log("data.nom : ." + data.nom + ".");
-		        //if(data===null || data.nom==='undefined'){
-		        if(angular.isUndefined(data.nom)){
-		        	$scope.isLogged = false;
-		        	$scope.message = 'Identifiant ou mot de passe incorrect';
-		        	console.log("dans if");
-		        }else{
-		        	$scope.isLogged = true;
-		        	$scope.message = '';
-		        	$scope.utilisateur = data.prenom;
-		        	$cookieStore.put('orthotab',data);
-		        	console.log("dans else");
-		        }
-		        console.log("$scope.isLogged : " + $scope.isLogged);
-		        //var userConnecte = JSON.parse(data);
-		        //console.log("userConnecte : " + userConnecte);
-		        //var encodedProfile = data.token.split('.')[1];
-		        //var profile = JSON.parse(url_base64_decode(encodedProfile));
-		        //$scope.welcome = 'Welcome ' + profile.first_name + ' ' + profile.last_name;
-		      })
-		      .error(function (data, status, headers, config) {
-		        // Erase the token if the user fails to log in
-		        //delete $window.sessionStorage.token;
-		        $scope.isLogged = false;
+			$scope.couleurs = Couleurs.query({}, {
+				'nbCouleurs' : $scope.nivdifficulte
+			});
 
-		        // Handle login errors here
-		        $scope.message = 'Identifiant ou mot de passe incorrect';
-		        //$scope.welcome = '';
-		      });
-		  };
-	  
-	  
- }]);
+			$scope.enregistreCouleur = function(couleur, $event, ind) {
+				if (couleur.active) {
+					couleur.cssClass = "boutonCouleurActif";
+					$rootScope.messageNiveau01 = "";
+					$rootScope.couleurCourant = couleur;
+				}
+			}
+
+		} ]);
+
+orthotabControllers
+		.controller(
+				'Niveau01Ctrl',
+				[
+						'$rootScope',
+						'$scope',
+						'Niveau01',
+						'UserNiveauService',
+						'$cookieStore',
+						function($rootScope, $scope, Niveau01,
+								UserNiveauService, $cookieStore) {
+
+							$scope.cases = Niveau01.query({}, {
+								'nbCombi' : $scope.nivdifficulte
+							});
+
+							$scope.nbCombiTrouve = 0;
+							$rootScope.niveauFini = false;
+
+							$scope.enregistreCase = function(caseCombi, $event,
+									ind) {
+								if (caseCombi.active) {
+									if ($rootScope.couleurCourant == null) {
+										$rootScope.messageNiveau01 = "Il faut d'abord selectionner une case de couleur";
+									} else if ($rootScope.caseCombiFirst == null) {
+										caseCombi.cssClass = "boutonCaseActif";
+										caseCombi.backgrdStyle = $rootScope.couleurCourant.code;
+										$rootScope.caseCombiFirst = caseCombi;
+										$rootScope.messageNiveau01 = "";
+									} else {
+										var typeCaseFirst = $rootScope.caseCombiFirst.type;
+										var typeCaseSecond = caseCombi.type;
+										if ($rootScope.caseCombiFirst.valeur == caseCombi.valeur) {
+											caseCombi.cssClass = "boutonCaseActif";
+											caseCombi.backgrdStyle = $rootScope.couleurCourant.code;
+											var couleurCourant = $rootScope.couleurCourant;
+											couleurCourant.active = false;
+											var caseFisrt = $rootScope.caseCombiFirst;
+											caseFisrt.active = false;
+											caseCombi.active = false;
+
+											$rootScope.couleurCourant = null;
+											$rootScope.caseCombiFirst = null;
+
+											$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
+											if ($scope.nbCombiTrouve == $scope.nivdifficulte) {
+												// mise à jour niveau
+												// utilisateur
+												var cookieOrthoTab = $cookieStore
+														.get('orthotab');
+												UserNiveauService
+														.majniveau(
+																{},
+																{
+																	'userid' : cookieOrthoTab.id,
+																	'niveau' : 1 + $scope.niveauid
+																});
+												// affichage message
+												$rootScope.messageNiveau01 = "Bravo, tu as reussi ce niveau !";
+												$rootScope.niveauFini = true;
+											}
+										}
+									}
+								}
+							}
+						} ]);
+
+orthotabControllers
+		.controller(
+				'AccueilCtrl',
+				[
+						'$rootScope',
+						'$scope',
+						'Accueil',
+						'$window',
+						'$cookieStore',
+						function($rootScope, $scope, Accueil, $window, $cookieStore) {
+							var cookieOrthoTab = $cookieStore.get('orthotab');
+
+							$scope.etapes = Accueil.query({}, {
+								'nivcourant' : cookieOrthoTab.id
+							});
+
+							$scope.goToNiveau = function($event, niveau) {
+								
+								if (niveau == 1) {
+									$window.location.href = "niveau1temp.htm";
+								} else if (niveau == 2) {
+									$window.location.href = "niveau1.htm";
+								} else {
+									$window
+											.alert("Ce niveau sera disponible prochainement.");
+								}
+							}
+						} ]);
+
+orthotabControllers.controller('AvancementCtrl', [ '$rootScope', '$scope',
+		'$cookieStore', function($rootScope, $scope, $cookieStore) {
+			if ($rootScope.isLogged) {
+				var cookieOrthoTab = $cookieStore.get('orthotab');
+				var nivcourant = cookieOrthoTab.nivcourant;
+				var longueurbarre = 200;
+				var nivtotal = 3;
+				
+				// message
+				var messageavancement = '';
+				var nivrestant = nivtotal - nivcourant;
+				messageavancement = "Tu as r&eacute;ussi ";
+				messageavancement = messageavancement + nivcourant;
+				messageavancement = messageavancement + " exercice";
+				if(nivcourant > 1){
+					messageavancement = messageavancement + "s";
+				}
+				messageavancement = messageavancement + ". Il en reste ";
+				messageavancement = messageavancement + nivrestant;
+				messageavancement = messageavancement + ".";
+				
+				$rootScope.messageavancement = messageavancement;
+				// barre progression
+				var lfait = (longueurbarre * nivcourant) / nivtotal;
+				$rootScope.longueurfait = lfait;
+				$rootScope.longueurbarre = longueurbarre;
+			}
+		} ]);
+
+orthotabControllers
+		.controller(
+				'LoginCtrl',
+				[
+						'$rootScope',
+						'$scope',
+						'UserAuthService',
+						'$cookieStore',
+						'$http',
+						'$window',
+						'$timeout',
+						'UserConnecteService',
+						function($rootScope, $scope, UserAuthService,
+								$cookieStore, $http, $window, $timeout,
+								UserConnecteService) {
+							var cookieOrthoTab = $cookieStore.get('orthotab');
+							if (cookieOrthoTab != null) {
+								// a completer avec verification User
+								$rootScope.isLogged = true;
+								$scope.utilisateur = cookieOrthoTab.prenom;
+							} else {
+								$rootScope.isLogged = false;
+								$scope.utilisateur = '';
+							}
+							$scope.message = '';
+
+							// depart
+							$scope.depart = function() {
+								$window.location.href = "accueil.htm";
+							};
+
+							// changerUtilisateur
+							$scope.changerUtilisateur = function() {
+								var cookieOrthoTab = $cookieStore
+										.get('orthotab');
+								if (cookieOrthoTab != null) {
+									$cookieStore.remove('orthotab');
+								}
+								$window.location.href = "index.htm";
+							};
+
+							// submit
+							$scope.submit = function() {
+								UserAuthService
+										.authenticate(
+												{},
+												{
+													'login' : $scope.user.login,
+													'passw' : $scope.user.password
+												},
+												function(userConnecte) {
+
+													if (angular
+															.isUndefined(userConnecte.nom)) {
+														$rootScope.isLogged = false;
+														$scope.message = 'Identifiant ou mot de passe incorrect';
+													} else {
+														$rootScope.isLogged = true;
+														$scope.message = '';
+														$scope.utilisateur = userConnecte.prenom;
+														$cookieStore.put(
+																'orthotab',
+																userConnecte);
+
+														UserConnecteService
+																.updateUserConnecte(userConnecte);
+													}
+												});
+							};
+						} ]);

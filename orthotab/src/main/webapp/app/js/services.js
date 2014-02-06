@@ -46,6 +46,32 @@ orthotabServices.factory('UserNiveauService', [ '$resource', function($resource)
 } ]);
 
 
+orthotabServices.factory('UserAuthService', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/authenticate2/:login/:passw', {login:'@login', passw:'@passw'}, {
+		authenticate : {
+			method : 'POST'
+		}
+	});
+} ]);
+
+orthotabServices.factory('UserConnecteService', function($rootScope) {
+	var service = {};
+	service.userConnecte = null;
+	
+	service.updateUserConnecte  = function(user){
+		this.userConnecte = user;
+		$rootScope.$broadcast("userUpdated");
+		console.log("this.userConnecte : " + this.userConnecte.prenom);
+	}
+	return service;
+	
+	return {
+	      getUserConnecte: function() { return this.userConnecte; }
+	    };
+});
+
+
+
 orthotabServices.factory('UserService', [ '$http', function($http, $user) {
 	
 	var currentUser = null;

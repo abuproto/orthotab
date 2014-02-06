@@ -27,6 +27,15 @@ public class UserController {
     	return userService.authenticate(user);
     }
 	
+	@RequestMapping(value = "authenticate2/{login}/{passw}", method = RequestMethod.POST)
+    @ResponseBody
+    public User authenticate2(@PathVariable("login") String login, @PathVariable("passw") String passw) {
+		User user = new User();
+		user.setLogin(login);
+		user.setPassword(passw);
+    	return userService.authenticate(user);
+    }
+	
 	@RequestMapping(value = "majniveau/{userid}/{niveau}", method = RequestMethod.POST)
     @ResponseBody
 	public User miseAJourNiveau(@PathVariable("userid") int userid, @PathVariable("niveau") int niveau){
