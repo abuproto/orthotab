@@ -45,6 +45,14 @@ orthotabServices.factory('UserNiveauService', [ '$resource', function($resource)
 	});
 } ]);
 
+orthotabServices.factory('UserTokenService', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/findByToken/:token', {token:'@token'}, {
+		findByToken : {
+			method : 'POST'
+		}
+	});
+} ]);
+
 
 orthotabServices.factory('UserAuthService', [ '$resource', function($resource) {
 	return $resource('/orthotab/api/authenticate2/:login/:passw', {login:'@login', passw:'@passw'}, {

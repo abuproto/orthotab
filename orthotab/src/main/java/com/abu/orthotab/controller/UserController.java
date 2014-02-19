@@ -27,6 +27,12 @@ public class UserController {
     	return userService.authenticate(user);
     }
 	
+	@RequestMapping(value = "findByToken/{token}", method = RequestMethod.POST)
+    @ResponseBody
+    public User findByToken(@PathVariable String token) {
+    	return userService.findByToken(token);
+    }
+	
 	@RequestMapping(value = "authenticate2/{login}/{passw}", method = RequestMethod.POST)
     @ResponseBody
     public User authenticate2(@PathVariable("login") String login, @PathVariable("passw") String passw) {

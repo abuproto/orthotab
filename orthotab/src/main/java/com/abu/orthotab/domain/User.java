@@ -28,14 +28,13 @@ public class User {
 	
 	@Column(name = "NIVCOURANT")
 	private int nivcourant;
-	
-	//private Date dateNaissance;
-	
-	//private boolean actif;
-	
+		
 	@Column(name = "ROLE")
 	private String role;
-
+	
+	@Column(name = "TOKEN")
+	private String token;
+	
 	public Long getId() {
 		return id;
 	}
@@ -91,5 +90,34 @@ public class User {
 	public void setNivcourant(int nivcourant) {
 		this.nivcourant = nivcourant;
 	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [id=");
+		builder.append(id);
+		builder.append(", login=");
+		builder.append(login);
+		builder.append(", nom=");
+		builder.append(nom);
+		builder.append(", prenom=");
+		builder.append(prenom);
+		builder.append(", nivcourant=");
+		builder.append(nivcourant);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

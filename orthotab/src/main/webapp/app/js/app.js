@@ -1,4 +1,4 @@
 'use strict';
 
 /* App Module */
-var orthotabApp = angular.module('orthotabApp', ['orthotabControllers','orthotabServices','ngSanitize']);
+var orthotabApp = angular.module('orthotabApp', ['orthotabControllers','orthotabServices','ngSanitize','LocalStorageModule']);

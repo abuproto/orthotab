@@ -3,5 +3,11 @@ insert into USER values(2,'mbunel','Bunel','Marie','mbunel','ADMIN',1);
 insert into USER values(3,'mbizot','Bizot','Maxime','mbizot','ADMIN',1);
 insert into USER values(4,'patient1','Patient1','Patient1','patient1','PATIENT',1);
 insert into USER values(5,'patient2','Patient2','Patient2','patient2','PATIENT',1);
-insert into USER values(6,'patient3','Patient3','Patient3','patient3','PATIENT',1);
 
+
+update USER set TOKEN='f726eba9c996d5bd76ea00ed9842cd13' where id=1;
+update USER set TOKEN='a5a6fb23f7187ba93226b530fb7878f3' where id=2;
+update USER set TOKEN='b2572d33428ae46d9236861af3d7ded9' where id=3;
+update USER set TOKEN='1e6dbf2102e420752c022b9ba827b585' where id=4;
+update USER set TOKEN='74c67fcd5e83cd15b8312176ef941fb1' where id=5;
+update USER set TOKEN='5e274f34bcce847a1581d18833ca8ccc' where id=6; 

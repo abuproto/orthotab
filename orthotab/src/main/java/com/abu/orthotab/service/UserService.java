@@ -6,4 +6,6 @@ public interface UserService {
 	User authenticate(User user);
 	
 	User miseAJourNiveau(int userid, int niveau);
+	
+	User findByToken(String token);
 }
