@@ -12,23 +12,8 @@ import com.abu.orthotab.domain.Case;
 @Service
 public class NiveauServiceImpl implements NiveauService {
 
-	//String[] codeCouleurs = {"#046380","#C03000","#8FCF3C","#F4FF3A","#C9001A","#495CFF","#F9A41E","#D400FF","#05966D","#FF0000"};
-	
-	//int nbCombi = 10;
-	
-	
-	//public Niveau getNiveau01() {
 	public List<Case> getNiveau01(int nbCombi) {
-		
-		//Niveau niveau = new Niveau();
-		
-		// Couleurs
-		//List<Couleur> couleurs = new ArrayList<Couleur>();
-		//for(int i=0;i<codeCouleurs.length;i++){
-		//	couleurs.add(new Couleur(codeCouleurs[i]));
-		//}
-		//niveau.setCouleurs(couleurs);
-		
+				
 		// cases
 		List<Case> cases = new ArrayList<Case>();
 		for(int i=1;i<=nbCombi;i++){
@@ -47,9 +32,6 @@ public class NiveauServiceImpl implements NiveauService {
 		long seed = System.nanoTime();
 		Collections.shuffle(cases,new Random(seed));
 		return cases;
-		//niveau.setCases(cases);
-
-		//return niveau;
 	}
 
 }

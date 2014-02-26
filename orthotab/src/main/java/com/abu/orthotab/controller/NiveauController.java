@@ -12,7 +12,6 @@ import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.service.NiveauService;
 
 @Controller
-//@RequestMapping("api")
 public class NiveauController {
 
 	NiveauService niveauService;

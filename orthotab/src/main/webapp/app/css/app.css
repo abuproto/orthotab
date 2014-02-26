@@ -57,7 +57,91 @@
 	margin-right: 40px;
 }
 
+.messageExercice{
+	font-weight: bold;
+	font-size: 14pt;
+}
+
 .boutonGeneral {
 	border-radius: 4px;
 	background-color: #D0E09D;
 }
+
+.div-haut {
+	border-width: 2px;
+	border-radius: 8px;
+	border-style: solid;
+	/*border-color: #FF9300;*/
+	border-color: black;
+	margin-right: 40px;
+	margin-left: 40px;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	height:70px;
+}
+
+.div-milieu{
+	border-width: 2px;
+	border-radius: 8px;
+	border-style: solid;
+	/*border-color: #FF9300;*/
+	border-color: white;
+	margin-right: 40px;
+	margin-left: 40px;
+	margin-bottom: 40px;
+}
+
+#left{float:left;width:140px;padding-left:10px;}
+#right{float:right;width:50px;padding:10px;}
+#center{
+	margin:0 auto;
+	width:400px;
+	font-weight: bold;
+	font-size: 16pt;
+	margin-top: 20px;
+	}
+
+#milieu-left{
+	float:left;
+}
+
+#milieu-right{
+	float:right;
+}
+
+.btn-case-vide{
+	width: 80px;
+    height: 80px;
+	border-width: 2px;
+	border-style: solid;
+	margin: 5px;
+}
+
+.btn-case{
+	width: 80px;
+    height: 80px;
+	background-repeat : no-repeat;
+	border-width: 8px;
+	border-radius: 8px;
+	border-style: solid;
+	margin: 20px;
+}	
+.btn-case-fleche{
+	background-image : url("../images/fleche.png");
+}
+
+.btn-case-etoile{
+	background-image : url("../images/etoile.png");
+}
+
+.btn-case-rond{
+	background-image : url("../images/rond.png");
+}
+
+.btn-case-croix{
+	background-image : url("../images/croix.png");
+}
+
+.btn-case-lune{
+	background-image : url("../images/lune.png");
+}	
