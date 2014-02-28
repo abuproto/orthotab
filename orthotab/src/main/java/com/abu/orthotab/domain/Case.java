@@ -4,6 +4,8 @@ public class Case extends ElementJeu{
 	private String type;
 	private String libelle;
 	private int valeur;
+	private Loc loc;
+	private String pos;
 
 	public enum Type {
 		OP, RES
@@ -38,6 +40,22 @@ public class Case extends ElementJeu{
 
 	public void setValeur(int valeur) {
 		this.valeur = valeur;
+	}
+
+	public Loc getLoc() {
+		return loc;
+	}
+
+	public void setLoc(Loc loc) {
+		this.loc = loc;
+	}
+
+	public String getPos() {
+		return pos;
+	}
+
+	public void setPos(String pos) {
+		this.pos = pos;
 	}
 
 }

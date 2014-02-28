@@ -29,15 +29,16 @@
 
 <div id="milieu-left">
 <p><button class="btn-case btn-case-etoile"></button></p>
-<div droppable drop="handleDrop()">
-<button class="btn-case-vide"></button>
-<button class="btn-case-vide"></button>
-<button class="btn-case-vide"></button>
-<button class="btn-case-vide"></button>
+<!--<div droppable drop="handleDrop()">-->
+<div droppable="true">
+<button class="{{caseCible[0].cssClass}}"></button>
+<button class="{{caseCible[1].cssClass}}"></button>
+<button class="{{caseCible[2].cssClass}}"></button>
+<button class="{{caseCible[3].cssClass}}"></button>
 </div>
 </div>
 <div id="milieu-right">
-<div draggable id="item1"><button class="btn-case btn-case-etoile"></button><button class="btn-case btn-case-etoile"></button></div>
+<div draggable="true" id="item1"><button class="{{caseSource[0].cssClass}}"></button><button class="{{caseSource[0].cssClass}}"></button></div>
 </div>
 
 </div>
