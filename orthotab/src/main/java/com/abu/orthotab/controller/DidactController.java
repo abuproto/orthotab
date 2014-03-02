@@ -31,4 +31,10 @@ public class DidactController {
     public List<Case> getDidact02(@PathVariable("nbCombi") int nbCombi, @PathVariable("pos") String pos) {
         return didactService.getDidact02(nbCombi, pos);
     }
+    
+    @RequestMapping("didact04/{nbCombi}")
+    @ResponseBody
+    public List<Case> getDidact04(@PathVariable("nbCombi") int nbCombi) {
+        return didactService.getDidact04(nbCombi);
+    }
 }

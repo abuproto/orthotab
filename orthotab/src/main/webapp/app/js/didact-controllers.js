@@ -37,7 +37,7 @@ orthotabDidactControllers.controller('DidactNavCtrl', [ '$window', '$scope',
 			$scope.travaux = function() {
 				$window.alert("En travaux !");
 			};
-			
+
 			// didacticiel
 			$scope.didactHome = function() {
 				$window.location.href = "../didact/didact0.jsp";
@@ -45,23 +45,27 @@ orthotabDidactControllers.controller('DidactNavCtrl', [ '$window', '$scope',
 
 		} ]);
 
-orthotabDidactControllers.controller('Didact0Ctrl', [ '$window', '$scope',
-		function($window, $scope) {
+orthotabDidactControllers.controller('Didact0Ctrl',
+		[
+				'$window',
+				'$scope',
+				function($window, $scope) {
 
-			// home
-			$scope.home = function() {
-				$window.location.href = "../main/index.jsp";
-			};
-			
-			$scope.didact = function(nbDidact) {
-				$window.location.href = "../didact/didact0" + nbDidact +".jsp";
-			};
+					// home
+					$scope.home = function() {
+						$window.location.href = "../main/index.jsp";
+					};
 
-			$scope.travaux = function() {
-				$window.alert("En travaux !");
-			};
+					$scope.didact = function(nbDidact) {
+						$window.location.href = "../didact/didact0" + nbDidact
+								+ ".jsp";
+					};
 
-		} ]);
+					$scope.travaux = function() {
+						$window.alert("En travaux !");
+					};
+
+				} ]);
 
 orthotabDidactControllers
 		.controller(
@@ -193,7 +197,7 @@ orthotabDidactControllers
 											}
 										} else {
 											// a completer par du style
-											//caseCombi.backgrdStyle = "red";
+											// caseCombi.backgrdStyle = "red";
 											$scope.caseGcourant.backgrdStyle = "#B5B276";
 											$scope.caseGcourant = null;
 										}
@@ -202,6 +206,96 @@ orthotabDidactControllers
 							}
 
 						} ]);
+
+orthotabDidactControllers.controller('Didact03Ctrl', [ '$rootScope', '$scope',
+		'$timeout', function($rootScope, $scope, $timeout) {
+
+			$scope.tempsEcoule = false;
+			$scope.nbFormes = 3;
+			$scope.cssResultat = [ {"cssClass":"groupe-case"},{"cssClass":"groupe-case"},{"cssClass":"groupe-case"}];
+
+			var cacheOperation = function() {
+				$scope.tempsEcoule = true;
+			}
+			$timeout(cacheOperation, 5000);
+			
+			$scope.valider = function(nb) {
+				if(nb==$scope.nbFormes){
+					$scope.cssResultat[nb-1].cssClass = "groupe-case groupe-case-correct";
+				}
+			};
+
+		} ]);
+
+
+orthotabDidactControllers
+.controller(
+		'Didact04Ctrl',
+		[
+				'$rootScope',
+				'$scope',
+				'Didact04','$timeout',
+				function($rootScope, $scope, Didact04, $timeout) {
+
+					$scope.cases = Didact04.query({}, {
+						'nbCombi' : $scope.nivdifficulte
+					});
+
+					var retourneCase = function() {
+						$timeout(function() {
+							$rootScope.caseCombiFirst.cssClass = "btn-case";
+							$rootScope.caseCombiFirst.sens = "VERSO";
+							$rootScope.caseCombiSecond.cssClass = "btn-case";
+							$rootScope.caseCombiSecond.sens = "VERSO";
+							$rootScope.caseCombiFirst = null;
+							$rootScope.caseCombiSecond = null;
+						},3000);
+					}
+					
+					
+					$scope.nbCombiTrouve = 0;
+					$rootScope.niveauFini = false;
+					var nbCasesRecto = 0;
+
+					$scope.enregistreCase = function(caseCombi, $event,
+							ind) {
+						if (caseCombi.active) {
+							
+							if(caseCombi.sens=="VERSO" && nbCasesRecto<2){
+								caseCombi.sens= "RECTO";
+								caseCombi.cssClass = caseCombi.realCssClass;
+								nbCasesRecto ++;
+							}
+							
+							if ($rootScope.caseCombiFirst == null) {
+								$rootScope.caseCombiFirst = caseCombi;
+							} else {
+								var caseFisrt = $rootScope.caseCombiFirst;
+								$rootScope.caseCombiSecond = caseCombi;
+								if ($rootScope.caseCombiFirst.valeur == caseCombi.valeur) {
+									caseFisrt.active = false;
+									caseCombi.active = false;
+
+									$rootScope.caseCombiFirst = null;
+									$rootScope.caseCombiSecond = null;
+
+									$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
+									if ($scope.nbCombiTrouve == $scope.nivdifficulte) {
+										// affichage message
+										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.niveauFini = true;
+									}
+									nbCasesRecto = 0;
+								}else{
+									retourneCase();
+									nbCasesRecto = 0;
+								}
+							}
+						}
+					}
+
+				} ]);
+
 
 orthotabDidactControllers.controller('Didact06Ctrl', function($scope) {
 

@@ -25,8 +25,7 @@ public class DidactServiceImpl implements DidactService {
 	
 	@Override
 	public List<Case> getDidact01(int nbCombi) {
-		
-		
+			
 		// cases
 		List<Case> cases = new ArrayList<Case>();
 		for(int i=1;i<=nbCombi;i++){
@@ -86,5 +85,38 @@ public class DidactServiceImpl implements DidactService {
 			listeCaseComplete.add(caseACompleter);
 		}		
 		return listeCaseComplete;
+	}
+
+
+	@Override
+	public List<Case> getDidact04(int nbCombi) {
+		int nbInRow = 5;
+		int nbCase = 0;
+		// cases
+		List<Case> cases = new ArrayList<Case>();
+		for(int i=1;i<=nbCombi;i++){
+			Case caseOp = new Case(Case.Type.OP.name(),"?",Integer.valueOf(tabClass[i-1][1]));
+			nbCase++;
+			int row = (nbCase<=nbInRow?1:2);
+			caseOp.setActive(true);
+			caseOp.setCssClass("btn-case");
+			caseOp.setRealCssClass(tabClass[i-1][0]);
+			caseOp.setBackgrdStyle("#B5B276");
+			caseOp.setRow(String.valueOf(row));
+			caseOp.setSens("VERSO");
+			cases.add(caseOp);
+			Case caseRes = new Case(Case.Type.RES.name(),"?",Integer.valueOf(tabClass[i-1][1]));
+			nbCase++;
+			row = (nbCase<=nbInRow?1:2);
+			caseRes.setActive(true);
+			caseRes.setCssClass("btn-case");
+			caseRes.setRealCssClass(tabClass[i-1][0]);
+			caseRes.setBackgrdStyle("#B5B276");
+			caseRes.setRow(String.valueOf(row));
+			caseRes.setSens("VERSO");
+			cases.add(caseRes);
+		}
+		
+		return melange(cases);
 	}
 }

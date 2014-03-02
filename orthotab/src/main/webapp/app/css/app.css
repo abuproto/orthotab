@@ -62,6 +62,10 @@
 	font-size: 14pt;
 }
 
+.infosClient{
+	font-size: 8pt;
+}
+
 .boutonGeneral {
 	border-radius: 4px;
 	background-color: #D0E09D;
@@ -111,12 +115,12 @@
 
 #milieu-left{
 	float:left;
-	margin-left: 300px;
+	margin-left: 200px;
 }
 
 #milieu-right{
 	float:right;
-	margin-right: 300px;
+	margin-right: 200px;
 }
 
 .btn-case-vide{
@@ -156,3 +160,18 @@
 	background-image : url("../images/lune.png");
 }
 
+.groupe-case{
+	border-width: 2px;
+	border-radius: 8px;
+	border-style: solid;
+}
+
+.groupe-case-correct{
+	border-color: green;
+	border-width: 5px;
+}
+
+.signe{
+	font-weight: bold;
+	font-size: 24pt;
+}

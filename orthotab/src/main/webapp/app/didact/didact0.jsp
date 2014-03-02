@@ -18,8 +18,8 @@
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="didact(01)">1 - Associer des paires par couleur</button><br/>
 <button class="boutonGeneral2" ng-click="didact(02)">2 - Relier des colonnes</button><br/>
-<button class="boutonGeneral2" ng-click="travaux()">3 - Calcul flash</button><br/>
-<button class="boutonGeneral2" ng-click="travaux()">4 - Mémory</button><br/>
+<button class="boutonGeneral2" ng-click="didact(03)">3 - Calcul flash</button><br/>
+<button class="boutonGeneral2" ng-click="didact(04)">4 - Mémory</button><br/>
 <button class="boutonGeneral2" ng-click="travaux()">5 - Dominos</button><br/>
 <button class="boutonGeneral2" ng-click="didact(06)">6 - Remplir des emplacements</button><br/>
 <button class="boutonGeneral2" ng-click="travaux()">7 - Mémory multipliant</button><br/>

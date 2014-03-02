@@ -165,6 +165,9 @@ orthotabControllers
 								$cookieStore, $http, $window, $timeout,
 								UserConnecteService, localStorageService, UserTokenService) {
 							var cookieOrthoTab = $cookieStore.get('orthotab');
+							
+							$scope.infosClient = "H" + $window.innerHeight + " W" + $window.innerWidth;
+							
 							if (cookieOrthoTab != null) {
 								// a completer avec verification User
 								$rootScope.isLogged = true;
@@ -216,7 +219,7 @@ orthotabControllers
 									$cookieStore.remove('orthotab');
 									localStorageService.remove('usertoken');
 								}
-								$window.location.href = "index.htm";
+								$window.location.href = "../main/index.jsp";
 							};
 
 							// submit

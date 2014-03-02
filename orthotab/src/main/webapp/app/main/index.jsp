@@ -24,6 +24,7 @@
     <input type="submit" value="Connexion" class="boutonGeneral"/>
   </form>
   <span>{{message}}</span>
+  <span class="infosClient">{{infosClient}}</span>
   </div>
 <div ng-show="isLogged" class="div-login">
 <span>Bonjour {{utilisateur}}!</span><br/><br/>

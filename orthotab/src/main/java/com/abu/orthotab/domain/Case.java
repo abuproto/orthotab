@@ -6,6 +6,10 @@ public class Case extends ElementJeu{
 	private int valeur;
 	private Loc loc;
 	private String pos;
+	
+	private String row;
+	private String sens; // RECTO ou VERSO
+	private String realCssClass; // pour sauvegarder la classe à afficher en RECTO
 
 	public enum Type {
 		OP, RES
@@ -56,6 +60,30 @@ public class Case extends ElementJeu{
 
 	public void setPos(String pos) {
 		this.pos = pos;
+	}
+
+	public String getRow() {
+		return row;
+	}
+
+	public void setRow(String row) {
+		this.row = row;
+	}
+
+	public String getSens() {
+		return sens;
+	}
+
+	public void setSens(String sens) {
+		this.sens = sens;
+	}
+
+	public String getRealCssClass() {
+		return realCssClass;
+	}
+
+	public void setRealCssClass(String realCssClass) {
+		this.realCssClass = realCssClass;
 	}
 
 }

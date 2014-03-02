@@ -41,6 +41,15 @@ orthotabServices.factory('Didact02', [ '$resource', function($resource) {
 	});
 } ]);
 
+orthotabServices.factory('Didact04', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/didact04/:nbCombi', {nbCombi:'@nbCombi'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
 orthotabServices.factory('Accueil', [ '$resource', function($resource) {
 	return $resource('/orthotab/api/accueil/:nivcourant', {nivcourant:'@nivcourant'}, {
 		query : {
