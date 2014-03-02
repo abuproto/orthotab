@@ -199,7 +199,13 @@ orthotabControllers
 
 							// depart
 							$scope.depart = function() {
-								$window.location.href = "accueil.htm";
+								//$window.location.href = "accueil.htm";
+								$window.alert("En travaux !");
+							};
+							
+							// didacticiel
+							$scope.didactHome = function() {
+								$window.location.href = "../didact/didact0.jsp";
 							};
 
 							// changerUtilisateur

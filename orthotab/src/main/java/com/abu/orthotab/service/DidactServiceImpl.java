@@ -74,10 +74,10 @@ public class DidactServiceImpl implements DidactService {
 			x=180;
 		}
 		
-		int ydepart = 20;
+		int ydepart = 40;
 		int y = ydepart;
 		
-		int pasvertical = 100;
+		int pasvertical = 120;
 		
 		for(int i=0; i<listeCase.size(); i++){
 			Case caseACompleter = listeCase.get(i);

@@ -3,27 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>Orthotab</title>
-  <link rel="stylesheet" href="css/app.css">
+<%@include file="../includes/inc_head.htm"%>
 
-  <script src="../lib/angular.js"></script>
-  <script src="../lib/angular-cookies.js"></script>
-  <script src="../lib/angular-resource.js"></script>
-  <script src="../lib/angular-route.js"></script>
-  <script src="../lib/angular-sanitize.js"></script>
-
-  <script src="js/app.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/angular-local-storage.js"></script>
 </head>
 <body ng-app="orthotabApp">
 <div ng-controller="LoginCtrl">
 <table>
 <tr height="50%">
 <td colspan="2" width="70%">
-<img alt="orthotab" src="images/orthotab.png" width="200px" height="100px"/>
+<img alt="orthotab" src="../images/orthotab.png" width="200px" height="100px"/>
 </td>
-<td width="30%" valign="top"><img alt="perroquet" src="images/perroquet.jpg" width="200" height="200"></td>
+<td width="30%" valign="top"><img alt="perroquet" src="../images/perroquet.jpg" width="200" height="200"></td>
 </tr>
 <tr height="50%">
 <td>
@@ -41,8 +31,10 @@
 </div>
 </td>
 <td>
-<div ng-show="isLogged">
-<img alt="orthotab" src="images/depart.png" width="200" height="100" ng-click="depart()"/>
+<div ng-show="isLogged" align="center">
+<img alt="orthotab" src="../images/depart.png" width="200" height="100" ng-click="depart()"/>
+<br/>
+<button class="boutonGeneral" ng-click="didactHome()">Didacticiel</button>
 </div>
 </td>
 <td>

@@ -3,25 +3,12 @@
 <head>
   <meta charset="utf-8">
   <title>Orthotab</title>
-  <link rel="stylesheet" href="../css/app.css">
-  
-  <script src="../../lib/angular.js"></script>
-  <script src="../../lib/angular-cookies.js"></script>
-  <script src="../../lib/angular-resource.js"></script>
-	<script src="../../lib/angular-sanitize.js"></script>
-  <script src="../js/app.js"></script>
-  <script src="../js/didact-controllers.js"></script>
-  <script src="../js/services.js"></script>
-  <script src="../js/angular-local-storage.js"></script>
+<%@include file="../includes/inc_head.htm"%>
   
 </head>
 <body ng-app="orthotabApp" ng-init="nivdifficulte='5'">
-<div class="div-haut">
-<div id="left">
-<span><img src="../images/icone_menu.png" alt="Menu didacticiel"/></span>
-<span><img src="../images/icone_redo.png" alt="Recommencer"/></span>
-</div>
-<div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil"/></div>
+<div class="div-haut" ng-controller="DidactNavCtrl">
+<%@include file="../includes/inc_didactnav.htm"%>
 <div id="center">Associer des paires par couleur</div>
 </div>
 <div class="div-milieu">

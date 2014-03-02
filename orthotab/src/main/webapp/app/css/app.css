@@ -67,6 +67,14 @@
 	background-color: #D0E09D;
 }
 
+.boutonGeneral2 {
+	border-radius: 4px;
+	background-color: #D0E09D;
+	font-size: 14pt;
+	margin-bottom: 10px;
+}
+
+
 .div-haut {
 	border-width: 2px;
 	border-radius: 8px;
@@ -103,10 +111,12 @@
 
 #milieu-left{
 	float:left;
+	margin-left: 300px;
 }
 
 #milieu-right{
 	float:right;
+	margin-right: 300px;
 }
 
 .btn-case-vide{
@@ -144,4 +154,5 @@
 
 .btn-case-lune{
 	background-image : url("../images/lune.png");
-}	
+}
+

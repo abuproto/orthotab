@@ -7,12 +7,8 @@
   
 </head>
 <body ng-app="orthotabApp" ng-init="nivdifficulte='4'">
-<div class="div-haut">
-<div id="left">
-<span><img src="../images/icone_menu.png" alt="Menu didacticiel"/></span>
-<span><img src="../images/icone_redo.png" alt="Recommencer"/></span>
-</div>
-<div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil"/></div>
+<div class="div-haut" ng-controller="DidactNavCtrl">
+<%@include file="../includes/inc_didactnav.htm"%>
 <div id="center">Relier des colonnes</div>
 </div>
 <div class="div-milieu" ng-controller="Didact02Ctrl">
@@ -32,25 +28,15 @@
 </div>
 
 
-<div id="center">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
+<div id="center" align="center">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="500">
 <style type="text/css" >
       <![CDATA[
 
         circle.avant {
-           fill:   blue;
+           fill:   green;
         }
-       circle.apres {
-           fill:   grey;
-        }
-        
- 		circle.actif {
-           fill:   red;
-        }
-        path.avant {
-        	stroke: blue;
-        	stroke-width: 5;
-        }
+
         path.correct {
         	stroke: green;
         	stroke-width: 5;
@@ -64,27 +50,27 @@
       ]]>
     </style>
 
-<circle cx="20" cy="20" r="5" class="avant"/>
+<circle cx="{{casesg[0].loc.x}}" cy="{{casesg[0].loc.y}}" r="5" class="avant"/>
 <path d="{{pathInfos[0].loc}}" class="{{pathInfos[0].cssClass}}"/>
-<circle cx="180" cy="20" r="5" class="avant"/>
+<circle cx="{{casesd[0].loc.x}}" cy="{{casesd[0].loc.y}}" r="5" class="avant"/>
 
-<circle cx="20" cy="120" r="5" class="avant"/>
+<circle cx="{{casesg[1].loc.x}}" cy="{{casesg[1].loc.y}}" r="5" class="avant"/>
 <path d="{{pathInfos[1].loc}}" class="{{pathInfos[1].cssClass}}"/>
-<circle cx="180" cy="120" r="5" class="avant"/>
+<circle cx="{{casesd[1].loc.x}}" cy="{{casesd[1].loc.y}}" r="5" class="avant"/>
 
-<circle cx="20" cy="220" r="5" class="avant"/>
+<circle cx="{{casesg[2].loc.x}}" cy="{{casesg[2].loc.y}}" r="5" class="avant"/>
 <path d="{{pathInfos[2].loc}}" class="{{pathInfos[2].cssClass}}"/>
-<circle cx="180" cy="220" r="5" class="avant"/>
+<circle cx="{{casesd[2].loc.x}}" cy="{{casesd[2].loc.y}}" r="5" class="avant"/>
 
-<circle cx="20" cy="320" r="5" class="avant"/>
+<circle cx="{{casesg[3].loc.x}}" cy="{{casesg[3].loc.y}}" r="5" class="avant"/>
 <path d="{{pathInfos[3].loc}}" class="{{pathInfos[3].cssClass}}"/>
-<circle cx="180" cy="320" r="5" class="avant"/>
+<circle cx="{{casesd[3].loc.x}}" cy="{{casesd[3].loc.y}}" r="5" class="avant"/>
 </svg>
 </div>
 
 </div>
 
-<div align="center" class="messageExercice">{{messageNiveau01}}message</div>
+<div align="center" class="messageExercice">{{messageNiveau}}</div>
 </div>
 </body>
 </html>
