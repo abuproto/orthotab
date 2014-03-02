@@ -300,13 +300,13 @@ orthotabDidactControllers
 orthotabDidactControllers.controller('Didact06Ctrl', function($scope) {
 
 	$scope.caseCible = [ {
-		"cssClass" : "btn-case-vide"
+		"cssClass" : "btn-case-vide","actif":true
 	}, {
-		"cssClass" : "btn-case-vide"
+		"cssClass" : "btn-case-vide","actif":true
 	}, {
-		"cssClass" : "btn-case-vide"
+		"cssClass" : "btn-case-vide","actif":true
 	}, {
-		"cssClass" : "btn-case-vide"
+		"cssClass" : "btn-case-vide","actif":true
 	} ];
 	$scope.nbCaseCible = 4;
 	$scope.cssCible = "btn-case btn-case-etoile";
@@ -317,13 +317,12 @@ orthotabDidactControllers.controller('Didact06Ctrl', function($scope) {
 	} ];
 
 	$scope.handleDragStart = function(e) {
-		// this.style.opacity = '0.4';
-		// e.dataTransfer.setData('text/plain', this.innerHTML);
 		e.dataTransfer.setData('Text', this.id);
 	};
 
 	$scope.handleDragEnd = function(e) {
-		// this.style.opacity = '1.0';
+		console.log('fin handleDragEnd');
+		return false;
 	};
 
 	$scope.handleDragEnter = function(e) {
@@ -332,6 +331,11 @@ orthotabDidactControllers.controller('Didact06Ctrl', function($scope) {
 
 	$scope.handleDragLeave = function(e) {
 		// this.style.opacity = '1.0';
+		console.log('fin handleDragLeave');
+		e.preventDefault(); // Necessary. Allows us to drop.
+		//e.dataTransfer.dropEffect = 'move'; // See the section on the
+		// DataTransfer object.
+		return false;
 	};
 
 	$scope.handleDrop = function(e) {
@@ -340,11 +344,26 @@ orthotabDidactControllers.controller('Didact06Ctrl', function($scope) {
 		var data = e.dataTransfer.getData('Text');
 		$scope.sourceCourant = data;
 
-		/*
-		 * $scope.$apply(function() { $scope.items.push(dataText); });
-		 */
-
 		console.log('Item has been dropped : ' + $scope.sourceCourant);
+		
+		var idx = $scope.sourceCourant.charAt($scope.sourceCourant.length-1);
+		console.log('idx : ' + idx);
+		
+		var caseSource = $scope.caseSource[idx];
+		if(caseSource.cssClass==$scope.cssCible){
+			var nbValeur = caseSource.valeur;
+			if(caseSource.valeur<=$scope.nbCaseCible){
+				for(var i=0;i<$scope.caseCible.length;i++){
+					if($scope.caseCible[i].actif && nbValeur > 0){
+						$scope.caseCible[i].cssClass = caseSource.cssClass;
+						$scope.caseCible[i].actif = false;
+						nbValeur --;
+					}
+				}
+			}
+		}
+		$scope.$apply();
+		console.log('fin handleDrop');
 	};
 
 	$scope.handleDragOver = function(e) {

@@ -25,7 +25,7 @@
 </div>
 </div>
 <div id="milieu-right">
-<div draggable="true" id="item1"><button class="{{caseSource[0].cssClass}}"></button><button class="{{caseSource[0].cssClass}}"></button></div>
+<div draggable="true" id="item0"><button class="{{caseSource[0].cssClass}}"></button><button class="{{caseSource[0].cssClass}}"></button></div>
 </div>
 
 </div>
