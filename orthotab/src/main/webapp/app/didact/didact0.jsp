@@ -20,11 +20,11 @@
 <button class="boutonGeneral2" ng-click="didact(02)">2 - Relier des colonnes</button><br/>
 <button class="boutonGeneral2" ng-click="didact(03)">3 - Calcul flash</button><br/>
 <button class="boutonGeneral2" ng-click="didact(04)">4 - Mémory</button><br/>
-<button class="boutonGeneral2" ng-click="travaux()">5 - Dominos</button><br/>
+<button class="boutonGeneral2" ng-click="didact(05)">5 - Dominos</button><br/>
 <button class="boutonGeneral2" ng-click="didact(06)">6 - Remplir des emplacements</button><br/>
-<button class="boutonGeneral2" ng-click="travaux()">7 - Mémory multipliant</button><br/>
-<button class="boutonGeneral2" ng-click="travaux()">8 - Calcul à trou</button><br/>
-<button class="boutonGeneral2" ng-click="travaux()">9 - Remettre dans le bon ordre</button>
+<button class="boutonGeneral2" ng-click="didact(07)">7 - Mémory multipliant</button><br/>
+<button class="boutonGeneral2" ng-click="didact(08)">8 - Calcul à trou</button><br/>
+<button class="boutonGeneral2" ng-click="didact(09)">9 - Remettre dans le bon ordre</button>
 </div>
 
 </body>

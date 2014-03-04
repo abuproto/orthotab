@@ -7,30 +7,42 @@
   
 </head>
 <body ng-app="orthotabApp">
-<div class="div-haut" ng-controller="DidactNavCtrl">
+
+<div id="page">
+	<div id="bloc-principal">
+	
+	<div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
 
 <div id="center">Remplir des emplacements</div>
 </div>
+
+
 <div class="div-milieu" ng-controller="Didact06Ctrl">
 
-<div id="milieu-left">
-<p><button class="btn-case btn-case-etoile"></button></p>
+	<div id="milieu-left">
+	<p align="center"><button class="btn-case btn-case-etoile" ng-style="{'border-color' : 'red'}"></button></p>
+	
+	<div droppable="true" align="center">
+	<button class="{{caseCible[0].cssClass}}"></button>
+	<button class="{{caseCible[1].cssClass}}"></button>
+	<button class="{{caseCible[2].cssClass}}"></button>
+	<button class="{{caseCible[3].cssClass}}"></button>
+	</div>
+	</div>
+	
+	<div id="milieu-right">
+	<div align="center" draggable="true" id="item0" class="groupe-case"><button class="{{caseSource[0].cssClass}}"></button><button class="{{caseSource[0].cssClass}}"></button></div>
+	<div align="center" draggable="true" id="item1" class="groupe-case"><button class="{{caseSource[1].cssClass}}"></button></div>
+	<div align="center" draggable="true" id="item2" class="groupe-case"><button class="{{caseSource[2].cssClass}}"></button><button class="{{caseSource[2].cssClass}}"></button></div>
+	<div align="center" draggable="true" id="item3" class="groupe-case"><button class="{{caseSource[3].cssClass}}"></button><button class="{{caseSource[3].cssClass}}"></button><button class="{{caseSource[3].cssClass}}"></button></div>
+	</div>
 
-<div droppable="true">
-<button class="{{caseCible[0].cssClass}}"></button>
-<button class="{{caseCible[1].cssClass}}"></button>
-<button class="{{caseCible[2].cssClass}}"></button>
-<button class="{{caseCible[3].cssClass}}"></button>
 </div>
-</div>
-<div id="milieu-right">
-<div draggable="true" id="item0"><button class="{{caseSource[0].cssClass}}"></button><button class="{{caseSource[0].cssClass}}"></button></div>
-</div>
+	
+	</div><!-- fin bloc-principal -->
+	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
+</div><!-- fin page -->
 
-</div>
-
-<div align="center" class="messageExercice">{{messageNiveau}}</div>
-</div>
 </body>
 </html>
