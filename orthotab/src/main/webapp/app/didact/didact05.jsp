@@ -14,7 +14,7 @@
 	<div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
 
-<div id="center">Remplir des emplacements</div>
+<div id="center"><p align="center">Remplir des emplacements</p></div>
 </div>
 
 

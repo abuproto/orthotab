@@ -25,19 +25,26 @@ public class DidactServiceImpl implements DidactService {
 	
 	@Override
 	public List<Case> getDidact01(int nbCombi) {
-			
+		int nbInRow = 5;
+		int nbCase = 0;
 		// cases
 		List<Case> cases = new ArrayList<Case>();
 		for(int i=1;i<=nbCombi;i++){
 			Case caseOp = new Case(Case.Type.OP.name(),"",Integer.valueOf(tabClass[i-1][1]));
+			nbCase++;
+			int row = (nbCase<=nbInRow?1:2);
 			caseOp.setActive(true);
 			caseOp.setCssClass(tabClass[i-1][0]);
 			caseOp.setBackgrdStyle("#B5B276");
+			caseOp.setRow(String.valueOf(row));
 			cases.add(caseOp);
 			Case caseRes = new Case(Case.Type.RES.name(),"",Integer.valueOf(tabClass[i-1][1]));
+			nbCase++;
+			row = (nbCase<=nbInRow?1:2);
 			caseRes.setActive(true);
 			caseRes.setCssClass(tabClass[i-1][0]);
 			caseRes.setBackgrdStyle("#B5B276");
+			caseRes.setRow(String.valueOf(row));
 			cases.add(caseRes);
 		}
 		
@@ -68,15 +75,15 @@ public class DidactServiceImpl implements DidactService {
 		
 		int x = 0;
 		if("G".equals(pos)){
-			x=20;
+			x=5;
 		}else if("D".equals(pos)){
-			x=180;
+			x=195;
 		}
 		
-		int ydepart = 40;
+		int ydepart = 20;
 		int y = ydepart;
 		
-		int pasvertical = 120;
+		int pasvertical = 80;
 		
 		for(int i=0; i<listeCase.size(); i++){
 			Case caseACompleter = listeCase.get(i);

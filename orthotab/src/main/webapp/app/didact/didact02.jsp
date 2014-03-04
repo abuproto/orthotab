@@ -7,9 +7,11 @@
   
 </head>
 <body ng-app="orthotabApp" ng-init="nivdifficulte='4'">
+<div id="page">
+	<div id="bloc-principal">
 <div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
-<div id="center">Relier des colonnes</div>
+<div id="center"><p align="center">Relier des colonnes</p></div>
 </div>
 <div class="div-milieu" ng-controller="Didact02Ctrl">
 
@@ -29,7 +31,7 @@
 
 
 <div id="center" align="center">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="300">
 <style type="text/css" >
       <![CDATA[
 
@@ -70,7 +72,10 @@
 
 </div>
 
-<div align="center" class="messageExercice">{{messageNiveau}}</div>
 </div>
+
+	</div><!-- fin bloc-principal -->
+	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
+</div><!-- fin page -->
 </body>
 </html>

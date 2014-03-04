@@ -14,7 +14,7 @@
 	<div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
 
-<div id="center">Mémory multipliant</div>
+<div id="center"><p align="center">Calcul à trou</p></div>
 </div>
 
 

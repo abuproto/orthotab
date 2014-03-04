@@ -7,10 +7,12 @@
   
 </head>
 <body ng-app="orthotabApp">
+<div id="page">
+	<div id="bloc-principal">
 <div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
 
-<div id="center">Calcul Flash</div>
+<div id="center"><p align="center">Calcul Flash</p></div>
 </div>
 <div class="div-milieu" ng-controller="Didact03Ctrl">
 
@@ -34,7 +36,10 @@
 </div>
 </div>
 
-<div align="center" class="messageExercice">{{messageNiveau}}</div>
 </div>
+
+	</div><!-- fin bloc-principal -->
+	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
+</div><!-- fin page -->
 </body>
 </html>

@@ -14,18 +14,18 @@
 	<div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
 
-<div id="center">Remmettre dans le bon ordre</div>
+<div id="center"><p align="center">Remettre dans le bon ordre</p></div>
 </div>
 
 
 <div class="div-milieu" ng-controller="Didact09Ctrl">
 
 <p align="center">
-<button ng-repeat="case in caseCible" droppable="true" id="{{$index}}" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}">{{case.valeur}}&nbsp;</button>
+<button ng-repeat="case in caseCible" droppable="true" id="{{$index}}" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}">&nbsp;{{case.valeur}}&nbsp;</button>
 </p>
 
 <p align="center">
-<button ng-repeat="case in caseChoix" class="trou-plein" id="{{$index}}" draggable="true" ng-style="{'background-color' : case.backgrdStyle}">{{case.valeur}}&nbsp;</button>
+<button ng-repeat="case in caseChoix" class="trou-plein" id="{{$index}}" draggable="true" ng-style="{'background-color' : case.backgrdStyle}">&nbsp;{{case.valeur}}&nbsp;</button>
 </p>
 
 </div>

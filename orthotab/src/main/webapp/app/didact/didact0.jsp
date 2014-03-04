@@ -11,8 +11,8 @@
 <div class="div-haut">
 <div id="left">
 </div>
-<div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil" ng-click="home()"/></div>
-<div id="center">Didacticiel</div>
+<div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil" ng-click="home()" style="cursor: hand;cursor: pointer;"/></div>
+<div id="center"><p align="center">Didacticiel</p></div>
 </div>
 
 <div class="div-milieu" align="center">

@@ -7,9 +7,11 @@
   
 </head>
 <body ng-app="orthotabApp" ng-init="nivdifficulte='5'">
+<div id="page">
+	<div id="bloc-principal">
 <div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
-<div id="center">Mémory</div>
+<div id="center"><p align="center">Mémory</p></div>
 </div>
 <div class="div-milieu" ng-controller="Didact04Ctrl">
 
@@ -22,7 +24,9 @@
 
 </div>
 
-<div align="center" class="messageExercice">{{messageNiveau}}</div>
 </div>
+	</div><!-- fin bloc-principal -->
+	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
+</div><!-- fin page -->
 </body>
 </html>

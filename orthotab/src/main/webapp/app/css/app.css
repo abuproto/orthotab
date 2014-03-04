@@ -26,9 +26,9 @@ body {
 }
 
 .boutonCouleur {
-	width: 80px;
-	height: 80px;
-	margin: 30px;
+	width: 60px;
+	height: 60px;
+	margin: 10px;
 	border-radius: 8px;
 }
 
@@ -44,17 +44,18 @@ body {
 }
 */
 .boutonCouleurActif {
-	width: 80px;
-	height: 80px;
-	margin: 30px;
+	width: 60px;
+	height: 60px;
+	margin: 10px;
 	border-radius: 32px;
 	box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
+/* voir si utilisé */
 .boutonCase {
-	width: 80px;
-	height: 80px;
-	margin: 30px;
+	width: 60px;
+	height: 60px;
+	margin: 10px;
 	border-radius: 8px;
 	text-align: center;
 	line-height: 80px;
@@ -62,6 +63,7 @@ body {
 	font-size: 12pt;
 }
 
+/* voir si utilisé */
 .boutonCaseActif {
 	width: 80px;
 	height: 80px;
@@ -109,13 +111,12 @@ body {
 	border-width: 2px;
 	border-radius: 8px;
 	border-style: solid;
-	/*border-color: #FF9300;*/
 	border-color: black;
 	margin-right: 40px;
 	margin-left: 40px;
-	margin-top: 40px;
-	margin-bottom: 20px;
-	height:70px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height:60px;
 }
 
 .div-milieu{
@@ -141,49 +142,59 @@ body {
 
 #milieu-left{
 	float:left;
-	margin-left: 200px;
+	margin-left: 150px;
 }
 
 #milieu-right{
 	float:right;
-	margin-right: 200px;
+	margin-right: 150px;
+}
+
+#milieu-left-large{
+	float:left;
+	margin-left: 20px;
+}
+
+#milieu-right-large{
+	float:right;
+	margin-right: 20px;
 }
 
 .btn-case-vide{
-	width: 80px;
-    height: 80px;
+	width: 60px;
+    height: 60px;
 	border-width: 2px;
 	border-style: solid;
-	margin: 20px;
+	margin: 10px;
 }
 
 .btn-case{
-	width: 80px;
-    height: 80px;
+	width: 60px;
+    height: 60px;
 	background-repeat : no-repeat;
 	border-width: 8px;
 	border-radius: 8px;
 	border-style: solid;
-	margin: 20px;
+	margin: 10px;
 }	
 .btn-case-fleche{
-	background-image : url("../images/fleche.png");
+	background-image : url("../images/fleche_reduit.png");
 }
 
 .btn-case-etoile{
-	background-image : url("../images/etoile.png");
+	background-image : url("../images/etoile_reduit.png");
 }
 
 .btn-case-rond{
-	background-image : url("../images/rond.png");
+	background-image : url("../images/rond_reduit.png");
 }
 
 .btn-case-croix{
-	background-image : url("../images/croix.png");
+	background-image : url("../images/croix_reduit.png");
 }
 
 .btn-case-lune{
-	background-image : url("../images/lune.png");
+	background-image : url("../images/lune_reduit.png");
 }
 
 .groupe-case{
@@ -194,6 +205,11 @@ body {
 
 .groupe-case-correct{
 	border-color: green;
+	border-width: 5px;
+}
+
+.groupe-case-incorrect{
+	border-color: red;
 	border-width: 5px;
 }
 

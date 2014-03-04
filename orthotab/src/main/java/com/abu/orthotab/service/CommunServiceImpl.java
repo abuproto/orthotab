@@ -10,7 +10,7 @@ import com.abu.orthotab.domain.Couleur;
 @Service
 public class CommunServiceImpl implements CommunService {
 
-	String[] codeCouleurs = {"#046380","#C03000","#8FCF3C","#F4FF3A","#C9001A","#495CFF","#F9A41E","#D400FF","#05966D","#FF0000"};
+	String[] codeCouleurs = {"#046380","#C03000","#8FCF3C","#F4FF3A","#495CFF","#C9001A","#F9A41E","#D400FF","#05966D","#FF0000"};
 	
 	public List<Couleur> getListeCouleurs(int nbCouleurs) {
 		int nbMax = codeCouleurs.length;

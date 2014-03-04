@@ -14,7 +14,7 @@
 	<div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
 
-<div id="center">Mémory multipliant</div>
+<div id="center"><p align="center">Mémory multipliant</p></div>
 </div>
 
 
@@ -23,14 +23,16 @@
 
 
 	<div id="milieu-left">
-	<p align="right" ng-repeat="case in caseChoixG"><button class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">{{case.valeur}}</button></p>
+	<p align="right"><button ng-repeat="case in caseChoixG | filter:{row:1}" class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">{{case.valeur}}</button></p>
+	<p align="right"><button ng-repeat="case in caseChoixG | filter:{row:2}" class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">{{case.valeur}}</button></p>
 	</div>
 	
 	<div id="milieu-right">
-	<p align="left" ng-repeat="case in caseChoixD"><button class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseD(case, $event, $index)">{{case.valeur}}</button></p>
+	<p align="right"><button ng-repeat="case in caseChoixD | filter:{row:1}" class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseD(case, $event, $index)">{{case.valeur}}</button></p>
+	<p align="right"><button ng-repeat="case in caseChoixD | filter:{row:2}" class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseD(case, $event, $index)">{{case.valeur}}</button></p>
 	</div>
 	<div id="center" align="center">
-	<div class="signe" style="margin-top:150px;">X</div>
+	<div class="signe" style="margin-top:100px;">X</div>
 	</div>
 </div>
 	
