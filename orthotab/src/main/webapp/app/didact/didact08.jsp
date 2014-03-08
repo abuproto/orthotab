@@ -21,15 +21,15 @@
 <div class="div-milieu" ng-controller="Didact08Ctrl">
 <p align="center">
 
-<button class="case-nombre" ng-style="{'background-color' : 'blue'}">&nbsp;</button>
-<button class="case-nombre" ng-style="{'background-color' : '#B5B276'}">{{caseCible[0].valeur}}</button>
-<button class="case-nombre" ng-style="{'background-color' : 'yellow'}">&nbsp;</button>
-<button class="case-nombre" ng-style="{'background-color' : '#B5B276'}">=</button>
-<button class="case-nombre" ng-style="{'background-color' : 'green'}">&nbsp;</button>
+<button class="rond trou-plein" ng-style="{'background-color' : 'blue'}">&nbsp;</button>
+<button class="carre trou-plein" ng-style="{'background-color' : 'white'}">{{caseCible[0].valeur}}</button>
+<button class="rond trou-plein" ng-style="{'background-color' : 'yellow'}">&nbsp;</button>
+<button class="carre trou-plein" ng-style="{'background-color' : '#B5B276'}">=</button>
+<button class="rond trou-plein" ng-style="{'background-color' : 'green'}">&nbsp;</button>
 </p>
 
 <p align="center">
-<button ng-repeat="case in caseChoix" class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCase(case, $event, $index)">{{case.valeur}}</button>
+<button ng-repeat="case in caseChoix" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCase(case, $event, $index)">{{case.valeur}}</button>
 </p>
 
 </div>

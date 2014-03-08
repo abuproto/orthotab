@@ -21,11 +21,11 @@
 <div class="div-milieu" ng-controller="Didact09Ctrl">
 
 <p align="center">
-<button ng-repeat="case in caseCible" droppable="true" id="{{$index}}" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}">&nbsp;{{case.valeur}}&nbsp;</button>
+<button ng-repeat="case in caseCible" ng-click="enregistreCaseH(case)" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}">&nbsp;{{case.valeur}}&nbsp;</button>
 </p>
 
 <p align="center">
-<button ng-repeat="case in caseChoix" class="trou-plein" id="{{$index}}" draggable="true" ng-style="{'background-color' : case.backgrdStyle}">&nbsp;{{case.valeur}}&nbsp;</button>
+<button ng-repeat="case in caseChoix" ng-click="enregistreCaseB(case)" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}">&nbsp;{{case.valeur}}&nbsp;</button>
 </p>
 
 </div>

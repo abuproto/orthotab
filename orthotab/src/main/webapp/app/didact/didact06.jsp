@@ -21,21 +21,19 @@
 <div class="div-milieu" ng-controller="Didact06Ctrl">
 
 	<div id="milieu-left-large">
-	<p align="center"><button class="btn-case btn-case-etoile" ng-style="{'border-color' : 'red'}"></button></p>
 	
-	<div droppable="true" align="center" class="groupe-case">
-	<button class="{{caseCible[0].cssClass}}">&nbsp;</button>
-	<button class="{{caseCible[1].cssClass}}">&nbsp;</button>
-	<button class="{{caseCible[2].cssClass}}">&nbsp;</button>
-	<button class="{{caseCible[3].cssClass}}">&nbsp;</button>
+	<div align="center" class="emplacement-cible-groupe">
+	<span>Boîte de {{caseCible[0].nbTotal}} </span><span><button class="emplacement-choix-etoile"></button></span>
+	<br/>
+	<span>Il y a déjà : {{caseCible[0].nbAcquis}}</span><span><button class="emplacement-choix-etoile"></button></span>
+	<br/>
+	Il en manque : <span class="emplacement-cible" align="center">{{caseCible[0].nbRestant}}</span>
 	</div>
+		
 	</div>
 	
-	<div id="milieu-right-large">
-	<div align="center" draggable="true" id="item0" class="groupe-case"><button class="{{caseSource[0].cssClass}}"></button><button class="{{caseSource[0].cssClass}}"></button></div>
-	<div align="center" draggable="true" id="item1" class="groupe-case"><button class="{{caseSource[1].cssClass}}"></button></div>
-	<div align="center" draggable="true" id="item2" class="groupe-case"><button class="{{caseSource[2].cssClass}}"></button><button class="{{caseSource[2].cssClass}}"></button></div>
-	<div align="center" draggable="true" id="item3" class="groupe-case"><button class="{{caseSource[3].cssClass}}"></button><button class="{{caseSource[3].cssClass}}"></button><button class="{{caseSource[3].cssClass}}"></button></div>
+	<div id="milieu-right">
+	<div align="center" ng-repeat="caseChoix in caseListeChoix" class="{{caseChoix.cssClass}}" ng-click="enregistreCase(caseChoix)"><span>{{caseChoix.valeur}}</span><span><button class="emplacement-choix-etoile"></button></span></div>
 	</div>
 
 </div>

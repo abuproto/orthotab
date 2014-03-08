@@ -191,7 +191,8 @@ orthotabDidactControllers
 												+ caseDCourant.loc.y;
 										$scope.pathInfos[cptPath].cssClass = "correct";
 										cptPath++;
-
+										caseGCourant.backgrdStyle = "green";
+										caseDCourant.backgrdStyle = "green";
 										caseGCourant.active = false;
 										caseDCourant.active = false;
 										$scope.caseGCourant = null;
@@ -265,6 +266,8 @@ orthotabDidactControllers
 							$scope.cases = Didact04.query({}, {
 								'nbCombi' : $scope.nivdifficulte
 							});
+							
+							$scope.actif = true;
 
 							var retourneCase = function() {
 								$timeout(
@@ -275,7 +278,8 @@ orthotabDidactControllers
 											$rootScope.caseCombiSecond.sens = "VERSO";
 											$rootScope.caseCombiFirst = null;
 											$rootScope.caseCombiSecond = null;
-										}, 3000);
+											$scope.actif = true;
+										}, 2000);
 							}
 
 							$scope.nbCombiTrouve = 0;
@@ -284,7 +288,7 @@ orthotabDidactControllers
 
 							$scope.enregistreCase = function(caseCombi, $event,
 									ind) {
-								if (caseCombi.active) {
+								if ($scope.actif && caseCombi.active) {
 
 									if (caseCombi.sens == "VERSO"
 											&& nbCasesRecto < 2) {
@@ -313,6 +317,7 @@ orthotabDidactControllers
 											}
 											nbCasesRecto = 0;
 										} else {
+											$scope.actif = false;
 											retourneCase();
 											nbCasesRecto = 0;
 										}
@@ -333,106 +338,75 @@ orthotabDidactControllers
 							$scope.dominoCible = [ {
 								"valg" : "3",
 								"vald" : "4",
-								"cssClass" : "domino-groupe-plein",
-								"droppable" : "false",
+								"cssClass" : "domino-groupe domino-groupe-plein",
+								"cssClassg" : "domino btn-case-fleche",
+								"cssClassd" : "domino btn-case-etoile",
 								"actif" : false
 							}, {
 								"valg" : "?",
 								"vald" : "?",
-								"cssClass" : "domino-groupe-pointille",
-								"droppable" : "true",
+								"cssClass" : "domino-groupe domino-groupe-pointille",
+								"cssClassg" : "domino",
+								"cssClassd" : "domino",
 								"actif" : true
 							}, {
 								"valg" : "?",
 								"vald" : "?",
-								"cssClass" : "domino-groupe-pointille",
-								"droppable" : "false",
+								"cssClass" : "domino-groupe domino-groupe-pointille",
+								"cssClassg" : "domino",
+								"cssClassd" : "domino",
 								"actif" : false
 							} ];
 
 							$scope.dominoChoix = [ {
 								"valg" : "6",
 								"vald" : "2",
-								"cssClass" : "domino-groupe-plein"
+								"cssClassg" : "domino btn-case-lune",
+								"cssClassd" : "domino btn-case-etoile",
+								"cssClass" : "domino-groupe domino-groupe-plein"
 							}, {
 								"valg" : "3",
 								"vald" : "3",
-								"cssClass" : "domino-groupe-plein"
+								"cssClassg" : "domino btn-case-croix",
+								"cssClassd" : "domino btn-case-rond",
+								"cssClass" : "domino-groupe domino-groupe-plein"
 							}, {
 								"valg" : "8",
 								"vald" : "5",
-								"cssClass" : "domino-groupe-plein"
+								"cssClassg" : "domino btn-case-etoile",
+								"cssClassd" : "domino btn-case-croix",
+								"cssClass" : "domino-groupe domino-groupe-plein"
 							}, {
 								"valg" : "5",
 								"vald" : "7",
-								"cssClass" : "domino-groupe-plein"
+								"cssClassg" : "domino btn-case-rond",
+								"cssClassd" : "domino btn-case-etoile",
+								"cssClass" : "domino-groupe domino-groupe-plein"
 							} ];
 
-							$scope.idxDominoCible = 0;
+							$scope.idxDominoCible = 1;
+							$scope.dominoCible[$scope.idxDominoCible].cssClass = "domino-groupe domino-groupe-actif";
 
-							$scope.handleDragStart = function(e) {
-								// e.dataTransfer.setData('Text', this.id);
-								e.dataTransfer.setData('Text', this.id);
-							};
-
-							$scope.handleDragEnd = function(e) {
-								return false;
-							};
-
-							$scope.handleDragEnter = function(e) {
-							};
-
-							$scope.handleDragLeave = function(e) {
-								e.preventDefault(); // Necessary. Allows us to
-													// drop.
-								return false;
-							};
-
-							$scope.handleDrop = function(e) {
-								e.preventDefault();
-								e.stopPropagation();
-								var data = e.dataTransfer.getData('Text');
-								// $scope.sourceCourant = data;
-								// console.log("data : " + data);
-								// var idx =
-								// $scope.sourceCourant.charAt($scope.sourceCourant.length-1);
-
-								var dominoChoix = $scope.dominoChoix[data];
-								var dominoCible = $scope.dominoCible[$scope.idxDominoCible];
-
-								if ($scope.dominoCible[$scope.idxDominoCible + 1].actif) {
-									var somme = parseInt(dominoChoix.valg)
-											+ parseInt(dominoCible.vald);
-
-									if (somme == 10) {
-										$scope.idxDominoCible = $scope.idxDominoCible + 1;
-
-										$scope.dominoCible[$scope.idxDominoCible].cssClass = "domino-groupe-plein";
-										$scope.dominoCible[$scope.idxDominoCible].valg = dominoChoix.valg;
-										$scope.dominoCible[$scope.idxDominoCible].vald = dominoChoix.vald;
-										$scope.dominoCible[$scope.idxDominoCible].actif = false;
-										dominoChoix.cssClass = "domino-groupe-cache";
-										if (($scope.idxDominoCible + 1) < $scope.dominoCible.length) {
-											$scope.dominoCible[$scope.idxDominoCible + 1].actif = true;
-										}
-
-										if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
-											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-											$rootScope.niveauFini = true;
-										}
-										$scope.$apply();
+							$scope.enregistreDomino = function(domino) {
+								var dominoActif = $scope.dominoCible[$scope.idxDominoCible];
+								var dominoCible = $scope.dominoCible[$scope.idxDominoCible-1];
+								if(!$rootScope.niveauFini && dominoCible.cssClassd==domino.cssClassg){
+									dominoActif.cssClassg = domino.cssClassg;
+									dominoActif.cssClassd = domino.cssClassd;
+									
+									dominoActif.cssClass = "domino-groupe domino-groupe-plein";
+									dominoActif.actif = false;
+									domino.cssClass = "domino-groupe-cache";
+									
+									if (($scope.idxDominoCible + 1) < $scope.dominoCible.length) {
+										$scope.dominoCible[$scope.idxDominoCible + 1].actif = true;
+										$scope.dominoCible[$scope.idxDominoCible + 1].cssClass = "domino-groupe domino-groupe-actif";
+										$scope.idxDominoCible++;
+									}else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
+										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.niveauFini = true;
 									}
 								}
-							};
-
-							$scope.handleDragOver = function(e) {
-								e.preventDefault(); // Necessary. Allows us to
-													// drop.
-								e.dataTransfer.dropEffect = 'move'; // See the
-																	// section
-																	// on the
-								// DataTransfer object.
-								return false;
 							};
 						} ]);
 
@@ -445,100 +419,36 @@ orthotabDidactControllers
 						function($rootScope, $scope) {
 
 							$scope.caseCible = [ {
-								"cssClass" : "btn-case-vide",
-								"actif" : true
-							}, {
-								"cssClass" : "btn-case-vide",
-								"actif" : true
-							}, {
-								"cssClass" : "btn-case-vide",
-								"actif" : true
-							}, {
-								"cssClass" : "btn-case-vide",
-								"actif" : true
-							} ];
-							$scope.nbCaseCible = 4;
-							$scope.cssCible = "btn-case btn-case-etoile";
+								"nbTotal" : "20",
+								"nbAcquis" : "17",
+								"nbRestant" : "?"
+							}];
 
-							$scope.caseSource = [ {
-								"cssClass" : "btn-case btn-case-etoile",
-								"valeur" : 2
+							$scope.caseListeChoix = [ {
+								"valeur" : 1,"cssClass":"emplacement-choix-groupe"
 							}, {
-								"cssClass" : "btn-case btn-case-etoile",
-								"valeur" : 1
+								"valeur" : 3,"cssClass":"emplacement-choix-groupe"
 							}, {
-								"cssClass" : "btn-case btn-case-lune",
-								"valeur" : 2
-							}, {
-								"cssClass" : "btn-case btn-case-etoile",
-								"valeur" : 3
+								"valeur" : 2,"cssClass":"emplacement-choix-groupe"
 							} ];
 
-							$scope.handleDragStart = function(e) {
-								e.dataTransfer.setData('Text', this.id);
-							};
-
-							$scope.handleDragEnd = function(e) {
-								return false;
-							};
-
-							$scope.handleDragEnter = function(e) {
-								// this.style.opacity = '1.0';
-							};
-
-							$scope.handleDragLeave = function(e) {
-								// this.style.opacity = '1.0';
-								e.preventDefault(); // Necessary. Allows us to
-													// drop.
-								// e.dataTransfer.dropEffect = 'move'; // See
-								// the section on the
-								// DataTransfer object.
-								return false;
-							};
-
-							$scope.handleDrop = function(e) {
-								e.preventDefault();
-								e.stopPropagation();
-								var data = e.dataTransfer.getData('Text');
-								$scope.sourceCourant = data;
-
-								var idx = $scope.sourceCourant
-										.charAt($scope.sourceCourant.length - 1);
-
-								var caseSource = $scope.caseSource[idx];
-								if (caseSource.cssClass == $scope.cssCible) {
-									var nbValeur = caseSource.valeur;
-									if (caseSource.valeur <= $scope.nbCaseCible) {
-										for (var i = 0; i < $scope.caseCible.length; i++) {
-											if ($scope.caseCible[i].actif
-													&& nbValeur > 0) {
-												$scope.caseCible[i].cssClass = caseSource.cssClass;
-												$scope.caseCible[i].actif = false;
-												nbValeur--;
-												$scope.nbCaseCible--;
-											}
-										}
+							$scope.enregistreCase = function(caseChoix) {
+								
+								if(!$rootScope.niveauFini){
+								
+									var nbRestant = parseInt($scope.caseCible[0].nbTotal) - parseInt($scope.caseCible[0].nbAcquis);
+								
+									if(caseChoix.valeur==nbRestant){
+										caseChoix.cssClass="emplacement-choix-groupe emplacement-choix-groupe-ok";
+										$scope.caseCible[0].nbRestant=caseChoix.valeur;
+										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.niveauFini = true;
+									}else{
+										caseChoix.cssClass="emplacement-choix-groupe emplacement-choix-groupe-ko";
 									}
 								}
-
-								if ($scope.nbCaseCible == 0) {
-									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-									$rootScope.niveauFini = true;
-								}
-								$scope.$apply();
-
+								
 							};
-
-							$scope.handleDragOver = function(e) {
-								e.preventDefault(); // Necessary. Allows us to
-													// drop.
-								e.dataTransfer.dropEffect = 'move'; // See the
-																	// section
-																	// on the
-								// DataTransfer object.
-								return false;
-							};
-
 						} ]);
 
 orthotabDidactControllers
@@ -600,6 +510,8 @@ orthotabDidactControllers
 									var produit = parseInt($scope.caseGcourant.valeur)
 											* parseInt($scope.caseDcourant.valeur);
 									if (produit == parseInt($scope.caseCible[0].valeur)) {
+										$scope.caseGcourant.backgrdStyle = "green";
+										$scope.caseDcourant.backgrdStyle = "green";
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 										$rootScope.niveauFini = true;
 									} else {
@@ -627,12 +539,15 @@ orthotabDidactControllers
 
 							$scope.caseChoix = [ {
 								"valeur" : "x",
+								"cssClass" : "carre trou-plein",
 								"backgrdStyle" : "#B5B276"
 							}, {
 								"valeur" : "+",
+								"cssClass" : "carre trou-plein",
 								"backgrdStyle" : "#B5B276"
 							}, {
 								"valeur" : "-",
+								"cssClass" : "carre trou-plein",
 								"backgrdStyle" : "#B5B276"
 							} ];
 
@@ -640,6 +555,7 @@ orthotabDidactControllers
 									ind) {
 								caseCombi.backgrdStyle = "yellow";
 								if (caseCombi.valeur == $scope.caseCible[0].realValeur) {
+									caseCombi.backgrdStyle = "green";
 									$scope.caseCible[0].valeur = $scope.caseCible[0].realValeur;
 									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 									$rootScope.niveauFini = true;
@@ -661,116 +577,95 @@ orthotabDidactControllers
 								"valeur" : "",
 								"realValeur" : "yellow",
 								"actif" : true,
-								"cssClass" : "trou-pointille",
+								"cssClass" : "rond trou-pointille",
 								"backgrdStyle" : "white"
 							}, {
 								"valeur" : "",
 								"realValeur" : "+",
 								"actif" : true,
-								"cssClass" : "trou-pointille",
+								"cssClass" : "carre trou-pointille",
 								"backgrdStyle" : "white"
 							}, {
 								"valeur" : "",
 								"realValeur" : "blue",
 								"actif" : true,
-								"cssClass" : "trou-pointille",
+								"cssClass" : "rond trou-pointille",
 								"backgrdStyle" : "white"
 							}, {
 								"valeur" : "",
 								"realValeur" : "=",
 								"actif" : true,
-								"cssClass" : "trou-pointille",
+								"cssClass" : "carre trou-pointille",
 								"backgrdStyle" : "white"
 							}, {
 								"valeur" : "",
 								"realValeur" : "green",
 								"actif" : true,
-								"cssClass" : "trou-pointille",
+								"cssClass" : "rond trou-pointille",
 								"backgrdStyle" : "white"
 							} ];
 
 							$scope.caseChoix = [ {
 								"valeur" : "",
 								"backgrdStyle" : "green",
+								"cssClass" : "rond trou-plein",
 								"realValeur" : "green"
 							}, {
 								"valeur" : "=",
 								"backgrdStyle" : "white",
+								"cssClass" : "carre trou-plein",
 								"realValeur" : "="
 							}, {
 								"valeur" : "+",
 								"backgrdStyle" : "white",
+								"cssClass" : "carre trou-plein",
 								"realValeur" : "+"
 							}, {
 								"valeur" : "",
 								"backgrdStyle" : "blue",
+								"cssClass" : "rond trou-plein",
 								"realValeur" : "blue"
 							}, {
 								"valeur" : "",
 								"backgrdStyle" : "yellow",
+								"cssClass" : "rond trou-plein",
 								"realValeur" : "yellow"
 							} ];
 
 							$scope.nbCaseCible = 5;
 
-							$scope.handleDragStart = function(e) {
-								e.dataTransfer.setData('Text', this.id);
-							};
+							
+							$scope.enregistreCaseH = function(caseCombi) {
 
-							$scope.handleDragEnd = function(e) {
-								return false;
-							};
+								$scope.caseHcourant = caseCombi;
+								verifieCase();
+							}
 
-							$scope.handleDragEnter = function(e) {
-								// this.style.opacity = '1.0';
-							};
+							$scope.enregistreCaseB = function(caseCombi) {
 
-							$scope.handleDragLeave = function(e) {
-								// this.style.opacity = '1.0';
-								e.preventDefault(); // Necessary. Allows us to
-													// drop.
-								// e.dataTransfer.dropEffect = 'move'; // See
-								// the section on the
-								// DataTransfer object.
-								return false;
-							};
+								$scope.caseBcourant = caseCombi;
+								verifieCase();
+							}
+							
+							var verifieCase = function() {
+								if ($scope.caseHcourant != null
+										&& $scope.caseBcourant != null) {
+									if ($scope.nbCaseCible > 0
+											&& $scope.caseHcourant.realValeur == $scope.caseBcourant.realValeur) {
 
-							$scope.handleDrop = function(e) {
-								e.preventDefault();
-								e.stopPropagation();
-								var data = e.dataTransfer.getData('Text');
+										$scope.caseHcourant.backgrdStyle = $scope.caseBcourant.realValeur;
+										$scope.caseHcourant.cssClass = $scope.caseBcourant.cssClass;
+										$scope.caseHcourant.valeur = $scope.caseBcourant.valeur;
+										$scope.caseHcourant.actif = false;
+										$scope.nbCaseCible--;
+									} else {
+										$scope.nbEchec++;
+									}
 
-								var idxCible = this.id
-
-								var caseChoix = $scope.caseChoix[data];
-								var caseCible = $scope.caseCible[idxCible];
-								if ($scope.nbCaseCible > 0
-										&& caseChoix.realValeur == caseCible.realValeur) {
-
-									caseCible.backgrdStyle = caseChoix.realValeur;
-									caseCible.valeur = caseChoix.valeur;
-									caseCible.actif = false;
-									$scope.nbCaseCible--;
-								} else {
-									$scope.nbEchec++;
+									if ($scope.nbCaseCible == 0) {
+										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.niveauFini = true;
+									}
 								}
-
-								if ($scope.nbCaseCible == 0) {
-									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-									$rootScope.niveauFini = true;
-								}
-								$scope.$apply();
-
-							};
-
-							$scope.handleDragOver = function(e) {
-								e.preventDefault(); // Necessary. Allows us to
-													// drop.
-								e.dataTransfer.dropEffect = 'move'; // See the
-																	// section
-																	// on the
-								// DataTransfer object.
-								return false;
-							};
-
+							}
 						} ]);

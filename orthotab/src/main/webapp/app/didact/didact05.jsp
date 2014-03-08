@@ -14,18 +14,18 @@
 	<div class="div-haut" ng-controller="DidactNavCtrl">
 <%@include file="../includes/inc_didactnav.htm"%>
 
-<div id="center"><p align="center">Remplir des emplacements</p></div>
+<div id="center"><p align="center">Dominos</p></div>
 </div>
 
 
 <div class="div-milieu" ng-controller="Didact05Ctrl">
 
 <div class="domino-div">
-<span class="{{domino.cssClass}}" ng-repeat="domino in dominoCible" droppable="{{domino.droppable}}"><button class="domino">{{domino.valg}}</button><button class="domino">{{domino.vald}}</button></span>
+<span class="{{domino.cssClass}}" ng-repeat="domino in dominoCible"><button class="{{domino.cssClassg}}"></button><button class="{{domino.cssClassd}}"></button></span>
 </div>
 
 <div class="domino-div">
-<span class="{{domino.cssClass}}" ng-repeat="domino in dominoChoix" id="{{$index}}" draggable="true"><button class="domino">{{domino.valg}}</button><button class="domino">{{domino.vald}}</button></span>
+<span class="{{domino.cssClass}}" ng-repeat="domino in dominoChoix" ng-click="enregistreDomino(domino)"><button class="{{domino.cssClassg}}"></button><button class="{{domino.cssClassd}}"></button></span>
 </div>
 
 </div>
