@@ -171,7 +171,7 @@ orthotabControllers
 							if (cookieOrthoTab != null) {
 								// a completer avec verification User
 								$rootScope.isLogged = true;
-								$scope.utilisateur = cookieOrthoTab.prenom;
+								$scope.utilisateur = cookieOrthoTab;
 							} else {
 								var tokenls = localStorageService.get('usertoken');
 								
@@ -187,7 +187,8 @@ orthotabControllers
 											}else{
 												$rootScope.isLogged = true;
 												$scope.message = '';
-												$scope.utilisateur = userByToken.prenom;
+												//$scope.utilisateur = userByToken.prenom;
+												$scope.utilisateur = userByToken;
 												$cookieStore.put(
 														'orthotab',
 														userByToken);
@@ -211,6 +212,10 @@ orthotabControllers
 								$window.location.href = "../didact/didact0.jsp";
 							};
 
+							$scope.accesExercices= function() {
+								$window.location.href = "../admin/exercices.jsp";
+							};
+							
 							// changerUtilisateur
 							$scope.changerUtilisateur = function() {
 								var cookieOrthoTab = $cookieStore
@@ -240,7 +245,7 @@ orthotabControllers
 													} else {
 														$rootScope.isLogged = true;
 														$scope.message = '';
-														$scope.utilisateur = userConnecte.prenom;
+														$scope.utilisateur = userConnecte;
 														$cookieStore.put(
 																'orthotab',
 																userConnecte);

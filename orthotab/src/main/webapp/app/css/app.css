@@ -58,7 +58,7 @@ body {
 	margin: 10px;
 	border-radius: 8px;
 	text-align: center;
-	line-height: 80px;
+	line-height: 60px;
 	font-weight: bold;
 	font-size: 12pt;
 }
@@ -88,6 +88,13 @@ body {
 .messageExercice{
 	font-weight: bold;
 	font-size: 14pt;
+}
+
+.consigne{
+	/*font-weight: bold;*/
+	font-size: 12pt;
+	margin-left:20px;
+	margin-right:20px;
 }
 
 .infosClient{

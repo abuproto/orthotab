@@ -13,8 +13,8 @@ orthotabServices.factory('Couleurs', [ '$resource', function($resource) {
 	});
 } ]);
 
-orthotabServices.factory('Niveau01', [ '$resource', function($resource) {
-	return $resource('/orthotab/api/niveau01/:nbCombi', {nbCombi:'@nbCombi'}, {
+orthotabServices.factory('Technique01', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique01/:nbCombi', {nbCombi:'@nbCombi'}, {
 		query : {
 			method : 'GET',
 			isArray : true

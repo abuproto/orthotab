@@ -10,8 +10,13 @@
 <div ng-controller="LoginCtrl">
 <table>
 <tr height="50%">
-<td colspan="2" width="70%">
+<td width="40%">
 <img alt="orthotab" src="../images/orthotab.png" width="200px" height="100px"/>
+</td>
+<td>
+<div ng-show="isLogged">
+<p align="center" ng-show="{{utilisateur.role=='ADMIN'}}"><button class="boutonGeneral" ng-click="accesExercices()">Accès aux exercices</button></p>
+</div>
 </td>
 <td width="30%" valign="top"><img alt="perroquet" src="../images/perroquet.jpg" width="200" height="200"></td>
 </tr>
@@ -27,7 +32,7 @@
   <span class="infosClient">{{infosClient}}</span>
   </div>
 <div ng-show="isLogged" class="div-login">
-<span>Bonjour {{utilisateur}}!</span><br/><br/>
+<span>Bonjour {{utilisateur.prenom}}!</span><br/><br/>
 <button class="boutonGeneral" ng-click="changerUtilisateur()">Changer d'utilisateur</button>
 </div>
 </td>
