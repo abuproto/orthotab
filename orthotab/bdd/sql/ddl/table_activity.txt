@@ -4,8 +4,9 @@ CREATE TABLE ACTIVITY
     type    VARCHAR(30),
     dateActivite    TIMESTAMP,
     duree    INT,
-    details         VARCHAR(100),
+    details         VARCHAR(255),
     idUser	INT,
+    nbEchec INT,
     FOREIGN KEY (idUser) REFERENCES USER(id)
 );
 

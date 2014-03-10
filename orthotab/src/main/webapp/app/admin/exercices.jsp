@@ -19,6 +19,7 @@
 
 <div id="milieu-left">
 <button class="boutonGeneral" ng-click="exercices(1,1,0)">semaine 1 jour 1</button><br/>
+<button class="boutonGeneral" ng-click="exercices(2,1,0)">semaine 2 jour 1</button><br/>
 </div>
 <div id="milieu-right">
 

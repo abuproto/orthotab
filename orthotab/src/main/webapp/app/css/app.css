@@ -63,6 +63,18 @@ body {
 	font-size: 12pt;
 }
 
+.boutonCase-small {
+	width: 60px;
+	height: 30px;
+	margin: 5px;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 20px;
+	font-weight: bold;
+	font-size: 10pt;
+	border-width: 4px;
+}
+
 /* voir si utilisé */
 .boutonCaseActif {
 	width: 80px;
@@ -93,8 +105,8 @@ body {
 .consigne{
 	/*font-weight: bold;*/
 	font-size: 12pt;
-	margin-left:20px;
-	margin-right:20px;
+	margin-left:30px;
+	margin-right:30px;
 }
 
 .infosClient{
@@ -145,6 +157,11 @@ body {
 	font-weight: bold;
 	font-size: 16pt;
 	margin-top: 20px;
+	}
+	
+#center-relier-colonnes{
+	margin:0 auto;
+	width:400px;
 	}
 
 #milieu-left{

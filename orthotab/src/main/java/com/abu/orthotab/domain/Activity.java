@@ -1,5 +1,6 @@
 package com.abu.orthotab.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,9 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="ACTIVITY")
-public class Activity {
+public class Activity implements Serializable{
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue
@@ -19,17 +21,20 @@ public class Activity {
 	@Column(name = "TYPE")
 	private String type;
 	
-	@Column(name = "dateActivite")
+	@Column(name = "DATEACTIVITE")
 	private Date dateActivite;
 	
-	@Column(name = "duree")
+	@Column(name = "DUREE")
 	private Long duree;
 	
-	@Column(name = "details")
+	@Column(name = "DETAILS")
 	private String details;
 	
-	@Column(name = "idUser")
+	@Column(name = "IDUSER")
 	private Long idUser;
+	
+	@Column(name = "NBECHEC")
+	private Long nbEchec;
 
 	public Long getId() {
 		return id;
@@ -77,5 +82,13 @@ public class Activity {
 
 	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
+	}
+
+	public Long getNbEchec() {
+		return nbEchec;
+	}
+
+	public void setNbEchec(Long nbEchec) {
+		this.nbEchec = nbEchec;
 	}
 }

@@ -13,8 +13,8 @@ orthotabServices.factory('Couleurs', [ '$resource', function($resource) {
 	});
 } ]);
 
-orthotabServices.factory('Technique01', [ '$resource', function($resource) {
-	return $resource('/orthotab/api/technique01/:nbCombi', {nbCombi:'@nbCombi'}, {
+orthotabServices.factory('CouleursExercice', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/couleursExercice/:niveau', {niveau:'@niveau'}, {
 		query : {
 			method : 'GET',
 			isArray : true
@@ -22,6 +22,32 @@ orthotabServices.factory('Technique01', [ '$resource', function($resource) {
 	});
 } ]);
 
+orthotabServices.factory('Technique01', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique01/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
+orthotabServices.factory('Technique02', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique02/:niveau/:pos', {niveau:'@niveau',pos:'@pos'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
+orthotabServices.factory('Technique03', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique03/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
 
 orthotabServices.factory('Didact01', [ '$resource', function($resource) {
 	return $resource('/orthotab/api/didact01/:nbCombi', {nbCombi:'@nbCombi'}, {
@@ -86,60 +112,10 @@ orthotabServices.factory('UserAuthService', [ '$resource', function($resource) {
 	});
 } ]);
 
-orthotabServices.factory('UserConnecteService', function($rootScope) {
-	var service = {};
-	service.userConnecte = null;
-	
-	service.updateUserConnecte  = function(user){
-		this.userConnecte = user;
-		$rootScope.$broadcast("userUpdated");
-		console.log("this.userConnecte : " + this.userConnecte.prenom);
-	}
-	return service;
-	
-	return {
-	      getUserConnecte: function() { return this.userConnecte; }
-	    };
-});
 
-
-
-orthotabServices.factory('UserService', [ '$http', function($http, $user) {
-	
-	var currentUser = null;
-	
-	return {
-	    login: function($user) {
-	    	//var promise = $http
-	        //.post('/orthotab/api/authenticate', $user) //headers: { 'Content-Type': false }
-	    	//({method: 'POST', url: '/orthotab/api/authenticate', headers: { 'Accept': 'application/json','Content-Type': 'application/json' 
-	        //}})
-	    	//data : angular.toJson($user)
-	    	$http
-	    	({method: 'POST', url: '/orthotab/api/authenticate', data : angular.toJson($user) })
-	        .success(function (data, status, headers, config) {
-	          console.log("dans success");
-	          console.log("data : ." + data + ".");
-	          console.log("data.nom : ." + data.nom + ".");
-	          currentUser = data;
-	          //return currentUser;
-	        })
-	        .error(function (data, status, headers, config) {
-	        	console.log("dans error");
-	        	currentUser = null;
-	        	//return currentUser;
-	        });
-	    	//return promise;
-	    	},
-	    currentUser: function() { return currentUser; }
-	  };
-	  
-	  
-	    var promise = $http.get('/api/users/' + $cookies.id).
-	    success(function (data) {
-	        var userInfo = data.user[0];
-	        return userInfo;
-	    });
-	    return promise;
-	  
+orthotabServices.factory('ActivityService', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/activity', {}, {
+        query: { method: 'GET', isArray: true },
+        create: { method: 'POST' }
+	})
 } ]);

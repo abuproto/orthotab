@@ -158,15 +158,16 @@ orthotabControllers
 						'$http',
 						'$window',
 						'$timeout',
-						'UserConnecteService',
 						'localStorageService',
 						'UserTokenService',
+						'ActivityService',
 						function($rootScope, $scope, UserAuthService,
 								$cookieStore, $http, $window, $timeout,
-								UserConnecteService, localStorageService, UserTokenService) {
+								localStorageService, UserTokenService, ActivityService) {
 							var cookieOrthoTab = $cookieStore.get('orthotab');
 							
 							$scope.infosClient = "H" + $window.innerHeight + " W" + $window.innerWidth;
+							$scope.ua = $window.navigator.userAgent;
 							
 							if (cookieOrthoTab != null) {
 								// a completer avec verification User
@@ -192,6 +193,9 @@ orthotabControllers
 												$cookieStore.put(
 														'orthotab',
 														userByToken);
+																								
+												var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};
+												ActivityService.create(activity);
 											}
 										});
 								
@@ -251,8 +255,8 @@ orthotabControllers
 																userConnecte);
 														localStorageService.add('usertoken',userConnecte.token);
 														
-														UserConnecteService
-																.updateUserConnecte(userConnecte);
+														var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};
+														ActivityService.create(activity);
 													}
 												});
 							};

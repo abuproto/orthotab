@@ -11,3 +11,6 @@ update USER set TOKEN='b2572d33428ae46d9236861af3d7ded9' where id=3;
 update USER set TOKEN='1e6dbf2102e420752c022b9ba827b585' where id=4;
 update USER set TOKEN='74c67fcd5e83cd15b8312176ef941fb1' where id=5;
 update USER set TOKEN='5e274f34bcce847a1581d18833ca8ccc' where id=6; 
+
+insert into USER values(7,'louanne','','Lou-Anne','louanne','PATIENT',0,'bee65ee084486a3f829692a63b1fda8f');
+

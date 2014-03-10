@@ -25,4 +25,16 @@ public class CommunController {
     public List<Couleur> getListCouleurs(@PathVariable("nbCouleurs") int nbCouleurs) {
         return communService.getListeCouleurs(nbCouleurs);
     }
+    
+    @RequestMapping("couleursExercice/{niveau}")
+    @ResponseBody
+    public List<Couleur> getListCouleurs(@PathVariable("niveau") String niveau) {
+    	int nbCouleurs = 0;
+       	switch(niveau){
+    	case "s1j1e1":
+    		nbCouleurs=5;
+    		break;
+    	}
+        return communService.getListeCouleurs(nbCouleurs);
+    }
 }
