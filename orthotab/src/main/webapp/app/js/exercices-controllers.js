@@ -108,7 +108,8 @@ orthotabDidactControllers
 				'$rootScope',
 				'$scope',
 				'Technique02',
-				function($rootScope, $scope, Technique02) {
+				'Commun01',
+				function($rootScope, $scope, Technique02, Commun01) {
 
 					$rootScope.consigne = "Le singe farceur a tout mélangé. Aide moi à relier l'opération et le résultat qui vont " +
 					"ensemble. Clique sur l'opération et le résultat pour les relier.";
@@ -123,24 +124,11 @@ orthotabDidactControllers
 						'pos' : 'D'
 					});
 
-					$scope.pathInfos = [ {
-						"loc" : "M0,0 L0,0",
-						"cssClass" : "masque"
-					}, {
-						"loc" : "M0,0 L0,0",
-						"cssClass" : "masque"
-					}, {
-						"loc" : "M0,0 L0,0",
-						"cssClass" : "masque"
-					}, {
-						"loc" : "M0,0 L0,0",
-						"cssClass" : "masque"
-					}, {
-						"loc" : "M0,0 L0,0",
-						"cssClass" : "masque"
-					} ];
+					$scope.pathInfos = Commun01.query({}, {
+						'nb' : $scope.nbocc
+					});
 
-					$scope.nbCombi = 5;
+					$scope.nbCombi = $scope.nbocc;
 					$scope.nbCombiTrouve = 0;
 					$rootScope.niveauFini = false;
 					var cptPath = 0;
@@ -225,8 +213,6 @@ orthotabDidactControllers
 					$scope.debut = false;
 					
 					var idx=0;
-					var nbIt = $scope.casesflash.length;
-					
 
 					var cacheOperation = function() {
 						$scope.tempsEcoule = true;
@@ -237,6 +223,7 @@ orthotabDidactControllers
 
 					$scope.commencer = function(){
 						$scope.caseCourant = $scope.casesflash[idx];
+						$scope.nbIt = $scope.casesflash.length;
 						$scope.debut=true;
 						$timeout(cacheOperation, 5000);
 					};
@@ -245,11 +232,11 @@ orthotabDidactControllers
 						if (caseflash.valeur == $scope.caseCourant.valeur) {
 							caseflash.cssClass = "boutonCase groupe-case-correct";
 							idx++;
-							if(idx<nbIt){
+							if(idx<$scope.nbIt){
 								$scope.caseCourant = $scope.casesflash[idx];
 								$scope.tempsEcoule = false;
 								$timeout(cacheOperation, 5000);
-							}else if(idx==nbIt){
+							}else if(idx==$scope.nbIt){
 								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 								$rootScope.niveauFini = true;
 							}

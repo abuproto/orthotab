@@ -12,7 +12,7 @@ public class Case extends ElementJeu{
 	private String realCssClass; // pour sauvegarder la classe à afficher en RECTO
 
 	public enum Type {
-		OP, RES
+		OP, RES, INTRUS
 	}
 
 	public String getType() {

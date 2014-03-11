@@ -22,6 +22,15 @@ orthotabServices.factory('CouleursExercice', [ '$resource', function($resource) 
 	});
 } ]);
 
+orthotabServices.factory('Commun01', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/pathinfos/:nb', {nb:'@nb'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
 orthotabServices.factory('Technique01', [ '$resource', function($resource) {
 	return $resource('/orthotab/api/technique01/:niveau', {niveau:'@niveau'}, {
 		query : {

@@ -25,17 +25,18 @@ public class ExerciceController {
     @ResponseBody
     public List<Case> getTechnique01(@PathVariable("niveau") String niveau) {
     	int nbCombi = 0;
-    	int nbIntrus = 0;
+    	int nbInRow = 5;
     	switch(niveau){
     	case "s1j1e1":
     		nbCombi=5;
     		break;
+    	case "s1j2e1":
        	case "s1j4e1":
     		nbCombi=10;
-    		nbIntrus=4;
+    		nbInRow = 10;
     		break;
     	}
-        return techniqueService.getTechnique01(nbCombi, nbIntrus);
+        return techniqueService.getTechnique01(nbCombi, niveau, nbInRow);
     }
     
     @RequestMapping("technique02/{niveau}/{pos}")
@@ -45,6 +46,9 @@ public class ExerciceController {
     	switch(niveau){
     	case "s1j1e2":
     		nbCombi=5;
+    		break;
+    	case "s1j3e1":
+    		nbCombi=10;
     		break;
     	}
         return techniqueService.getTechnique02(nbCombi, pos);

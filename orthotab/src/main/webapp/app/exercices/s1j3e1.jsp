@@ -6,10 +6,10 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s1j1e2';nbocc=5;">
+<body ng-app="orthotabApp" ng-init="niveau='s1j3e1';nbocc=5;">
 <div id="page">
 	<div id="bloc-principal">
-<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s1j1'">
+<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s1j3'">
 <%@include file="../includes/inc_exercicesnav.htm"%>
 <div id="center"><p align="center">Relier des colonnes</p></div>
 </div>
@@ -33,7 +33,7 @@
 
 
 <div id="center-relier-colonnes" align="center">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="400">
 <style type="text/css" >
       <![CDATA[
 
@@ -53,14 +53,14 @@
 
       ]]>
     </style>
+
 <%
-for(int i=0;i<5;i++){
+for(int i=0;i<10;i++){
 %>
 <circle cx="{{casesg[<%=i%>].loc.x}}" cy="{{casesg[<%=i%>].loc.y}}" r="5" class="avant"/>
 <path d="{{pathInfos[<%=i%>].loc}}" class="{{pathInfos[<%=i%>].cssClass}}"/>
 <circle cx="{{casesd[<%=i%>].loc.x}}" cy="{{casesd[<%=i%>].loc.y}}" r="5" class="avant"/>
 <% } %>
-
 </svg>
 </div>
 	

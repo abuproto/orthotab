@@ -12,5 +12,9 @@ update USER set TOKEN='1e6dbf2102e420752c022b9ba827b585' where id=4;
 update USER set TOKEN='74c67fcd5e83cd15b8312176ef941fb1' where id=5;
 update USER set TOKEN='5e274f34bcce847a1581d18833ca8ccc' where id=6; 
 
-insert into USER values(7,'louanne','','Lou-Anne','louanne','PATIENT',0,'bee65ee084486a3f829692a63b1fda8f');
+
+insert into USER values(7,'louann','Boubier','Lou-Ann','louann','PATIENT',0,'48947312a23257503b041223cef93464');
+insert into USER values(8,'erelle','Le Caër','Erelle','erelle','PATIENT',0,'beaa260bdb926fc9e6b166778af7313c');
+insert into USER values(9,'clara','Dudrat','Clara','clara','PATIENT',0,'39e3a69a96c07d3453896d435f730105');
+insert into USER values(10,'manon','Diraison','Manon','manon','PATIENT',0,'ff89c5b3678e3bdf4707ab43574ce177');
 

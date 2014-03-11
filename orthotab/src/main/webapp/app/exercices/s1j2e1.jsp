@@ -6,10 +6,10 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s1j1e1'">
+<body ng-app="orthotabApp" ng-init="niveau='s1j2e1'">
 <div id="page">
 	<div id="bloc-principal">
-<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s1j1'">
+<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s1j2'">
 <%@include file="../includes/inc_exercicesnav.htm"%>
 <div id="center"><p align="center">Associer des paires par couleur</p></div>
 </div>

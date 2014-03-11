@@ -13,7 +13,7 @@
 <%@include file="../includes/inc_exercicesnav.htm"%>
 <div id="center"><p align="center">Calcul flash</p></div>
 </div>
-<div><p class="consigne">{{consigne}}</p></div>
+<%@include file="../includes/inc_messages.htm"%>
 <div class="div-milieu" ng-controller="Technique03Ctrl">
 
 <div align="center" ng-hide="debut"><button class="boutonGeneral2" ng-click="commencer()">Commencer l'exercice</button></div>
@@ -34,9 +34,6 @@
 
 </div>
 	</div><!-- fin bloc-principal -->
-	<div id="footer" align="center" class="messageExercice">
-	<p class="messageExercice">{{messageNiveau}}</p>
-	</div>
 </div><!-- fin page -->
 
 </body>

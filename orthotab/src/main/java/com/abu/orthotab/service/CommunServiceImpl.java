@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.abu.orthotab.domain.Couleur;
+import com.abu.orthotab.domain.PathInfo;
 
 @Service
 public class CommunServiceImpl implements CommunService {
@@ -26,6 +27,19 @@ public class CommunServiceImpl implements CommunService {
 			couleurs.add(c);
 		}
 		return couleurs;
+	}
+
+	@Override
+	public List<PathInfo> getListPathInfos(int nb) {
+		
+		List<PathInfo> listPathInfo = new ArrayList<PathInfo>();
+		int i=0;
+		while(i<nb){
+			PathInfo pi = new PathInfo("M0,0 L0,0","masque");
+			listPathInfo.add(pi);
+			i++;
+		}
+		return listPathInfo;
 	}
 
 }
