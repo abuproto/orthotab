@@ -10,6 +10,7 @@ public class Case extends ElementJeu{
 	private String row;
 	private String sens; // RECTO ou VERSO
 	private String realCssClass; // pour sauvegarder la classe à afficher en RECTO
+	private String realLibelle; // pour sauvegarder le libelle à afficher en RECTO
 
 	public enum Type {
 		OP, RES, INTRUS
@@ -84,6 +85,14 @@ public class Case extends ElementJeu{
 
 	public void setRealCssClass(String realCssClass) {
 		this.realCssClass = realCssClass;
+	}
+
+	public String getRealLibelle() {
+		return realLibelle;
+	}
+
+	public void setRealLibelle(String realLibelle) {
+		this.realLibelle = realLibelle;
 	}
 
 }

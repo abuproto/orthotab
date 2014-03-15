@@ -37,7 +37,11 @@ public class CommunController {
     		break;
     	case "s1j2e1":
     	case "s1j4e1":
+    	case "s4j3e1":
     		nbCouleurs=10;
+    		break;
+    	case "s3j1e1":
+    		nbCouleurs=9;
     		break;
     	}
         return communService.getListeCouleurs(nbCouleurs);

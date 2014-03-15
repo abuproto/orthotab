@@ -24,39 +24,93 @@ public class ExerciceController {
     @RequestMapping("technique01/{niveau}")
     @ResponseBody
     public List<Case> getTechnique01(@PathVariable("niveau") String niveau) {
-    	int nbCombi = 0;
+    	int debut = 1;
+    	int fin = 1;
+    	int pas = 1;
     	int nbInRow = 5;
     	switch(niveau){
     	case "s1j1e1":
-    		nbCombi=5;
+    		debut=1;
+    		fin=5;
     		break;
     	case "s1j2e1":
        	case "s1j4e1":
-    		nbCombi=10;
+       		debut=1;
+    		fin=10;
     		nbInRow = 10;
     		break;
+       	case "s3j1e1":
+    		debut=10;
+    		pas = 10;
+    		fin=90;
+    		nbInRow = 10;
+    		break;
+     	case "s4j3e1":
+    		debut=5;
+      		fin=95;
+      		pas=10;
+      		nbInRow = 10;
+    		break;
     	}
-        return techniqueService.getTechnique01(nbCombi, niveau, nbInRow);
+        return techniqueService.getTechnique01(niveau, nbInRow, debut, fin, pas);
     }
     
     @RequestMapping("technique02/{niveau}/{pos}")
     @ResponseBody
     public List<Case> getTechnique02(@PathVariable("niveau") String niveau, @PathVariable("pos") String pos) {
-    	int nbCombi = 0;
+       	int debut = 1;
+    	int fin = 1;
+    	int pas = 1;
     	switch(niveau){
     	case "s1j1e2":
-    		nbCombi=5;
+    		fin=5;
     		break;
     	case "s1j3e1":
-    		nbCombi=10;
+    	case "s1j5e1":
+    		fin=10;
+    		break;
+      	case "s3j3e1":
+      	case "s3j4e1":
+    		debut=10;
+      		fin=90;
+      		pas=10;
+    		break;
+      	case "s4j1e1":
+    		debut=5;
+      		fin=95;
+      		pas=10;
     		break;
     	}
-        return techniqueService.getTechnique02(nbCombi, pos);
+        return techniqueService.getTechnique02(debut, fin, pas, pos, niveau);
     }
     
     @RequestMapping("technique03/{niveau}")
     @ResponseBody
     public List<Caseflash> getTechnique03(@PathVariable("niveau") String niveau) {
         return techniqueService.getTechnique03(niveau);
+    }
+    
+    @RequestMapping("technique04/{niveau}")
+    @ResponseBody
+    public List<Case> getTechnique04(@PathVariable("niveau") String niveau) {
+    	int debut = 1;
+    	int fin = 1;
+    	int pas = 1;
+    	int nbInRow = 5;
+    	switch(niveau){
+    	case "s2j2e1":
+    	case "s2j5e1":
+    		debut=5;
+    		fin=15;
+    		nbInRow = 6;
+    		break;
+     	case "s5j2e1":
+    		debut=3;
+    		fin=15;
+    		pas = 2;
+    		nbInRow = 10;
+    		break;
+    	}
+        return techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
     }
 }

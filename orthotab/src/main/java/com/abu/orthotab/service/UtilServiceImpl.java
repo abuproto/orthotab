@@ -14,11 +14,29 @@ import com.abu.orthotab.domain.Loc;
 
 public abstract class UtilServiceImpl {
 
+	protected final static String CSS_BOUTON_CASE = "boutonCase";
+	protected final static String CSS_BOUTON_CASE_SMALL = "boutonCase-small";
+	protected final static String STYLE_BGRD_GRIS = "#B5B276";
+	
 	private final static Map<String, List<String>> mapIntrus;
 	static {
 		mapIntrus = new HashMap<String, List<String>>();
 		String[] tabs1j4e1 = { "3", "11", "13", "22", "30" };
 		mapIntrus.put("s1j4e1", Arrays.asList(tabs1j4e1));
+		String[] tabs1j5e1G = { "3", "15", "21"};
+		mapIntrus.put("s1j5e1G", Arrays.asList(tabs1j5e1G));
+		String[] tabs1j5e1D = { "24", "26", "9"};
+		mapIntrus.put("s1j5e1D", Arrays.asList(tabs1j5e1D));
+		String[] tabs3j3e1G = { "200", "30", "70"};
+		mapIntrus.put("s3j3e1G", Arrays.asList(tabs3j3e1G));
+		String[] tabs3j3e1D = { "55", "110", "25"};
+		mapIntrus.put("s3j3e1D", Arrays.asList(tabs3j3e1D));
+		String[] tabs3j4e1G = { "110", "25", "23"};
+		mapIntrus.put("s3j4e1G", Arrays.asList(tabs3j4e1G));
+		String[] tabs3j4e1D = { "35", "39", "52"};
+		mapIntrus.put("s3j4e1D", Arrays.asList(tabs3j4e1D));
+		String[] tabs4j3e1 = { "40", "25", "120", "135", "180" };
+		mapIntrus.put("s4j3e1", Arrays.asList(tabs4j3e1));
 	}
 
 	protected List<Case> melange(List<Case> listeCase) {
@@ -27,7 +45,7 @@ public abstract class UtilServiceImpl {
 		return listeCase;
 	}
 
-	protected List<Case> ajoutIntrus(String niveau, List<Case> listeACompleter) {
+	protected List<Case> ajoutIntrus(String niveau, List<Case> listeACompleter, String cssClass) {
 
 		List<String> listIntrus = mapIntrus.get(niveau);
 		if (listIntrus != null) {
@@ -35,8 +53,8 @@ public abstract class UtilServiceImpl {
 				Case caseIntrus = new Case(Case.Type.INTRUS.name(), intrus,
 						Integer.valueOf(intrus));
 				caseIntrus.setActive(true);
-				caseIntrus.setCssClass("boutonCase");
-				caseIntrus.setBackgrdStyle("#B5B276");
+				caseIntrus.setCssClass(cssClass);
+				caseIntrus.setBackgrdStyle(STYLE_BGRD_GRIS);
 				listeACompleter.add(caseIntrus);
 			}
 		}
@@ -81,12 +99,18 @@ public abstract class UtilServiceImpl {
 		return listeCaseComplete;
 	}
 
+	
+	protected Caseflash fabriqueCaseflashComplete(int premierTerme, String[] tabchoix) {
+		Caseflash c = new Caseflash(String.valueOf(premierTerme)+"+"+String.valueOf(premierTerme),premierTerme+premierTerme);
+		return completeCaseflash(c, tabchoix);
+	}
+	
 	protected Caseflash completeCaseflash(Caseflash caseflash, String[] tabchoix) {
 		List<String> listChoix = Arrays.asList(tabchoix);
 		List<Caseflash> listeCaseflash = new ArrayList<Caseflash>();
 		for (String choix : listChoix) {
 			Caseflash cf = new Caseflash(choix, Integer.valueOf(choix));
-			cf.setCssClass("boutonCase");
+			cf.setCssClass(CSS_BOUTON_CASE);
 			listeCaseflash.add(cf);
 		}
 		caseflash.setListeCaseflash(listeCaseflash);
