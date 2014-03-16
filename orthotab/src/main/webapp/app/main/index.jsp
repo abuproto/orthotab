@@ -8,20 +8,22 @@
 </head>
 <body ng-app="orthotabApp">
 <div ng-controller="LoginCtrl">
-<table>
-<tr height="50%">
-<td width="40%">
-<img alt="orthotab" src="../images/orthotab.png" width="200px" height="100px"/>
-</td>
-<td>
-<div ng-show="isLogged">
-<p align="center" ng-show="{{utilisateur.role=='ADMIN'}}"><button class="boutonGeneral" ng-click="accesExercices()">Accès aux exercices</button></p>
+
+<div class="div-haut-accueil">
+<div id="left">
 </div>
-</td>
-<td width="30%" valign="top"><img alt="perroquet" src="../images/perroquet.jpg" width="200" height="200"></td>
-</tr>
-<tr height="50%">
-<td>
+<div id="right"></div>
+<div id="center"><p align="center">Bienvenue dans le monde de Samba dans la jungle des nombres</p></div>
+</div>
+
+<div class="div-milieu" align="center">
+
+<div id="milieu-left-accueil">
+<p><img alt="jungle" src="../images/page_accueil_appli-300x225.jpg"></p>
+
+</div>
+
+<div id="milieu-right-accueil">
   <div ng-hide="isLogged" class="div-login">
   <form ng-submit="submit()">
     <input ng-model="user.login" type="text" name="user" placeholder="identifiant" /><br/>
@@ -35,43 +37,23 @@
 <span>Bonjour {{utilisateur.prenom}}!</span><br/><br/>
 <button class="boutonGeneral" ng-click="changerUtilisateur()">Changer d'utilisateur</button>
 </div>
-</td>
-<td>
-<div ng-show="isLogged" align="center">
-<img alt="orthotab" src="../images/depart.png" width="200" height="100" ng-click="depart()"/>
+
+<div ng-show="isLogged" align="center" class="div-login">
+<button class="boutonGeneral" ng-click="depart()">Accès aux exercices</button>
 <br/>
 <button class="boutonGeneral" ng-click="didactHome()">Didacticiel</button>
 </div>
-</td>
-<td>
-<div ng-if="isLogged">
-<div ng-controller="AvancementCtrl" class="div-login">
-<p ng-bind-html="messageavancement"></p>
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
-<style type="text/css" >
-      <![CDATA[
-      
-        line.fait {
-        	stroke: green;
-        	stroke-width: 20;
-        }
-        line.restant {
-        	stroke: grey;
-        	stroke-width: 20;
-        }
+<div ng-show="isLogged" class="div-login">
 
-      ]]>
-    </style>
-<line x1="0" y1="0" x2="{{longueurfait}}" y2="0" class="fait"/>
-<line x1="{{longueurfait}}" y1="0" x2="{{longueurbarre}}" y2="0" class="restant"/>
-
-</svg>
+<div align="center" ng-show="{{utilisateur.role=='ADMIN'}}">
+<p align="center">Réservé aux administrateurs :</p>
+<p><button class="boutonGeneral" ng-click="accesExercices()">Accès à tous les exercices</button></p>
 </div>
 </div>
-</td>
-</tr>
-</table>
+
+</div>
+
 </div>
 </body>
 </html>

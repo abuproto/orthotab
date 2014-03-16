@@ -5,8 +5,20 @@ html {
 
 body {
 	height: 100%;
-	margin: 0; 
+	margin: 0;
+/*	background-image : url("../images/page_accueil_appli-800x600.jpg");
+	background-repeat : no-repeat;
+	background-position:center center;
+	background-attachment:fixed;*/
 }
+
+.fond.accueil{
+	background-image : url("../images/page_accueil_appli-800x600.jpg");
+	background-repeat : no-repeat;
+	background-position:center center;
+	background-attachment:fixed;
+}
+
 
 #page {
 	min-height: 100%;
@@ -69,7 +81,7 @@ body {
 	margin: 5px;
 	border-radius: 4px;
 	text-align: center;
-	line-height: 20px;
+	line-height: 15px;
 	font-weight: bold;
 	font-size: 10pt;
 	border-width: 4px;
@@ -95,7 +107,9 @@ body {
 	border-color: #FF9300;
 	padding:20px;
 	margin-right: 40px;
+	margin-bottom: 10px;
 }
+
 
 .messageExercice{
 	font-weight: bold;
@@ -138,6 +152,18 @@ body {
 	height:60px;
 }
 
+.div-haut-accueil {
+	border-width: 2px;
+	border-radius: 8px;
+	border-style: solid;
+	border-color: black;
+	margin-right: 40px;
+	margin-left: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height:80px;
+}
+
 .div-milieu{
 	border-width: 2px;
 	border-radius: 8px;
@@ -169,9 +195,20 @@ body {
 	margin-left: 150px;
 }
 
+#milieu-left-accueil{
+	float:left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
 #milieu-right{
 	float:right;
 	margin-right: 150px;
+}
+
+#milieu-right-accueil{
+	float:right;
+	margin-right: 10px;
 }
 
 #milieu-left-large{
