@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
+import com.abu.orthotab.domain.Domino;
 import com.abu.orthotab.service.TechniqueService;
 
 @Controller
@@ -112,5 +113,17 @@ public class ExerciceController {
     		break;
     	}
         return techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
+    }
+    
+    @RequestMapping("technique05choix/{niveau}")
+    @ResponseBody
+    public List<Domino> getTechnique05Choix(@PathVariable("niveau") String niveau) {
+        return techniqueService.getTechnique05Choix(niveau);
+    }
+    
+    @RequestMapping("technique05cible/{niveau}")
+    @ResponseBody
+    public List<Domino> getTechnique05Cible(@PathVariable("niveau") String niveau) {
+        return techniqueService.getTechnique05Cible(niveau);
     }
 }

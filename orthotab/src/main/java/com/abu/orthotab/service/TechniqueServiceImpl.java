@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
+import com.abu.orthotab.domain.Domino;
 
 @Service
 public class TechniqueServiceImpl extends UtilServiceImpl implements
@@ -179,6 +180,41 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 
 		return completeRow(nbInRow,
 				melange(ajoutIntrus(niveau, cases, CSS_BOUTON_CASE_SMALL)));
+	}
+
+	@Override
+	public List<Domino> getTechnique05Choix(String niveau) {
+		return Technique05Data.getInstance().listeDominoChoix(niveau);
+	}
+
+	@Override
+	public List<Domino> getTechnique05Cible(String niveau) {
+		int nbocc=0;
+		switch (niveau) {
+		case "s1j1e3":
+			nbocc=5;
+			break;
+		case "s1j3e2":
+		case "s2j4e2":
+		case "s2j5e3":
+			nbocc=7;
+			break;
+		case "s1j5e2":
+		case "s2j1e2":
+		case "s3j1e2":
+		case "s3j3e3":
+		case "s4j1e3":
+		case "s4j3e3":
+			nbocc=8;
+			break;
+		case "s2j3e2":
+			nbocc=6;
+			break;
+		case "s3j4e3":
+			nbocc=9;
+			break;
+		}
+		return Technique05Data.getInstance().listeDominoCible(niveau, nbocc);
 	}
 
 }

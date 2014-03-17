@@ -318,6 +318,18 @@ body {
 	margin: 5px;
 }
 
+.domino-small{
+	border-radius: 8px;
+	border-width: 8px;
+	border-style: solid;
+	/*font-weight: bold;
+	font-size: 24pt;*/
+	width: 60px;
+    height: 60px;
+	/*border-width: 2px;*/
+	margin: 5px;
+}
+
 .domino-div{
 	height: 150px;
 	margin-left: 100px;
