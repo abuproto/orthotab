@@ -126,4 +126,6 @@ public class ExerciceController {
     public List<Domino> getTechnique05Cible(@PathVariable("niveau") String niveau) {
         return techniqueService.getTechnique05Cible(niveau);
     }
+    
+    
 }

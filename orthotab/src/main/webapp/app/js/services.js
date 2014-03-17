@@ -67,6 +67,43 @@ orthotabServices.factory('Technique04', [ '$resource', function($resource) {
 	});
 } ]);
 
+orthotabServices.factory('Technique05Choix', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique05choix/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
+orthotabServices.factory('Technique05Cible', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique05cible/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
+
+orthotabServices.factory('Technique08Choix', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique08choix/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
+orthotabServices.factory('Technique08Cible', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique08cible/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
 orthotabServices.factory('Didact01', [ '$resource', function($resource) {
 	return $resource('/orthotab/api/didact01/:nbCombi', {nbCombi:'@nbCombi'}, {
 		query : {

@@ -21,6 +21,7 @@ public class Technique05Data extends TechniqueDataUtil {
 
 	private final static String CSS_DOMINO_G_POINTILLE = "domino-groupe domino-groupe-pointille";
 	private final static String CSS_DOMINO_G_PLEIN = "domino-groupe domino-groupe-plein";
+	private final static String CSS_DOMINO_G_ACTIF = "domino-groupe domino-groupe-actif";
 
 	private final static Map<String, List<String>> mapDominoCible;
 
@@ -136,7 +137,11 @@ public class Technique05Data extends TechniqueDataUtil {
 
 		for (int i = 0; i < nbocc; i++) {
 			Domino domino = new Domino();
-			domino.setCssClass(CSS_DOMINO_G_POINTILLE);
+			if(i==0){
+				domino.setCssClass(CSS_DOMINO_G_ACTIF);
+			}else{
+				domino.setCssClass(CSS_DOMINO_G_POINTILLE);
+			}
 			listeDominoCible.add(domino);
 		}
 

@@ -120,7 +120,7 @@ orthotabExercicesControllers
 							}
 						} ]);
 
-orthotabDidactControllers
+orthotabExercicesControllers
 		.controller(
 				'Technique02Ctrl',
 				[
@@ -234,7 +234,7 @@ orthotabDidactControllers
 
 						} ]);
 
-orthotabDidactControllers
+orthotabExercicesControllers
 		.controller(
 				'Technique03Ctrl',
 				[
@@ -315,7 +315,7 @@ orthotabDidactControllers
 
 						} ]);
 
-orthotabDidactControllers
+orthotabExercicesControllers
 		.controller(
 				'Technique04Ctrl',
 				[
@@ -406,3 +406,134 @@ orthotabDidactControllers
 							}
 
 						} ]);
+
+
+orthotabExercicesControllers
+.controller(
+		'Technique05Ctrl',
+		[
+				'$rootScope',
+				'$scope',
+				'Technique05Choix',
+				'Technique05Cible',
+				function($rootScope, $scope, Technique05Choix, Technique05Cible) {
+
+					$rootScope.consigne = "Avant ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? " +
+					"C’est à cet endroit que tu dois glisser les dominos pour continuer la série. tu dois trouver la bonne paire pour que le total fasse 10.";
+					
+					
+					$scope.dominoCible = Technique05Cible.query({}, {
+						'niveau' : $scope.niveau
+					});
+
+					$scope.dominoChoix = Technique05Choix.query({}, {
+						'niveau' : $scope.niveau
+					});
+
+					$scope.nbEchec = 0;
+					$scope.idxDominoCible = 1;
+
+					$scope.enregistreDomino = function(domino) {
+						$rootScope.messageNiveau = "";
+						var dominoActif = $scope.dominoCible[$scope.idxDominoCible];
+						var dominoCible = $scope.dominoCible[$scope.idxDominoCible-1];
+						
+						var verif = (dominoCible.vald+domino.valg==10);
+						
+						if(!$rootScope.niveauFini && verif){
+							dominoActif.libg = domino.libg;
+							dominoActif.libd = domino.libd;
+							dominoActif.valg = domino.valg;
+							dominoActif.vald = domino.vald;
+							
+							dominoActif.cssClass = "domino-groupe domino-groupe-plein";
+							dominoActif.actif = false;
+							domino.cssClass = "domino-groupe-cache";
+							
+							if (($scope.idxDominoCible + 1) < $scope.dominoCible.length) {
+								$scope.dominoCible[$scope.idxDominoCible + 1].actif = true;
+								$scope.dominoCible[$scope.idxDominoCible + 1].cssClass = "domino-groupe domino-groupe-actif";
+								$scope.idxDominoCible++;
+							}else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
+								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+								$rootScope.niveauFini = true;
+							}
+						}else{
+							$scope.nbEchec++;
+							$rootScope.messageNiveau = "Ce n'est pas le bon domino !";
+						}
+					};
+				} ]);
+
+orthotabExercicesControllers
+.controller(
+		'Technique08Ctrl',
+		[
+				'$rootScope',
+				'$scope',
+				'Technique08Choix',
+				'Technique08Cible',
+				function($rootScope, $scope, Technique08Choix, Technique08Cible) {
+					
+					$rootScope.consigne = "";
+					
+					$scope.casesCible = Technique08Cible.query({}, {
+						'niveau' : $scope.niveau
+					});
+					
+					$scope.casesChoix = Technique08Choix.query({}, {
+						'niveau' : $scope.niveau
+					});
+					
+					/*$scope.caseCible = [ {
+						"valeur" : "?",
+						"realValeur" : "+"
+					} ];
+
+					$scope.caseChoix = [ {
+						"valeur" : "x",
+						"cssClass" : "carre trou-plein",
+						"backgrdStyle" : "#B5B276"
+					}, {
+						"valeur" : "+",
+						"cssClass" : "carre trou-plein",
+						"backgrdStyle" : "#B5B276"
+					}, {
+						"valeur" : "-",
+						"cssClass" : "carre trou-plein",
+						"backgrdStyle" : "#B5B276"
+					} ];*/
+
+					$scope.nbEchec = 0;
+
+					var idx = 0;
+					$scope.casesCibleCourant = $scope.casesCible[idx];
+					$scope.casesChoixCourant = $scope.casesChoix[idx];
+					
+					$scope.nbIt = $scope.casesCible.length;
+					
+					//$scope.suivantActif = true;
+					$rootScope.niveauFini = false;
+					
+					$scope.suivant=function(){
+						idx++;
+						$scope.casesCibleCourant = $scope.casesCible[idx];
+						$scope.casesChoixCourant = $scope.casesChoix[idx];
+					}
+					
+					$scope.enregistreCase = function(caseCombi, $event,
+							ind) {
+						caseCombi.backgrdStyle = "yellow";
+						if (caseCombi.valeur == $scope.caseCible[idx].realValeur) {
+							caseCombi.backgrdStyle = "green";
+							$scope.caseCible[idx].valeur = $scope.caseCible[idx].realValeur;
+							if(idx<$scope.nbIt){
+								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+								$rootScope.niveauFini = true;
+							}
+						} else {
+							caseCombi.backgrdStyle = "red";
+							$scope.nbEchec++;
+						}
+					}
+				} ]);
