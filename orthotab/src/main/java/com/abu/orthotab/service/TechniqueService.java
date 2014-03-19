@@ -2,6 +2,7 @@ package com.abu.orthotab.service;
 
 import java.util.List;
 
+import com.abu.orthotab.domain.BoiteAOeuf;
 import com.abu.orthotab.domain.CalculATrou;
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
@@ -19,6 +20,8 @@ public interface TechniqueService {
 	List<Domino> getTechnique05Choix(String niveau);
 	
 	List<Domino> getTechnique05Cible(String niveau);
+	
+	List<BoiteAOeuf> getTechnique06(String niveau);
 	
 	List<CalculATrou> getTechnique08(String niveau);
 }

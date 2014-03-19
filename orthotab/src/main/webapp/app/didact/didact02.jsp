@@ -13,6 +13,8 @@
 <%@include file="../includes/inc_didactnav.htm"%>
 <div id="center"><p align="center">Relier des colonnes</p></div>
 </div>
+<div align="center"><p class="messageExercice">{{messageNiveau}}</p>
+</div>
 <div class="div-milieu" ng-controller="Didact02Ctrl">
 
 <div id="milieu-left">
@@ -31,7 +33,7 @@
 
 
 <div id="center" align="center">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="300">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="400">
 <style type="text/css" >
       <![CDATA[
 
@@ -75,7 +77,6 @@
 </div>
 
 	</div><!-- fin bloc-principal -->
-	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
 </div><!-- fin page -->
 </body>
 </html>

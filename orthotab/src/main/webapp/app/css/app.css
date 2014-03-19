@@ -87,6 +87,18 @@ body {
 	border-width: 4px;
 }
 
+.boutonCase-long {
+	width: 100px;
+	height: 30px;
+	margin: 5px;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 15px;
+	font-weight: bold;
+	font-size: 10pt;
+	border-width: 4px;
+}
+
 /* voir si utilisé */
 .boutonCaseActif {
 	width: 80px;
@@ -404,6 +416,18 @@ body {
 	display:inline-block;
 }
 
+.emplacement-cible-small{
+	border-width: 2px;
+	border-radius: 8px;
+	margin: 5px;
+	width: 60px;
+    height: 40px;
+    font-weight: bold;
+	font-size: 24pt;
+	border-style: solid;
+	display:inline-block;
+}
+
 .emplacement-cible-groupe{
 	border-width: 2px;
 	border-radius: 8px;
@@ -436,6 +460,17 @@ body {
 
 .emplacement-choix-etoile{
 	background-image : url("../images/etoile_reduit.png");
+	width: 60px;
+    height: 60px;
+	background-repeat : no-repeat;
+	border-style: solid;
+	border-width: 8px;
+	border-radius: 10px;
+	border-color: white;
+}
+
+.emplacement-choix-rond{
+	background-image : url("../images/rond_reduit.png");
 	width: 60px;
     height: 60px;
 	background-repeat : no-repeat;

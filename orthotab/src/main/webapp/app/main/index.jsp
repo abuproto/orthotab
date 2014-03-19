@@ -40,7 +40,7 @@
 
 <div ng-show="isLogged" align="center" class="div-login">
 <button class="boutonGeneral" ng-click="depart()">Accès aux exercices</button>
-<br/>
+<br/><br/>
 <button class="boutonGeneral" ng-click="didactHome()">Didacticiel</button>
 </div>
 

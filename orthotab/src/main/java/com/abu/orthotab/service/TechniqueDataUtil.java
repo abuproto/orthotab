@@ -17,6 +17,9 @@ public abstract class TechniqueDataUtil {
 	protected final static String CSS_CASE_NOMBRE = "case-nombre";
 	protected final static String STYLE_BGRD_GRIS = "#B5B276";
 	protected final static String STYLE_BGRD_JAUNE = "yellow";
+	protected final static String CSS_BOUTON_CASE = "boutonCase";
+	protected final static String CSS_BOUTON_CASE_SMALL = "boutonCase-small";
+	protected final static String CSS_BOUTON_CASE_LONG = "boutonCase-long";
 	
 	private final static Logger LOGGER = Logger
 			.getLogger(TechniqueDataUtil.class);

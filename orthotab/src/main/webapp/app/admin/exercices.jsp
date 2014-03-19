@@ -34,6 +34,7 @@
 <button class="boutonGeneral" ng-click="exercices(4,3,0)">semaine 4 jour 3</button><br/>
 <button class="boutonGeneral" ng-click="exercices(5,2,0)">semaine 5 jour 2</button><br/>
 <button class="boutonGeneral" ng-click="exercices(5,4,0)">semaine 5 jour 4</button><br/>
+<button class="boutonGeneral" ng-click="exercices(5,5,0)">semaine 5 jour 5</button>
 </div>
 <div id="milieu-right">
 

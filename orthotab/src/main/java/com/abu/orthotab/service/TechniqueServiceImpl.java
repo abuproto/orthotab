@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.abu.orthotab.domain.BoiteAOeuf;
 import com.abu.orthotab.domain.CalculATrou;
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
@@ -218,6 +219,11 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 		return Technique05Data.getInstance().listeDominoCible(niveau, nbocc);
 	}
 
+	@Override
+	public List<BoiteAOeuf> getTechnique06(String niveau) {
+		return Technique06Data.getInstance().listeBoiteAOeuf(niveau);
+	}
+	
 	@Override
 	public List<CalculATrou> getTechnique08(String niveau) {
 		return Technique08Data.getInstance().listeCalculATrou(niveau);

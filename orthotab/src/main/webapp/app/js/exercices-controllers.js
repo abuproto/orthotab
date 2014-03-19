@@ -465,6 +465,61 @@ orthotabExercicesControllers
 					};
 				} ]);
 
+
+orthotabExercicesControllers
+.controller(
+		'Technique06Ctrl',
+		[
+				'$rootScope',
+				'$scope',
+				'Technique06',
+				function($rootScope, $scope, Technique06) {
+					
+					$rootScope.consigne = "Voilà des boîtes à oeufs que je dois compléter. Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. " +
+							"Et dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque boîte avec le bon tas d’oeufs, " +
+							"et tu dois aussi choisir le calcul qui te permet de calculer le plus vite";
+					
+					$scope.boites = Technique06.query({}, {
+							'niveau' : $scope.niveau
+					});
+					
+					$scope.nbEchec = 0;
+					var idx = 0;
+					
+					$scope.debut = false;
+
+					$scope.commencer = function() {
+						$scope.boiteCourant = $scope.boites[idx];
+						$scope.nbIt = $scope.boites.length;
+						$scope.debut = true;
+					};
+					
+					$rootScope.niveauFini = false;
+					
+					$scope.suivant=function(){
+						idx++;
+						$scope.boiteCourant = $scope.boites[idx];
+					}
+					
+					$scope.enregistreCase = function(caseCombi) {
+						//var idtrou = $scope.calculATrouCourant.idtrou;
+						if (caseCombi.type == "RES") {
+							caseCombi.backgrdStyle = "green";
+							$scope.boiteCourant.librestant = caseCombi.valeur;
+							//$scope.calculATrouCourant.listeCaseCible[idtrou].backgrdStyle = "green";
+							if(idx+1==$scope.nbIt){
+								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+								$rootScope.niveauFini = true;
+							}
+						} else {
+							caseCombi.backgrdStyle = "red";
+							$scope.nbEchec++;
+						}
+					}
+				} ]);
+
+
+
 orthotabExercicesControllers
 .controller(
 		'Technique08Ctrl',
