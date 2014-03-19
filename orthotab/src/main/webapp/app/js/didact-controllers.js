@@ -4,7 +4,7 @@
 
 var orthotabDidactControllers = angular.module('orthotabDidactControllers', []);
 
-orthotabDidactControllers.controller('CouleursCtrl', [ '$rootScope', '$scope',
+orthotabDidactControllers.controller('DidactCouleursCtrl', [ '$rootScope', '$scope',
 		'Couleurs', function($rootScope, $scope, Couleurs) {
 
 			$scope.couleurs = Couleurs.query({}, {

@@ -85,18 +85,8 @@ orthotabServices.factory('Technique05Cible', [ '$resource', function($resource) 
 	});
 } ]);
 
-
-orthotabServices.factory('Technique08Choix', [ '$resource', function($resource) {
-	return $resource('/orthotab/api/technique08choix/:niveau', {niveau:'@niveau'}, {
-		query : {
-			method : 'GET',
-			isArray : true
-		}
-	});
-} ]);
-
-orthotabServices.factory('Technique08Cible', [ '$resource', function($resource) {
-	return $resource('/orthotab/api/technique08cible/:niveau', {niveau:'@niveau'}, {
+orthotabServices.factory('Technique08', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique08/:niveau', {niveau:'@niveau'}, {
 		query : {
 			method : 'GET',
 			isArray : true

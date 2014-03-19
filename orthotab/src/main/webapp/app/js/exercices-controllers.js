@@ -419,7 +419,7 @@ orthotabExercicesControllers
 				function($rootScope, $scope, Technique05Choix, Technique05Cible) {
 
 					$rootScope.consigne = "Avant ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? " +
-					"C’est à cet endroit que tu dois glisser les dominos pour continuer la série. tu dois trouver la bonne paire pour que le total fasse 10.";
+					"C’est à cet endroit que tu dois placer les dominos pour continuer la série. tu dois trouver la bonne paire pour que le total fasse 10.";
 					
 					
 					$scope.dominoCible = Technique05Cible.query({}, {
@@ -471,63 +471,43 @@ orthotabExercicesControllers
 		[
 				'$rootScope',
 				'$scope',
-				'Technique08Choix',
-				'Technique08Cible',
-				function($rootScope, $scope, Technique08Choix, Technique08Cible) {
+				'Technique08',
+				function($rootScope, $scope, Technique08) {
 					
-					$rootScope.consigne = "";
+					$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas… il en manque un bout ! " +
+					"lequel de ces bouts peut aller selon toi? clique sur le chiffre qui complète l’opération";
 					
-					$scope.casesCible = Technique08Cible.query({}, {
-						'niveau' : $scope.niveau
+					$scope.calculATrou = Technique08.query({}, {
+							'niveau' : $scope.niveau
 					});
 					
-					$scope.casesChoix = Technique08Choix.query({}, {
-						'niveau' : $scope.niveau
-					});
-					
-					/*$scope.caseCible = [ {
-						"valeur" : "?",
-						"realValeur" : "+"
-					} ];
-
-					$scope.caseChoix = [ {
-						"valeur" : "x",
-						"cssClass" : "carre trou-plein",
-						"backgrdStyle" : "#B5B276"
-					}, {
-						"valeur" : "+",
-						"cssClass" : "carre trou-plein",
-						"backgrdStyle" : "#B5B276"
-					}, {
-						"valeur" : "-",
-						"cssClass" : "carre trou-plein",
-						"backgrdStyle" : "#B5B276"
-					} ];*/
-
 					$scope.nbEchec = 0;
-
 					var idx = 0;
-					$scope.casesCibleCourant = $scope.casesCible[idx];
-					$scope.casesChoixCourant = $scope.casesChoix[idx];
 					
-					$scope.nbIt = $scope.casesCible.length;
+					$scope.debut = false;
+
+					$scope.commencer = function() {
+						$scope.calculATrouCourant = $scope.calculATrou[idx];
+						$scope.nbIt = $scope.calculATrou.length;
+						$scope.debut = true;
+						console.log("$scope.nbIt : " + $scope.nbIt);
+					};
 					
-					//$scope.suivantActif = true;
 					$rootScope.niveauFini = false;
 					
 					$scope.suivant=function(){
 						idx++;
-						$scope.casesCibleCourant = $scope.casesCible[idx];
-						$scope.casesChoixCourant = $scope.casesChoix[idx];
+						$scope.calculATrouCourant = $scope.calculATrou[idx];
 					}
 					
 					$scope.enregistreCase = function(caseCombi, $event,
 							ind) {
-						caseCombi.backgrdStyle = "yellow";
-						if (caseCombi.valeur == $scope.caseCible[idx].realValeur) {
+						var idtrou = $scope.calculATrouCourant.idtrou;
+						if (caseCombi.valeur == $scope.calculATrouCourant.listeCaseCible[idtrou].valeur) {
 							caseCombi.backgrdStyle = "green";
-							$scope.caseCible[idx].valeur = $scope.caseCible[idx].realValeur;
-							if(idx<$scope.nbIt){
+							$scope.calculATrouCourant.listeCaseCible[idtrou].libelle = $scope.calculATrouCourant.listeCaseCible[idtrou].valeur;
+							$scope.calculATrouCourant.listeCaseCible[idtrou].backgrdStyle = "green";
+							if(idx+1==$scope.nbIt){
 								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 								$rootScope.niveauFini = true;
 							}

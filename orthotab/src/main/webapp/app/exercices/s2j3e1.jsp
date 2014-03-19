@@ -15,18 +15,23 @@
 </div>
 <%@include file="../includes/inc_messages.htm"%>
 <div class="div-milieu" ng-controller="Technique08Ctrl">
+
+<div align="center" ng-hide="debut"><button class="boutonGeneral2" ng-click="commencer()">Commencer l'exercice</button></div>
+
+<div ng-show="debut">
+
 <div align="center">
-<button class="{{case.cssClass}}" ng-repeat="case in casesCible" ng-style="{'background-color' : case.backgrdStyle}">
+<button class="{{case.cssClass}}" ng-repeat="case in calculATrouCourant.listeCaseCible" ng-style="{'background-color' : case.backgrdStyle}">
 {{case.libelle}}</button>
 </div>
-<div align="center">
-<button class="{{case.cssClass}}" ng-repeat="case in casesChoix" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCase(case, $event, $index)">
+<div align="center" ng-style="{'margin-top' : '20px'}">
+<button class="{{case.cssClass}}" ng-repeat="case in calculATrouCourant.listeCaseChoix" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCase(case, $event, $index)">
 {{case.libelle}}</button>
 </div>
-<div align="center" ng-hide="niveauFini">
+<div align="center" ng-hide="niveauFini" ng-style="{'margin-top' : '30px'}">
 <button class="boutonGeneral2" ng-click="suivant()">Suivant</button>
 </div>
-
+</div>
 
 </div>
 	</div><!-- fin bloc-principal -->

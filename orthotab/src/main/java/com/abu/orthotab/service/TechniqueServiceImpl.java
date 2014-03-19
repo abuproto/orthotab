@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.abu.orthotab.domain.CalculATrou;
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
 import com.abu.orthotab.domain.Domino;
@@ -215,6 +216,11 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 			break;
 		}
 		return Technique05Data.getInstance().listeDominoCible(niveau, nbocc);
+	}
+
+	@Override
+	public List<CalculATrou> getTechnique08(String niveau) {
+		return Technique08Data.getInstance().listeCalculATrou(niveau);
 	}
 
 }

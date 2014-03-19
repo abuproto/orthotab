@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.abu.orthotab.domain.CalculATrou;
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
 import com.abu.orthotab.domain.Domino;
@@ -126,6 +127,10 @@ public class ExerciceController {
     public List<Domino> getTechnique05Cible(@PathVariable("niveau") String niveau) {
         return techniqueService.getTechnique05Cible(niveau);
     }
-    
-    
+        
+    @RequestMapping("technique08/{niveau}")
+    @ResponseBody
+    public List<CalculATrou> getTechnique08(@PathVariable("niveau") String niveau) {
+        return techniqueService.getTechnique08(niveau);
+    }
 }

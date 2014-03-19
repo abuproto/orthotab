@@ -14,7 +14,7 @@
 <div id="center"><p align="center">Associer des paires par couleur</p></div>
 </div>
 <div class="div-milieu">
-<div align="center" id="couleurs" ng-controller="CouleursCtrl">
+<div align="center" id="couleurs" ng-controller="DidactCouleursCtrl">
 <button class="{{couleur.cssClass}}" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event, $index)"/>
 </div>
 <div align="center" id="cases" ng-controller="Didact01Ctrl">
