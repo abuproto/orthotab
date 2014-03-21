@@ -334,13 +334,13 @@ orthotabExercicesControllers
 							$scope.actif = true;
 
 							$scope.retourner = function() {
-								if($rootScope.caseCombiFirst!=null){
+								if ($rootScope.caseCombiFirst != null) {
 									$rootScope.caseCombiFirst.backgrdStyle = "#B5B276";
 									$rootScope.caseCombiFirst.sens = "VERSO";
 									$rootScope.caseCombiFirst.libelle = "";
 									$rootScope.caseCombiFirst = null;
 								}
-								if($rootScope.caseCombiSecond!=null){
+								if ($rootScope.caseCombiSecond != null) {
 									$rootScope.caseCombiSecond.backgrdStyle = "#B5B276";
 									$rootScope.caseCombiSecond.sens = "VERSO";
 									$rootScope.caseCombiSecond.libelle = "";
@@ -354,13 +354,13 @@ orthotabExercicesControllers
 							$rootScope.niveauFini = false;
 							var nbCasesRecto = 0;
 
-							$scope.valider=function(){
-								if(nbCasesRecto==2 && 
-										$rootScope.caseCombiFirst!=null && 
-										$rootScope.caseCombiSecond!=null){
+							$scope.valider = function() {
+								if (nbCasesRecto == 2
+										&& $rootScope.caseCombiFirst != null
+										&& $rootScope.caseCombiSecond != null) {
 									var caseFisrt = $rootScope.caseCombiFirst;
-									var caseSecond= $rootScope.caseCombiSecond;
-									
+									var caseSecond = $rootScope.caseCombiSecond;
+
 									if (caseFisrt.valeur == caseSecond.valeur) {
 										caseFisrt.active = false;
 										caseSecond.active = false;
@@ -376,15 +376,15 @@ orthotabExercicesControllers
 											$rootScope.niveauFini = true;
 										}
 										nbCasesRecto = 0;
-									}else{
+									} else {
 										caseFisrt.backgrdStyle = "red";
 										caseSecond.backgrdStyle = "red";
 										$scope.nbEchec++;
 									}
 								}
-								
+
 							}
-							
+
 							$scope.enregistreCase = function(caseCombi, $event,
 									ind) {
 								if ($scope.actif && caseCombi.active) {
@@ -407,168 +407,186 @@ orthotabExercicesControllers
 
 						} ]);
 
+orthotabExercicesControllers
+		.controller(
+				'Technique05Ctrl',
+				[
+						'$rootScope',
+						'$scope',
+						'Technique05Choix',
+						'Technique05Cible',
+						function($rootScope, $scope, Technique05Choix,
+								Technique05Cible) {
+
+							$rootScope.consigne = "Avant ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? "
+									+ "C’est à cet endroit que tu dois placer les dominos pour continuer la série. tu dois trouver la bonne paire pour que le total fasse 10.";
+
+							$scope.dominoCible = Technique05Cible.query({}, {
+								'niveau' : $scope.niveau
+							});
+
+							$scope.dominoChoix = Technique05Choix.query({}, {
+								'niveau' : $scope.niveau
+							});
+
+							$scope.nbEchec = 0;
+							$scope.idxDominoCible = 1;
+
+							$scope.enregistreDomino = function(domino) {
+								$rootScope.messageNiveau = "";
+								var dominoActif = $scope.dominoCible[$scope.idxDominoCible];
+								var dominoCible = $scope.dominoCible[$scope.idxDominoCible - 1];
+
+								var verif = (dominoCible.vald + domino.valg == 10);
+
+								if (!$rootScope.niveauFini && verif) {
+									dominoActif.libg = domino.libg;
+									dominoActif.libd = domino.libd;
+									dominoActif.valg = domino.valg;
+									dominoActif.vald = domino.vald;
+
+									dominoActif.cssClass = "domino-groupe domino-groupe-plein";
+									dominoActif.actif = false;
+									domino.cssClass = "domino-groupe-cache";
+
+									if (($scope.idxDominoCible + 1) < $scope.dominoCible.length) {
+										$scope.dominoCible[$scope.idxDominoCible + 1].actif = true;
+										$scope.dominoCible[$scope.idxDominoCible + 1].cssClass = "domino-groupe domino-groupe-actif";
+										$scope.idxDominoCible++;
+									} else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
+										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.niveauFini = true;
+									}
+								} else {
+									$scope.nbEchec++;
+									$rootScope.messageNiveau = "Ce n'est pas le bon domino !";
+								}
+							};
+						} ]);
 
 orthotabExercicesControllers
-.controller(
-		'Technique05Ctrl',
-		[
-				'$rootScope',
-				'$scope',
-				'Technique05Choix',
-				'Technique05Cible',
-				function($rootScope, $scope, Technique05Choix, Technique05Cible) {
-
-					$rootScope.consigne = "Avant ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? " +
-					"C’est à cet endroit que tu dois placer les dominos pour continuer la série. tu dois trouver la bonne paire pour que le total fasse 10.";
-					
-					
-					$scope.dominoCible = Technique05Cible.query({}, {
-						'niveau' : $scope.niveau
-					});
-
-					$scope.dominoChoix = Technique05Choix.query({}, {
-						'niveau' : $scope.niveau
-					});
-
-					$scope.nbEchec = 0;
-					$scope.idxDominoCible = 1;
-
-					$scope.enregistreDomino = function(domino) {
-						$rootScope.messageNiveau = "";
-						var dominoActif = $scope.dominoCible[$scope.idxDominoCible];
-						var dominoCible = $scope.dominoCible[$scope.idxDominoCible-1];
-						
-						var verif = (dominoCible.vald+domino.valg==10);
-						
-						if(!$rootScope.niveauFini && verif){
-							dominoActif.libg = domino.libg;
-							dominoActif.libd = domino.libd;
-							dominoActif.valg = domino.valg;
-							dominoActif.vald = domino.vald;
-							
-							dominoActif.cssClass = "domino-groupe domino-groupe-plein";
-							dominoActif.actif = false;
-							domino.cssClass = "domino-groupe-cache";
-							
-							if (($scope.idxDominoCible + 1) < $scope.dominoCible.length) {
-								$scope.dominoCible[$scope.idxDominoCible + 1].actif = true;
-								$scope.dominoCible[$scope.idxDominoCible + 1].cssClass = "domino-groupe domino-groupe-actif";
-								$scope.idxDominoCible++;
-							}else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
-								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-								$rootScope.niveauFini = true;
+		.controller(
+				'Technique06Ctrl',
+				[
+						'$rootScope',
+						'$scope',
+						'Technique06',
+						function($rootScope, $scope, Technique06) {
+							if ($scope.optRapide) {
+								$rootScope.consigne = "Voilà des boîtes à oeufs que je dois compléter. Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. "
+										+ "Et dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque boîte avec le bon tas d’oeufs, "
+										+ "et tu dois aussi choisir le calcul qui te permet de calculer le plus vite";
+							} else if ($scope.optCalcul) {
+								$rootScope.consigne = "Voilà des boîtes d’oeufs que je dois compléter. Il y en a des petites et des grandes. "
+										+ "Sur le couvercle il y a marqué combien on peut mettre d’oeufs au maximum. Et dans la boîte il y a déjà quelques oeufs mais elle n’est pas complète !"
+										+ " Aide moi à compléter chaque boîte avec le bon tas d’oeufs";
 							}
-						}else{
-							$scope.nbEchec++;
-							$rootScope.messageNiveau = "Ce n'est pas le bon domino !";
-						}
-					};
-				} ]);
 
+							$scope.boites = Technique06.query({}, {
+								'niveau' : $scope.niveau
+							});
+
+							$scope.nbEchec = 0;
+							var idx = 0;
+
+							$scope.debut = false;
+
+							$scope.commencer = function() {
+								$scope.boiteCourant = $scope.boites[idx];
+								$scope.nbIt = $scope.boites.length;
+								$scope.debut = true;
+							};
+
+							$rootScope.niveauFini = false;
+
+							$scope.suivant = function() {
+								idx++;
+								$scope.boiteCourant = $scope.boites[idx];
+							}
+
+							$scope.enregistreCase = function(caseCombi) {
+								if ($scope.optRapide) {
+									if (caseCombi.type == "RES") {
+										caseCombi.backgrdStyle = "green";
+										$scope.boiteCourant.librestant = caseCombi.valeur;
+										if (idx + 1 == $scope.nbIt) {
+											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.niveauFini = true;
+										}
+									} else {
+										caseCombi.backgrdStyle = "red";
+										$scope.nbEchec++;
+									}
+								} else if ($scope.optCalcul && caseCombi.active) {
+									if($scope.boiteCourant.valrestant==caseCombi.valeur){
+										caseCombi.backgrdStyle = "green";
+										caseCombi.active = false;
+										$scope.boiteCourant.librestant = caseCombi.valeur;
+										if (idx + 1 == $scope.nbIt) {
+											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.niveauFini = true;
+										}
+									}else if($scope.boiteCourant.valrestant>caseCombi.valeur){
+										caseCombi.backgrdStyle = "green";
+										caseCombi.active = false;
+										$scope.boiteCourant.valrestant = $scope.boiteCourant.valrestant - caseCombi.valeur;
+									}else{
+										caseCombi.backgrdStyle = "red";
+										$scope.nbEchec++;
+									}
+								}
+							}
+						} ]);
 
 orthotabExercicesControllers
-.controller(
-		'Technique06Ctrl',
-		[
-				'$rootScope',
-				'$scope',
-				'Technique06',
-				function($rootScope, $scope, Technique06) {
-					
-					$rootScope.consigne = "Voilà des boîtes à oeufs que je dois compléter. Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. " +
-							"Et dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque boîte avec le bon tas d’oeufs, " +
-							"et tu dois aussi choisir le calcul qui te permet de calculer le plus vite";
-					
-					$scope.boites = Technique06.query({}, {
-							'niveau' : $scope.niveau
-					});
-					
-					$scope.nbEchec = 0;
-					var idx = 0;
-					
-					$scope.debut = false;
+		.controller(
+				'Technique08Ctrl',
+				[
+						'$rootScope',
+						'$scope',
+						'Technique08',
+						function($rootScope, $scope, Technique08) {
 
-					$scope.commencer = function() {
-						$scope.boiteCourant = $scope.boites[idx];
-						$scope.nbIt = $scope.boites.length;
-						$scope.debut = true;
-					};
-					
-					$rootScope.niveauFini = false;
-					
-					$scope.suivant=function(){
-						idx++;
-						$scope.boiteCourant = $scope.boites[idx];
-					}
-					
-					$scope.enregistreCase = function(caseCombi) {
-						//var idtrou = $scope.calculATrouCourant.idtrou;
-						if (caseCombi.type == "RES") {
-							caseCombi.backgrdStyle = "green";
-							$scope.boiteCourant.librestant = caseCombi.valeur;
-							//$scope.calculATrouCourant.listeCaseCible[idtrou].backgrdStyle = "green";
-							if(idx+1==$scope.nbIt){
-								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-								$rootScope.niveauFini = true;
+							$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas… il en manque un bout ! "
+									+ "lequel de ces bouts peut aller selon toi? clique sur le chiffre qui complète l’opération";
+
+							$scope.calculATrou = Technique08.query({}, {
+								'niveau' : $scope.niveau
+							});
+
+							$scope.nbEchec = 0;
+							var idx = 0;
+
+							$scope.debut = false;
+
+							$scope.commencer = function() {
+								$scope.calculATrouCourant = $scope.calculATrou[idx];
+								$scope.nbIt = $scope.calculATrou.length;
+								$scope.debut = true;
+								console.log("$scope.nbIt : " + $scope.nbIt);
+							};
+
+							$rootScope.niveauFini = false;
+
+							$scope.suivant = function() {
+								idx++;
+								$scope.calculATrouCourant = $scope.calculATrou[idx];
 							}
-						} else {
-							caseCombi.backgrdStyle = "red";
-							$scope.nbEchec++;
-						}
-					}
-				} ]);
 
-
-
-orthotabExercicesControllers
-.controller(
-		'Technique08Ctrl',
-		[
-				'$rootScope',
-				'$scope',
-				'Technique08',
-				function($rootScope, $scope, Technique08) {
-					
-					$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas… il en manque un bout ! " +
-					"lequel de ces bouts peut aller selon toi? clique sur le chiffre qui complète l’opération";
-					
-					$scope.calculATrou = Technique08.query({}, {
-							'niveau' : $scope.niveau
-					});
-					
-					$scope.nbEchec = 0;
-					var idx = 0;
-					
-					$scope.debut = false;
-
-					$scope.commencer = function() {
-						$scope.calculATrouCourant = $scope.calculATrou[idx];
-						$scope.nbIt = $scope.calculATrou.length;
-						$scope.debut = true;
-						console.log("$scope.nbIt : " + $scope.nbIt);
-					};
-					
-					$rootScope.niveauFini = false;
-					
-					$scope.suivant=function(){
-						idx++;
-						$scope.calculATrouCourant = $scope.calculATrou[idx];
-					}
-					
-					$scope.enregistreCase = function(caseCombi, $event,
-							ind) {
-						var idtrou = $scope.calculATrouCourant.idtrou;
-						if (caseCombi.valeur == $scope.calculATrouCourant.listeCaseCible[idtrou].valeur) {
-							caseCombi.backgrdStyle = "green";
-							$scope.calculATrouCourant.listeCaseCible[idtrou].libelle = $scope.calculATrouCourant.listeCaseCible[idtrou].valeur;
-							$scope.calculATrouCourant.listeCaseCible[idtrou].backgrdStyle = "green";
-							if(idx+1==$scope.nbIt){
-								$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-								$rootScope.niveauFini = true;
+							$scope.enregistreCase = function(caseCombi, $event,
+									ind) {
+								var idtrou = $scope.calculATrouCourant.idtrou;
+								if (caseCombi.valeur == $scope.calculATrouCourant.listeCaseCible[idtrou].valeur) {
+									caseCombi.backgrdStyle = "green";
+									$scope.calculATrouCourant.listeCaseCible[idtrou].libelle = $scope.calculATrouCourant.listeCaseCible[idtrou].valeur;
+									$scope.calculATrouCourant.listeCaseCible[idtrou].backgrdStyle = "green";
+									if (idx + 1 == $scope.nbIt) {
+										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.niveauFini = true;
+									}
+								} else {
+									caseCombi.backgrdStyle = "red";
+									$scope.nbEchec++;
+								}
 							}
-						} else {
-							caseCombi.backgrdStyle = "red";
-							$scope.nbEchec++;
-						}
-					}
-				} ]);
+						} ]);

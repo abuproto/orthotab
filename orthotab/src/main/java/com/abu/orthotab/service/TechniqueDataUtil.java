@@ -1,5 +1,6 @@
 package com.abu.orthotab.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -9,6 +10,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.apache.log4j.Logger;
+
+import com.abu.orthotab.domain.Case;
 
 public abstract class TechniqueDataUtil {
 
@@ -28,6 +31,20 @@ public abstract class TechniqueDataUtil {
 		long seed = System.nanoTime();
 		Collections.shuffle(listeItem, new Random(seed));
 		return listeItem;
+	}
+	
+	protected List<Case> completeRow(int nbInRow, List<Case> listeACompleter) {
+
+		List<Case> listeNouvelle = new ArrayList<Case>();
+		int row = 1;
+		int i = 0;
+		for (Case caseACompleter : listeACompleter) {
+			row = (i/nbInRow)+1;
+			caseACompleter.setRow(String.valueOf(row));
+			listeNouvelle.add(caseACompleter);
+			i++;
+		}
+		return listeNouvelle;
 	}
 	
 	protected int evalueExpression(String expression) {
