@@ -112,6 +112,30 @@ public class ExerciceController {
       		pas=10;
       		listeCase = techniqueService.getTechnique02(debut, fin, pas, pos, niveau);
     		break;
+      	case "s1j2e2":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
+      	case "s1j4e2":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
+      	case "s1j5e2":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
+      	case "s2j2e2":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
+      	case "s2j5e2":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
+      	case "s5j4e2":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
+      	case "s2j3e3":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
+      	case "s5j1e2":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
     	}
         return listeCase;
     }
@@ -129,21 +153,32 @@ public class ExerciceController {
     	int fin = 1;
     	int pas = 1;
     	int nbInRow = 5;
+    	List<Case> listeCase = null;
     	switch(niveau){
     	case "s2j2e1":
     	case "s2j5e1":
     		debut=5;
     		fin=15;
     		nbInRow = 6;
+    		listeCase = techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
     		break;
      	case "s5j2e1":
     		debut=3;
     		fin=15;
     		pas = 2;
     		nbInRow = 10;
+    		listeCase = techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
     		break;
+     	case "s2j1e2":
+     		nbInRow = 10;
+     		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
+     		break;
+     	case "s4j1e2":
+     		nbInRow = 10;
+     		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
+     		break;
     	}
-        return techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
+        return listeCase;
     }
     
     @RequestMapping("technique05choix/{niveau}")

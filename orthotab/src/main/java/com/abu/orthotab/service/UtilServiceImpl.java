@@ -37,6 +37,10 @@ public abstract class UtilServiceImpl {
 		mapIntrus.put("s3j4e1D", Arrays.asList(tabs3j4e1D));
 		String[] tabs4j3e1 = { "40", "25", "120", "135", "180" };
 		mapIntrus.put("s4j3e1", Arrays.asList(tabs4j3e1));
+		String[] s2j5e2G = {"3","27"};
+		mapIntrus.put("s2j5e2G", Arrays.asList(s2j5e2G));
+		String[] s2j5e2D = {"10","7"};
+		mapIntrus.put("s2j5e2D", Arrays.asList(s2j5e2D));
 	}
 
 	protected List<Case> melange(List<Case> listeCase) {
@@ -100,8 +104,13 @@ public abstract class UtilServiceImpl {
 	}
 
 	
-	protected Caseflash fabriqueCaseflashComplete(int premierTerme, String[] tabchoix) {
+	protected Caseflash fabriqueCaseflashCompleteSomme(int premierTerme, String[] tabchoix) {
 		Caseflash c = new Caseflash(String.valueOf(premierTerme)+"+"+String.valueOf(premierTerme),premierTerme+premierTerme);
+		return completeCaseflash(c, tabchoix);
+	}
+	
+	protected Caseflash fabriqueCaseflashCompleteExp(String expression, String[] tabchoix) {
+		Caseflash c = new Caseflash(expression, TechniqueDataUtil.getInstance().evalueExpression(expression));
 		return completeCaseflash(c, tabchoix);
 	}
 	

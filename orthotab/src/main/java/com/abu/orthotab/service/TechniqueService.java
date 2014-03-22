@@ -13,9 +13,13 @@ public interface TechniqueService {
 	
 	List<Case> getTechnique02(int debut, int fin, int pas, String pos, String niveau);
 	
+	List<Case> getTechnique02Variante(String pos, String niveau);
+	
 	List<Caseflash> getTechnique03(String niveau);
 	
 	List<Case> getTechnique04(String niveau, int nbInRow, int debut, int fin, int pas);
+	
+	List<Case> getTechnique04Variante(int nbInRow,String niveau);
 	
 	List<Domino> getTechnique05Choix(String niveau);
 	

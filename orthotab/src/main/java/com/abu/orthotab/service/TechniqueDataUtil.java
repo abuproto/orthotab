@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.abu.orthotab.domain.Case;
 
-public abstract class TechniqueDataUtil {
+public class TechniqueDataUtil {
 
 	protected final static String CSS_ROND_PLEIN = "rond trou-plein";
 	protected final static String CSS_CARRE_PLEIN = "carre trou-plein";
@@ -23,6 +23,15 @@ public abstract class TechniqueDataUtil {
 	protected final static String CSS_BOUTON_CASE = "boutonCase";
 	protected final static String CSS_BOUTON_CASE_SMALL = "boutonCase-small";
 	protected final static String CSS_BOUTON_CASE_LONG = "boutonCase-long";
+	
+	protected TechniqueDataUtil() {
+	};
+
+	private final static TechniqueDataUtil instance = new TechniqueDataUtil();
+
+	public static TechniqueDataUtil getInstance() {
+		return instance;
+	}
 	
 	private final static Logger LOGGER = Logger
 			.getLogger(TechniqueDataUtil.class);

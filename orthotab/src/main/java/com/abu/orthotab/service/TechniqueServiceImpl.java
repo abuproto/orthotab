@@ -75,73 +75,136 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 	}
 
 	@Override
+	public List<Case> getTechnique02Variante(String pos, String niveau) {
+		List<Case> cases = Technique02Data.getInstance().listeBrutCase(niveau, pos);
+		return completeLoc(
+				melange(ajoutIntrus(niveau + pos, cases, CSS_BOUTON_CASE_SMALL)),
+				pos);
+	}
+	
+	@Override
 	public List<Caseflash> getTechnique03(String niveau) {
 
 		List<Caseflash> listCaseflash = new ArrayList<Caseflash>();
 
 		switch (niveau) {
 		case "s2j1e1":
-			listCaseflash.add(fabriqueCaseflashComplete(1, new String[] { "2",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(1, new String[] { "2",
 					"1" }));
-			listCaseflash.add(fabriqueCaseflashComplete(5, new String[] { "15",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(5, new String[] { "15",
 					"10" }));
-			listCaseflash.add(fabriqueCaseflashComplete(9, new String[] { "18",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(9, new String[] { "18",
 					"16" }));
-			listCaseflash.add(fabriqueCaseflashComplete(2, new String[] { "2",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(2, new String[] { "2",
 					"4", "3" }));
-			listCaseflash.add(fabriqueCaseflashComplete(3, new String[] { "4",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(3, new String[] { "4",
 					"5", "6" }));
-			listCaseflash.add(fabriqueCaseflashComplete(8, new String[] { "16",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(8, new String[] { "16",
 					"14", "12" }));
-			listCaseflash.add(fabriqueCaseflashComplete(4, new String[] { "8",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(4, new String[] { "8",
 					"6", "4", "10" }));
-			listCaseflash.add(fabriqueCaseflashComplete(10, new String[] {
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {
 					"10", "20", "15", "30" }));
-			listCaseflash.add(fabriqueCaseflashComplete(6, new String[] { "11",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(6, new String[] { "11",
 					"13", "12", "14" }));
-			listCaseflash.add(fabriqueCaseflashComplete(7, new String[] { "12",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(7, new String[] { "12",
 					"16", "14", "15" }));
 			break;
 		case "s2j4e1":
-			listCaseflash.add(fabriqueCaseflashComplete(5, new String[] { "10",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(5, new String[] { "10",
 					"15" }));
-			listCaseflash.add(fabriqueCaseflashComplete(11, new String[] {
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(11, new String[] {
 					"22", "28" }));
-			listCaseflash.add(fabriqueCaseflashComplete(13, new String[] {
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(13, new String[] {
 					"23", "26" }));
-			listCaseflash.add(fabriqueCaseflashComplete(14, new String[] {
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(14, new String[] {
 					"24", "28" }));
-			listCaseflash.add(fabriqueCaseflashComplete(12, new String[] {
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(12, new String[] {
 					"12", "24", "36" }));
-			listCaseflash.add(fabriqueCaseflashComplete(6, new String[] { "10",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(6, new String[] { "10",
 					"12", "14" }));
-			listCaseflash.add(fabriqueCaseflashComplete(9, new String[] { "18",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(9, new String[] { "18",
 					"20", "19" }));
-			listCaseflash.add(fabriqueCaseflashComplete(7, new String[] { "10",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(7, new String[] { "10",
 					"14", "18" }));
-			listCaseflash.add(fabriqueCaseflashComplete(8, new String[] { "16",
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(8, new String[] { "16",
 					"18", "20" }));
-			listCaseflash.add(fabriqueCaseflashComplete(10, new String[] {
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {
 					"15", "20", "30" }));
-			listCaseflash.add(fabriqueCaseflashComplete(15, new String[] {
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(15, new String[] {
 					"30", "40", "20" }));
 			break;
 		case "s5j4e1":
-			listCaseflash.add(fabriqueCaseflashComplete(2, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(4, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(6, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(8, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(10, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(12, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(14, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(25, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(30, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(50, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(70, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashComplete(85, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(2, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(4, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(6, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(8, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(12, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(14, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(25, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(30, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(50, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(70, new String[] {}));
+			listCaseflash.add(fabriqueCaseflashCompleteSomme(85, new String[] {}));
 			break;
-		}
-
+		case  "s1j2e2":
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4", new String[] { "6","9","4" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("5", new String[] { "5","3","4" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("2", new String[] { "7","9","8" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("7", new String[] { "5","3","4" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("9", new String[] { "1","2","9" }));
+			break;
+		case "s1j4e2":
+			// somme = 10
+			listCaseflash.add(fabriqueCaseflashCompleteExp("1", new String[] { "4","6","9","8" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("3", new String[] { "7","3","4","8" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6", new String[] { "7","4","5","3" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("8", new String[] { "2","3","4","1" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("9", new String[] { "5","2","1","3" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("5", new String[] { "4","5","3","6" }));
+			break;
+		case "s4j5e2":
+			listCaseflash.add(fabriqueCaseflashCompleteExp("(4+10)-2", new String[] { "9","12","14" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("(6+10)-1", new String[] { "8","11","15" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("(12+10)-1", new String[] { "21","24","18" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("(15+10)-1", new String[] { "19","27","24" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("(7+10)-2", new String[] { "15","11","17" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("(3+10)-1", new String[] { "14","9","12" }));
+			break;
+		case "s5j2e2":
+			listCaseflash.add(fabriqueCaseflashCompleteExp("5+9", new String[] { "8","17","14" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("7+9", new String[] { "6","16","22" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("3+9", new String[] { "12","7","14" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("13+9", new String[] { "20","22","18" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("8+9", new String[] { "15","18","17" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("15+9", new String[] { "24","21","27" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4+9", new String[] { "13","11","16" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("5+8", new String[] { "12","13","15" }));
+			break;
+		case "s3j5e2":
+			listCaseflash.add(fabriqueCaseflashCompleteExp("7x9", new String[] { "49","59","42" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6x6", new String[] { "35","36","37" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4x8", new String[] { "28","32","36" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("7x8", new String[] { "54","55","56" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6x7", new String[] { "42","49","36" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4x9", new String[] { "36","40","44","32" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("7x7", new String[] { "49","50","51","52" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6x8", new String[] { "50","48","42","44" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6x9", new String[] { "54","56","58","60" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4x7", new String[] { "28","29","27","26" }));
+			break;
+		case "s5j5e2":
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6x9", new String[] { "48","54","42" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6x6", new String[] { "35","36","37" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4x7", new String[] { "28","32","36" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4x8", new String[] { "30","32","34" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("4x4", new String[] { "15","16","14","12" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("5x3", new String[] { "15","10","20","25" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("7x5", new String[] { "30","35","40","45" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("6x8", new String[] { "50","48","42","44" }));
+			break;
+		}		
 		return listCaseflash;
 	}
 
@@ -182,6 +245,11 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 
 		return completeRow(nbInRow,
 				melange(ajoutIntrus(niveau, cases, CSS_BOUTON_CASE_SMALL)));
+	}
+	
+	public List<Case> getTechnique04Variante(int nbInRow,String niveau) {
+		List<Case> cases = Technique04Data.getInstance().listeBrutCase(niveau);
+		return completeRow(nbInRow,melange(cases));
 	}
 
 	@Override
