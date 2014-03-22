@@ -17,7 +17,7 @@ public class Technique04Data extends TechniqueDataUtil {
 	}
 
 	private Case construitCase(String exp) {
-		Case caseRes = new Case(Case.Type.RES.name(), "", evalueExpression(exp));
+		Case caseRes = new Case(Case.Type.RES.name(), "?", evalueExpression(exp));
 		caseRes.setRealLibelle(exp);
 		caseRes.setActive(true);
 		caseRes.setCssClass(CSS_BOUTON_CASE_SMALL);

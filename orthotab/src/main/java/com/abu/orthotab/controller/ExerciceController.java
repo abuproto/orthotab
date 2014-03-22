@@ -170,7 +170,7 @@ public class ExerciceController {
     		listeCase = techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
     		break;
      	case "s2j1e2":
-     		nbInRow = 10;
+     		nbInRow = 9;
      		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
      		break;
      	case "s4j1e2":

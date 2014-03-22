@@ -288,20 +288,12 @@ orthotabExercicesControllers
 								$timeout(cacheOperation, delaims);
 							};
 
-							/*$scope.effaceMessage = function() {
-								$scope.message = "";
-								$scope.result = "";
-							}*/
-
 							$scope.submit = function() {							
 								if ($scope.result == $scope.caseCourant.valeur) {
 									idx++;
 									$scope.message = "Bon résultat !";
 									if (idx < $scope.nbIt) {
-										//$scope.caseCourant = $scope.casesflash[idx];
-										//$scope.tempsEcoule = false;
 										$scope.dspsuivant = true;
-										//$timeout(cacheOperation, 5000);
 									} else if (idx == $scope.nbIt) {
 										$scope.dspsuivant = false;
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
@@ -360,20 +352,22 @@ orthotabExercicesControllers
 							$scope.actif = true;
 
 							$scope.retourner = function() {
-								if ($rootScope.caseCombiFirst != null) {
-									$rootScope.caseCombiFirst.backgrdStyle = "#B5B276";
-									$rootScope.caseCombiFirst.sens = "VERSO";
-									$rootScope.caseCombiFirst.libelle = "";
-									$rootScope.caseCombiFirst = null;
+								if (nbCasesRecto == 2){
+									if ($rootScope.caseCombiFirst != null) {
+										$rootScope.caseCombiFirst.backgrdStyle = "#B5B276";
+										$rootScope.caseCombiFirst.sens = "VERSO";
+										$rootScope.caseCombiFirst.libelle = "?";
+										$rootScope.caseCombiFirst = null;
+									}
+									if ($rootScope.caseCombiSecond != null) {
+										$rootScope.caseCombiSecond.backgrdStyle = "#B5B276";
+										$rootScope.caseCombiSecond.sens = "VERSO";
+										$rootScope.caseCombiSecond.libelle = "?";
+										$rootScope.caseCombiSecond = null;
+									}
+									$scope.actif = true;
+									nbCasesRecto = 0;
 								}
-								if ($rootScope.caseCombiSecond != null) {
-									$rootScope.caseCombiSecond.backgrdStyle = "#B5B276";
-									$rootScope.caseCombiSecond.sens = "VERSO";
-									$rootScope.caseCombiSecond.libelle = "";
-									$rootScope.caseCombiSecond = null;
-								}
-								$scope.actif = true;
-								nbCasesRecto = 0;
 							}
 
 							$scope.nbCombiTrouve = 0;
@@ -413,7 +407,7 @@ orthotabExercicesControllers
 
 							$scope.enregistreCase = function(caseCombi, $event,
 									ind) {
-								if ($scope.actif && caseCombi.active) {
+								if ($scope.actif && caseCombi.active && nbCasesRecto < 2) {
 
 									if (caseCombi.sens == "VERSO"
 											&& nbCasesRecto < 2) {

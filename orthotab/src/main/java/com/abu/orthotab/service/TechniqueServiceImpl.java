@@ -211,14 +211,14 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 	private List<Case> listeBrutTechnique04(int debut, int fin, int pas) {
 		List<Case> cases = new ArrayList<Case>();
 		for (int i = debut; i <= fin; i = i + pas) {
-			Case caseOp = new Case(Case.Type.OP.name(), "", i + i);
+			Case caseOp = new Case(Case.Type.OP.name(), "?", i + i);
 			caseOp.setRealLibelle(i + "+" + i);
 			caseOp.setActive(true);
 			caseOp.setCssClass(CSS_BOUTON_CASE_SMALL);
 			caseOp.setBackgrdStyle(STYLE_BGRD_GRIS);
 			caseOp.setSens("VERSO");
 			cases.add(caseOp);
-			Case caseRes = new Case(Case.Type.RES.name(), "", i + i);
+			Case caseRes = new Case(Case.Type.RES.name(), "?", i + i);
 			caseRes.setRealLibelle(String.valueOf(i + i));
 			caseRes.setActive(true);
 			caseRes.setCssClass(CSS_BOUTON_CASE_SMALL);
