@@ -22,22 +22,30 @@
 <button class="boutonGeneral" ng-click="exercices(1,2,0)">semaine 1 jour 2</button><br/>
 <button class="boutonGeneral" ng-click="exercices(1,3,0)">semaine 1 jour 3</button><br/>
 <button class="boutonGeneral" ng-click="exercices(1,4,0)">semaine 1 jour 4</button><br/>
+<button class="boutonGeneral" ng-click="exercices(1,5,0)">semaine 1 jour 5</button><br/>
 <button class="boutonGeneral" ng-click="exercices(2,1,0)">semaine 2 jour 1</button><br/>
 <button class="boutonGeneral" ng-click="exercices(2,2,0)">semaine 2 jour 2</button><br/>
 <button class="boutonGeneral" ng-click="exercices(2,3,0)">semaine 2 jour 3</button><br/>
 <button class="boutonGeneral" ng-click="exercices(2,4,0)">semaine 2 jour 4</button><br/>
 <button class="boutonGeneral" ng-click="exercices(2,5,0)">semaine 2 jour 5</button><br/>
 <button class="boutonGeneral" ng-click="exercices(3,1,0)">semaine 3 jour 1</button><br/>
+<button class="boutonGeneral" ng-click="exercices(3,2,0)">semaine 3 jour 2</button><br/>
 <button class="boutonGeneral" ng-click="exercices(3,3,0)">semaine 3 jour 3</button><br/>
-<button class="boutonGeneral" ng-click="exercices(3,4,0)">semaine 3 jour 4</button><br/>
-<button class="boutonGeneral" ng-click="exercices(4,1,0)">semaine 4 jour 1</button><br/>
-<button class="boutonGeneral" ng-click="exercices(4,3,0)">semaine 4 jour 3</button><br/>
-<button class="boutonGeneral" ng-click="exercices(5,2,0)">semaine 5 jour 2</button><br/>
-<button class="boutonGeneral" ng-click="exercices(5,4,0)">semaine 5 jour 4</button><br/>
-<button class="boutonGeneral" ng-click="exercices(5,5,0)">semaine 5 jour 5</button>
+
 </div>
 <div id="milieu-right">
-
+<button class="boutonGeneral" ng-click="exercices(3,4,0)">semaine 3 jour 4</button><br/>
+<button class="boutonGeneral" ng-click="exercices(3,5,0)">semaine 3 jour 5</button><br/>
+<button class="boutonGeneral" ng-click="exercices(4,1,0)">semaine 4 jour 1</button><br/>
+<button class="boutonGeneral" ng-click="exercices(4,2,0)">semaine 4 jour 2</button><br/>
+<button class="boutonGeneral" ng-click="exercices(4,3,0)">semaine 4 jour 3</button><br/>
+<button class="boutonGeneral" ng-click="exercices(4,4,0)">semaine 4 jour 4</button><br/>
+<button class="boutonGeneral" ng-click="exercices(4,5,0)">semaine 4 jour 5</button><br/>
+<button class="boutonGeneral" ng-click="exercices(5,1,0)">semaine 5 jour 1</button><br/>
+<button class="boutonGeneral" ng-click="exercices(5,2,0)">semaine 5 jour 2</button><br/>
+<button class="boutonGeneral" ng-click="exercices(5,3,0)">semaine 5 jour 3</button><br/>
+<button class="boutonGeneral" ng-click="exercices(5,4,0)">semaine 5 jour 4</button><br/>
+<button class="boutonGeneral" ng-click="exercices(5,5,0)">semaine 5 jour 5</button>
 </div>
 
 <div id="center" align="center">
