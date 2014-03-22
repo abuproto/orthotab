@@ -248,8 +248,11 @@ orthotabExercicesControllers
 
 							if ($scope.optSaisie) {
 								$rootScope.consigne = "Les opérations vont apparaître quelques secondes. Retiens bien le calcul. Tu devras saisir le résultat correct dans la case qui va apparaître après.";
-							} else {
+							} else if ($scope.optDouble){
 								$rootScope.consigne = "Les opérations vont apparaître quelques secondes. Retiens bien le calcul. Tu devras cliquer sur le résultat correct qui va apparaître après.";
+							} else if($scope.optSomme){
+								$rootScope.consigne = "Un chiffre va apparaître quelques secondes. Retiens-le bien ! tu devras cliquer sur le chiffre qui complète la dizaine. " +
+										"Exemple : si tu vois le chiffre 1, tu devras cliquer sur le 9 parce que 1+9 = 10 ! à toi !";
 							}
 
 							$scope.casesflash = Technique03.query({}, {
@@ -259,8 +262,10 @@ orthotabExercicesControllers
 							$scope.tempsEcoule = false;
 							$scope.debut = false;
 							$scope.nbEchec = 0;
+							$scope.dspsuivant = false;
 
 							var idx = 0;
+							var delaims = $scope.delai * 1000;
 
 							var cacheOperation = function() {
 								$scope.tempsEcoule = true;
@@ -272,39 +277,58 @@ orthotabExercicesControllers
 								$scope.caseCourant = $scope.casesflash[idx];
 								$scope.nbIt = $scope.casesflash.length;
 								$scope.debut = true;
-								$timeout(cacheOperation, 5000);
+								$timeout(cacheOperation, delaims);
 							};
-
-							$scope.effaceMessage = function() {
+							
+							$scope.suivant = function() {
+								$scope.caseCourant = $scope.casesflash[idx];
 								$scope.message = "";
 								$scope.result = "";
-							}
+								$scope.tempsEcoule = false;
+								$timeout(cacheOperation, delaims);
+							};
 
-							$scope.submit = function() {
+							/*$scope.effaceMessage = function() {
+								$scope.message = "";
+								$scope.result = "";
+							}*/
+
+							$scope.submit = function() {							
 								if ($scope.result == $scope.caseCourant.valeur) {
 									idx++;
+									$scope.message = "Bon résultat !";
 									if (idx < $scope.nbIt) {
-										$scope.caseCourant = $scope.casesflash[idx];
-										$scope.tempsEcoule = false;
-										$timeout(cacheOperation, 5000);
+										//$scope.caseCourant = $scope.casesflash[idx];
+										//$scope.tempsEcoule = false;
+										$scope.dspsuivant = true;
+										//$timeout(cacheOperation, 5000);
 									} else if (idx == $scope.nbIt) {
+										$scope.dspsuivant = false;
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 										$rootScope.niveauFini = true;
 									}
 								} else {
+									$scope.dspsuivant = false;
 									$scope.message = "Résultat incorrect";
 									$scope.nbEchec++;
 								}
 							};
 
 							$scope.valider = function(caseflash) {
-								if (caseflash.valeur == $scope.caseCourant.valeur) {
+								var verif = false;
+								if($scope.optDouble){
+									verif = (caseflash.valeur == $scope.caseCourant.valeur);
+								}else if($scope.optSomme){
+									verif = (caseflash.valeur + $scope.caseCourant.valeur == 10);
+								}
+								
+								if (verif) {
 									caseflash.cssClass = "boutonCase groupe-case-correct";
 									idx++;
 									if (idx < $scope.nbIt) {
 										$scope.caseCourant = $scope.casesflash[idx];
 										$scope.tempsEcoule = false;
-										$timeout(cacheOperation, 5000);
+										$timeout(cacheOperation, delaims);
 									} else if (idx == $scope.nbIt) {
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 										$rootScope.niveauFini = true;

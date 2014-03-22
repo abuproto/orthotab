@@ -6,10 +6,10 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s2j4e1';optSomme=true;delai=5;">
+<body ng-app="orthotabApp" ng-init="niveau='s1j4e3';optSomme=true;delai=5;">
 <div id="page">
 	<div id="bloc-principal">
-<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s2j4'">
+<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s1j4'">
 <%@include file="../includes/inc_exercicesnav.htm"%>
 <div id="center"><p align="center">Calcul flash</p></div>
 </div>

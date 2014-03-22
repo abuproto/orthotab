@@ -148,7 +148,7 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(70, new String[] {}));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(85, new String[] {}));
 			break;
-		case  "s1j2e2":
+		case  "s1j2e3":
 			listCaseflash.add(fabriqueCaseflashCompleteExp("4", new String[] { "6","9","4" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("5", new String[] { "5","3","4" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("2", new String[] { "7","9","8" }));
@@ -183,7 +183,7 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 			listCaseflash.add(fabriqueCaseflashCompleteExp("5+8", new String[] { "12","13","15" }));
 			break;
 		case "s3j5e2":
-			listCaseflash.add(fabriqueCaseflashCompleteExp("7x9", new String[] { "49","59","42" }));
+			listCaseflash.add(fabriqueCaseflashCompleteExp("7x9", new String[] { "49","63","42" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("6x6", new String[] { "35","36","37" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("4x8", new String[] { "28","32","36" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("7x8", new String[] { "54","55","56" }));

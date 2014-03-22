@@ -6,7 +6,7 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s5j4e1';optSaisie=true;">
+<body ng-app="orthotabApp" ng-init="niveau='s5j4e1';optSaisie=true;delai=5;">
 <div id="page">
 	<div id="bloc-principal">
 <div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s5j4'">
@@ -28,10 +28,11 @@
 <div align="center" ng-show="tempsEcoule">
 <br/>
  <form ng-submit="submit()">
-    <input ng-model="result" type="text" name="result" placeholder="résultat" ng-focus="effaceMessage()" /><br/>
+    <input ng-model="result" type="text" name="result" placeholder="résultat"/><br/><br/>
     <input type="submit" value="Vérifier le calcul" class="boutonGeneral"/>
   </form>
-  <span>{{message}}</span>
+  <br/><span>{{message}}</span>
+  <p ng-show="dspsuivant"><button class="boutonGeneral" ng-click="suivant()">Suivant</button></p>
 </div>
 </div>
 
