@@ -17,6 +17,7 @@
 
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="exercices(2,3,1)">Calcul à trou</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(2,3,3)">Relier des colonnes</button><br/>
 </div>
 
 </div>

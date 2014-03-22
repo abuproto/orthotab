@@ -161,6 +161,7 @@ orthotabExercicesControllers
 
 							$scope.enregistreCaseG = function(caseCombi,
 									$event, ind) {
+								$rootScope.messageNiveau = "";
 								if (caseCombi.active) {
 									if (!verifieIntrus(caseCombi)) {
 										$scope.caseGCourant = caseCombi;
@@ -172,6 +173,7 @@ orthotabExercicesControllers
 
 							$scope.enregistreCaseD = function(caseCombi,
 									$event, ind) {
+								$rootScope.messageNiveau = "";
 								if (caseCombi.active) {
 									if (!verifieIntrus(caseCombi)) {
 										$scope.caseDCourant = caseCombi;

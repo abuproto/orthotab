@@ -12,12 +12,11 @@
 <div id="left">
 </div>
 <div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil" ng-click="home()" style="cursor: hand;cursor: pointer;"/></div>
-<div id="center"><p align="center">Semaine 1 - Jour 4</p></div>
+<div id="center"><p align="center">Semaine 5 - Jour 1</p></div>
 </div>
 
 <div class="div-milieu" align="center">
-<button class="boutonGeneral2" ng-click="exercices(1,4,1)">Associer des paires par couleur</button><br/>
-<button class="boutonGeneral2" ng-click="exercices(1,4,2)">Relier les colonnes</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(5,1,2)">Relier des colonnes</button><br/>
 </div>
 
 </div>

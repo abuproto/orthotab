@@ -17,6 +17,7 @@
 
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="exercices(2,2,1)">Mémory</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(2,2,2)">Relier des colonnes</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(2,2,3)">Associer des paires par couleur</button><br/>
 </div>
 
