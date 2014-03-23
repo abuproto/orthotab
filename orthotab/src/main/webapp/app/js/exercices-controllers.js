@@ -516,6 +516,7 @@ orthotabExercicesControllers
 							var idx = 0;
 
 							$scope.debut = false;
+							$scope.dspsuivant = false;
 
 							$scope.commencer = function() {
 								$scope.boiteCourant = $scope.boites[idx];
@@ -528,6 +529,7 @@ orthotabExercicesControllers
 							$scope.suivant = function() {
 								idx++;
 								$scope.boiteCourant = $scope.boites[idx];
+								$scope.message = "";
 							}
 
 							$scope.enregistreCase = function(caseCombi) {
@@ -535,34 +537,125 @@ orthotabExercicesControllers
 									if (caseCombi.type == "RES") {
 										caseCombi.backgrdStyle = "green";
 										$scope.boiteCourant.librestant = caseCombi.valeur;
+										$scope.message = "Bon résultat !";
+										$scope.dspsuivant = true;
 										if (idx + 1 == $scope.nbIt) {
 											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 											$rootScope.niveauFini = true;
+											$scope.dspsuivant = false;
 										}
 									} else {
 										caseCombi.backgrdStyle = "red";
 										$scope.nbEchec++;
+										$scope.dspsuivant = false;
+										$scope.message = "Résultat incorrect";
 									}
 								} else if ($scope.optCalcul && caseCombi.active) {
 									if($scope.boiteCourant.valrestant==caseCombi.valeur){
 										caseCombi.backgrdStyle = "green";
 										caseCombi.active = false;
-										$scope.boiteCourant.librestant = caseCombi.valeur;
+										$scope.boiteCourant.librestant = $scope.boiteCourant.valmax - $scope.boiteCourant.valacquis;
+										$scope.message = "Bon résultat !";
+										$scope.dspsuivant = true;
 										if (idx + 1 == $scope.nbIt) {
 											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 											$rootScope.niveauFini = true;
+											$scope.dspsuivant = false;
 										}
 									}else if($scope.boiteCourant.valrestant>caseCombi.valeur){
 										caseCombi.backgrdStyle = "green";
 										caseCombi.active = false;
+										$scope.dspsuivant = false;
 										$scope.boiteCourant.valrestant = $scope.boiteCourant.valrestant - caseCombi.valeur;
 									}else{
 										caseCombi.backgrdStyle = "red";
 										$scope.nbEchec++;
+										$scope.dspsuivant = false;
+										$scope.message = "Résultat incorrect";
 									}
 								}
 							}
 						} ]);
+
+orthotabExercicesControllers
+.controller(
+		'Technique07Ctrl',
+		[
+				'$rootScope',
+				'$scope',
+				'Technique07',
+				function($rootScope, $scope, Technique07) {
+					
+					$rootScope.consigne = "La carte noire est le résultat d’une opération. Il faut que tu retrouves les bons chiffres de cette opération. " +
+							"Pour cela choisis la bonne carte bleu et multiplie la avec la bonne carte rouge.";
+
+					$scope.memorym = Technique07.query({}, {
+						'niveau' : $scope.niveau
+					});
+	
+					$scope.nbEchec = 0;
+					var idx = 0;
+	
+					$scope.debut = false;
+					$scope.dspsuivant = false;
+	
+					$scope.commencer = function() {
+						$scope.memorymCourant = $scope.memorym[idx];
+						$scope.nbIt = $scope.memorym.length;
+						$scope.debut = true;
+					};
+	
+					$rootScope.niveauFini = false;
+	
+					$scope.suivant = function() {
+						idx++;
+						$scope.memorymCourant = $scope.memorym[idx];
+						$scope.message = "";
+					}
+					
+					$scope.enregistreCaseG = function(caseCombi,
+							$event, ind) {
+
+						$scope.caseGcourant = caseCombi;
+						caseCombi.backgrdStyle = "yellow";
+						verifieCalcul();
+					}
+
+					$scope.enregistreCaseD = function(caseCombi,
+							$event, ind) {
+
+						$scope.caseDcourant = caseCombi;
+						caseCombi.backgrdStyle = "yellow";
+						verifieCalcul();
+					}
+					var verifieCalcul = function() {
+						if ($scope.caseGcourant != null
+								&& $scope.caseDcourant != null) {
+							var produit = parseInt($scope.caseGcourant.valeur)
+									* parseInt($scope.caseDcourant.valeur);
+							if (produit == parseInt($scope.memorymCourant.valeur)) {
+								$scope.caseGcourant.backgrdStyle = "green";
+								$scope.caseDcourant.backgrdStyle = "green";
+								$scope.message = "Bon résultat !";
+								$scope.dspsuivant = true;
+								if (idx + 1 == $scope.nbIt) {
+									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+									$rootScope.niveauFini = true;
+									$scope.dspsuivant = false;
+								}
+							} else {
+								$scope.nbEchec++;
+								$scope.caseGcourant.backgrdStyle = "#B5B276";
+								$scope.caseGcourant = null;
+								$scope.caseDcourant.backgrdStyle = "#B5B276";
+								$scope.caseDcourant = null;
+								$scope.dspsuivant = false;
+								$scope.message = "Résultat incorrect";
+							}
+						}
+					}
+				} ]);
+
 
 orthotabExercicesControllers
 		.controller(
@@ -589,7 +682,6 @@ orthotabExercicesControllers
 								$scope.calculATrouCourant = $scope.calculATrou[idx];
 								$scope.nbIt = $scope.calculATrou.length;
 								$scope.debut = true;
-								console.log("$scope.nbIt : " + $scope.nbIt);
 							};
 
 							$rootScope.niveauFini = false;

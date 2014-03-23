@@ -19,6 +19,7 @@
 <button class="boutonGeneral2" ng-click="exercices(4,1,1)">Relier les colonnes</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(4,1,2)">Mémory</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(4,1,3)">Dominos</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(4,1,4)">Boîtes à compléter</button><br/>
 </div>
 
 </div>

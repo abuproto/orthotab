@@ -94,6 +94,15 @@ orthotabServices.factory('Technique06', [ '$resource', function($resource) {
 	});
 } ]);
 
+orthotabServices.factory('Technique07', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique07/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
 orthotabServices.factory('Technique08', [ '$resource', function($resource) {
 	return $resource('/orthotab/api/technique08/:niveau', {niveau:'@niveau'}, {
 		query : {

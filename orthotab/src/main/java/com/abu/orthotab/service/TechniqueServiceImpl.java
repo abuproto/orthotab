@@ -10,6 +10,7 @@ import com.abu.orthotab.domain.CalculATrou;
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
 import com.abu.orthotab.domain.Domino;
+import com.abu.orthotab.domain.MemoryMultipliant;
 
 @Service
 public class TechniqueServiceImpl extends UtilServiceImpl implements
@@ -295,6 +296,11 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 	@Override
 	public List<CalculATrou> getTechnique08(String niveau) {
 		return Technique08Data.getInstance().listeCalculATrou(niveau);
+	}
+
+	@Override
+	public List<MemoryMultipliant> getTechnique07(String niveau) {
+		return Technique07Data.getInstance().listeMemoryMultipliant(niveau);
 	}
 
 }

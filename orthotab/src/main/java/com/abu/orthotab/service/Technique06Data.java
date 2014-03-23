@@ -42,7 +42,7 @@ public class Technique06Data extends TechniqueDataUtil{
 		List<BoiteAOeuf> listeBoiteAOeuf = new ArrayList<BoiteAOeuf>();
 		
 		switch (niveau) {
-		case "s3j1e2":
+		case "s3j1e3":
 			listeBoiteAOeuf.add(construitBoiteAOeuf(20, 17, new String[]{"1","2","3","4"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(30, 23, new String[]{"5","6","7","8","9"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(50, 45, new String[]{"5","6","7","8","9"},0));
@@ -99,7 +99,7 @@ public class Technique06Data extends TechniqueDataUtil{
 			listeBoiteAOeuf.add(construitBoiteAOeuf(124, 68, new String[]{"25+25+6","2+30+24","32+32"},1));
 			break;
 		case "s4j5e4":
-			listeBoiteAOeuf.add(construitBoiteAOeuf(127, 78, new String[]{"2+20+29","15+25+9","32+47"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(127, 78, new String[]{"2+20+27","15+25+9","32+47"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(152, 86, new String[]{"44+16+6","4+10+52","14+26+35"},1));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(165, 118, new String[]{"2+45","16+24+7","20+35"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(112, 64, new String[]{"16+22+10","6+30+12","66+2"},1));
