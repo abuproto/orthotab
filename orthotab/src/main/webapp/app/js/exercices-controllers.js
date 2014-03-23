@@ -611,24 +611,30 @@ orthotabExercicesControllers
 						idx++;
 						$scope.memorymCourant = $scope.memorym[idx];
 						$scope.message = "";
+						$scope.dspsuivant = false;
+						$scope.caseGcourant = null;
+						$scope.caseDcourant = null;
 					}
 					
 					$scope.enregistreCaseG = function(caseCombi,
 							$event, ind) {
-
-						$scope.caseGcourant = caseCombi;
-						caseCombi.backgrdStyle = "yellow";
-						verifieCalcul();
+						if($scope.caseGcourant==null){
+							$scope.caseGcourant = caseCombi;
+							caseCombi.backgrdStyle = "yellow";
+							verifieCalcul();
+						}
 					}
 
 					$scope.enregistreCaseD = function(caseCombi,
 							$event, ind) {
-
-						$scope.caseDcourant = caseCombi;
-						caseCombi.backgrdStyle = "yellow";
-						verifieCalcul();
+						if($scope.caseDcourant==null){
+							$scope.caseDcourant = caseCombi;
+							caseCombi.backgrdStyle = "yellow";
+							verifieCalcul();
+						}
 					}
 					var verifieCalcul = function() {
+						$scope.message = "";
 						if ($scope.caseGcourant != null
 								&& $scope.caseDcourant != null) {
 							var produit = parseInt($scope.caseGcourant.valeur)
@@ -645,9 +651,9 @@ orthotabExercicesControllers
 								}
 							} else {
 								$scope.nbEchec++;
-								$scope.caseGcourant.backgrdStyle = "#B5B276";
+								$scope.caseGcourant.backgrdStyle = "red";
 								$scope.caseGcourant = null;
-								$scope.caseDcourant.backgrdStyle = "#B5B276";
+								$scope.caseDcourant.backgrdStyle = "blue";
 								$scope.caseDcourant = null;
 								$scope.dspsuivant = false;
 								$scope.message = "Résultat incorrect";
