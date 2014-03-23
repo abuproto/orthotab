@@ -16,6 +16,7 @@ import com.abu.orthotab.domain.Case;
 public class TechniqueDataUtil {
 
 	protected final static String CSS_ROND_PLEIN = "rond trou-plein";
+	protected final static String CSS_ROND_SF_PLEIN = "rond-sf trou-plein";
 	protected final static String CSS_CARRE_PLEIN = "carre trou-plein";
 	protected final static String CSS_CASE_NOMBRE = "case-nombre";
 	protected final static String STYLE_BGRD_GRIS = "#B5B276";
@@ -25,6 +26,7 @@ public class TechniqueDataUtil {
 	protected final static String CSS_BOUTON_CASE = "boutonCase";
 	protected final static String CSS_BOUTON_CASE_SMALL = "boutonCase-small";
 	protected final static String CSS_BOUTON_CASE_LONG = "boutonCase-long";
+	protected final static String CSS_BOUTON_CASE_XLONG = "boutonCase-xlong";
 	
 	protected TechniqueDataUtil() {
 	};

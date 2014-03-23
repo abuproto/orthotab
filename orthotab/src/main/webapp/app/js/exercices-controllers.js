@@ -672,9 +672,13 @@ orthotabExercicesControllers
 						'Technique08',
 						function($rootScope, $scope, Technique08) {
 
-							$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas… il en manque un bout ! "
+							if($scope.optValeur){
+								$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas… il en manque un bout ! "
 									+ "lequel de ces bouts peut aller selon toi? clique sur le chiffre qui complète l’opération";
-
+							}else if($scope.optRapide){
+								$rootScope.consigne = "";
+							}
+							
 							$scope.calculATrou = Technique08.query({}, {
 								'niveau' : $scope.niveau
 							});
@@ -691,26 +695,43 @@ orthotabExercicesControllers
 							};
 
 							$rootScope.niveauFini = false;
+							$scope.dspsuivant = false;
 
 							$scope.suivant = function() {
 								idx++;
 								$scope.calculATrouCourant = $scope.calculATrou[idx];
+								$scope.dspsuivant = false;
+								$scope.message = "";
 							}
 
 							$scope.enregistreCase = function(caseCombi, $event,
 									ind) {
 								var idtrou = $scope.calculATrouCourant.idtrou;
-								if (caseCombi.valeur == $scope.calculATrouCourant.listeCaseCible[idtrou].valeur) {
+								var verif = false;
+								if($scope.optValeur){
+									verif = (caseCombi.valeur == $scope.calculATrouCourant.listeCaseCible[idtrou].valeur);
+								}else if($scope.optRapide){
+									verif = (caseCombi.type == "RES");
+								}
+								
+								if (verif) {
 									caseCombi.backgrdStyle = "green";
-									$scope.calculATrouCourant.listeCaseCible[idtrou].libelle = $scope.calculATrouCourant.listeCaseCible[idtrou].valeur;
-									$scope.calculATrouCourant.listeCaseCible[idtrou].backgrdStyle = "green";
+									if($scope.optValeur){
+										$scope.calculATrouCourant.listeCaseCible[idtrou].libelle = $scope.calculATrouCourant.listeCaseCible[idtrou].valeur;
+										$scope.calculATrouCourant.listeCaseCible[idtrou].backgrdStyle = "green";
+									}
+									$scope.dspsuivant = true;
+									$scope.message = "Bon choix !";
 									if (idx + 1 == $scope.nbIt) {
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 										$rootScope.niveauFini = true;
+										$scope.dspsuivant = false;
 									}
 								} else {
 									caseCombi.backgrdStyle = "red";
 									$scope.nbEchec++;
+									$scope.dspsuivant = false;
+									$scope.message = "Choix incorrect";
 								}
 							}
 						} ]);

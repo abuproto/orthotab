@@ -17,6 +17,52 @@ public class Technique08Data extends TechniqueDataUtil {
 		return instance;
 	}
 
+	private CalculATrou construitCalculATrouRapide(int terme1, int terme2, int resultat, int idtrou, String[] tabprop, int idxchoix){
+		CalculATrou calculATrou = new CalculATrou();
+		calculATrou.setIdtrou(idtrou);
+	
+		Case caseTerme1 = new Case("",String.valueOf(terme1),terme1);
+		caseTerme1.setCssClass(CSS_ROND_SF_PLEIN);
+		caseTerme1.setBackgrdStyle(idtrou==0?STYLE_BGRD_JAUNE:STYLE_BGRD_GRIS);
+		calculATrou.addCaseCible(caseTerme1);
+		
+		Case caseSigne = new Case("","+",0);
+		caseSigne.setCssClass(CSS_CARRE_PLEIN);
+		caseSigne.setBackgrdStyle(STYLE_BGRD_GRIS);
+		calculATrou.addCaseCible(caseSigne);
+		
+		Case caseTerme2 = new Case("",String.valueOf(terme2),terme2);
+		caseTerme2.setCssClass(CSS_ROND_SF_PLEIN);
+		caseTerme2.setBackgrdStyle(idtrou==1?STYLE_BGRD_JAUNE:STYLE_BGRD_GRIS);
+		calculATrou.addCaseCible(caseTerme2);
+		
+		Case caseEgal = new Case("","=",0);
+		caseEgal.setCssClass(CSS_CARRE_PLEIN);
+		caseEgal.setBackgrdStyle(STYLE_BGRD_GRIS);
+		calculATrou.addCaseCible(caseEgal);
+		
+		Case caseResultat = new Case("",String.valueOf(resultat),resultat);
+		caseResultat.setCssClass(CSS_ROND_SF_PLEIN);
+		caseResultat.setBackgrdStyle(idtrou==2?STYLE_BGRD_JAUNE:STYLE_BGRD_GRIS);
+		calculATrou.addCaseCible(caseResultat);
+		
+		int i=0;
+		for(String prop : tabprop){
+			String type = "INTRUS";
+			if(idxchoix==i){
+				type = "RES";
+			}
+			Case caseChoix = new Case(type, prop, evalueExpression(prop));
+			caseChoix.setCssClass(CSS_BOUTON_CASE_XLONG);
+			caseChoix.setBackgrdStyle(STYLE_BGRD_GRIS);
+			calculATrou.addCaseChoix(caseChoix);
+			i++;
+		}
+		
+		return calculATrou;
+	}
+	
+	
 	private CalculATrou construitCalculATrou(int terme, String signe, int resultat, int idtrou, int valTrou, String[] tabprop){
 		CalculATrou calculATrou = new CalculATrou();
 		calculATrou.setIdtrou(idtrou);
@@ -103,6 +149,11 @@ public class Technique08Data extends TechniqueDataUtil {
 		caseSigne2.setBackgrdStyle(STYLE_BGRD_GRIS);
 		calculATrou.addCaseCible(caseSigne2);
 		
+		Case caseTerme2 = new Case("",String.valueOf(terme2),terme2);
+		caseTerme2.setCssClass(CSS_ROND_PLEIN);
+		caseTerme2.setBackgrdStyle(STYLE_BGRD_GRIS);
+		calculATrou.addCaseCible(caseTerme2);
+		
 		Case caseEgal = new Case("","=",0);
 		caseEgal.setCssClass(CSS_CARRE_PLEIN);
 		caseEgal.setBackgrdStyle(STYLE_BGRD_GRIS);
@@ -141,7 +192,7 @@ public class Technique08Data extends TechniqueDataUtil {
 			listeCalculATrou.add(construitCalculATrou(17, signe, 20, 2, 3, new String[]{"1","2","3"}));
 			listeCalculATrou.add(construitCalculATrou(11, signe, 20, 0, 9, new String[]{"8","9","10"}));
 			break;
-		case "s2j5e2":
+		case "s2j5e4":
 			signe="+";
 			listeCalculATrou.add(construitCalculATrou(11, signe, 20, 2, 9, new String[]{"9","19","14"}));
 			listeCalculATrou.add(construitCalculATrou(14, signe, 20, 2, 6, new String[]{"7","8","6"}));
@@ -203,6 +254,7 @@ public class Technique08Data extends TechniqueDataUtil {
 			listeCalculATrou.add(construitCalculATrou(43, signe, 40, 2, 3, new String[]{"3","4","5","6","7"}));
 			listeCalculATrou.add(construitCalculATrou(37, signe, 30, 2, 7, new String[]{"6","7","8","9","3"}));
 			listeCalculATrou.add(construitCalculATrou(41, signe, 40, 2, 1, new String[]{"1","2","7","8","9"}));
+			break;
 		case "s4j3e2":
 			signe="+";
 			listeCalculATrou.add(construitCalculATrouParentheses(10,1,14,5, new String[]{"5","7","8"}));
@@ -215,8 +267,60 @@ public class Technique08Data extends TechniqueDataUtil {
 			listeCalculATrou.add(construitCalculATrouParentheses(10,2,17,9, new String[]{"9","11","7","12"}));
 			listeCalculATrou.add(construitCalculATrou(8, signe, 13, 0, 5, new String[]{"4","5","6","8"}));
 			listeCalculATrou.add(construitCalculATrouParentheses(10,1,24,15, new String[]{"15","13","14","16"}));
+			break;
+		case "s3j1e4":
+			listeCalculATrou.add(construitCalculATrouRapide(42, 33, 75, 1, new String[]{"30+3","11+11+11"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(31, 24, 55, 0, new String[]{"30+1","15+15"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(22, 61, 83, 0, new String[]{"15+5+2","20+2"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(12, 52, 64, 0, new String[]{"6+4+2","10+2"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(44, 55, 99, 1, new String[]{"26+24+5","50+5","55+1"}, 1));
+			break;
+		case "s3j2e3":
+			listeCalculATrou.add(construitCalculATrouRapide(36, 11, 47, 1, new String[]{"10+1","5+5+1"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(25, 31, 56, 0, new String[]{"15+10","20+5"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(17, 20, 37, 0, new String[]{"5+5+7","10+7"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(40, 22, 62, 1, new String[]{"20+2","10+10+2"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(31, 28, 59, 0, new String[]{"14+15+2","30+1"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(25, 43, 68, 1, new String[]{"40+3","15+25+3","35+8"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(15, 24, 39, 1, new String[]{"15+5+4","20+4","25+4"}, 0));
+			break;
+		case "s3j4e4":
+			listeCalculATrou.add(construitCalculATrouRapide(38, 14, 52, 1, new String[]{"2+12","5+9"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(27, 16, 43, 1, new String[]{"8+6+2","3+13"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(25, 59, 84, 0, new String[]{"22+4","1+24"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(38, 37, 75, 1, new String[]{"2+35","15+15+7"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(19, 17, 36, 1, new String[]{"14+3","1+16"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(45, 16, 61, 1, new String[]{"15+1","15+25+5","14+2"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(57, 35, 92, 1, new String[]{"5+16+14","3+32","34+1"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(46, 25, 71, 0, new String[]{"5+41","23+23","43+3"}, 0));
+			break;
+		case "s5j2e3":
+			listeCalculATrou.add(construitCalculATrouRapide(236, 152, 388, 2, new String[]{"236+2+100+50","123+154+111","243+122+127"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(178, 344, 522, 2, new String[]{"200+311+11","178+2+42+300","246+164+134"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(367, 54, 421, 2, new String[]{"367+3+51","350+25+29+17","360+7+4+57"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(184, 98, 282, 2, new String[]{"150+58+48+34","98+2+182","34+150+38+60"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(247, 78, 325, 2, new String[]{"247+3+50+25","200+70+30+17+8","100+100+20+27+58+20"}, 0));
+			break;			
+		case "s5j3e3":
+			signe="+";
+			listeCalculATrou.add(construitCalculATrou(160, signe, 256, 1, 96, new String[]{"92","96","80","16"}));
+			listeCalculATrou.add(construitCalculATrou(160, signe, 384, 0, 224, new String[]{"234","64","234","244"}));
+			listeCalculATrou.add(construitCalculATrou(310, signe, 520, 1, 210, new String[]{"210","320","200","220"}));
+			listeCalculATrou.add(construitCalculATrou(168, signe, 488, 1, 320, new String[]{"330","322","320","220"}));
+			listeCalculATrou.add(construitCalculATrou(67, signe, 335, 0, 268, new String[]{"248","268","265","368"}));
+			break;
+		case "s5j4e3":
+			listeCalculATrou.add(construitCalculATrouRapide(172, 93, 265, 2, new String[]{"170+30+63+2","152+80+13+20","100+72+23+70"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(247, 105, 352, 2, new String[]{"250+62+40","230+17+100+5","240+100+7+5"}, 2));
+			listeCalculATrou.add(construitCalculATrouRapide(134, 157, 291, 2, new String[]{"130+150+7+4","139+51+91+10","134+57+100"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(318, 166, 484, 2, new String[]{"350+21+63+50","310+160+8+6"}, 1));
+			listeCalculATrou.add(construitCalculATrouRapide(124, 59, 183, 2, new String[]{"120+50+9+4","60+33+90","24+10+90+50+9"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(355, 216, 571, 2, new String[]{"320+220+21+10","5+50+16+100+100+200+200","300+210+50+5+6"}, 2));
+			break;
+			
+
+
 		}
-				
 		return listeCalculATrou;
 	}
 }

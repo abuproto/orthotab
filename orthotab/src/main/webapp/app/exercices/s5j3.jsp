@@ -18,6 +18,7 @@
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="exercices(5,3,1)">Boîtes à compléter</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(5,3,2)">Mémory multipliant</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(5,3,3)">Calcul à trou</button><br/>
 </div>
 
 </div>

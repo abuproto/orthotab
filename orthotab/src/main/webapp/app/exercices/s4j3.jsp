@@ -17,6 +17,7 @@
 
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="exercices(4,3,1)">Associer des paires par couleur</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(4,3,2)">Calcul à trou</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(4,3,3)">Dominos</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(4,3,4)">Boîtes à compléter</button><br/>
 </div>
