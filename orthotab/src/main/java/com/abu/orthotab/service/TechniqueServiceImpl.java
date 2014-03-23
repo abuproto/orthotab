@@ -11,6 +11,7 @@ import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
 import com.abu.orthotab.domain.Domino;
 import com.abu.orthotab.domain.MemoryMultipliant;
+import com.abu.orthotab.domain.RemettreOrdre;
 
 @Service
 public class TechniqueServiceImpl extends UtilServiceImpl implements
@@ -303,4 +304,8 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 		return Technique07Data.getInstance().listeMemoryMultipliant(niveau);
 	}
 
+	@Override
+	public List<RemettreOrdre> getTechnique09(String niveau) {
+		return Technique09Data.getInstance().listeRemettreOrdre(niveau);
+	}
 }

@@ -8,6 +8,7 @@ import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
 import com.abu.orthotab.domain.Domino;
 import com.abu.orthotab.domain.MemoryMultipliant;
+import com.abu.orthotab.domain.RemettreOrdre;
 
 public interface TechniqueService {
 	List<Case> getTechnique01(String niveau, int nbInRow, int debut, int fin, int pas);
@@ -31,4 +32,6 @@ public interface TechniqueService {
 	List<MemoryMultipliant> getTechnique07(String niveau);
 	
 	List<CalculATrou> getTechnique08(String niveau);
+	
+	List<RemettreOrdre> getTechnique09(String niveau);
 }

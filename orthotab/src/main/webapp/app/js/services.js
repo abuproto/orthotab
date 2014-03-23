@@ -112,6 +112,15 @@ orthotabServices.factory('Technique08', [ '$resource', function($resource) {
 	});
 } ]);
 
+orthotabServices.factory('Technique09', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/technique09/:niveau', {niveau:'@niveau'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
+
 orthotabServices.factory('Didact01', [ '$resource', function($resource) {
 	return $resource('/orthotab/api/didact01/:nbCombi', {nbCombi:'@nbCombi'}, {
 		query : {

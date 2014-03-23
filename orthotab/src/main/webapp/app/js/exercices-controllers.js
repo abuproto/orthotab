@@ -735,3 +735,90 @@ orthotabExercicesControllers
 								}
 							}
 						} ]);
+
+orthotabExercicesControllers
+.controller(
+		'Technique09Ctrl',
+		[
+				'$rootScope',
+				'$scope',
+				'Technique09',
+				function($rootScope, $scope, Technique09) {
+					
+					$scope.rm = Technique09.query({}, {
+						'niveau' : $scope.niveau
+					});
+
+					$scope.nbEchec = 0;
+					var idx = 0;
+					$scope.nbCaseCible = 0;
+					
+					$scope.debut = false;
+
+					$scope.commencer = function() {
+						$scope.rmCourant = $scope.rm[idx];
+						$scope.nbIt = $scope.rm.length;
+						$scope.debut = true;
+						$scope.nbCaseCible=$scope.rmCourant.listeCaseCible.length;
+					};
+
+					$rootScope.niveauFini = false;
+					$scope.dspsuivant = false;
+
+					$scope.suivant = function() {
+						idx++;
+						$scope.rmCourant = $scope.rm[idx];
+						$scope.dspsuivant = false;
+						$scope.message = "";
+						$scope.nbCaseCible=$scope.rmCourant.listeCaseCible.length;
+					}
+										
+					$scope.enregistreCaseH = function(caseCombi, index) {
+						$scope.caseHcourantidx = index;
+						$scope.caseHcourant = caseCombi;
+						verifieCase();
+					}
+
+					$scope.enregistreCaseB = function(caseCombi) {
+						$scope.caseBcourant = caseCombi;
+						verifieCase();
+					}
+					
+					var verifieCase = function() {
+						if ($scope.caseHcourant != null
+								&& $scope.caseBcourant != null) {
+							if ($scope.nbCaseCible > 0
+									&& $scope.caseBcourant.exppos.indexOf($scope.caseHcourantidx)>=0) {
+								//$scope.caseHcourant.backgrdStyle = $scope.caseBcourant.realValeur;
+								//$scope.caseHcourant.cssClass = $scope.caseBcourant.cssClass;
+								$scope.caseHcourant.libelle = $scope.caseBcourant.libelle;
+								$scope.caseHcourant.actif = false;
+								$scope.caseBcourant.actif = false;
+								$scope.nbCaseCible--;
+								
+								//$scope.dspsuivant = true;
+								$scope.message = "Bon choix !";
+
+								
+							} else {
+								$scope.nbEchec++;
+								$scope.dspsuivant = false;
+								$scope.message = "Choix incorrect";
+							}
+
+							if ($scope.nbCaseCible == 0) {
+								//$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+								//$rootScope.niveauFini = true;
+								
+								
+								if (idx + 1 == $scope.nbIt) {
+									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+									$rootScope.niveauFini = true;
+									$scope.dspsuivant = false;
+								}else{
+									$scope.dspsuivant = true;
+								}
+							}
+						}
+					}
+				} ]);

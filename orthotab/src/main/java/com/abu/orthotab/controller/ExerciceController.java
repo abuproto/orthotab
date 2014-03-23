@@ -14,6 +14,7 @@ import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
 import com.abu.orthotab.domain.Domino;
 import com.abu.orthotab.domain.MemoryMultipliant;
+import com.abu.orthotab.domain.RemettreOrdre;
 import com.abu.orthotab.service.Technique01Data;
 import com.abu.orthotab.service.TechniqueService;
 
@@ -210,5 +211,11 @@ public class ExerciceController {
     @ResponseBody
     public List<CalculATrou> getTechnique08(@PathVariable("niveau") String niveau) {
         return techniqueService.getTechnique08(niveau);
+    }
+    
+    @RequestMapping("technique09/{niveau}")
+    @ResponseBody
+    public List<RemettreOrdre> getTechnique09(@PathVariable("niveau") String niveau) {
+        return techniqueService.getTechnique09(niveau);
     }
 }
