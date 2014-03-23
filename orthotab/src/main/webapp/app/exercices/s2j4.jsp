@@ -17,6 +17,7 @@
 
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="exercices(2,4,1)">Calcul Flash</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(2,4,2)">Dominos</button><br/>
 </div>
 
 </div>

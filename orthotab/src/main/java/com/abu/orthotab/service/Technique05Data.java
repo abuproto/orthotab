@@ -33,14 +33,14 @@ public class Technique05Data extends TechniqueDataUtil {
 		String[] s1j1e3 = { "1", "1" };
 		mapDominoCible.put("s1j1e3", Arrays.asList(s1j1e3));
 		
-		String[] s1j3e2 = { "3", "3" };
-		mapDominoCible.put("s1j3e2", Arrays.asList(s1j3e2));
+		String[] s1j3e3 = { "3", "3" };
+		mapDominoCible.put("s1j3e3", Arrays.asList(s1j3e3));
 		
-		String[] s1j5e2 = { "5", "5" };
-		mapDominoCible.put("s1j5e2", Arrays.asList(s1j5e2));
+		String[] s1j5e3 = { "5", "5" };
+		mapDominoCible.put("s1j5e3", Arrays.asList(s1j5e3));
 		
-		String[] s2j1e2 = { "7", "7" };
-		mapDominoCible.put("s2j1e2", Arrays.asList(s2j1e2));
+		String[] s2j1e3 = { "7", "7" };
+		mapDominoCible.put("s2j1e3", Arrays.asList(s2j1e3));
 		
 		String[] s2j4e2 = { "8", "8" };
 		mapDominoCible.put("s2j4e2", Arrays.asList(s2j4e2));
@@ -74,17 +74,17 @@ public class Technique05Data extends TechniqueDataUtil {
 				{ "3", "2" }, { "8", "9" } };
 		mapDominoChoix.put("s1j1e3", Arrays.asList(s1j1e3));
 		
-		String[][] s1j3e2 = { { "7", "6" }, { "4", "5" }, { "5", "1" },
+		String[][] s1j3e3 = { { "7", "6" }, { "4", "5" }, { "5", "1" },
 				{ "9", "2" }, { "8", "7" }, { "3", "9" }, { "1", "3" } };
-		mapDominoChoix.put("s1j3e2", Arrays.asList(s1j3e2));
+		mapDominoChoix.put("s1j3e3", Arrays.asList(s1j3e3));
 
-		String[][] s1j5e2 = { { "5", "6" }, { "4", "3" }, { "7", "2" },
+		String[][] s1j5e3 = { { "5", "6" }, { "4", "3" }, { "7", "2" },
 				{ "8", "1" }, { "9", "4" }, { "6", "7" }, { "3", "9" }, { "1", "5" } };
-		mapDominoChoix.put("s1j5e2", Arrays.asList(s1j5e2));
+		mapDominoChoix.put("s1j5e3", Arrays.asList(s1j5e3));
 		
-		String[][] s2j1e2 = { { "3", "6" }, { "4", "8" }, { "2", "1" },
+		String[][] s2j1e3 = { { "3", "6" }, { "4", "8" }, { "2", "1" },
 				{ "9", "4" }, { "6", "3" }, { "7", "1" }, { "5", "9" }, { "1", "5" } };
-		mapDominoChoix.put("s2j1e2", Arrays.asList(s2j1e2));
+		mapDominoChoix.put("s2j1e3", Arrays.asList(s2j1e3));
 		
 		String[][] s2j4e2 = { { "2", "3" }, { "7", "7" }, { "3", "1" },
 				{ "9", "6" }, { "4", "5" }, { "5", "9" }, { "1", "1" }, { "6", "2" }, { "8", "3" } };
@@ -142,6 +142,8 @@ public class Technique05Data extends TechniqueDataUtil {
 			}else{
 				domino.setCssClass(CSS_DOMINO_G_POINTILLE);
 			}
+			domino.setLibg("?");
+			domino.setLibd("?");
 			listeDominoCible.add(domino);
 		}
 

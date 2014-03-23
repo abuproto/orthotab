@@ -18,6 +18,7 @@
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="exercices(1,3,1)">Relier les colonnes</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(1,3,2)">Association par couleur</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(1,3,3)">Dominos</button><br/>
 </div>
 
 </div>

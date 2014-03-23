@@ -453,33 +453,39 @@ orthotabExercicesControllers
 							$scope.idxDominoCible = 1;
 
 							$scope.enregistreDomino = function(domino) {
-								$rootScope.messageNiveau = "";
-								var dominoActif = $scope.dominoCible[$scope.idxDominoCible];
-								var dominoCible = $scope.dominoCible[$scope.idxDominoCible - 1];
-
-								var verif = (dominoCible.vald + domino.valg == 10);
-
-								if (!$rootScope.niveauFini && verif) {
-									dominoActif.libg = domino.libg;
-									dominoActif.libd = domino.libd;
-									dominoActif.valg = domino.valg;
-									dominoActif.vald = domino.vald;
-
-									dominoActif.cssClass = "domino-groupe domino-groupe-plein";
-									dominoActif.actif = false;
-									domino.cssClass = "domino-groupe-cache";
-
-									if (($scope.idxDominoCible + 1) < $scope.dominoCible.length) {
-										$scope.dominoCible[$scope.idxDominoCible + 1].actif = true;
-										$scope.dominoCible[$scope.idxDominoCible + 1].cssClass = "domino-groupe domino-groupe-actif";
-										$scope.idxDominoCible++;
-									} else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
-										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-										$rootScope.niveauFini = true;
+								if(!$rootScope.niveauFini){
+									$rootScope.messageNiveau = "";
+									var dominoActif = $scope.dominoCible[$scope.idxDominoCible];
+									var dominoCible = $scope.dominoCible[$scope.idxDominoCible - 1];
+									var verif = false;
+									if($scope.opt10){
+										verif = (dominoCible.vald + domino.valg == 10);
+									}else if($scope.optValeur){
+										verif = (dominoCible.vald == domino.valg);
 									}
-								} else {
-									$scope.nbEchec++;
-									$rootScope.messageNiveau = "Ce n'est pas le bon domino !";
+	
+									if (!$rootScope.niveauFini && verif) {
+										dominoActif.libg = domino.libg;
+										dominoActif.libd = domino.libd;
+										dominoActif.valg = domino.valg;
+										dominoActif.vald = domino.vald;
+	
+										dominoActif.cssClass = "domino-groupe domino-groupe-plein";
+										dominoActif.actif = false;
+										domino.cssClass = "domino-groupe-cache";
+	
+										if (($scope.idxDominoCible + 1) < $scope.dominoCible.length) {
+											$scope.dominoCible[$scope.idxDominoCible + 1].actif = true;
+											$scope.dominoCible[$scope.idxDominoCible + 1].cssClass = "domino-groupe domino-groupe-actif";
+											$scope.idxDominoCible++;
+										} else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
+											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.niveauFini = true;
+										}
+									} else {
+										$scope.nbEchec++;
+										$rootScope.messageNiveau = "Ce n'est pas le bon domino !";
+									}
 								}
 							};
 						} ]);

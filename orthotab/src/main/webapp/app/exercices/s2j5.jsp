@@ -18,6 +18,7 @@
 <div class="div-milieu" align="center">
 <button class="boutonGeneral2" ng-click="exercices(2,5,1)">Mémory</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(2,5,2)">Relier des colonnes</button><br/>
+<button class="boutonGeneral2" ng-click="exercices(2,5,3)">Dominos</button><br/>
 </div>
 
 </div>
