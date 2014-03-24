@@ -16,8 +16,8 @@ public class Technique04Data extends TechniqueDataUtil {
 		return instance;
 	}
 
-	private Case construitCase(String exp) {
-		Case caseRes = new Case(Case.Type.RES.name(), "?", evalueExpression(exp));
+	private Case construitCase(String exp, String type) {
+		Case caseRes = new Case(type, "?", evalueExpression(exp));
 		caseRes.setRealLibelle(exp);
 		caseRes.setActive(true);
 		caseRes.setCssClass(CSS_BOUTON_CASE_SMALL);
@@ -31,46 +31,46 @@ public class Technique04Data extends TechniqueDataUtil {
 
 		switch (niveau) {
 		case "s2j1e2":
-			casesBrut.add(construitCase("3+9"));
-			casesBrut.add(construitCase("14"));
-			casesBrut.add(construitCase("4+9"));
-			casesBrut.add(construitCase("(6+10)-1"));
-			casesBrut.add(construitCase("(7+10)-1"));
-			casesBrut.add(construitCase("8+9"));
-			casesBrut.add(construitCase("(6+10)-2"));
-			casesBrut.add(construitCase("12"));
-			casesBrut.add(construitCase("5+8"));
-			casesBrut.add(construitCase("(4+10)-1"));
-			casesBrut.add(construitCase("6+9"));
-			casesBrut.add(construitCase("12"));
-			casesBrut.add(construitCase("5+9"));
-			casesBrut.add(construitCase("13"));
-			casesBrut.add(construitCase("(4+10)-2"));
-			casesBrut.add(construitCase("7+9"));
-			casesBrut.add(construitCase("17"));
-			casesBrut.add(construitCase("6+8"));
+			casesBrut.add(construitCase("3+9","OP"));
+			casesBrut.add(construitCase("14","OP"));
+			casesBrut.add(construitCase("4+9","OP"));
+			casesBrut.add(construitCase("(6+10)-1","OP"));
+			casesBrut.add(construitCase("(7+10)-1","OP"));
+			casesBrut.add(construitCase("8+9","OP"));
+			casesBrut.add(construitCase("(6+10)-2","OP"));
+			casesBrut.add(construitCase("12","OP"));
+			casesBrut.add(construitCase("5+8","OP"));
+			casesBrut.add(construitCase("(4+10)-1","RES"));
+			casesBrut.add(construitCase("6+9","RES"));
+			casesBrut.add(construitCase("12","RES"));
+			casesBrut.add(construitCase("5+9","RES"));
+			casesBrut.add(construitCase("13","RES"));
+			casesBrut.add(construitCase("(4+10)-2","RES"));
+			casesBrut.add(construitCase("7+9","RES"));
+			casesBrut.add(construitCase("17","RES"));
+			casesBrut.add(construitCase("6+8","RES"));
 			break;
 		case "s4j1e2":
-			casesBrut.add(construitCase("3+9"));
-			casesBrut.add(construitCase("(17+10)-1"));
-			casesBrut.add(construitCase("13"));
-			casesBrut.add(construitCase("5+8"));
-			casesBrut.add(construitCase("(5+10)-1"));
-			casesBrut.add(construitCase("27"));
-			casesBrut.add(construitCase("12"));
-			casesBrut.add(construitCase("7+9"));
-			casesBrut.add(construitCase("(15+10)-1"));
-			casesBrut.add(construitCase("(6+10)-2"));
-			casesBrut.add(construitCase("5+9"));
-			casesBrut.add(construitCase("16"));
-			casesBrut.add(construitCase("(5+10)-2"));
-			casesBrut.add(construitCase("13"));
-			casesBrut.add(construitCase("6+8"));
-			casesBrut.add(construitCase("24"));
-			casesBrut.add(construitCase("17+9"));
-			casesBrut.add(construitCase("(3+10)-1"));
-			casesBrut.add(construitCase("(18+10)-1"));
-			casesBrut.add(construitCase("4+8"));
+			casesBrut.add(construitCase("3+9","OP"));
+			casesBrut.add(construitCase("(17+10)-1","OP"));
+			casesBrut.add(construitCase("13","OP"));
+			casesBrut.add(construitCase("5+8","OP"));
+			casesBrut.add(construitCase("(5+10)-1","OP"));
+			casesBrut.add(construitCase("27","OP"));
+			casesBrut.add(construitCase("12","OP"));
+			casesBrut.add(construitCase("7+9","OP"));
+			casesBrut.add(construitCase("(15+10)-1","OP"));
+			casesBrut.add(construitCase("(6+10)-2","OP"));
+			casesBrut.add(construitCase("5+9","RES"));
+			casesBrut.add(construitCase("16","RES"));
+			casesBrut.add(construitCase("(5+10)-2","RES"));
+			casesBrut.add(construitCase("13","RES"));
+			casesBrut.add(construitCase("6+8","RES"));
+			casesBrut.add(construitCase("24","RES"));
+			casesBrut.add(construitCase("17+9","RES"));
+			casesBrut.add(construitCase("(3+10)-1","RES"));
+			casesBrut.add(construitCase("(18+10)-1","RES"));
+			casesBrut.add(construitCase("4+8","RES"));
 			break;
 		}
 		return casesBrut;

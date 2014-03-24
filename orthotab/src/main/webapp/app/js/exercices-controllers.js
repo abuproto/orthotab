@@ -379,13 +379,13 @@ orthotabExercicesControllers
 								if (nbCasesRecto == 2
 										&& $rootScope.caseCombiFirst != null
 										&& $rootScope.caseCombiSecond != null) {
-									var caseFisrt = $rootScope.caseCombiFirst;
+									var caseFirst = $rootScope.caseCombiFirst;
 									var caseSecond = $rootScope.caseCombiSecond;
 
-									if (caseFisrt.valeur == caseSecond.valeur) {
-										caseFisrt.active = false;
+									if ((caseFirst.valeur == caseSecond.valeur) && (caseFirst.type != caseSecond.type)) {
+										caseFirst.active = false;
 										caseSecond.active = false;
-										caseFisrt.backgrdStyle = "green";
+										caseFirst.backgrdStyle = "green";
 										caseSecond.backgrdStyle = "green";
 
 										$rootScope.caseCombiFirst = null;
@@ -398,7 +398,7 @@ orthotabExercicesControllers
 										}
 										nbCasesRecto = 0;
 									} else {
-										caseFisrt.backgrdStyle = "red";
+										caseFirst.backgrdStyle = "red";
 										caseSecond.backgrdStyle = "red";
 										$scope.nbEchec++;
 									}

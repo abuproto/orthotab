@@ -23,6 +23,8 @@
 {{case.libelle}}</button></p>
 <p><button class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-repeat="case in cases | filter:{row:2}" ng-click="enregistreCase(case, $event, $index)">
 {{case.libelle}}</button></p>
+<p><button class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-repeat="case in cases | filter:{row:3}" ng-click="enregistreCase(case, $event, $index)">
+{{case.libelle}}</button></p>
 </div>	
 </div>
 	</div><!-- fin bloc-principal -->
