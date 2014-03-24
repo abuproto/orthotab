@@ -379,6 +379,17 @@ body {
 	margin: 5px;
 }
 
+.case-nombre-sf{
+	border-radius: 8px;
+	border-style: solid;
+	font-weight: bold;
+	font-size: 18pt;
+	width: 60px;
+    height: 60px;
+	border-width: 2px;
+	margin: 5px;
+}
+
 /* calcul a trou */
 .rond{
 	border-width: 2px;

@@ -16,6 +16,7 @@
 </div>
 
 <div class="div-milieu" align="center">
+<button class="boutonGeneral2" ng-click="exercices(4,5,1)">Remettre dans le bon ordre</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(4,5,2)">Calcul Flash</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(4,5,3)">Mémory multipliant</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(4,5,4)">Boîtes à compléter</button><br/>

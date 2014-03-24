@@ -774,14 +774,22 @@ orthotabExercicesControllers
 					}
 										
 					$scope.enregistreCaseH = function(caseCombi, index) {
-						$scope.caseHcourantidx = index;
-						$scope.caseHcourant = caseCombi;
-						verifieCase();
+						if(caseCombi.active){
+							$scope.message = "";
+							$scope.caseHcourantidx = index;
+							$scope.caseHcourant = caseCombi;
+							$scope.caseHcourant.backgrdStyle = "yellow";
+							verifieCase();
+						}
 					}
 
 					$scope.enregistreCaseB = function(caseCombi) {
-						$scope.caseBcourant = caseCombi;
-						verifieCase();
+						if(caseCombi.active){
+							$scope.message = "";
+							$scope.caseBcourant = caseCombi;
+							$scope.caseBcourant.backgrdStyle = "yellow";
+							verifieCase();
+						}
 					}
 					
 					var verifieCase = function() {
@@ -789,14 +797,13 @@ orthotabExercicesControllers
 								&& $scope.caseBcourant != null) {
 							if ($scope.nbCaseCible > 0
 									&& $scope.caseBcourant.exppos.indexOf($scope.caseHcourantidx)>=0) {
-								//$scope.caseHcourant.backgrdStyle = $scope.caseBcourant.realValeur;
-								//$scope.caseHcourant.cssClass = $scope.caseBcourant.cssClass;
 								$scope.caseHcourant.libelle = $scope.caseBcourant.libelle;
-								$scope.caseHcourant.actif = false;
-								$scope.caseBcourant.actif = false;
+								$scope.caseBcourant.backgrdStyle = "green";
+								$scope.caseHcourant.backgrdStyle = "green";
+								$scope.caseHcourant.active = false;
+								$scope.caseBcourant.active = false;
 								$scope.nbCaseCible--;
 								
-								//$scope.dspsuivant = true;
 								$scope.message = "Bon choix !";
 
 								
@@ -804,13 +811,11 @@ orthotabExercicesControllers
 								$scope.nbEchec++;
 								$scope.dspsuivant = false;
 								$scope.message = "Choix incorrect";
+								$scope.caseBcourant.backgrdStyle = "#B5B276";
+								$scope.caseHcourant.backgrdStyle = "white";
 							}
 
-							if ($scope.nbCaseCible == 0) {
-								//$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
-								//$rootScope.niveauFini = true;
-								
-								
+							if ($scope.nbCaseCible == 0) {								
 								if (idx + 1 == $scope.nbIt) {
 									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 									$rootScope.niveauFini = true;
@@ -819,6 +824,8 @@ orthotabExercicesControllers
 									$scope.dspsuivant = true;
 								}
 							}
+							$scope.caseHcourant = null;
+							$scope.caseBcourant = null;
 						}
 					}
 				} ]);

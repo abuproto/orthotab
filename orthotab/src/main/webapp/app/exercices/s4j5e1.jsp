@@ -6,10 +6,10 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s4j4e3';">
+<body ng-app="orthotabApp" ng-init="niveau='s4j5e1';">
 <div id="page">
 	<div id="bloc-principal">
-<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s4j4'">
+<div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s4j5'">
 <%@include file="../includes/inc_exercicesnav.htm"%>
 <div id="center"><p align="center">Remettre dans le bon ordre</p></div>
 </div>

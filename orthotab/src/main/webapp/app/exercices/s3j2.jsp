@@ -16,6 +16,7 @@
 </div>
 
 <div class="div-milieu" align="center">
+<button class="boutonGeneral2" ng-click="exercices(3,2,1)">Remettre dans le bon ordre</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(3,2,2)">Associer des paires par couleur</button><br/>
 <button class="boutonGeneral2" ng-click="exercices(3,2,3)">Calcul à trou</button><br/>
 </div>

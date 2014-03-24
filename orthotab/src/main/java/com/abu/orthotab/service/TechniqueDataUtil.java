@@ -23,6 +23,7 @@ public class TechniqueDataUtil {
 	protected final static String STYLE_BGRD_JAUNE = "yellow";
 	protected final static String STYLE_BGRD_ROUGE = "red";
 	protected final static String STYLE_BGRD_BLEU = "blue";
+	protected final static String STYLE_BGRD_BLANC = "white";
 	protected final static String CSS_BOUTON_CASE = "boutonCase";
 	protected final static String CSS_BOUTON_CASE_SMALL = "boutonCase-small";
 	protected final static String CSS_BOUTON_CASE_LONG = "boutonCase-long";
