@@ -44,9 +44,10 @@
 <button class="boutonGeneral" ng-click="didactHome()">Didacticiel</button>
 </div>
 
-<div ng-show="isLogged" class="div-login">
+<div ng-show="isLogged && isAdmin" class="div-login">
 
-<div align="center" ng-show="{{utilisateur.role=='ADMIN'}}">
+<!--<div align="center" ng-show="{{utilisateur.role=='ADMIN'}}">-->
+<div align="center">
 <p align="center">Réservé aux administrateurs :</p>
 <p><button class="boutonGeneral" ng-click="accesExercices()">Accès à tous les exercices</button></p>
 </div>

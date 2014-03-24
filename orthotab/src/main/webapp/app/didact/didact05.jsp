@@ -17,7 +17,8 @@
 <div id="center"><p align="center">Dominos</p></div>
 </div>
 
-
+<div align="center"><p class="messageExercice">{{messageNiveau}}</p>
+</div>
 <div class="div-milieu" ng-controller="Didact05Ctrl">
 
 <div class="domino-div">
@@ -31,7 +32,6 @@
 </div>
 	
 	</div><!-- fin bloc-principal -->
-	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
 </div><!-- fin page -->
 
 </body>

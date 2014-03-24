@@ -63,11 +63,11 @@ orthotabExercicesControllers
 						'Technique01',
 						function($rootScope, $scope, Technique01) {
 
-							$rootScope.consigne = "Les opérations et les résultats sont tout  mélangés ! Aide-moi à les remettre "
-									+ "ensemble grâce aux couleurs. Trempe ton doigt dans ton pot de peinture et touche les deux cases qui vont ensemble.";
+							$rootScope.consigne = "Les opérations et les résultats sont mélangés ! Aide-moi à les remettre ensemble grâce aux couleurs. " +
+									"Trempe ton doigt dans un pot de peinture et touche les deux cases qui vont ensemble.";
 							if ($scope.optIntrus) {
 								$rootScope.consigne = $rootScope.consigne
-										+ " Attention : il y a des intrus qui ne vont avec rien. Tu ne dois pas les colorier.";
+										+ " Attention, il y a des intrus. Tu ne dois pas les colorier.";
 							}
 
 							$scope.cases = Technique01.query({}, {
@@ -134,7 +134,7 @@ orthotabExercicesControllers
 									+ "ensemble. Clique sur l'opération et le résultat pour les relier.";
 							if ($scope.optIntrus) {
 								$rootScope.consigne = $rootScope.consigne
-										+ " Attention : il y a des intrus. Tu ne dois pas les relier.";
+										+ " Attention, il y a des intrus. Tu ne dois pas les relier.";
 							}
 
 							$scope.casesg = Technique02.query({}, {
@@ -342,7 +342,8 @@ orthotabExercicesControllers
 						'Technique04',
 						function($rootScope, $scope, Technique04) {
 
-							$rootScope.consigne = "Les opérations et les résultats sont cachés ! retourne les deux par deux pour retrouver l'opération et le résultat qui vont ensemble.";
+							$rootScope.consigne = "Les opérations et les résultats sont cachés ! Retourne-les deux par deux pour retrouver l’opération et le résultat qui vont ensemble. " +
+									"Quand tu as retourné deux cartes, clique sur le bouton vert si c’est correct ou sur le bouton rouge si tu veux réessayer.";
 
 							$scope.cases = Technique04.query({}, {
 								'niveau' : $scope.niveau
@@ -438,9 +439,14 @@ orthotabExercicesControllers
 						function($rootScope, $scope, Technique05Choix,
 								Technique05Cible) {
 
-							$rootScope.consigne = "Avant ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? "
-									+ "C’est à cet endroit que tu dois placer les dominos pour continuer la série. tu dois trouver la bonne paire pour que le total fasse 10.";
-
+							if($scope.opt10){
+								$rootScope.consigne = "Ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? " +
+									"C’est à cet endroit que tu dois glisser les dominos pour continuer la série. Tu dois trouver la bonne paire pour que le total fasse 10.";
+							}else if($scope.optValeur){
+								$rootScope.consigne = "Ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? C’est à cet endroit que tu dois glisser les dominos pour continuer la série. " +
+										"Tu dois coller ensemble une opération avec son résultat ou deux opérations qui ont le même résultat.";
+							}
+								
 							$scope.dominoCible = Technique05Cible.query({}, {
 								'niveau' : $scope.niveau
 							});
@@ -499,13 +505,12 @@ orthotabExercicesControllers
 						'Technique06',
 						function($rootScope, $scope, Technique06) {
 							if ($scope.optRapide) {
-								$rootScope.consigne = "Voilà des boîtes à oeufs que je dois compléter. Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. "
-										+ "Et dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque boîte avec le bon tas d’oeufs, "
-										+ "et tu dois aussi choisir le calcul qui te permet de calculer le plus vite";
+								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Sur le couvercle il y a marqué combien on peut mettre d’oeufs au maximum. " +
+										"Dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque caisse avec le bon tas d’oeufs, en choisissant le calcul qui te permet de calculer le plus vite.";
 							} else if ($scope.optCalcul) {
-								$rootScope.consigne = "Voilà des boîtes d’oeufs que je dois compléter. Il y en a des petites et des grandes. "
-										+ "Sur le couvercle il y a marqué combien on peut mettre d’oeufs au maximum. Et dans la boîte il y a déjà quelques oeufs mais elle n’est pas complète !"
-										+ " Aide moi à compléter chaque boîte avec le bon tas d’oeufs";
+								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Il y en a des petites et des grandes. " +
+										"Sur le couvercle il y a marqué combien on peut mettre d’oeufs au maximum. " +
+										"Dans la boite il y a déjà quelques oeufs mais elle n’est pas complète ! Aide-moi à compléter chaque boîte avec le bon tas d’oeufs";
 							}
 
 							$scope.boites = Technique06.query({}, {
@@ -586,8 +591,8 @@ orthotabExercicesControllers
 				'Technique07',
 				function($rootScope, $scope, Technique07) {
 					
-					$rootScope.consigne = "La carte noire est le résultat d’une opération. Il faut que tu retrouves les bons chiffres de cette opération. " +
-							"Pour cela choisis la bonne carte bleu et multiplie la avec la bonne carte rouge.";
+					$rootScope.consigne = "La carte grise est le résultat d’une opération. Il faut que tu retrouves les bons chiffres de cette opération. " +
+							"Pour cela, choisis la bonne carte bleu et multiplie la avec la bonne carte rouge.";
 
 					$scope.memorym = Technique07.query({}, {
 						'niveau' : $scope.niveau
@@ -673,10 +678,11 @@ orthotabExercicesControllers
 						function($rootScope, $scope, Technique08) {
 
 							if($scope.optValeur){
-								$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas… il en manque un bout ! "
-									+ "lequel de ces bouts peut aller selon toi? clique sur le chiffre qui complète l’opération";
+								$rootScope.consigne = "ces opérations ont quelque chose qui ne va pas, elles sont incomplètes. " +
+										"Quel chiffre complète l’opération selon toi ? Clique sur le bon.";
 							}else if($scope.optRapide){
-								$rootScope.consigne = "";
+								$rootScope.consigne = "Cette opération est compliquée ! je suis sûr qu’en coupant le morceau jaune, on peut trouver le résultat plus facilement ! " +
+										"mais il faut bien le couper ! trouve la bonne façon et clique dessus.";
 							}
 							
 							$scope.calculATrou = Technique08.query({}, {
@@ -744,6 +750,9 @@ orthotabExercicesControllers
 				'$scope',
 				'Technique09',
 				function($rootScope, $scope, Technique09) {
+					
+					$rootScope.consigne = "Tous les morceaux de l’opération ont été mélangés ! Aide-moi à les remettre dans l’ordre. " +
+							"Tu as besoin de tous les morceaux pour faire une opération juste.";
 					
 					$scope.rm = Technique09.query({}, {
 						'niveau' : $scope.niveau

@@ -13,6 +13,8 @@
 <%@include file="../includes/inc_didactnav.htm"%>
 <div id="center"><p align="center">Associer des paires par couleur</p></div>
 </div>
+<div align="center"><p class="messageExercice">{{messageNiveau}}</p>
+</div>
 <div class="div-milieu">
 <div align="center" id="couleurs" ng-controller="DidactCouleursCtrl">
 <button class="{{couleur.cssClass}}" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event, $index)"/>
@@ -25,7 +27,6 @@
 </div>	
 </div>
 	</div><!-- fin bloc-principal -->
-	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
 </div><!-- fin page -->
 
 </body>

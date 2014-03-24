@@ -14,6 +14,8 @@
 
 <div id="center"><p align="center">Calcul Flash</p></div>
 </div>
+<div align="center"><p class="messageExercice">{{messageNiveau}}</p>
+</div>
 <div class="div-milieu" ng-controller="Didact03Ctrl">
 
 <div id="milieu-left">
@@ -39,7 +41,6 @@
 </div>
 
 	</div><!-- fin bloc-principal -->
-	<div id="footer" align="center" class="messageExercice">{{messageNiveau}}</div>
 </div><!-- fin page -->
 </body>
 </html>

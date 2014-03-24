@@ -173,9 +173,12 @@ orthotabControllers
 								// a completer avec verification User
 								$rootScope.isLogged = true;
 								$scope.utilisateur = cookieOrthoTab;
+								if($scope.utilisateur.role=='ADMIN'){
+									$rootScope.isAdmin = true;
+								}
 							} else {
 								var tokenls = localStorageService.get('usertoken');
-								
+								if(tokenls!=null){
 								UserTokenService
 								.findByToken(
 										{},
@@ -188,8 +191,10 @@ orthotabControllers
 											}else{
 												$rootScope.isLogged = true;
 												$scope.message = '';
-												//$scope.utilisateur = userByToken.prenom;
 												$scope.utilisateur = userByToken;
+												if($scope.utilisateur.role=='ADMIN'){
+													$rootScope.isAdmin = true;
+												}
 												$cookieStore.put(
 														'orthotab',
 														userByToken);
@@ -198,7 +203,7 @@ orthotabControllers
 												ActivityService.create(activity);
 											}
 										});
-								
+								}
 								
 								$rootScope.isLogged = false;
 								$scope.utilisateur = '';
@@ -250,6 +255,9 @@ orthotabControllers
 														$rootScope.isLogged = true;
 														$scope.message = '';
 														$scope.utilisateur = userConnecte;
+														if($scope.utilisateur.role=='ADMIN'){
+															$rootScope.isAdmin = true;
+														}
 														$cookieStore.put(
 																'orthotab',
 																userConnecte);
