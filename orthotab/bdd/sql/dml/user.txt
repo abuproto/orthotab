@@ -21,3 +21,5 @@ insert into USER values(10,'manon','Diraison','Manon','manon','PATIENT',0,'ff89c
 insert into USER values(11,'emma','De Sousa','Emma','emma','PATIENT',0,'e4bd48d062d9a48457666bf53913b0ae');
 insert into USER values(12,'noemie','Delalande','Noémie','noemie','PATIENT',0,'99cf6e5f733d6f5281b87ee5076d8772');
 insert into USER values(13,'janesse','Habbani','Janesse','janesse','PATIENT',0,'2b1f63107ceb0565cf3387367fc5b3bb');
+
+insert into USER values(14,'lurson','Lurson','','lurson','PATIENT',0,'85680e20f80126cd05221b766a65714f');

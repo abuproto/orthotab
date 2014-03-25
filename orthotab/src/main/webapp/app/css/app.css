@@ -199,6 +199,12 @@ body {
 	margin-bottom: 40px;
 }
 
+.div-milieu-accueil{
+	margin-right: 100px;
+	margin-left: 100px;
+	/*margin-bottom: 40px;*/
+}
+
 #left{float:left;width:140px;padding-left:10px;}
 #right{float:right;width:50px;padding:10px;}
 #center{
@@ -357,6 +363,32 @@ body {
 	width: 80px;
     height: 60px;
 	/*border-width: 2px;*/
+	margin: 5px;
+}
+
+.domino-small-g{
+	border-radius: 8px;
+	border-width: 8px;
+	border-style: solid;
+	font-weight: bold;
+	font-size: 10pt;
+	width: 80px;
+    height: 60px;
+	border-color : #F4FF3A;
+	background-color: #F4FF3A;
+	margin: 5px;
+}
+
+.domino-small-d{
+	border-radius: 8px;
+	border-width: 8px;
+	border-style: solid;
+	font-weight: bold;
+	font-size: 10pt;
+	width: 80px;
+    height: 60px;
+    border-color : #84CECC;
+	background-color: #84CECC;
 	margin: 5px;
 }
 

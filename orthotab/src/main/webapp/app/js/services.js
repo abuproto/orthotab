@@ -149,7 +149,7 @@ orthotabServices.factory('Didact04', [ '$resource', function($resource) {
 } ]);
 
 orthotabServices.factory('Accueil', [ '$resource', function($resource) {
-	return $resource('/orthotab/api/accueil/:nivcourant', {nivcourant:'@nivcourant'}, {
+	return $resource('/orthotab/api/accueil/:userid', {userid:'@userid'}, {
 		query : {
 			method : 'GET',
 			isArray : true

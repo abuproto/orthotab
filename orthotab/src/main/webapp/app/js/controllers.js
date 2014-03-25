@@ -102,7 +102,7 @@ orthotabControllers
 							var cookieOrthoTab = $cookieStore.get('orthotab');
 
 							$scope.etapes = Accueil.query({}, {
-								'nivcourant' : cookieOrthoTab.id
+								'userid' : cookieOrthoTab.id
 							});
 
 							$scope.goToNiveau = function($event, niveau) {
@@ -212,7 +212,7 @@ orthotabControllers
 
 							// depart
 							$scope.depart = function() {
-								//$window.location.href = "accueil.htm";
+								//$window.location.href = "../main/accueil.jsp";
 								$window.alert("En travaux !");
 							};
 							
