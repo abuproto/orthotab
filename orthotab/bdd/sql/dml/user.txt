@@ -24,4 +24,6 @@ insert into USER values(13,'janesse','Habbani','Janesse','janesse','PATIENT',0,'
 
 insert into USER values(14,'lurson','Lurson','','lurson','PATIENT',0,'85680e20f80126cd05221b766a65714f');
 
+insert into USER values(15,'sophie','Rouvreau','Sophie','sophie','ADMIN',1,'c22e07168c3f5d561e8cd05c94055442',null,0);
+
 update USER set nivcourant=1 where nivcourant=0;

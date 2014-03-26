@@ -122,7 +122,7 @@ orthotabExercicesControllers
 												
 												var fin = (new Date()).getTime();
 												var token = "";
-												var cookieOrthoTab = $cookies.orthotab;
+												var cookieOrthoTab = $cookies.orthotabv2;
 												if(cookieOrthoTab!=null){
 													token = getTokenInCookie(cookieOrthoTab);
 												}
@@ -246,7 +246,7 @@ orthotabExercicesControllers
 											
 											var fin = (new Date()).getTime();
 											var token = "";
-											var cookieOrthoTab = $cookies.orthotab;
+											var cookieOrthoTab = $cookies.orthotabv2;
 											if(cookieOrthoTab!=null){
 												token = getTokenInCookie(cookieOrthoTab);
 											}
@@ -336,7 +336,7 @@ orthotabExercicesControllers
 										
 										var fin = (new Date()).getTime();
 										var token = "";
-										var cookieOrthoTab = $cookies.orthotab;
+										var cookieOrthoTab = $cookies.orthotabv2;
 										if(cookieOrthoTab!=null){
 											token = getTokenInCookie(cookieOrthoTab);
 										}
@@ -371,7 +371,7 @@ orthotabExercicesControllers
 										
 										var fin = (new Date()).getTime();
 										var token = "";
-										var cookieOrthoTab = $cookies.orthotab;
+										var cookieOrthoTab = $cookies.orthotabv2;
 										if(cookieOrthoTab!=null){
 											token = getTokenInCookie(cookieOrthoTab);
 										}
@@ -456,7 +456,7 @@ orthotabExercicesControllers
 											
 											var fin = (new Date()).getTime();
 											var token = "";
-											var cookieOrthoTab = $cookies.orthotab;
+											var cookieOrthoTab = $cookies.orthotabv2;
 											if(cookieOrthoTab!=null){
 												token = getTokenInCookie(cookieOrthoTab);
 											}
@@ -561,7 +561,7 @@ orthotabExercicesControllers
 											
 											var fin = (new Date()).getTime();
 											var token = "";
-											var cookieOrthoTab = $cookies.orthotab;
+											var cookieOrthoTab = $cookies.orthotabv2;
 											if(cookieOrthoTab!=null){
 												token = getTokenInCookie(cookieOrthoTab);
 											}
@@ -635,7 +635,7 @@ orthotabExercicesControllers
 											
 											var fin = (new Date()).getTime();
 											var token = "";
-											var cookieOrthoTab = $cookies.orthotab;
+											var cookieOrthoTab = $cookies.orthotabv2;
 											if(cookieOrthoTab!=null){
 												token = getTokenInCookie(cookieOrthoTab);
 											}
@@ -662,7 +662,7 @@ orthotabExercicesControllers
 											
 											var fin = (new Date()).getTime();
 											var token = "";
-											var cookieOrthoTab = $cookies.orthotab;
+											var cookieOrthoTab = $cookies.orthotabv2;
 											if(cookieOrthoTab!=null){
 												token = getTokenInCookie(cookieOrthoTab);
 											}
@@ -762,7 +762,7 @@ orthotabExercicesControllers
 									
 									var fin = (new Date()).getTime();
 									var token = "";
-									var cookieOrthoTab = $cookies.orthotab;
+									var cookieOrthoTab = $cookies.orthotabv2;
 									if(cookieOrthoTab!=null){
 										token = getTokenInCookie(cookieOrthoTab);
 									}
@@ -854,7 +854,7 @@ orthotabExercicesControllers
 										
 										var fin = (new Date()).getTime();
 										var token = "";
-										var cookieOrthoTab = $cookies.orthotab;
+										var cookieOrthoTab = $cookies.orthotabv2;
 										if(cookieOrthoTab!=null){
 											token = getTokenInCookie(cookieOrthoTab);
 										}
@@ -964,7 +964,7 @@ orthotabExercicesControllers
 									
 									var fin = (new Date()).getTime();
 									var token = "";
-									var cookieOrthoTab = $cookies.orthotab;
+									var cookieOrthoTab = $cookies.orthotabv2;
 									if(cookieOrthoTab!=null){
 										token = getTokenInCookie(cookieOrthoTab);
 									}

@@ -164,7 +164,7 @@ orthotabControllers
 						function($rootScope, $scope, UserAuthService,
 								$http, $window, $timeout,
 								localStorageService, UserTokenService, ActivityService,$cookies) {
-							var cookieOrthoTab = $cookies.orthotab;
+							var cookieOrthoTab = $cookies.orthotabv2;
 							
 							$scope.infosClient = "H" + $window.innerHeight + " W" + $window.innerWidth;
 							$scope.ua = $window.navigator.userAgent;
@@ -198,7 +198,7 @@ orthotabControllers
 												}
 
 												var valcookie = userByToken.token + "#" + userByToken.prenom + "#" + userByToken.role;
-												document.cookie = "orthotab="+valcookie+";path=/orthotab/";
+												document.cookie = "orthotabv2="+valcookie+";path=/orthotab/";
 												
 												var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};
 												ActivityService.create(activity);
@@ -228,7 +228,8 @@ orthotabControllers
 							
 							// changerUtilisateur
 							$scope.changerUtilisateur = function() {
-								document.cookie = "orthotab=" + ";path=/orthotab/";
+								
+								document.cookie = "orthotabv2=" + ";path=/orthotab/";
 								localStorageService.remove('usertoken');
 								$window.location.href = "../main/index.jsp";
 							};
@@ -258,7 +259,7 @@ orthotabControllers
 														}
 														
 														var valcookie = userConnecte.token + "#" + userConnecte.prenom + "#" + userConnecte.role;
-														document.cookie = "orthotab="+valcookie+";path=/orthotab/";
+														document.cookie = "orthotabv2="+valcookie+";path=/orthotab/";
 														localStorageService.add('usertoken',userConnecte.token);
 														
 														var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};
