@@ -13,19 +13,22 @@ import com.abu.orthotab.domain.CalculATrou;
 import com.abu.orthotab.domain.Case;
 import com.abu.orthotab.domain.Caseflash;
 import com.abu.orthotab.domain.Domino;
+import com.abu.orthotab.domain.InfosExercice;
 import com.abu.orthotab.domain.MemoryMultipliant;
 import com.abu.orthotab.domain.RemettreOrdre;
+import com.abu.orthotab.service.InfosExerciceService;
 import com.abu.orthotab.service.Technique01Data;
 import com.abu.orthotab.service.TechniqueService;
 
 @Controller
 public class ExerciceController {
+	
+	@Autowired
 	TechniqueService techniqueService;
     
     @Autowired
-    public ExerciceController(TechniqueService techniqueService) {
-        this.techniqueService = techniqueService;
-    }
+    InfosExerciceService infosExerciceService;
+
  
     @RequestMapping("technique01/{niveau}")
     @ResponseBody
@@ -64,7 +67,7 @@ public class ExerciceController {
       		listeCase = techniqueService.getTechnique01(niveau, nbInRow, debut, fin, pas);
     		break;
      	case "s1j3e2":
-     		nbInRow = 9;
+     		nbInRow = 6;
      		listeCase = Technique01Data.getInstance().listeCase(niveau, nbInRow);
      		break;
      	case "s2j2e3":
@@ -102,12 +105,14 @@ public class ExerciceController {
     		listeCase = techniqueService.getTechnique02(debut, fin, pas, pos, niveau);
     		break;
       	case "s3j3e1":
-      	case "s3j4e1":
     		debut=10;
       		fin=90;
       		pas=10;
       		listeCase = techniqueService.getTechnique02(debut, fin, pas, pos, niveau);
     		break;
+      	case "s3j4e1":
+      		listeCase = techniqueService.getTechnique02Variante(pos, niveau);
+      		break;
       	case "s4j1e1":
     		debut=5;
       		fin=95;
@@ -158,25 +163,23 @@ public class ExerciceController {
     	List<Case> listeCase = null;
     	switch(niveau){
     	case "s2j2e1":
+     		nbInRow = 7;
+     		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
+     		break;
     	case "s2j5e1":
-    		debut=5;
-    		fin=15;
     		nbInRow = 6;
-    		listeCase = techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
+    		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
     		break;
      	case "s5j2e1":
-    		debut=3;
-    		fin=15;
-    		pas = 2;
-    		nbInRow = 10;
-    		listeCase = techniqueService.getTechnique04(niveau, nbInRow, debut, fin, pas);
+    		nbInRow = 7;
+    		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
     		break;
      	case "s2j1e2":
-     		nbInRow = 9;
+     		nbInRow = 5;
      		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
      		break;
      	case "s4j1e2":
-     		nbInRow = 10;
+     		nbInRow = 6;
      		listeCase = techniqueService.getTechnique04Variante(nbInRow, niveau);
      		break;
     	}
@@ -217,5 +220,11 @@ public class ExerciceController {
     @ResponseBody
     public List<RemettreOrdre> getTechnique09(@PathVariable("niveau") String niveau) {
         return techniqueService.getTechnique09(niveau);
+    }
+    
+    @RequestMapping("infosexercice/{token}/{nojour}")
+    @ResponseBody
+    public List<InfosExercice> getInfosExercice(@PathVariable("token") String token, @PathVariable("nojour") int nojour) {
+    	return infosExerciceService.getListInfosExercice(nojour, token);
     }
 }

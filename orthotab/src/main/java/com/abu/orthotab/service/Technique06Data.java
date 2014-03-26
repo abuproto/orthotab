@@ -75,52 +75,52 @@ public class Technique06Data extends TechniqueDataUtil{
 			listeBoiteAOeuf.add(construitBoiteAOeuf(76, 50, new String[]{"25+1","11+13+2","23+3"},0));			
 			break;
 		case "s3j5e3":
-			listeBoiteAOeuf.add(construitBoiteAOeuf(51, 36, new String[]{"4+11","8+7"},0));
+			//listeBoiteAOeuf.add(construitBoiteAOeuf(51, 36, new String[]{"4+11","8+7"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(62, 48, new String[]{"7+7","2+12"},1));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(93, 77, new String[]{"3+13","5+9"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(75, 51, new String[]{"4+20","12+8+4","16+8"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(44, 28, new String[]{"2+14","10+3+3","18+4"},0));
+			//listeBoiteAOeuf.add(construitBoiteAOeuf(44, 28, new String[]{"2+14","10+3+3","18+4"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(86, 59, new String[]{"13+8+6","1+26","17+9"},1));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(32, 17, new String[]{"3+12","6+4+5","14+5"},0));			
 			break;
 		case "s4j1e4":
 			listeBoiteAOeuf.add(construitBoiteAOeuf(128, 80, new String[]{"20+28","18+15+15","38+18"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(146, 70, new String[]{"42+30+4","30+46","15+61"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(135, 60, new String[]{"40+35","22+43+10","20+55"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(154, 92, new String[]{"8+54","14+48","8+64"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(167, 122, new String[]{"5+40","23+12+10","7+38"},0));			
+			listeBoiteAOeuf.add(construitBoiteAOeuf(116, 70, new String[]{"12+30+4","30+16","15+31"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(125, 60, new String[]{"40+25","22+33+10","20+55"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(104, 92, new String[]{"10+2","14-3","9+4"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(137, 122, new String[]{"5+20","23+2-10","7+19"},0));			
 			break;
 		case "s4j3e4":
-			listeBoiteAOeuf.add(construitBoiteAOeuf(151, 98, new String[]{"2+52","20+31+3","4+50"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(173, 127, new String[]{"15+15+16","3+43","40+6"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(161, 126, new String[]{"4+31","14+16+5","34+1"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(135, 87, new String[]{"25+15+8","3+10+35","22+51"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(146, 79, new String[]{"1+20+46","15+35+17","28+39"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(92, 38, new String[]{"2+52","20+31+3","4+50"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(113, 87, new String[]{"15+15+16","3+10+13","40+6"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(121, 19, new String[]{"2+100","2+110","70+34+1"},0));
+			//listeBoiteAOeuf.add(construitBoiteAOeuf(135, 87, new String[]{"25+15+8","3+10+35","22+51"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(106, 79, new String[]{"1+20+6","15+5+17","28+10"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(124, 68, new String[]{"25+25+6","2+30+24","32+32"},1));
 			break;
 		case "s4j5e4":
 			listeBoiteAOeuf.add(construitBoiteAOeuf(127, 78, new String[]{"2+20+27","15+25+9","32+47"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(152, 86, new String[]{"44+16+6","4+10+52","14+26+35"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(165, 118, new String[]{"2+45","16+24+7","20+35"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(122, 86, new String[]{"24+16+6","4+10+22","14+22+10"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(150, 118, new String[]{"2+30","15+10+7","20+32"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(112, 64, new String[]{"16+22+10","6+30+12","66+2"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(134, 75, new String[]{"5+20+34","32+13+14","66+2"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(178, 119, new String[]{"24+12+23","1+58","41+49"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(143, 96, new String[]{"4+43","28+9+10","14+22+31"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(134, 75, new String[]{"5+20+34","32+13+14","51+7"},0));
+			//listeBoiteAOeuf.add(construitBoiteAOeuf(178, 119, new String[]{"24+12+23","1+58","41+49"},1));
+			//listeBoiteAOeuf.add(construitBoiteAOeuf(143, 96, new String[]{"4+43","28+9+10","14+22+31"},0));
 			break;
 		case "s5j1e3":
-			listeBoiteAOeuf.add(construitBoiteAOeuf(227, 173, new String[]{"30+24","17+13+24","34+21"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(340, 276, new String[]{"32+25+7","4+60","54+10"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(478, 344, new String[]{"100+30+4","55+65+14","10+46+100"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(359, 124, new String[]{"184+35+16","200+5+30","100+145"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(422, 268, new String[]{"32+100+22","45+61+48","200+68"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(127, 73, new String[]{"30+24","17+13+24","34+21"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(140, 76, new String[]{"32+25+7","4+60","54+10"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(78, 44, new String[]{"30+4","55+14","10+46"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(59, 24, new String[]{"19+16","5+30","45+6"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(112, 58, new String[]{"42+12","45+18","68+6"},0));
 			break;
 		case "s5j5e3":
-			listeBoiteAOeuf.add(construitBoiteAOeuf(347, 220, new String[]{"80+47","63+44+20","40+87"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(415, 275, new String[]{"45+80+15","30+100+10","40+80+20"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(289, 194, new String[]{"10+80+5","45+50","25+46"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(512, 342, new String[]{"60+100+10","35+65+42+28","70+90+10"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(358, 283, new String[]{"35+40","20+55","10+45"},1));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(474, 281, new String[]{"92+101","20+100+73","83+100"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(147, 20, new String[]{"80+47","63+44+20","40+87"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(115, 75, new String[]{"45+15","30+10","40+5+20"},1));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(89, 24, new String[]{"60+5","45+30","25+45"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(112, 42, new String[]{"60+10","35+42+28","70+10"},0));
+			listeBoiteAOeuf.add(construitBoiteAOeuf(138, 83, new String[]{"35+33","5+20+30","10+45+38"},1));
+			//listeBoiteAOeuf.add(construitBoiteAOeuf(474, 281, new String[]{"92+101","20+100+73","83+100"},1));
 			break;
 		}
 		return listeBoiteAOeuf;

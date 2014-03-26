@@ -10,6 +10,10 @@ orthotabExercicesControllers.controller('ExercicesNavCtrl', [
 		'$scope',
 		function($window, $scope) {
 
+			$scope.inactif = function(){
+				
+			};
+			
 			$scope.exercices = function(semaine, jour, exercice) {
 				var ex = "";
 				if (exercice > 0) {
@@ -41,6 +45,7 @@ orthotabExercicesControllers.controller('CouleursCtrl', [ '$rootScope',
 			$scope.enregistreCouleur = function(couleur, $event, ind) {
 				if (couleur.active) {
 					couleur.cssClass = "boutonCouleurActif";
+					couleur.active = false;
 					$rootScope.messageNiveau = "";
 					if ($rootScope.couleurCourant != null) {
 						$rootScope.couleurCourant.cssClass = "boutonCouleur";
@@ -61,7 +66,9 @@ orthotabExercicesControllers
 						'$rootScope',
 						'$scope',
 						'Technique01',
-						function($rootScope, $scope, Technique01) {
+						'ActivityService',
+						'$cookies',
+						function($rootScope, $scope, Technique01, ActivityService, $cookies) {
 
 							$rootScope.consigne = "Les opérations et les résultats sont mélangés ! Aide-moi à les remettre ensemble grâce aux couleurs. " +
 									"Trempe ton doigt dans un pot de peinture et touche les deux cases qui vont ensemble.";
@@ -77,6 +84,8 @@ orthotabExercicesControllers
 							$scope.nbCombiTrouve = 0;
 							$rootScope.niveauFini = false;
 
+							var debut = (new Date()).getTime();
+							
 							$scope.enregistreCase = function(caseCombi, $event,
 									ind) {
 								$rootScope.messageNiveau = "";
@@ -110,6 +119,15 @@ orthotabExercicesControllers
 												// affichage message
 												$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 												$rootScope.niveauFini = true;
+												
+												var fin = (new Date()).getTime();
+												var token = "";
+												var cookieOrthoTab = $cookies.orthotab;
+												if(cookieOrthoTab!=null){
+													token = getTokenInCookie(cookieOrthoTab);
+												}
+												var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+												ActivityService.create(activity);
 											}
 										} else {
 											$scope.nbEchec++;
@@ -128,7 +146,9 @@ orthotabExercicesControllers
 						'$scope',
 						'Technique02',
 						'Commun01',
-						function($rootScope, $scope, Technique02, Commun01) {
+						'ActivityService',
+						'$cookies',
+						function($rootScope, $scope, Technique02, Commun01, ActivityService, $cookies) {
 
 							$rootScope.consigne = "Le singe farceur a tout mélangé. Aide moi à relier l'opération et le résultat qui vont "
 									+ "ensemble. Clique sur l'opération et le résultat pour les relier.";
@@ -159,6 +179,8 @@ orthotabExercicesControllers
 							$scope.caseDCourant = null;
 							$scope.nbEchec = 0;
 
+							var debut = (new Date()).getTime();
+							
 							$scope.enregistreCaseG = function(caseCombi,
 									$event, ind) {
 								$rootScope.messageNiveau = "";
@@ -221,6 +243,15 @@ orthotabExercicesControllers
 											// affichage message
 											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 											$rootScope.niveauFini = true;
+											
+											var fin = (new Date()).getTime();
+											var token = "";
+											var cookieOrthoTab = $cookies.orthotab;
+											if(cookieOrthoTab!=null){
+												token = getTokenInCookie(cookieOrthoTab);
+											}
+											var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+											ActivityService.create(activity);
 										}
 									} else {
 										// a completer par du style
@@ -244,7 +275,9 @@ orthotabExercicesControllers
 						'$scope',
 						'$timeout',
 						'Technique03',
-						function($rootScope, $scope, $timeout, Technique03) {
+						'ActivityService',
+						'$cookies',
+						function($rootScope, $scope, $timeout, Technique03, ActivityService, $cookies) {
 
 							if ($scope.optSaisie) {
 								$rootScope.consigne = "Les opérations vont apparaître quelques secondes. Retiens bien le calcul. Tu devras saisir le résultat correct dans la case qui va apparaître après.";
@@ -266,6 +299,8 @@ orthotabExercicesControllers
 
 							var idx = 0;
 							var delaims = $scope.delai * 1000;
+							
+							var debut = (new Date()).getTime();
 
 							var cacheOperation = function() {
 								$scope.tempsEcoule = true;
@@ -298,6 +333,15 @@ orthotabExercicesControllers
 										$scope.dspsuivant = false;
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 										$rootScope.niveauFini = true;
+										
+										var fin = (new Date()).getTime();
+										var token = "";
+										var cookieOrthoTab = $cookies.orthotab;
+										if(cookieOrthoTab!=null){
+											token = getTokenInCookie(cookieOrthoTab);
+										}
+										var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+										ActivityService.create(activity);
 									}
 								} else {
 									$scope.dspsuivant = false;
@@ -324,6 +368,15 @@ orthotabExercicesControllers
 									} else if (idx == $scope.nbIt) {
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 										$rootScope.niveauFini = true;
+										
+										var fin = (new Date()).getTime();
+										var token = "";
+										var cookieOrthoTab = $cookies.orthotab;
+										if(cookieOrthoTab!=null){
+											token = getTokenInCookie(cookieOrthoTab);
+										}
+										var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+										ActivityService.create(activity);
 									}
 
 								} else {
@@ -340,7 +393,9 @@ orthotabExercicesControllers
 						'$rootScope',
 						'$scope',
 						'Technique04',
-						function($rootScope, $scope, Technique04) {
+						'ActivityService',
+						'$cookies',
+						function($rootScope, $scope, Technique04, ActivityService, $cookies) {
 
 							$rootScope.consigne = "Les opérations et les résultats sont cachés ! Retourne-les deux par deux pour retrouver l’opération et le résultat qui vont ensemble. " +
 									"Quand tu as retourné deux cartes, clique sur le bouton vert si c’est correct ou sur le bouton rouge si tu veux réessayer.";
@@ -351,6 +406,8 @@ orthotabExercicesControllers
 
 							$scope.nbEchec = 0;
 							$scope.actif = true;
+							
+							var debut = (new Date()).getTime();
 
 							$scope.retourner = function() {
 								if (nbCasesRecto == 2){
@@ -368,6 +425,7 @@ orthotabExercicesControllers
 									}
 									$scope.actif = true;
 									nbCasesRecto = 0;
+									$scope.nbEchec++;
 								}
 							}
 
@@ -395,12 +453,21 @@ orthotabExercicesControllers
 										if ($scope.nbCombiTrouve == $scope.nbocc) {
 											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 											$rootScope.niveauFini = true;
+											
+											var fin = (new Date()).getTime();
+											var token = "";
+											var cookieOrthoTab = $cookies.orthotab;
+											if(cookieOrthoTab!=null){
+												token = getTokenInCookie(cookieOrthoTab);
+											}
+											var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+											ActivityService.create(activity);
 										}
 										nbCasesRecto = 0;
 									} else {
 										caseFirst.backgrdStyle = "red";
 										caseSecond.backgrdStyle = "red";
-										$scope.nbEchec++;
+										//$scope.nbEchec++;
 									}
 								}
 
@@ -436,8 +503,10 @@ orthotabExercicesControllers
 						'$scope',
 						'Technique05Choix',
 						'Technique05Cible',
+						'ActivityService',
+						'$cookies',
 						function($rootScope, $scope, Technique05Choix,
-								Technique05Cible) {
+								Technique05Cible, ActivityService, $cookies) {
 
 							if($scope.opt10){
 								$rootScope.consigne = "Ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? " +
@@ -457,6 +526,8 @@ orthotabExercicesControllers
 
 							$scope.nbEchec = 0;
 							$scope.idxDominoCible = 1;
+							
+							var debut = (new Date()).getTime();
 
 							$scope.enregistreDomino = function(domino) {
 								if(!$rootScope.niveauFini){
@@ -487,6 +558,15 @@ orthotabExercicesControllers
 										} else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
 											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 											$rootScope.niveauFini = true;
+											
+											var fin = (new Date()).getTime();
+											var token = "";
+											var cookieOrthoTab = $cookies.orthotab;
+											if(cookieOrthoTab!=null){
+												token = getTokenInCookie(cookieOrthoTab);
+											}
+											var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+											ActivityService.create(activity);
 										}
 									} else {
 										$scope.nbEchec++;
@@ -503,7 +583,9 @@ orthotabExercicesControllers
 						'$rootScope',
 						'$scope',
 						'Technique06',
-						function($rootScope, $scope, Technique06) {
+						'ActivityService',
+						'$cookies',
+						function($rootScope, $scope, Technique06, ActivityService, $cookies) {
 							if ($scope.optRapide) {
 								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Sur le couvercle il y a marqué combien on peut mettre d’oeufs au maximum. " +
 										"Dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque caisse avec le bon tas d’oeufs, en choisissant le calcul qui te permet de calculer le plus vite.";
@@ -530,6 +612,8 @@ orthotabExercicesControllers
 							};
 
 							$rootScope.niveauFini = false;
+							
+							var debut = (new Date()).getTime();
 
 							$scope.suivant = function() {
 								idx++;
@@ -548,6 +632,15 @@ orthotabExercicesControllers
 											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 											$rootScope.niveauFini = true;
 											$scope.dspsuivant = false;
+											
+											var fin = (new Date()).getTime();
+											var token = "";
+											var cookieOrthoTab = $cookies.orthotab;
+											if(cookieOrthoTab!=null){
+												token = getTokenInCookie(cookieOrthoTab);
+											}
+											var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+											ActivityService.create(activity);
 										}
 									} else {
 										caseCombi.backgrdStyle = "red";
@@ -566,6 +659,15 @@ orthotabExercicesControllers
 											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 											$rootScope.niveauFini = true;
 											$scope.dspsuivant = false;
+											
+											var fin = (new Date()).getTime();
+											var token = "";
+											var cookieOrthoTab = $cookies.orthotab;
+											if(cookieOrthoTab!=null){
+												token = getTokenInCookie(cookieOrthoTab);
+											}
+											var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+											ActivityService.create(activity);
 										}
 									}else if($scope.boiteCourant.valrestant>caseCombi.valeur){
 										caseCombi.backgrdStyle = "green";
@@ -589,7 +691,9 @@ orthotabExercicesControllers
 				'$rootScope',
 				'$scope',
 				'Technique07',
-				function($rootScope, $scope, Technique07) {
+				'ActivityService',
+				'$cookies',
+				function($rootScope, $scope, Technique07, ActivityService, $cookies) {
 					
 					$rootScope.consigne = "La carte grise est le résultat d’une opération. Il faut que tu retrouves les bons chiffres de cette opération. " +
 							"Pour cela, choisis la bonne carte bleu et multiplie la avec la bonne carte rouge.";
@@ -611,6 +715,8 @@ orthotabExercicesControllers
 					};
 	
 					$rootScope.niveauFini = false;
+					
+					var debut = (new Date()).getTime();
 	
 					$scope.suivant = function() {
 						idx++;
@@ -653,6 +759,15 @@ orthotabExercicesControllers
 									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 									$rootScope.niveauFini = true;
 									$scope.dspsuivant = false;
+									
+									var fin = (new Date()).getTime();
+									var token = "";
+									var cookieOrthoTab = $cookies.orthotab;
+									if(cookieOrthoTab!=null){
+										token = getTokenInCookie(cookieOrthoTab);
+									}
+									var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+									ActivityService.create(activity);
 								}
 							} else {
 								$scope.nbEchec++;
@@ -675,7 +790,9 @@ orthotabExercicesControllers
 						'$rootScope',
 						'$scope',
 						'Technique08',
-						function($rootScope, $scope, Technique08) {
+						'ActivityService',
+						'$cookies',
+						function($rootScope, $scope, Technique08, ActivityService, $cookies) {
 
 							if($scope.optValeur){
 								$rootScope.consigne = "ces opérations ont quelque chose qui ne va pas, elles sont incomplètes. " +
@@ -702,6 +819,8 @@ orthotabExercicesControllers
 
 							$rootScope.niveauFini = false;
 							$scope.dspsuivant = false;
+							
+							var debut = (new Date()).getTime();
 
 							$scope.suivant = function() {
 								idx++;
@@ -732,6 +851,15 @@ orthotabExercicesControllers
 										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 										$rootScope.niveauFini = true;
 										$scope.dspsuivant = false;
+										
+										var fin = (new Date()).getTime();
+										var token = "";
+										var cookieOrthoTab = $cookies.orthotab;
+										if(cookieOrthoTab!=null){
+											token = getTokenInCookie(cookieOrthoTab);
+										}
+										var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+										ActivityService.create(activity);
 									}
 								} else {
 									caseCombi.backgrdStyle = "red";
@@ -749,7 +877,9 @@ orthotabExercicesControllers
 				'$rootScope',
 				'$scope',
 				'Technique09',
-				function($rootScope, $scope, Technique09) {
+				'ActivityService',
+				'$cookies',
+				function($rootScope, $scope, Technique09, ActivityService, $cookies) {
 					
 					$rootScope.consigne = "Tous les morceaux de l’opération ont été mélangés ! Aide-moi à les remettre dans l’ordre. " +
 							"Tu as besoin de tous les morceaux pour faire une opération juste.";
@@ -773,6 +903,8 @@ orthotabExercicesControllers
 
 					$rootScope.niveauFini = false;
 					$scope.dspsuivant = false;
+					
+					var debut = (new Date()).getTime();
 
 					$scope.suivant = function() {
 						idx++;
@@ -829,6 +961,15 @@ orthotabExercicesControllers
 									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
 									$rootScope.niveauFini = true;
 									$scope.dspsuivant = false;
+									
+									var fin = (new Date()).getTime();
+									var token = "";
+									var cookieOrthoTab = $cookies.orthotab;
+									if(cookieOrthoTab!=null){
+										token = getTokenInCookie(cookieOrthoTab);
+									}
+									var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
+									ActivityService.create(activity);
 								}else{
 									$scope.dspsuivant = true;
 								}

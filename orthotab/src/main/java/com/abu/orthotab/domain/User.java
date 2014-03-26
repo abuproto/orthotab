@@ -1,5 +1,7 @@
 package com.abu.orthotab.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,7 +29,7 @@ public class User {
 	private String password;
 	
 	@Column(name = "NIVCOURANT")
-	private int nivcourant;
+	private Long nivcourant;
 		
 	@Column(name = "ROLE")
 	private String role;
@@ -35,6 +37,28 @@ public class User {
 	@Column(name = "TOKEN")
 	private String token;
 	
+	@Column(name = "DATECHGTNIV")
+	private Date datechgtniv;
+	
+	@Column(name = "NBTOTCAC")
+	private Long nbtotcac;
+	
+	public Date getDatechgtniv() {
+		return datechgtniv;
+	}
+
+	public void setDatechgtniv(Date datechgtniv) {
+		this.datechgtniv = datechgtniv;
+	}
+
+	public Long getNbtotcac() {
+		return nbtotcac;
+	}
+
+	public void setNbtotcac(Long nbtotcac) {
+		this.nbtotcac = nbtotcac;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -83,11 +107,11 @@ public class User {
 		this.role = role;
 	}
 
-	public int getNivcourant() {
+	public Long getNivcourant() {
 		return nivcourant;
 	}
 
-	public void setNivcourant(int nivcourant) {
+	public void setNivcourant(Long nivcourant) {
 		this.nivcourant = nivcourant;
 	}
 

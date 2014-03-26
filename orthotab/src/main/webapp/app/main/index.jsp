@@ -34,7 +34,7 @@
   <span class="infosClient">{{infosClient}}</span>
   </div>
 <div ng-show="isLogged" class="div-login">
-<span>Bonjour {{utilisateur.prenom}}!</span><br/><br/>
+<span>Bonjour {{utilisateurPrenom}}!</span><br/><br/>
 <button class="boutonGeneral" ng-click="changerUtilisateur()">Changer d'utilisateur</button>
 </div>
 

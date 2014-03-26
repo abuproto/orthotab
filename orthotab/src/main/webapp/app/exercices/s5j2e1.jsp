@@ -6,7 +6,7 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s5j2e1';nbocc=17;">
+<body ng-app="orthotabApp" ng-init="niveau='s5j2e1';nbocc=7;">
 <div id="page">
 	<div id="bloc-principal">
 <div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s5j2'">

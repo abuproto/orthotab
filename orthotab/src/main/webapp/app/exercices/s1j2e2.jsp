@@ -6,7 +6,7 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s1j2e2';nbocc=5;optIntrus=false;">
+<body ng-app="orthotabApp" ng-init="niveau='s1j2e2';nbocc=3;optIntrus=false;">
 <div id="page">
 	<div id="bloc-principal">
 <div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s1j2'">
@@ -54,7 +54,7 @@
       ]]>
     </style>
 <%
-for(int i=0;i<5;i++){
+for(int i=0;i<3;i++){
 %>
 <circle cx="{{casesg[<%=i%>].loc.x}}" cy="{{casesg[<%=i%>].loc.y}}" r="5" class="avant"/>
 <path d="{{pathInfos[<%=i%>].loc}}" class="{{pathInfos[<%=i%>].cssClass}}"/>

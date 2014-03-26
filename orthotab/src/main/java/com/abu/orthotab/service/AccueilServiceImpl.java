@@ -48,7 +48,7 @@ public class AccueilServiceImpl implements AccueilService {
 		
 		User userConnecte = userDao.finduserById(userid);
 		if(userConnecte!=null){
-			nivcourant = userConnecte.getNivcourant();
+			nivcourant = (userConnecte.getNivcourant()==null?0:userConnecte.getNivcourant().intValue());
 			// commence a 1
 			for(int i=1;i<=nbNiveau;i++){
 				Etape etape = new Etape();

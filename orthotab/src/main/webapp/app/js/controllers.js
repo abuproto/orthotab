@@ -154,26 +154,27 @@ orthotabControllers
 						'$rootScope',
 						'$scope',
 						'UserAuthService',
-						'$cookieStore',
 						'$http',
 						'$window',
 						'$timeout',
 						'localStorageService',
 						'UserTokenService',
 						'ActivityService',
+						'$cookies',
 						function($rootScope, $scope, UserAuthService,
-								$cookieStore, $http, $window, $timeout,
-								localStorageService, UserTokenService, ActivityService) {
-							var cookieOrthoTab = $cookieStore.get('orthotab');
+								$http, $window, $timeout,
+								localStorageService, UserTokenService, ActivityService,$cookies) {
+							var cookieOrthoTab = $cookies.orthotab;
 							
 							$scope.infosClient = "H" + $window.innerHeight + " W" + $window.innerWidth;
 							$scope.ua = $window.navigator.userAgent;
 							
-							if (cookieOrthoTab != null) {
+							if (cookieOrthoTab != null && cookieOrthoTab.length>0) {
 								// a completer avec verification User
 								$rootScope.isLogged = true;
-								$scope.utilisateur = cookieOrthoTab;
-								if($scope.utilisateur.role=='ADMIN'){
+								$scope.utilisateurPrenom = getPrenomInCookie(cookieOrthoTab);
+								$scope.utilisateurRole = getRoleInCookie(cookieOrthoTab);
+								if($scope.utilisateurRole=='ADMIN'){
 									$rootScope.isAdmin = true;
 								}
 							} else {
@@ -195,10 +196,10 @@ orthotabControllers
 												if($scope.utilisateur.role=='ADMIN'){
 													$rootScope.isAdmin = true;
 												}
-												$cookieStore.put(
-														'orthotab',
-														userByToken);
-																								
+
+												var valcookie = userByToken.token + "#" + userByToken.prenom + "#" + userByToken.role;
+												document.cookie = "orthotab="+valcookie+";path=/orthotab/";
+												
 												var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};
 												ActivityService.create(activity);
 											}
@@ -227,12 +228,8 @@ orthotabControllers
 							
 							// changerUtilisateur
 							$scope.changerUtilisateur = function() {
-								var cookieOrthoTab = $cookieStore
-										.get('orthotab');
-								if (cookieOrthoTab != null) {
-									$cookieStore.remove('orthotab');
-									localStorageService.remove('usertoken');
-								}
+								document.cookie = "orthotab=" + ";path=/orthotab/";
+								localStorageService.remove('usertoken');
 								$window.location.href = "../main/index.jsp";
 							};
 
@@ -255,12 +252,13 @@ orthotabControllers
 														$rootScope.isLogged = true;
 														$scope.message = '';
 														$scope.utilisateur = userConnecte;
+														$scope.utilisateurPrenom = userConnecte.prenom;
 														if($scope.utilisateur.role=='ADMIN'){
 															$rootScope.isAdmin = true;
 														}
-														$cookieStore.put(
-																'orthotab',
-																userConnecte);
+														
+														var valcookie = userConnecte.token + "#" + userConnecte.prenom + "#" + userConnecte.role;
+														document.cookie = "orthotab="+valcookie+";path=/orthotab/";
 														localStorageService.add('usertoken',userConnecte.token);
 														
 														var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};

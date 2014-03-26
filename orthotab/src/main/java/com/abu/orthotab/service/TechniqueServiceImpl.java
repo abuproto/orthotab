@@ -97,24 +97,24 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 					"10" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(9, new String[] { "18",
 					"16" }));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(2, new String[] { "2",
-					"4", "3" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(2, new String[] { "2",
+			//		"4", "3" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(3, new String[] { "4",
 					"5", "6" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(8, new String[] { "16",
 					"14", "12" }));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(4, new String[] { "8",
-					"6", "4", "10" }));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {
-					"10", "20", "15", "30" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(4, new String[] { "8",
+			//		"6", "4", "10" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {
+			//		"10", "20", "15", "30" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(6, new String[] { "11",
 					"13", "12", "14" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(7, new String[] { "12",
 					"16", "14", "15" }));
 			break;
 		case "s2j4e1":
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(5, new String[] { "10",
-					"15" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(5, new String[] { "10",
+			//		"15" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(11, new String[] {
 					"22", "28" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(13, new String[] {
@@ -125,29 +125,29 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 					"12", "24", "36" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(6, new String[] { "10",
 					"12", "14" }));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(9, new String[] { "18",
-					"20", "19" }));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(7, new String[] { "10",
-					"14", "18" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(9, new String[] { "18",
+			//		"20", "19" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(7, new String[] { "10",
+			//		"14", "18" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(8, new String[] { "16",
 					"18", "20" }));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {
-					"15", "20", "30" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {
+			//		"15", "20", "30" }));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(15, new String[] {
 					"30", "40", "20" }));
 			break;
 		case "s5j4e1":
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(2, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(4, new String[] {}));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(4, new String[] {}));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(6, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(8, new String[] {}));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(8, new String[] {}));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(10, new String[] {}));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(12, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(14, new String[] {}));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(14, new String[] {}));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(25, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(30, new String[] {}));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(30, new String[] {}));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(50, new String[] {}));
-			listCaseflash.add(fabriqueCaseflashCompleteSomme(70, new String[] {}));
+			//listCaseflash.add(fabriqueCaseflashCompleteSomme(70, new String[] {}));
 			listCaseflash.add(fabriqueCaseflashCompleteSomme(85, new String[] {}));
 			break;
 		case  "s1j2e3":
@@ -187,22 +187,22 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 		case "s3j5e2":
 			listCaseflash.add(fabriqueCaseflashCompleteExp("7x9", new String[] { "49","63","42" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("6x6", new String[] { "35","36","37" }));
-			listCaseflash.add(fabriqueCaseflashCompleteExp("4x8", new String[] { "28","32","36" }));
-			listCaseflash.add(fabriqueCaseflashCompleteExp("7x8", new String[] { "54","55","56" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteExp("4x8", new String[] { "28","32","36" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteExp("7x8", new String[] { "54","55","56" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("6x7", new String[] { "42","49","36" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("4x9", new String[] { "36","40","44","32" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("7x7", new String[] { "49","50","51","52" }));
-			listCaseflash.add(fabriqueCaseflashCompleteExp("6x8", new String[] { "50","48","42","44" }));
-			listCaseflash.add(fabriqueCaseflashCompleteExp("6x9", new String[] { "54","56","58","60" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteExp("6x8", new String[] { "50","48","42","44" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteExp("6x9", new String[] { "54","56","58","60" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("4x7", new String[] { "28","29","27","26" }));
 			break;
 		case "s5j5e2":
 			listCaseflash.add(fabriqueCaseflashCompleteExp("6x9", new String[] { "48","54","42" }));
-			listCaseflash.add(fabriqueCaseflashCompleteExp("6x6", new String[] { "35","36","37" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteExp("6x6", new String[] { "35","36","37" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("4x7", new String[] { "28","32","36" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("4x8", new String[] { "30","32","34" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("4x4", new String[] { "15","16","14","12" }));
-			listCaseflash.add(fabriqueCaseflashCompleteExp("5x3", new String[] { "15","10","20","25" }));
+			//listCaseflash.add(fabriqueCaseflashCompleteExp("5x3", new String[] { "15","10","20","25" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("7x5", new String[] { "30","35","40","45" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("6x8", new String[] { "50","48","42","44" }));
 			break;

@@ -66,9 +66,9 @@ public class Technique01Data extends TechniqueDataUtil {
 			listeCase.addAll(construitCases("6+9", "(6+10)-1"));
 			listeCase.addAll(construitCases("7+9", "(7+10)-1"));
 			listeCase.addAll(construitCases("8+9", "(8+10)-1"));
-			listeCase.addAll(construitCases("4+8", "(4+10)-2"));
-			listeCase.addAll(construitCases("5+8", "(5+10)-2"));
-			listeCase.addAll(construitCases("6+8", "(6+10)-2"));
+			//listeCase.addAll(construitCases("4+8", "(4+10)-2"));
+			//listeCase.addAll(construitCases("5+8", "(5+10)-2"));
+			//listeCase.addAll(construitCases("6+8", "(6+10)-2"));
 			break;
      	case "s2j2e3":
      		listeCase.addAll(construitCases("2x3"));

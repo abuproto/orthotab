@@ -1,0 +1,10 @@
+CREATE TABLE PARAMETRE
+(
+    id       INT PRIMARY KEY,
+    cle    VARCHAR(30),
+    valeur         VARCHAR(60),
+    idUser	INT,
+    FOREIGN KEY (idUser) REFERENCES USER(id)
+);
+
+GRANT ALL ON ORTHOTAB.PARAMETRE TO ORTHOTAB;

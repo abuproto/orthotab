@@ -31,9 +31,9 @@ public abstract class UtilServiceImpl {
 		mapIntrus.put("s3j3e1G", Arrays.asList(tabs3j3e1G));
 		String[] tabs3j3e1D = { "55", "110", "25"};
 		mapIntrus.put("s3j3e1D", Arrays.asList(tabs3j3e1D));
-		String[] tabs3j4e1G = { "110", "25", "23"};
+		String[] tabs3j4e1G = { "110", "25"};
 		mapIntrus.put("s3j4e1G", Arrays.asList(tabs3j4e1G));
-		String[] tabs3j4e1D = { "35", "39", "52"};
+		String[] tabs3j4e1D = { "23","35"};
 		mapIntrus.put("s3j4e1D", Arrays.asList(tabs3j4e1D));
 		String[] tabs4j3e1 = { "40", "25", "120", "135", "180" };
 		mapIntrus.put("s4j3e1", Arrays.asList(tabs4j3e1));

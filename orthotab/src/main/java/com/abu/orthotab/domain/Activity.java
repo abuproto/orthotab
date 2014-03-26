@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
@@ -36,6 +37,9 @@ public class Activity implements Serializable{
 	@Column(name = "NBECHEC")
 	private Long nbEchec;
 
+	@Transient
+	private String token;
+	
 	public Long getId() {
 		return id;
 	}
@@ -90,5 +94,13 @@ public class Activity implements Serializable{
 
 	public void setNbEchec(Long nbEchec) {
 		this.nbEchec = nbEchec;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 }

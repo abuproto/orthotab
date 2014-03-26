@@ -42,8 +42,10 @@ public class CommunController {
     		nbCouleurs=10;
     		break;
     	case "s3j1e1":
-    	case "s1j3e2":
     		nbCouleurs=9;
+    		break;
+    	case "s1j3e2":
+    		nbCouleurs=6;
     		break;
     	case "s2j2e3" :
     		nbCouleurs=8;

@@ -40,9 +40,9 @@ public class UserServiceImpl implements UserService {
 		if (user == null) {
 			LOGGER.error("User non trouve pour identifiant " + userid);
 		} else {
-			int oldNiveau = user.getNivcourant();
+			int oldNiveau = (user.getNivcourant()==null?0:user.getNivcourant().intValue());
 			if (niveau > oldNiveau) {
-				user.setNivcourant(niveau);
+				user.setNivcourant(Long.valueOf(niveau));
 				LOGGER.info("Mise a jour niveau courant pour user " + user + " , " + oldNiveau + "-->" + niveau);
 			}
 		}

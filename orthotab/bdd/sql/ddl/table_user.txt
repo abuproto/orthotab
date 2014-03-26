@@ -18,4 +18,7 @@ GRANT INSERT ON USER TO PUBLIC;
 
 GRANT UPDATE ON ORTHOTAB.USER TO ORTHOTAB;
 
-alter table USER add token VARCHAR(32); 
+alter table USER add token VARCHAR(32);
+
+alter table USER add datechgtniv TIMESTAMP;
+alter table USER add nbtotcac INT;
