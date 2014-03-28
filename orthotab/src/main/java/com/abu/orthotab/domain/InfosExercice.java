@@ -10,6 +10,10 @@ public class InfosExercice {
 	private int nbcac;
 	
 	private String libelle;
+	
+	private String nomImgCac;
+	
+	private boolean actif;
 
 	public String getCssClass() {
 		return cssClass;
@@ -49,5 +53,21 @@ public class InfosExercice {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public String getNomImgCac() {
+		return nomImgCac;
+	}
+
+	public void setNomImgCac(String nomImgCac) {
+		this.nomImgCac = nomImgCac;
+	}
+
+	public boolean isActif() {
+		return actif;
+	}
+
+	public void setActif(boolean actif) {
+		this.actif = actif;
 	}
 }

@@ -22,6 +22,10 @@ public class InfosExerciceServiceImpl implements InfosExerciceService {
 	private final static Logger LOGGER = Logger
 			.getLogger(InfosExerciceServiceImpl.class);
 	
+	private final static String CSS_BTN_INACTIF = "boutonGeneral2-inactif";
+	
+	private final static String CSS_BTN_ACTIF = "boutonGeneral2-actif";
+	
 	@Autowired
 	private ActivityDao activityDao;
 	
@@ -51,15 +55,19 @@ public class InfosExerciceServiceImpl implements InfosExerciceService {
 				
 				Activity activity = activityDao.findLastActivityByExIdUser(exercice.getCode(), user.getId());
 				if(activity!=null){
-					infosExercice.setAction("");
-					infosExercice.setCssClass("");
-					infosExercice.setMessage("");
-					//infosExercice.setNbcac(nbcac);
+					infosExercice.setAction("inactif()");
+					infosExercice.setCssClass(CSS_BTN_INACTIF);
+					infosExercice.setMessage("Tu as gagné ");
+					int nbCac = exercice.calculNbCac(activity.getNbEchec()==null?0:activity.getNbEchec().intValue());
+					infosExercice.setNomImgCac("cac"+nbCac+".jpg");
+					infosExercice.setNbcac(nbCac);
+					infosExercice.setActif(false);
 				}else{
-					infosExercice.setAction("");
-					infosExercice.setCssClass("");
+					infosExercice.setAction(calculNomAction(exercice.getCode()));
+					infosExercice.setCssClass(CSS_BTN_ACTIF);
 					infosExercice.setMessage("");
 					infosExercice.setNbcac(0);
+					infosExercice.setActif(true);
 				}
 				
 				listInfosExercice.add(infosExercice);
@@ -69,5 +77,16 @@ public class InfosExerciceServiceImpl implements InfosExerciceService {
 		}
 		return listInfosExercice;
 	}
-
+	
+	private String calculNomAction(String codeEx){
+		StringBuilder sb = new StringBuilder();
+		sb.append("exercices(");
+		sb.append(codeEx.substring(1, 2));
+		sb.append(",");
+		sb.append(codeEx.substring(3, 4));
+		sb.append(",");
+		sb.append(codeEx.substring(5));
+		sb.append(")");
+		return sb.toString();
+	}
 }

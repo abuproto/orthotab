@@ -163,6 +163,19 @@ body {
 	margin-bottom: 10px;
 }
 
+.boutonGeneral2-inactif {
+	border-radius: 4px;
+	background-color: #D0E09D;
+	font-size: 14pt;
+	margin-bottom: 10px;
+}
+
+.boutonGeneral2-actif {
+	border-radius: 4px;
+	background-color: yellow;
+	font-size: 14pt;
+	margin-bottom: 10px;
+}
 
 .div-haut {
 	border-width: 2px;

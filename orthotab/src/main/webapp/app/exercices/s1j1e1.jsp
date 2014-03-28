@@ -14,7 +14,10 @@
 <div id="center"><p align="center">Associer des paires par couleur</p></div>
 </div>
 <%@include file="../includes/inc_messages.htm"%>
-<div class="div-milieu">
+
+<%@include file="../includes/inc_waitcharge.htm"%>
+
+<div class="div-milieu" ng-show="niveauFini || !chargementEnCours">
 <div align="center" id="couleurs" ng-controller="CouleursCtrl">
 <button class="{{couleur.cssClass}}" ng-repeat="couleur in couleurs" style="background-color:{{couleur.code}};" ng-click="enregistreCouleur(couleur, $event, $index)"/>
 </div>

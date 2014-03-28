@@ -99,4 +99,16 @@ public class Exercice implements Serializable{
 	public String getLibelle(){
 		return mapLibelle.get(this.idtechnique);
 	}
+	
+	public int calculNbCac(int nbEchec){
+		int nbCac = 1;
+		
+		if(nbEchec<=this.seuilsup3){
+			nbCac = 3;
+		}else if(nbEchec<=this.seuilsup2){
+			nbCac = 2;
+		}
+		
+		return nbCac;
+	}
 }

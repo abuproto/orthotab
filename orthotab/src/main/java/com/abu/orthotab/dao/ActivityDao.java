@@ -33,4 +33,14 @@ public class ActivityDao extends CommonHibernateDao {
 		}
 		return activity;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Activity> findActivityByIdUserJour(Long idUser, String codeExPart) {
+		Query query = getCurrentSession().createQuery(
+				"from Activity where idUser = :idUser and type like :type order by dateActivite desc");
+		query.setString("type", codeExPart + "%");
+		query.setLong("idUser", idUser);
+		List<Activity> listActivity = query.list();
+		return listActivity;
+	}
 }
