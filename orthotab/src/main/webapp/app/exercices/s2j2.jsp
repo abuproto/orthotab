@@ -6,8 +6,8 @@
 <%@include file="../includes/inc_head.htm"%>
 
 </head>
-<body ng-app="orthotabApp" ng-controller="ExercicesNavCtrl">
-
+<body ng-app="orthotabApp" ng-init="groupe='s2j2';">
+<div ng-controller="ExercicesNavCtrl">
 <div class="div-haut">
 <div id="left">
 </div>
@@ -16,9 +16,8 @@
 </div>
 
 <div class="div-milieu" align="center">
-<button class="boutonGeneral2" ng-click="exercices(2,2,1)">Mémory</button><br/>
-<button class="boutonGeneral2" ng-click="exercices(2,2,2)">Relier des colonnes</button><br/>
-<button class="boutonGeneral2" ng-click="exercices(2,2,3)">Associer des paires par couleur</button><br/>
+<p ng-repeat="infos in infosexercice" class="menu-exercice"><button class="{{infos.cssClass}}" ng-click="exercices(infos.semaine,infos.jour,infos.ex)">{{infos.libelle}}</button>
+<span ng-hide="infos.actif"><img class="menu-exercice" ng-src="../images/{{infos.nomImgCac}}"/></span></p>
 </div>
 
 </div>

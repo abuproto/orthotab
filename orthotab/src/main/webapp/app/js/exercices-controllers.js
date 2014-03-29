@@ -64,7 +64,7 @@ orthotabExercicesControllers.controller('CouleursCtrl', [ '$rootScope',
 			});
 
 			$scope.enregistreCouleur = function(couleur, $event, ind) {
-				if (couleur.active) {
+				if (couleur.active && $rootScope.caseCombiFirst==null) {
 					couleur.cssClass = "boutonCouleurActif";
 					couleur.active = false;
 					$rootScope.messageNiveau = "";
@@ -120,6 +120,7 @@ orthotabExercicesControllers
 										caseCombi.backgrdStyle = $rootScope.couleurCourant.code;
 										$rootScope.caseCombiFirst = caseCombi;
 										$rootScope.messageNiveau = "";
+										caseCombi.active = false;
 									} else {
 										var typeCaseFirst = $rootScope.caseCombiFirst.type;
 										var typeCaseSecond = caseCombi.type;

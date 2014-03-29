@@ -119,6 +119,10 @@ orthotabControllers
 								'token' : token
 							});
 
+							$scope.home = function() {
+								$window.location.href = "../main/index.jsp";
+							};
+							
 							$scope.goToNiveau = function($event, niveau) {
 								
 								if(niveau==$scope.infosaccueil.nivcourant){

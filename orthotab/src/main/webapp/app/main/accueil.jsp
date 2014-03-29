@@ -13,7 +13,7 @@
 <div class="div-haut-accueil">
 <div id="left">
 </div>
-<div id="right"></div>
+<div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil" ng-click="home()"/></div>
 <div id="center"><p align="center">Bienvenue dans le monde de Samba dans la jungle des nombres</p></div>
 </div>
 

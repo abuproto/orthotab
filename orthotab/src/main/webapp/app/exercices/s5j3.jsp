@@ -6,8 +6,8 @@
 <%@include file="../includes/inc_head.htm"%>
 
 </head>
-<body ng-app="orthotabApp" ng-controller="ExercicesNavCtrl">
-
+<body ng-app="orthotabApp" ng-init="groupe='s5j3';">
+<div ng-controller="ExercicesNavCtrl">
 <div class="div-haut">
 <div id="left">
 </div>
@@ -16,9 +16,8 @@
 </div>
 
 <div class="div-milieu" align="center">
-<button class="boutonGeneral2" ng-click="exercices(5,3,1)">Boîtes à compléter</button><br/>
-<button class="boutonGeneral2" ng-click="exercices(5,3,2)">Mémory multipliant</button><br/>
-<button class="boutonGeneral2" ng-click="exercices(5,3,3)">Calcul à trou</button><br/>
+<p ng-repeat="infos in infosexercice" class="menu-exercice"><button class="{{infos.cssClass}}" ng-click="exercices(infos.semaine,infos.jour,infos.ex)">{{infos.libelle}}</button>
+<span ng-hide="infos.actif"><img class="menu-exercice" ng-src="../images/{{infos.nomImgCac}}"/></span></p>
 </div>
 
 </div>
