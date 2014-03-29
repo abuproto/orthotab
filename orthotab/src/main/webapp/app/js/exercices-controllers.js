@@ -8,19 +8,36 @@ var orthotabExercicesControllers = angular.module(
 orthotabExercicesControllers.controller('ExercicesNavCtrl', [
 		'$window',
 		'$scope',
-		function($window, $scope) {
+		'$rootScope',
+		'InfosExercice',
+		'$cookies',
+		function($window, $scope,$rootScope,InfosExercice,$cookies) {
 
 			$scope.inactif = function(){
 				
 			};
 			
+			var token = "";
+			var cookieOrthoTab = $cookies.orthotabv2;
+			if(cookieOrthoTab!=null){
+				token = getTokenInCookie(cookieOrthoTab);
+			}
+			
+			$scope.infosexercice = InfosExercice.query({}, {
+				'token' : token,
+				'groupe' : $scope.groupe
+			});
+			
 			$scope.exercices = function(semaine, jour, exercice) {
-				var ex = "";
-				if (exercice > 0) {
-					ex = "e" + exercice;
+				console.log("semaine : " + semaine);
+				if(semaine>0){
+					var ex = "";
+					if (exercice > 0) {
+						ex = "e" + exercice;
+					}
+					$window.location.href = "../exercices/s" + semaine + "j" + jour
+							+ ex + ".jsp";
 				}
-				$window.location.href = "../exercices/s" + semaine + "j" + jour
-						+ ex + ".jsp";
 			};
 
 			// home

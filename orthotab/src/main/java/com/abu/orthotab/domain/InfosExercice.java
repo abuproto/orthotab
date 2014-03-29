@@ -14,6 +14,36 @@ public class InfosExercice {
 	private String nomImgCac;
 	
 	private boolean actif;
+	
+	private int semaine;
+	
+	private int jour;
+	
+	private int ex;
+
+	public int getSemaine() {
+		return semaine;
+	}
+
+	public void setSemaine(int semaine) {
+		this.semaine = semaine;
+	}
+
+	public int getJour() {
+		return jour;
+	}
+
+	public void setJour(int jour) {
+		this.jour = jour;
+	}
+
+	public int getEx() {
+		return ex;
+	}
+
+	public void setEx(int ex) {
+		this.ex = ex;
+	}
 
 	public String getCssClass() {
 		return cssClass;

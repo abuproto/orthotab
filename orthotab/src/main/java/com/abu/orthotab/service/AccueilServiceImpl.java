@@ -1,6 +1,8 @@
 package com.abu.orthotab.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.abu.orthotab.dao.ParametreDao;
 import com.abu.orthotab.dao.UserDao;
 import com.abu.orthotab.domain.Etape;
+import com.abu.orthotab.domain.InfosAccueil;
+import com.abu.orthotab.domain.Parametre;
 import com.abu.orthotab.domain.User;
 
 @Service
@@ -19,13 +24,24 @@ public class AccueilServiceImpl implements AccueilService {
 	
     @Autowired
     private UserDao userDao;
+    
+    @Autowired
+    private ParametreDao parametreDao;
 	
 	private final static String CSS_CLASS_AVANT = "avant";
 	private final static String CSS_CLASS_ACTIF = "actif";
 	private final static String CSS_CLASS_APRES = "apres";
+	
+	private final static String PARAM_EX_INTERVALLE = "EX_INTERVALLE";
+	
+	private final static String NOM_OBJET_1 = "chapeau";
+	private final static String NOM_OBJET_2 = "papillon";
+	private final static String NOM_OBJET_3 = "masque";
+	private final static String NOM_OBJET_4 = "bouteille";
+	private final static String NOM_OBJET_5 = "confettis";
     
     @Transactional
-	public List<Etape> getListeEtapes(int userid) {
+	public List<Etape> getListeEtapes(String token) {
 		List<Etape> etapes = new ArrayList<Etape>();
 		
 		int cxinit = 40;
@@ -46,7 +62,7 @@ public class AccueilServiceImpl implements AccueilService {
 		String exppasv = "";
 		int dm = 0;
 		
-		User userConnecte = userDao.finduserById(userid);
+		User userConnecte = userDao.findUserByToken(token);
 		if(userConnecte!=null){
 			nivcourant = (userConnecte.getNivcourant()==null?0:userConnecte.getNivcourant().intValue());
 			// commence a 1
@@ -107,9 +123,248 @@ public class AccueilServiceImpl implements AccueilService {
 			}
 			LOGGER.info("nivcourant : "+ nivcourant + " pour userConnecte " + userConnecte.getLogin());
 		}else{
-			LOGGER.error("userConnecte null pour userid " + userid);
+			LOGGER.error("userConnecte null pour token " + token);
 		}
 		return etapes;
 	}
+    
+    @Transactional
+	public InfosAccueil getInfosAccueil(String token) {
+    	InfosAccueil infosAccueil = new InfosAccueil();
+    	
+    	User userConnecte = userDao.findUserByToken(token);
+		if(userConnecte!=null){
+		
+			Date dateLastActivite = userConnecte.getDatechgtniv();
+			if(dateLastActivite!=null){
+				Parametre parametre = parametreDao.findParametreByCleIdUser(PARAM_EX_INTERVALLE, userConnecte.getId());
+				if(parametre!=null){
+					String strinter = parametre.getValeur();
+					int intermin = Integer.valueOf(strinter);
+					
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(dateLastActivite);
+					cal.add(Calendar.MINUTE, intermin);
+					infosAccueil.setNbMillisNextJour(cal.getTimeInMillis());
+				}
+			}else{
+				infosAccueil.setNbMillisNextJour(0);
+			}
+	    	infosAccueil.setNbcac(userConnecte.getNbtotcac()==null?0:userConnecte.getNbtotcac().intValue());
+	    	
+	    	Long nivcourant = userConnecte.getNivcourant();
+	    	
+	    	// Ajout objets
+	    	int niv = nivcourant.intValue();
+	    	infosAccueil.setNivcourant(niv);
+	    	infosAccueil.setListeNomObjet(contruitListeObjet(niv));
+		}else{
+			LOGGER.error("userConnecte null pour token " + token);
+		}    	
+    	return infosAccueil;
+    }
 
+    private List<String> contruitListeObjet(int niv){
+    	List<String> listeNomObjet = new ArrayList<String>();
+    	
+    	String objet1 = "";
+    	String objet2 = "";
+    	String objet3 = "";
+    	String objet4 = "";
+    	String objet5 = "";
+
+    	switch(niv){
+    	case 1:
+	    	objet1 = NOM_OBJET_1 + 0;
+	    	objet2 = NOM_OBJET_2 + 0;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 2:
+	    	objet1 = NOM_OBJET_1 + 1;
+	    	objet2 = NOM_OBJET_2 + 0;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 3:
+	    	objet1 = NOM_OBJET_1 + 2;
+	    	objet2 = NOM_OBJET_2 + 0;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 4:
+	    	objet1 = NOM_OBJET_1 + 3;
+	    	objet2 = NOM_OBJET_2 + 0;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 5:
+	    	objet1 = NOM_OBJET_1 + 4;
+	    	objet2 = NOM_OBJET_2 + 0;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 6:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 0;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 7:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 1;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 8:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 2;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 9:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 3;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 10:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 4;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 11:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 0;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 12:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 1;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 13:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 2;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 14:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 3;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 15:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 4;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 16:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 0;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 17:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 1;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 18:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 2;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 19:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 3;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 20:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 4;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 21:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 5;
+	    	objet5 = NOM_OBJET_5 + 0;
+    		break;
+    	case 22:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 5;
+	    	objet5 = NOM_OBJET_5 + 1;
+    		break;
+    	case 23:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 5;
+	    	objet5 = NOM_OBJET_5 + 2;
+    		break;
+    	case 24:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 5;
+	    	objet5 = NOM_OBJET_5 + 3;
+    		break;
+    	case 25:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 5;
+	    	objet5 = NOM_OBJET_5 + 4;
+    		break;
+    	case 26:
+	    	objet1 = NOM_OBJET_1 + 5;
+	    	objet2 = NOM_OBJET_2 + 5;
+	    	objet3 = NOM_OBJET_3 + 5;
+	    	objet4 = NOM_OBJET_4 + 5;
+	    	objet5 = NOM_OBJET_5 + 5;
+    		break;
+    	}
+    	
+    	listeNomObjet.add(objet1);
+    	listeNomObjet.add(objet2);
+    	listeNomObjet.add(objet3);
+    	listeNomObjet.add(objet4);
+    	listeNomObjet.add(objet5);
+    	
+    	return listeNomObjet;
+    }
+    
 }

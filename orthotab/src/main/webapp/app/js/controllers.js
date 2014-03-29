@@ -95,25 +95,46 @@ orthotabControllers
 				[
 						'$rootScope',
 						'$scope',
-						'Accueil',
+						'AccueilEtapes',
+						'AccueilInfos',
 						'$window',
-						'$cookieStore',
-						function($rootScope, $scope, Accueil, $window, $cookieStore) {
-							var cookieOrthoTab = $cookieStore.get('orthotab');
-
-							$scope.etapes = Accueil.query({}, {
-								'userid' : cookieOrthoTab.id
+						'$cookies',
+						function($rootScope, $scope, AccueilEtapes,AccueilInfos, $window, $cookies) {
+							
+							var token = "";
+							var cookieOrthoTab = $cookies.orthotabv2;
+							if(cookieOrthoTab!=null){
+								token = getTokenInCookie(cookieOrthoTab);
+							}
+							
+							$scope.etapes = AccueilEtapes.query({}, {
+								'token' : token
+							});
+							
+							$scope.infosaccueil = AccueilInfos.query({}, {
+								'token' : token
 							});
 
 							$scope.goToNiveau = function($event, niveau) {
 								
-								if (niveau == 1) {
-									$window.location.href = "niveau1temp.htm";
-								} else if (niveau == 2) {
-									$window.location.href = "niveau1.htm";
-								} else {
-									$window
-											.alert("Ce niveau sera disponible prochainement.");
+								if(niveau==$scope.infosaccueil.nivcourant){
+									var nosem = 0;
+									if(niveau<=5){
+										nosem=1;
+									}else if(niveau>5 && niveau<=10){
+										nosem=2;
+									}else if(niveau>10 && niveau<=15){
+										nosem=3;
+									}else if(niveau>15 && niveau<=20){
+										nosem=4;
+									}else if(niveau>20){
+										nosem=5;
+									}
+									
+									var noj = niveau%5;
+									
+									var page = "s" + nosem + "j" + noj +".jsp";
+									$window.location.href = "../exercices/" + page;
 								}
 							}
 						} ]);
@@ -213,8 +234,8 @@ orthotabControllers
 
 							// depart
 							$scope.depart = function() {
-								//$window.location.href = "../main/accueil.jsp";
-								$window.alert("En travaux !");
+								$window.location.href = "../main/accueil.jsp";
+								//$window.alert("En travaux !");
 							};
 							
 							// didacticiel

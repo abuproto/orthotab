@@ -65,7 +65,7 @@ public class ActivityServiceImpl implements ActivityService {
 					
 					// vérification si jour terminé
 					for(Exercice exercice : listeExercice){
-						if(exercice.getCode().equals(type) || isExerciceEffectue(listeActivity, type)){
+						if(exercice.getCode().equals(type) || isExerciceEffectue(listeActivity, exercice.getCode())){
 							nbExTermine++;
 						}
 					}
@@ -76,6 +76,8 @@ public class ActivityServiceImpl implements ActivityService {
 						user.setDatechgtniv(activity.getDateActivite());
 						user.setNivcourant(Long.valueOf(niveau));
 						LOGGER.info("Mise a jour niveau courant pour user " + user + " , " + oldNiveau + "-->" + niveau);
+					}else{
+						user.setDatechgtniv(null);
 					}
 				}
 			}

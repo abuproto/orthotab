@@ -156,9 +156,6 @@ public class ExerciceController {
     @RequestMapping("technique04/{niveau}")
     @ResponseBody
     public List<Case> getTechnique04(@PathVariable("niveau") String niveau) {
-    	int debut = 1;
-    	int fin = 1;
-    	int pas = 1;
     	int nbInRow = 5;
     	List<Case> listeCase = null;
     	switch(niveau){
@@ -222,9 +219,9 @@ public class ExerciceController {
         return techniqueService.getTechnique09(niveau);
     }
     
-    @RequestMapping("infosexercice/{token}/{nojour}")
+    @RequestMapping("infosexercice/{token}/{groupe}")
     @ResponseBody
-    public List<InfosExercice> getInfosExercice(@PathVariable("token") String token, @PathVariable("nojour") int nojour) {
-    	return infosExerciceService.getListInfosExercice(nojour, token);
+    public List<InfosExercice> getInfosExercice(@PathVariable("token") String token, @PathVariable("groupe") String groupe) {
+    	return infosExerciceService.getListInfosExercice(groupe, token);
     }
 }

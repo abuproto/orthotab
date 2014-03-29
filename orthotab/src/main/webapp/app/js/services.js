@@ -148,8 +148,8 @@ orthotabServices.factory('Didact04', [ '$resource', function($resource) {
 	});
 } ]);
 
-orthotabServices.factory('Accueil', [ '$resource', function($resource) {
-	return $resource('/orthotab/api/accueil/:userid', {userid:'@userid'}, {
+orthotabServices.factory('AccueilEtapes', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/accueiletapes/:token', {token:'@token'}, {
 		query : {
 			method : 'GET',
 			isArray : true
@@ -157,6 +157,23 @@ orthotabServices.factory('Accueil', [ '$resource', function($resource) {
 	});
 } ]);
 
+orthotabServices.factory('AccueilInfos', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/accueilinfos/:token', {token:'@token'}, {
+		query : {
+			method : 'GET',
+			isArray : false
+		}
+	});
+} ]);
+
+orthotabServices.factory('InfosExercice', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/infosexercice/:token/:groupe', {token:'@token', groupe:'@groupe'}, {
+		query : {
+			method : 'GET',
+			isArray : true
+		}
+	});
+} ]);
 
 
 orthotabServices.factory('UserNiveauService', [ '$resource', function($resource) {

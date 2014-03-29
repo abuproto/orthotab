@@ -7,9 +7,11 @@ public class InfosAccueil {
 	private int nbcac;
 
 	// timestamp du prochain niveau
-	private int nbMillisNextJour;
+	private long nbMillisNextJour;
 	
 	private List<String> listeNomObjet = new ArrayList<String>();
+	
+	private int nivcourant;
 
 	public int getNbcac() {
 		return nbcac;
@@ -31,11 +33,19 @@ public class InfosAccueil {
 		this.listeNomObjet.add(nomObjet);
 	}
 
-	public int getNbMillisNextJour() {
+	public long getNbMillisNextJour() {
 		return nbMillisNextJour;
 	}
 
-	public void setNbMillisNextJour(int nbMillisNextJour) {
+	public void setNbMillisNextJour(long nbMillisNextJour) {
 		this.nbMillisNextJour = nbMillisNextJour;
+	}
+
+	public int getNivcourant() {
+		return nivcourant;
+	}
+
+	public void setNivcourant(int nivcourant) {
+		this.nivcourant = nivcourant;
 	}
 }

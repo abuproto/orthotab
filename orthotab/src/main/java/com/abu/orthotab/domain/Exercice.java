@@ -34,18 +34,18 @@ public class Exercice implements Serializable{
 	private Long idtechnique;
 	
 	
-	private final static Map<Integer, String> mapLibelle;
+	private final static Map<Long, String> mapLibelle;
 	static {
-		mapLibelle = new HashMap<Integer, String>();
-		mapLibelle.put(1, "Associer des paires par couleur");
-		mapLibelle.put(2, "Relier les colonnes");
-		mapLibelle.put(3, "Calcul Flash");
-		mapLibelle.put(4, "Mémory");
-		mapLibelle.put(5, "Dominos");
-		mapLibelle.put(6, "Boîtes à compléter");
-		mapLibelle.put(7, "Mémory multipliant");
-		mapLibelle.put(8, "Calcul à trou");
-		mapLibelle.put(9, "Remettre dans le bon ordre");
+		mapLibelle = new HashMap<Long, String>();
+		mapLibelle.put(Long.valueOf(1), "Associer des paires par couleur");
+		mapLibelle.put(Long.valueOf(2), "Relier les colonnes");
+		mapLibelle.put(Long.valueOf(3), "Calcul Flash");
+		mapLibelle.put(Long.valueOf(4), "Mémory");
+		mapLibelle.put(Long.valueOf(5), "Dominos");
+		mapLibelle.put(Long.valueOf(6), "Boîtes à compléter");
+		mapLibelle.put(Long.valueOf(7), "Mémory multipliant");
+		mapLibelle.put(Long.valueOf(8), "Calcul à trou");
+		mapLibelle.put(Long.valueOf(9), "Remettre dans le bon ordre");
 	}
 	
 	public Long getIdtechnique() {
