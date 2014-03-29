@@ -99,7 +99,11 @@ orthotabControllers
 						'AccueilInfos',
 						'$window',
 						'$cookies',
-						function($rootScope, $scope, AccueilEtapes,AccueilInfos, $window, $cookies) {
+						'$filter',
+						function($rootScope, $scope, AccueilEtapes,AccueilInfos, $window, $cookies,$filter) {
+							
+							var messageAccueilDefaut = "Clique sur le rond vert pour accéder aux exercices du jour";
+							$scope.message = messageAccueilDefaut;
 							
 							var token = "";
 							var cookieOrthoTab = $cookies.orthotabv2;
@@ -118,23 +122,41 @@ orthotabControllers
 							$scope.goToNiveau = function($event, niveau) {
 								
 								if(niveau==$scope.infosaccueil.nivcourant){
-									var nosem = 0;
-									if(niveau<=5){
-										nosem=1;
-									}else if(niveau>5 && niveau<=10){
-										nosem=2;
-									}else if(niveau>10 && niveau<=15){
-										nosem=3;
-									}else if(niveau>15 && niveau<=20){
-										nosem=4;
-									}else if(niveau>20){
-										nosem=5;
+									
+									var tmsnext = $scope.infosaccueil.nbMillisNextJour;
+																		
+									var play = true;
+									
+									if(tmsnext>0){
+										var tmsnow = new Date().getTime();
+																				
+										if(tmsnext-tmsnow>0){
+											$scope.message = "Tu pourras faire le prochain niveau " + $filter('date')(tmsnext,"'à partir de ' HH:mm");
+											play = false;
+										}else{
+											$scope.message = messageAccueilDefaut;
+										}
 									}
 									
-									var noj = niveau%5;
-									
-									var page = "s" + nosem + "j" + noj +".jsp";
-									$window.location.href = "../exercices/" + page;
+									if(play){
+										var nosem = 0;
+										if(niveau<=5){
+											nosem=1;
+										}else if(niveau>5 && niveau<=10){
+											nosem=2;
+										}else if(niveau>10 && niveau<=15){
+											nosem=3;
+										}else if(niveau>15 && niveau<=20){
+											nosem=4;
+										}else if(niveau>20){
+											nosem=5;
+										}
+										
+										var noj = niveau%5;
+										
+										var page = "s" + nosem + "j" + noj +".jsp";
+										$window.location.href = "../exercices/" + page;
+									}
 								}
 							}
 						} ]);

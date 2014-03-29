@@ -134,6 +134,20 @@ body {
 	margin-bottom: 10px;
 }
 
+.div-zone-accueil {
+	border-radius: 8px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #FF9300;
+	padding:10px;
+	margin-right: 40px;
+	margin-bottom: 10px;
+}
+
+
+.menu-exercice{
+	vertical-align: middle;
+}
 
 .messageExercice{
 	font-weight: bold;
@@ -165,14 +179,14 @@ body {
 
 .boutonGeneral2-inactif {
 	border-radius: 4px;
-	background-color: #D0E09D;
+	background-color: #B5DED0;
 	font-size: 14pt;
 	margin-bottom: 10px;
 }
 
 .boutonGeneral2-actif {
 	border-radius: 4px;
-	background-color: yellow;
+	background-color: #F9A41E;
 	font-size: 14pt;
 	margin-bottom: 10px;
 }
@@ -213,9 +227,9 @@ body {
 }
 
 .div-milieu-accueil{
-	margin-right: 100px;
-	margin-left: 100px;
-	/*margin-bottom: 40px;*/
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-top: 40px;*/
 }
 
 #left{float:left;width:140px;padding-left:10px;}
@@ -240,8 +254,9 @@ body {
 
 #milieu-left-accueil{
 	float:left;
-	margin-left: 10px;
+	margin-left: 100px;
 	margin-right: 10px;
+	width: 400px;
 }
 
 #milieu-right{

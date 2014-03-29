@@ -18,31 +18,30 @@
 </div>
 
 
-<div class="div-milieu-accueil" align="center">
-
-
-<p align="center">
+<div class="div-milieu-accueil">
+<div id="milieu-left-accueil">
+<p class="messageExercice" align="center">{{message}}</p>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
 <style type="text/css" >
       <![CDATA[
 
         circle.avant {
-           fill:   #84CECC;
+           fill:   #B5DED0;
         }
        circle.apres {
-           fill:   #F4FF3A;
+           fill:   #F9A41E;
         }
         
  		circle.actif {
            fill:   green;
         }
         path.avant {
-        	stroke: #84CECC;
+        	stroke: #B5DED0;
         	stroke-width: 5;
         }
         path.apres {
-        	stroke: #F4FF3A;
+        	stroke: #F9A41E;
         	stroke-width: 5;
         }
 
@@ -99,14 +98,16 @@
 <path d="{{etapes[23].d}}" class="{{etapes[23].pathCssClass}}"/>
 <circle ng-click="goToNiveau($event,25)" cx="{{etapes[24].cx}}" cy="{{etapes[24].cy}}" r="20" class="{{etapes[24].circleCssClass}}"/>
 </svg>
-</p>
-</div>
 
-<div>
-<span class="accueil-zone">Tu as déjà {{infosaccueil.nbcac}} cacahuètes</span>
-<span class="accueil-zone">
-<span ng-repeat="objet in infosaccueil.listeNomObjet"><img ng-src="../images/{{objet}}.jpg"></span>
-<span>
+</div>
+<div id="milieu-right-accueil">
+<div class="div-zone-accueil" ng-show="infosaccueil.nbcac>0">
+<p class="messageExercice">Tu as déjà {{infosaccueil.nbcac}} cacahuètes</p>
+</div>
+<div class="div-zone-accueil" ng-show="infosaccueil.nbcac>0">
+<p align="center" ng-repeat="objet in infosaccueil.listeNomObjet"><img ng-src="../images/{{objet}}_reduit.jpg"></p>
+</div>
+</div>
 
 </div>
 

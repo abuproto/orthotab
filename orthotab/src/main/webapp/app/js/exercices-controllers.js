@@ -13,10 +13,6 @@ orthotabExercicesControllers.controller('ExercicesNavCtrl', [
 		'$cookies',
 		function($window, $scope,$rootScope,InfosExercice,$cookies) {
 
-			$scope.inactif = function(){
-				
-			};
-			
 			var token = "";
 			var cookieOrthoTab = $cookies.orthotabv2;
 			if(cookieOrthoTab!=null){
@@ -29,7 +25,6 @@ orthotabExercicesControllers.controller('ExercicesNavCtrl', [
 			});
 			
 			$scope.exercices = function(semaine, jour, exercice) {
-				console.log("semaine : " + semaine);
 				if(semaine>0){
 					var ex = "";
 					if (exercice > 0) {
@@ -42,7 +37,16 @@ orthotabExercicesControllers.controller('ExercicesNavCtrl', [
 
 			// home
 			$scope.home = function() {
-				$window.location.href = "../main/index.jsp";
+				var role = "";
+				var cookieOrthoTab = $cookies.orthotabv2;
+				if(cookieOrthoTab!=null){
+					role = getRoleInCookie(cookieOrthoTab);
+				}
+				if(role == "ADMIN"){
+					$window.location.href = "../main/index.jsp";
+				}else{
+					$window.location.href = "../main/accueil.jsp";
+				}
 			};
 
 			$scope.menu = function() {
@@ -108,7 +112,7 @@ orthotabExercicesControllers
 								$rootScope.messageNiveau = "";
 								if (caseCombi.active) {
 									if ($rootScope.couleurCourant == null) {
-										$rootScope.messageNiveau = "Il faut d'abord selectionner une case de couleur";
+										$rootScope.messageNiveau = "Il faut d'abord sélectionner une case de couleur";
 									} else if (caseCombi.type == "INTRUS") {
 										$rootScope.messageNiveau = "C'est un intrus, il ne faut pas le colorier";
 										$scope.nbEchec++;
@@ -134,7 +138,7 @@ orthotabExercicesControllers
 											$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
 											if ($scope.nbCombiTrouve == $scope.nbocc) {
 												// affichage message
-												$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+												$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 												$rootScope.niveauFini = true;
 												
 												var fin = (new Date()).getTime();
@@ -258,7 +262,7 @@ orthotabExercicesControllers
 										$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
 										if ($scope.nbCombiTrouve == $scope.nbCombi) {
 											// affichage message
-											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 											$rootScope.niveauFini = true;
 											
 											var fin = (new Date()).getTime();
@@ -348,7 +352,7 @@ orthotabExercicesControllers
 										$scope.dspsuivant = true;
 									} else if (idx == $scope.nbIt) {
 										$scope.dspsuivant = false;
-										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 										$rootScope.niveauFini = true;
 										
 										var fin = (new Date()).getTime();
@@ -383,7 +387,7 @@ orthotabExercicesControllers
 										$scope.tempsEcoule = false;
 										$timeout(cacheOperation, delaims);
 									} else if (idx == $scope.nbIt) {
-										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 										$rootScope.niveauFini = true;
 										
 										var fin = (new Date()).getTime();
@@ -468,7 +472,7 @@ orthotabExercicesControllers
 
 										$scope.nbCombiTrouve = $scope.nbCombiTrouve + 1;
 										if ($scope.nbCombiTrouve == $scope.nbocc) {
-											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 											$rootScope.niveauFini = true;
 											
 											var fin = (new Date()).getTime();
@@ -573,7 +577,7 @@ orthotabExercicesControllers
 											$scope.dominoCible[$scope.idxDominoCible + 1].cssClass = "domino-groupe domino-groupe-actif";
 											$scope.idxDominoCible++;
 										} else if (($scope.idxDominoCible + 1) == $scope.dominoCible.length) {
-											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 											$rootScope.niveauFini = true;
 											
 											var fin = (new Date()).getTime();
@@ -646,7 +650,7 @@ orthotabExercicesControllers
 										$scope.message = "Bon résultat !";
 										$scope.dspsuivant = true;
 										if (idx + 1 == $scope.nbIt) {
-											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 											$rootScope.niveauFini = true;
 											$scope.dspsuivant = false;
 											
@@ -673,7 +677,7 @@ orthotabExercicesControllers
 										$scope.message = "Bon résultat !";
 										$scope.dspsuivant = true;
 										if (idx + 1 == $scope.nbIt) {
-											$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+											$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 											$rootScope.niveauFini = true;
 											$scope.dspsuivant = false;
 											
@@ -773,7 +777,7 @@ orthotabExercicesControllers
 								$scope.message = "Bon résultat !";
 								$scope.dspsuivant = true;
 								if (idx + 1 == $scope.nbIt) {
-									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+									$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 									$rootScope.niveauFini = true;
 									$scope.dspsuivant = false;
 									
@@ -865,7 +869,7 @@ orthotabExercicesControllers
 									$scope.dspsuivant = true;
 									$scope.message = "Bon choix !";
 									if (idx + 1 == $scope.nbIt) {
-										$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+										$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 										$rootScope.niveauFini = true;
 										$scope.dspsuivant = false;
 										
@@ -975,7 +979,7 @@ orthotabExercicesControllers
 
 							if ($scope.nbCaseCible == 0) {								
 								if (idx + 1 == $scope.nbIt) {
-									$rootScope.messageNiveau = "Bravo, tu as reussi ce niveau !";
+									$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 									$rootScope.niveauFini = true;
 									$scope.dspsuivant = false;
 									

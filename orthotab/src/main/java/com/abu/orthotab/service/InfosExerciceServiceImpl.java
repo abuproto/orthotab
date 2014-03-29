@@ -64,12 +64,12 @@ public class InfosExerciceServiceImpl implements InfosExerciceService {
 					infosExercice.setCssClass(CSS_BTN_INACTIF);
 					infosExercice.setMessage("Tu as gagné ");
 					int nbCac = exercice.calculNbCac(activity.getNbEchec()==null?0:activity.getNbEchec().intValue());
-					infosExercice.setNomImgCac("cac"+nbCac+".jpg");
+					infosExercice.setNomImgCac("cac"+nbCac+"_reduit.jpg");
 					infosExercice.setNbcac(nbCac);
 					infosExercice.setActif(false);
 				}else{
 					//infosExercice.setAction(calculNomAction(exercice.getCode()));
-					infosExercice.setNomImgCac("cac1.jpg");
+					infosExercice.setNomImgCac("cac1_reduit.jpg");
 					infosExercice.setCssClass(CSS_BTN_ACTIF);
 					infosExercice.setMessage("");
 					infosExercice.setNbcac(0);

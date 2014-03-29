@@ -17,8 +17,8 @@
 
 <div class="div-milieu" align="center">
 
-<p ng-repeat="infos in infosexercice"><button class="{{infos.cssClass}}" ng-click="exercices(infos.semaine,infos.jour,infos.ex)">{{infos.libelle}}</button>
-<span ng-hide="infos.actif"><img ng-src="../images/{{infos.nomImgCac}}"/></span></p>
+<p ng-repeat="infos in infosexercice" class="menu-exercice"><button class="{{infos.cssClass}}" ng-click="exercices(infos.semaine,infos.jour,infos.ex)">{{infos.libelle}}</button>
+<span ng-hide="infos.actif"><img class="menu-exercice" ng-src="../images/{{infos.nomImgCac}}"/></span></p>
 
 </div>
 

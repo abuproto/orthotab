@@ -1,0 +1,4 @@
+delete from activity where iduser=4;
+update user set nivcourant=1 where id=4;
+update user set nbtotcac=0 where id=4;
+update user set datechgtniv=null where id=4;
