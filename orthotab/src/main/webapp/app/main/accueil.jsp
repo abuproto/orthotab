@@ -18,7 +18,9 @@
 </div>
 
 
-<div class="div-milieu-accueil">
+<%@include file="../includes/inc_waitcharge.htm"%>
+
+<div class="div-milieu-accueil" ng-show="!chargementEnCours">
 <div id="milieu-left-accueil">
 <p class="messageExercice" align="center">{{message}}</p>
 
