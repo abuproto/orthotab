@@ -22,7 +22,7 @@
 <div class="domino-div">
 <span class="{{domino.cssClass}}" ng-repeat="domino in dominoCible"><button class="domino-small-g">{{domino.libg}}</button><button class="domino-small-d">{{domino.libd}}</button></span>
 </div>
-
+<hr/>
 <div class="domino-div">
 <span class="{{domino.cssClass}}" ng-repeat="domino in dominoChoix" ng-click="enregistreDomino(domino)"><button class="domino-small-g">{{domino.libg}}</button><button class="domino-small-d">{{domino.libd}}</button></span>
 </div>

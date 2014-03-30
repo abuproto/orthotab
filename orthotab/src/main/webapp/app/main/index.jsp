@@ -13,7 +13,7 @@
 <div id="left">
 </div>
 <div id="right"></div>
-<div id="center"><p align="center">Bienvenue dans le monde de Samba dans la jungle des nombres</p></div>
+<div id="center"><p align="center">Samba dans la jungle des nombres</p></div>
 </div>
 
 <div class="div-milieu" align="center">

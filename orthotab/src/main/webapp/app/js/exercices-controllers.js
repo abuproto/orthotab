@@ -66,18 +66,11 @@ orthotabExercicesControllers.controller('CouleursCtrl', [ '$rootScope',
 			});
 
 			$scope.enregistreCouleur = function(couleur, $event, ind) {
-				if (couleur.active && $rootScope.caseCombiFirst==null) {
+				if (couleur.active && $rootScope.caseCombiFirst==null && $rootScope.couleurCourant==null) {
 					couleur.cssClass = "boutonCouleurActif";
 					couleur.active = false;
 					$rootScope.messageNiveau = "";
-					if ($rootScope.couleurCourant != null) {
-						$rootScope.couleurCourant.cssClass = "boutonCouleur";
-						if ($rootScope.caseCombiFirst != null) {
-							$rootScope.caseCombiFirst.code = "#B5B276";
-							$rootScope.caseCombiFirst = null;
-						}
-					}
-					$rootScope.couleurCourant = couleur;
+					$rootScope.couleurCourant = couleur;		
 				}
 			}
 		} ]);
@@ -540,7 +533,7 @@ orthotabExercicesControllers
 										"A chaque fois, il faut que la partie bleue soit collée à une partie jaune, même quand on change de ligne, tu dois continuer de la même façon. " +
 										"Tu dois trouver le bon domino pour que bleu+jaune soit égal à 10.";
 							}else if($scope.optValeur){
-								$rootScope.consigne = "Tu dois reconstruire la ligne de dominos en cliquant sur le bon domino qui va dans les pointillés. " +
+								$rootScope.consigne = "Tu dois reconstruire la suite de dominos en cliquant sur le bon domino qui va dans les pointillés. " +
 										"A chaque fois, il faut que la partie bleue soit collée à une partie jaune, même quand on change de ligne, tu dois continuer de la même façon. " +
 										"Tu dois coller ensemble une opération avec son résultat ou deux opérations qui ont le même résultat.";
 							}

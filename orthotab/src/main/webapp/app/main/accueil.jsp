@@ -14,7 +14,7 @@
 <div id="left">
 </div>
 <div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil" ng-click="home()"/></div>
-<div id="center"><p align="center">Bienvenue dans le monde de Samba dans la jungle des nombres</p></div>
+<div id="center"><p align="center">Samba dans la jungle des nombres</p></div>
 </div>
 
 
