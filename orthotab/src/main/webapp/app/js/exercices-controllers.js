@@ -19,10 +19,12 @@ orthotabExercicesControllers.controller('ExercicesNavCtrl', [
 				token = getTokenInCookie(cookieOrthoTab);
 			}
 			
-			$scope.infosexercice = InfosExercice.query({}, {
-				'token' : token,
-				'groupe' : $scope.groupe
-			});
+			if(angular.isDefined($scope.groupe)){
+				$scope.infosexercice = InfosExercice.query({}, {
+					'token' : token,
+					'groupe' : $scope.groupe
+				});
+			}
 			
 			$scope.exercices = function(semaine, jour, exercice) {
 				if(semaine>0){
@@ -193,7 +195,7 @@ orthotabExercicesControllers
 								'nb' : $scope.nbocc
 							});
 
-							$scope.nbCombi = $scope.nbocc;
+							$scope.nbCombi = $scope.nbocc - $scope.nbIntrus;
 							$scope.nbCombiTrouve = 0;
 							$rootScope.niveauFini = false;
 							var cptPath = 0;
@@ -326,6 +328,7 @@ orthotabExercicesControllers
 
 							var cacheOperation = function() {
 								$scope.tempsEcoule = true;
+								$scope.dspsuivant = false;
 							}
 
 							$scope.debut = false;
@@ -348,7 +351,7 @@ orthotabExercicesControllers
 							$scope.submit = function() {							
 								if ($scope.result == $scope.caseCourant.valeur) {
 									idx++;
-									$scope.message = "Bon résultat !";
+									$scope.message = "Bravo !";
 									if (idx < $scope.nbIt) {
 										$scope.dspsuivant = true;
 									} else if (idx == $scope.nbIt) {
@@ -383,10 +386,12 @@ orthotabExercicesControllers
 								if (verif) {
 									caseflash.cssClass = "boutonCase groupe-case-correct";
 									idx++;
+									$scope.message = "Bravo !";
 									if (idx < $scope.nbIt) {
-										$scope.caseCourant = $scope.casesflash[idx];
-										$scope.tempsEcoule = false;
-										$timeout(cacheOperation, delaims);
+										//$scope.caseCourant = $scope.casesflash[idx];
+										//$scope.tempsEcoule = false;
+										//$timeout(cacheOperation, delaims);
+										$scope.dspsuivant = true;
 									} else if (idx == $scope.nbIt) {
 										$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
 										$rootScope.niveauFini = true;
@@ -531,11 +536,17 @@ orthotabExercicesControllers
 								Technique05Cible, ActivityService, $cookies) {
 
 							if($scope.opt10){
-								$rootScope.consigne = "Ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? " +
-									"C’est à cet endroit que tu dois glisser les dominos pour continuer la série. Tu dois trouver la bonne paire pour que le total fasse 10.";
+								$rootScope.consigne = "Tu dois reconstruire la suite de dominos en cliquant sur le bon domino qui va dans les pointillés. " +
+										"A chaque fois, il faut que la partie bleue soit collée à une partie jaune, même quand on change de ligne, tu dois continuer de la même façon. " +
+										"Tu dois trouver le bon domino pour que bleu+jaune soit égal à 10.";
 							}else if($scope.optValeur){
-								$rootScope.consigne = "Ces dominos faisaient une belle ligne mais le singe a tout mélangé. Tu vois les pointillés? C’est à cet endroit que tu dois glisser les dominos pour continuer la série. " +
+								$rootScope.consigne = "Tu dois reconstruire la ligne de dominos en cliquant sur le bon domino qui va dans les pointillés. " +
+										"A chaque fois, il faut que la partie bleue soit collée à une partie jaune, même quand on change de ligne, tu dois continuer de la même façon. " +
 										"Tu dois coller ensemble une opération avec son résultat ou deux opérations qui ont le même résultat.";
+							}
+							if ($scope.optIntrus) {
+								$rootScope.consigne = $rootScope.consigne
+										+ " Attention, il y a des intrus.";
 							}
 								
 							$scope.dominoCible = Technique05Cible.query({}, {

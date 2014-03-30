@@ -157,7 +157,7 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 			listCaseflash.add(fabriqueCaseflashCompleteExp("7", new String[] { "5","3","4" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("9", new String[] { "1","2","9" }));
 			break;
-		case "s1j4e2":
+		case "s1j4e3":
 			// somme = 10
 			listCaseflash.add(fabriqueCaseflashCompleteExp("1", new String[] { "4","6","9","8" }));
 			listCaseflash.add(fabriqueCaseflashCompleteExp("3", new String[] { "7","3","4","8" }));

@@ -6,7 +6,7 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s1j1e2';nbocc=5;">
+<body ng-app="orthotabApp" ng-init="niveau='s1j1e2';nbocc=5;optIntrus=false;nbIntrus=0;">
 <div id="page">
 	<div id="bloc-principal">
 <div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s1j1'">
@@ -14,19 +14,22 @@
 <div id="center"><p align="center">Relier des colonnes</p></div>
 </div>
 <%@include file="../includes/inc_messages.htm"%>
-<div class="div-milieu" ng-controller="Technique02Ctrl">
+
+<%@include file="../includes/inc_waitcharge.htm"%>
+
+<div class="div-milieu" ng-controller="Technique02Ctrl" ng-show="niveauFini || !chargementEnCours">
 
 
 <div id="milieu-left">
 <div align="right" id="casesg" ng-repeat="case in casesg">
-<button class="{{case.cssClass}}" ng-style="{'border-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">
+<button class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">
 {{case.libelle}}</button>
 </div>
 
 </div>
 <div id="milieu-right">
 <div align="left" id="casesd" ng-repeat="case in casesd">
-<button class="{{case.cssClass}}" ng-style="{'border-color' : case.backgrdStyle}" ng-click="enregistreCaseD(case, $event, $index)">
+<button class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseD(case, $event, $index)">
 {{case.libelle}}</button>
 </div>
 </div>

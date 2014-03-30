@@ -14,7 +14,10 @@
 <div id="center"><p align="center">Dominos</p></div>
 </div>
 <%@include file="../includes/inc_messages.htm"%>
-<div class="div-milieu" ng-controller="Technique05Ctrl">
+
+<%@include file="../includes/inc_waitcharge.htm"%>
+
+<div class="div-milieu" ng-controller="Technique05Ctrl" ng-show="niveauFini || !chargementEnCours">
 
 <div class="domino-div">
 <span class="{{domino.cssClass}}" ng-repeat="domino in dominoCible"><button class="domino-small-g">{{domino.libg}}</button><button class="domino-small-d">{{domino.libd}}</button></span>

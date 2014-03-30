@@ -247,7 +247,7 @@ orthotabControllers
 												var valcookie = userByToken.token + "#" + userByToken.prenom + "#" + userByToken.role;
 												document.cookie = "orthotabv2="+valcookie+";path=/orthotab/";
 												
-												var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};
+												var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'token':userByToken.token};
 												ActivityService.create(activity);
 											}
 										});
@@ -309,7 +309,7 @@ orthotabControllers
 														document.cookie = "orthotabv2="+valcookie+";path=/orthotab/";
 														localStorageService.add('usertoken',userConnecte.token);
 														
-														var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'idUser':$scope.utilisateur.id};
+														var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'token':userConnecte.token};
 														ActivityService.create(activity);
 													}
 												});

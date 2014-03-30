@@ -5,7 +5,7 @@
   <title>Orthotab : accueil</title>
 <%@include file="../includes/inc_head.htm"%>
 </head>
-<body>
+<body class="degrade">
 
 <div id="accueil" ng-controller="AccueilCtrl">
 

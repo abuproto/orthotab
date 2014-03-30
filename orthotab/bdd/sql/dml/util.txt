@@ -1,4 +1,7 @@
-delete from activity where iduser=4;
-update user set nivcourant=1 where id=4;
-update user set nbtotcac=0 where id=4;
-update user set datechgtniv=null where id=4;
+delete from activity where iduser in (5,6);
+update user set nivcourant=1 where id in (5,6);
+update user set nbtotcac=0 where id in (5,6);
+update user set datechgtniv=null where id in (5,6);
+
+
+update user set nivcourant=1 where id in (7,8,9,10,11,12,13,14);

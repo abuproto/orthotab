@@ -20,6 +20,11 @@ body {
 }
 
 
+.degrade{
+	/*background-image : linear-gradient(to right,#FAFF3A,#85C630);*/
+	background-image : linear-gradient(to right,#FFFFFF,#85C630);
+}
+
 #page {
 	min-height: 100%;
 	position: relative;
