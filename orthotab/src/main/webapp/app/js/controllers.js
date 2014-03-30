@@ -156,7 +156,12 @@ orthotabControllers
 											nosem=5;
 										}
 										
-										var noj = niveau%5;
+										var noj = 0;
+										if(niveau<=5){
+											noj = niveau;
+										}else{
+											noj = niveau -(nosem-1)*5;
+										}
 										
 										var page = "s" + nosem + "j" + noj +".jsp";
 										$window.location.href = "../exercices/" + page;

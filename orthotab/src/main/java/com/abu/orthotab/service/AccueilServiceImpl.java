@@ -61,6 +61,7 @@ public class AccueilServiceImpl implements AccueilService {
 		String exppash = "";
 		String exppasv = "";
 		int dm = 0;
+		int dn = 0;
 		
 		User userConnecte = userDao.findUserByToken(token);
 		if(userConnecte!=null){
@@ -102,17 +103,20 @@ public class AccueilServiceImpl implements AccueilService {
 					exppash = String.valueOf(pashorizontal);
 					exppasv = "0";
 					dm = cx+r;
+					dn = cy;
 				}else if(i%5==0){
 					exppash = "0";
-					exppasv = String.valueOf(pasvertical);
+					exppasv = String.valueOf(pasvertical-r);
 					dm = cx;
+					dn = cy+r;
 				}else if((i>5 && i<10) || (i>15 && i<20)){
 					exppash = String.valueOf(-pashorizontal);
 					exppasv = "0";
-					dm = cx+r;
+					dm = cx-r;
+					dn = cy;
 				}
 				
-				d="M" + dm + "," + cy + " l" + exppash + "," + exppasv;
+				d="M" + dm + "," + dn + " l" + exppash + "," + exppasv;
 				
 				etape.setR(r);
 				etape.setCx(cx);
