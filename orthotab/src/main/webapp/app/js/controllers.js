@@ -274,8 +274,17 @@ orthotabControllers
 								$window.location.href = "../didact/didact0.jsp";
 							};
 
+							// admin
 							$scope.accesExercices= function() {
 								$window.location.href = "../admin/exercices.jsp";
+							};
+							
+							$scope.accesInfosActivity= function() {
+								$window.location.href = "../admin/infosactivity.jsp";
+							};
+							
+							$scope.accesInfosUtilisateur= function() {
+								$window.location.href = "../admin/infosutilisateur.jsp";
 							};
 							
 							// changerUtilisateur
@@ -320,3 +329,27 @@ orthotabControllers
 												});
 							};
 						} ]);
+
+orthotabControllers.controller('InfosUtilisateurCtrl', [ '$window', '$scope',
+                                         		'InfosUtilisateurService', function($window, $scope, InfosUtilisateurService) {
+
+                                         			$scope.iu = InfosUtilisateurService.query({}, {
+                                         			});
+
+                        							$scope.home = function() {
+                        								$window.location.href = "../main/index.jsp";
+                        							};
+                                         		} ]);
+
+orthotabControllers.controller('InfosActivityCtrl', [ '$window', '$scope',
+                                                  		'InfosActivityService', function($window, $scope, InfosActivityService) {
+
+                                                  			$scope.ia = InfosActivityService.query({}, {
+                                                  			});
+                                                  			
+                                                  			$scope.sems = ["", "1", "2", "3", "4", "5"];
+
+                                 							$scope.home = function() {
+                                 								$window.location.href = "../main/index.jsp";
+                                 							};
+                                                  		} ]);

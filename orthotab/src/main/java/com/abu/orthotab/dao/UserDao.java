@@ -8,34 +8,41 @@ import com.abu.orthotab.domain.User;
 
 @Repository
 public class UserDao extends CommonHibernateDao {
+
+	@SuppressWarnings("unchecked")
+	public List<User> findAllUser() {
+		return getCurrentSession().createQuery("from User").list();
+	}
+
 	@SuppressWarnings("unchecked")
 	public User findUserByLogin(String login) {
 		User user = null;
-		List<User> listUser = getCurrentSession().createQuery("from User where login = '" + login + "'")
-                .list();
+		List<User> listUser = getCurrentSession().createQuery(
+				"from User where login = '" + login + "'").list();
 		// TODO remplacer par preparedStatement ou equivalent
 		// TEMP
-		if(!listUser.isEmpty()){
+		if (!listUser.isEmpty()) {
 			user = listUser.get(0);
 		}
 		return user;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public User findUserByToken(String token) {
 		User user = null;
-		List<User> listUser = getCurrentSession().createQuery("from User where token = '" + token + "'")
-                .list();
+		List<User> listUser = getCurrentSession().createQuery(
+				"from User where token = '" + token + "'").list();
 		// TODO remplacer par preparedStatement ou equivalent
 		// TEMP
-		if(!listUser.isEmpty()){
+		if (!listUser.isEmpty()) {
 			user = listUser.get(0);
 		}
 		return user;
 	}
-	
-	public User finduserById(int id){
-		User user = (User) getCurrentSession().load(User.class, Long.valueOf(id));
+
+	public User finduserById(int id) {
+		User user = (User) getCurrentSession().load(User.class,
+				Long.valueOf(id));
 		return user;
 	}
 }

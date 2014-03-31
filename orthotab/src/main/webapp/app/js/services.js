@@ -208,3 +208,18 @@ orthotabServices.factory('ActivityService', [ '$resource', function($resource) {
         create: { method: 'POST' }
 	})
 } ]);
+
+
+orthotabServices.factory('InfosActivityService', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/infosactivity', {}, {
+        query: { method: 'GET', isArray: true },
+        create: { method: 'POST' }
+	})
+} ]);
+
+orthotabServices.factory('InfosUtilisateurService', [ '$resource', function($resource) {
+	return $resource('/orthotab/api/infosutilisateur', {}, {
+        query: { method: 'GET', isArray: true },
+        create: { method: 'POST' }
+	})
+} ]);

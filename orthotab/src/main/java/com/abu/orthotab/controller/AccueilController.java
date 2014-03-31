@@ -18,11 +18,6 @@ public class AccueilController {
 	@Autowired
 	private AccueilService accueilService;
 
-	@Autowired
-	public AccueilController(AccueilService accueilService) {
-		this.accueilService = accueilService;
-	}
-
     @RequestMapping("accueiletapes/{token}")
     @ResponseBody
     public List<Etape> getListEtapes(@PathVariable("token") String token) {

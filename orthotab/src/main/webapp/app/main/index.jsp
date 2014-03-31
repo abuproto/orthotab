@@ -46,10 +46,11 @@
 
 <div ng-show="isLogged && isAdmin" class="div-login">
 
-<!--<div align="center" ng-show="{{utilisateur.role=='ADMIN'}}">-->
 <div align="center">
 <p align="center">Réservé aux administrateurs :</p>
 <p><button class="boutonGeneral" ng-click="accesExercices()">Accès à tous les exercices</button></p>
+<p><button class="boutonGeneral" ng-click="accesInfosActivity()">Suivi Activité</button></p>
+<p><button class="boutonGeneral" ng-click="accesInfosUtilisateur()">Information Utilisateurs</button></p>
 </div>
 </div>
 

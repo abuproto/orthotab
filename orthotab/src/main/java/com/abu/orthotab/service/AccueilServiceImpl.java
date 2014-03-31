@@ -31,9 +31,7 @@ public class AccueilServiceImpl implements AccueilService {
 	private final static String CSS_CLASS_AVANT = "avant";
 	private final static String CSS_CLASS_ACTIF = "actif";
 	private final static String CSS_CLASS_APRES = "apres";
-	
-	private final static String PARAM_EX_INTERVALLE = "EX_INTERVALLE";
-	
+		
 	private final static String NOM_OBJET_1 = "chapeau";
 	private final static String NOM_OBJET_2 = "papillon";
 	private final static String NOM_OBJET_3 = "masque";
@@ -141,7 +139,7 @@ public class AccueilServiceImpl implements AccueilService {
 		
 			Date dateLastActivite = userConnecte.getDatechgtniv();
 			if(dateLastActivite!=null){
-				Parametre parametre = parametreDao.findParametreByCleIdUser(PARAM_EX_INTERVALLE, userConnecte.getId());
+				Parametre parametre = parametreDao.findParametreByCleIdUser(Parametre.Cle.EX_INTERVALLE.name(), userConnecte.getId());
 				if(parametre!=null){
 					String strinter = parametre.getValeur();
 					int intermin = Integer.valueOf(strinter);

@@ -25,6 +25,10 @@ public class Parametre implements Serializable{
 	@Column(name = "IDUSER")
 	private Long idUser;
 
+	public enum Cle {
+		EX_INTERVALLE
+	}
+	
 	public Long getId() {
 		return id;
 	}
