@@ -611,4 +611,7 @@ table.tabSuivi td {
 	background-color: #ffffff;
 }
 
-
+.lienAdmin{
+	text-decoration:underline;
+	color:#FF0000;
+}

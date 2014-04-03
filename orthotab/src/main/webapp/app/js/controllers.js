@@ -100,21 +100,22 @@ orthotabControllers
 						'$window',
 						'$cookies',
 						'$filter',
-						function($rootScope, $scope, AccueilEtapes,AccueilInfos, $window, $cookies,$filter) {
-							
+						function($rootScope, $scope, AccueilEtapes,
+								AccueilInfos, $window, $cookies, $filter) {
+
 							var messageAccueilDefaut = "Clique sur le rond vert pour accéder aux exercices du jour";
 							$scope.message = messageAccueilDefaut;
-							
+
 							var token = "";
 							var cookieOrthoTab = $cookies.orthotabv2;
-							if(cookieOrthoTab!=null){
+							if (cookieOrthoTab != null) {
 								token = getTokenInCookie(cookieOrthoTab);
 							}
-							
+
 							$scope.etapes = AccueilEtapes.query({}, {
 								'token' : token
 							});
-							
+
 							$scope.infosaccueil = AccueilInfos.query({}, {
 								'token' : token
 							});
@@ -122,50 +123,55 @@ orthotabControllers
 							$scope.home = function() {
 								$window.location.href = "../main/index.jsp";
 							};
-							
+
 							$scope.goToNiveau = function($event, niveau) {
-								
-								if(niveau==$scope.infosaccueil.nivcourant){
-									
+
+								if (niveau == $scope.infosaccueil.nivcourant) {
+
 									var tmsnext = $scope.infosaccueil.nbMillisNextJour;
-																		
+
 									var play = true;
-									
-									if(tmsnext>0){
-										//var tmsnow = new Date().getTime();
+
+									if (tmsnext > 0) {
+										// var tmsnow = new Date().getTime();
 										var tmsnow = $scope.infosaccueil.nbMillisNow;
-																				
-										if(tmsnext-tmsnow>0){
-											$scope.message = "Tu pourras faire le prochain niveau " + $filter('date')(tmsnext,"'à partir de ' HH:mm");
+
+										if (tmsnext - tmsnow > 0) {
+											$scope.message = "Tu pourras faire le prochain niveau "
+													+ $filter('date')
+															(tmsnext,
+																	"'à partir de 'EEEE HH:mm");
 											play = false;
-										}else{
+										} else {
 											$scope.message = messageAccueilDefaut;
 										}
 									}
-									
-									if(play){
+
+									if (play) {
 										var nosem = 0;
-										if(niveau<=5){
-											nosem=1;
-										}else if(niveau>5 && niveau<=10){
-											nosem=2;
-										}else if(niveau>10 && niveau<=15){
-											nosem=3;
-										}else if(niveau>15 && niveau<=20){
-											nosem=4;
-										}else if(niveau>20){
-											nosem=5;
+										if (niveau <= 5) {
+											nosem = 1;
+										} else if (niveau > 5 && niveau <= 10) {
+											nosem = 2;
+										} else if (niveau > 10 && niveau <= 15) {
+											nosem = 3;
+										} else if (niveau > 15 && niveau <= 20) {
+											nosem = 4;
+										} else if (niveau > 20) {
+											nosem = 5;
 										}
-										
+
 										var noj = 0;
-										if(niveau<=5){
+										if (niveau <= 5) {
 											noj = niveau;
-										}else{
-											noj = niveau -(nosem-1)*5;
+										} else {
+											noj = niveau - (nosem - 1) * 5;
 										}
-										
-										var page = "s" + nosem + "j" + noj +".jsp";
-										$window.location.href = "../exercices/" + page;
+
+										var page = "s" + nosem + "j" + noj
+												+ ".jsp";
+										$window.location.href = "../exercices/"
+												+ page;
 									}
 								}
 							}
@@ -178,20 +184,20 @@ orthotabControllers.controller('AvancementCtrl', [ '$rootScope', '$scope',
 				var nivcourant = cookieOrthoTab.nivcourant;
 				var longueurbarre = 200;
 				var nivtotal = 3;
-				
+
 				// message
 				var messageavancement = '';
 				var nivrestant = nivtotal - nivcourant;
 				messageavancement = "Tu as r&eacute;ussi ";
 				messageavancement = messageavancement + nivcourant;
 				messageavancement = messageavancement + " exercice";
-				if(nivcourant > 1){
+				if (nivcourant > 1) {
 					messageavancement = messageavancement + "s";
 				}
 				messageavancement = messageavancement + ". Il en reste ";
 				messageavancement = messageavancement + nivrestant;
 				messageavancement = messageavancement + ".";
-				
+
 				$rootScope.messageavancement = messageavancement;
 				// barre progression
 				var lfait = (longueurbarre * nivcourant) / nivtotal;
@@ -214,51 +220,70 @@ orthotabControllers
 						'UserTokenService',
 						'ActivityService',
 						'$cookies',
-						function($rootScope, $scope, UserAuthService,
-								$http, $window, $timeout,
-								localStorageService, UserTokenService, ActivityService,$cookies) {
+						function($rootScope, $scope, UserAuthService, $http,
+								$window, $timeout, localStorageService,
+								UserTokenService, ActivityService, $cookies) {
 							var cookieOrthoTab = $cookies.orthotabv2;
-							
-							$scope.infosClient = "H" + $window.innerHeight + " W" + $window.innerWidth;
+
+							$scope.infosClient = "H" + $window.innerHeight
+									+ " W" + $window.innerWidth;
 							$scope.ua = $window.navigator.userAgent;
-							
-							if (cookieOrthoTab != null && cookieOrthoTab.length>0) {
+
+							if (cookieOrthoTab != null
+									&& cookieOrthoTab.length > 0) {
 								// a completer avec verification User
 								$rootScope.isLogged = true;
 								$scope.utilisateurPrenom = getPrenomInCookie(cookieOrthoTab);
 								$scope.utilisateurRole = getRoleInCookie(cookieOrthoTab);
-								if($scope.utilisateurRole=='ADMIN'){
+								if ($scope.utilisateurRole == 'ADMIN') {
 									$rootScope.isAdmin = true;
 								}
 							} else {
-								var tokenls = localStorageService.get('usertoken');
-								if(tokenls!=null){
-								UserTokenService
-								.findByToken(
-										{},
-										{
-											'token' : tokenls
-										},
-										function(userByToken) {
-											if(angular.isUndefined(userByToken.nom)){
-												$rootScope.isLogged = false;
-											}else{
-												$rootScope.isLogged = true;
-												$scope.message = '';
-												$scope.utilisateur = userByToken;
-												if($scope.utilisateur.role=='ADMIN'){
-													$rootScope.isAdmin = true;
-												}
+								var tokenls = localStorageService
+										.get('usertoken');
+								if (tokenls != null) {
+									UserTokenService
+											.findByToken(
+													{},
+													{
+														'token' : tokenls
+													},
+													function(userByToken) {
+														if (angular
+																.isUndefined(userByToken.nom)) {
+															$rootScope.isLogged = false;
+														} else {
+															$rootScope.isLogged = true;
+															$scope.message = '';
+															$scope.utilisateur = userByToken;
+															if ($scope.utilisateur.role == 'ADMIN') {
+																$rootScope.isAdmin = true;
+															}
 
-												var valcookie = userByToken.token + "#" + userByToken.prenom + "#" + userByToken.role;
-												document.cookie = "orthotabv2="+valcookie+";path=/orthotab/";
-												
-												var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'token':userByToken.token};
-												ActivityService.create(activity);
-											}
-										});
+															var valcookie = userByToken.token
+																	+ "#"
+																	+ userByToken.prenom
+																	+ "#"
+																	+ userByToken.role;
+															document.cookie = "orthotabv2="
+																	+ valcookie
+																	+ ";path=/orthotab/";
+
+															var activity = {
+																'type' : 'LOGIN',
+																'dateActivite' : (new Date()
+																		.getTime()),
+																'details' : $scope.infosClient
+																		+ ' / '
+																		+ $scope.ua,
+																'token' : userByToken.token
+															};
+															ActivityService
+																	.create(activity);
+														}
+													});
 								}
-								
+
 								$rootScope.isLogged = false;
 								$scope.utilisateur = '';
 							}
@@ -267,31 +292,32 @@ orthotabControllers
 							// depart
 							$scope.depart = function() {
 								$window.location.href = "../main/accueil.jsp";
-								//$window.alert("En travaux !");
+								// $window.alert("En travaux !");
 							};
-							
+
 							// didacticiel
 							$scope.didactHome = function() {
 								$window.location.href = "../didact/didact0.jsp";
 							};
 
 							// admin
-							$scope.accesExercices= function() {
+							$scope.accesExercices = function() {
 								$window.location.href = "../admin/exercices.jsp";
 							};
-							
-							$scope.accesInfosActivity= function() {
+
+							$scope.accesInfosActivity = function() {
 								$window.location.href = "../admin/infosactivity.jsp";
 							};
-							
-							$scope.accesInfosUtilisateur= function() {
+
+							$scope.accesInfosUtilisateur = function() {
 								$window.location.href = "../admin/infosutilisateur.jsp";
 							};
-							
+
 							// changerUtilisateur
 							$scope.changerUtilisateur = function() {
-								
-								document.cookie = "orthotabv2=" + ";path=/orthotab/";
+
+								document.cookie = "orthotabv2="
+										+ ";path=/orthotab/";
 								localStorageService.remove('usertoken');
 								$window.location.href = "../main/index.jsp";
 							};
@@ -316,62 +342,109 @@ orthotabControllers
 														$scope.message = '';
 														$scope.utilisateur = userConnecte;
 														$scope.utilisateurPrenom = userConnecte.prenom;
-														if($scope.utilisateur.role=='ADMIN'){
+														if ($scope.utilisateur.role == 'ADMIN') {
 															$rootScope.isAdmin = true;
 														}
-														
-														var valcookie = userConnecte.token + "#" + userConnecte.prenom + "#" + userConnecte.role;
-														document.cookie = "orthotabv2="+valcookie+";path=/orthotab/";
-														localStorageService.add('usertoken',userConnecte.token);
-														
-														var activity = {'type':'LOGIN','dateActivite':(new Date().getTime()) ,'details': $scope.infosClient + ' / ' + $scope.ua,'token':userConnecte.token};
-														ActivityService.create(activity);
+
+														var valcookie = userConnecte.token
+																+ "#"
+																+ userConnecte.prenom
+																+ "#"
+																+ userConnecte.role;
+														document.cookie = "orthotabv2="
+																+ valcookie
+																+ ";path=/orthotab/";
+														localStorageService
+																.add(
+																		'usertoken',
+																		userConnecte.token);
+
+														var activity = {
+															'type' : 'LOGIN',
+															'dateActivite' : (new Date()
+																	.getTime()),
+															'details' : $scope.infosClient
+																	+ ' / '
+																	+ $scope.ua,
+															'token' : userConnecte.token
+														};
+														ActivityService
+																.create(activity);
 													}
 												});
 							};
 						} ]);
 
-orthotabControllers.controller('InfosUtilisateurCtrl', [ '$window', '$scope',
-                                         		'InfosUtilisateurService','ParametreService', function($window, $scope, InfosUtilisateurService, ParametreService) {
 
-                                         			$scope.iu = InfosUtilisateurService.query({}, {
-                                         			});
+orthotabControllers.controller('NavigationCtrl', function($window, $scope) {
 
-                        							$scope.home = function() {
-                        								$window.location.href = "../main/index.jsp";
-                        							};
-                        							
-                        							$scope.majParametre = function(idUser,valeur) {
-                        								var parametre = {'idUser':idUser,'valeur':valeur};
-                        								ParametreService.addParametre(parametre);
-                        								$window.location.href = "../admin/majparametre.jsp";
-                        							};
-                        							
-                                         		} ]);
+	$scope.home = function() {
+		$window.location.href = "../main/index.jsp";
+	};
+});
+
+
+orthotabControllers.controller('InfosUtilisateurCtrl', function($window,
+		$rootScope, $scope, InfosUtilisateurService, ParametreService) {
+
+	$rootScope.dspListe = true;
+
+	$scope.iu = InfosUtilisateurService.query({}, {});
+
+	$scope.majParametre = function(idUser, valeur) {
+		var parametre = {
+			'idUser' : idUser,
+			'valeur' : valeur
+		};
+
+		ParametreService.addIdUser(idUser);
+		$rootScope.dspListe = false;
+	};
+});
 
 orthotabControllers.controller('InfosActivityCtrl', [ '$window', '$scope',
-                                                  		'InfosActivityService', function($window, $scope, InfosActivityService) {
+		'InfosActivityService',
+		function($window, $scope, InfosActivityService) {
 
-                                                  			$scope.ia = InfosActivityService.query({}, {
-                                                  			});
-                                                  			
-                                                  			$scope.sems = ["", "1", "2", "3", "4", "5"];
+			$scope.ia = InfosActivityService.query({}, {});
 
-                                 							$scope.home = function() {
-                                 								$window.location.href = "../main/index.jsp";
-                                 							};
-                                                  		} ]);
+			$scope.sems = [ "", "1", "2", "3", "4", "5" ];
 
-orthotabControllers.controller('ParametreCtrl', [ '$window', '$scope',
-                                                		'ParametreService', function($window, $scope, ParametreService) {
+			$scope.home = function() {
+				$window.location.href = "../main/index.jsp";
+			};
+		} ]);
 
-                                                			$scope.parametre = ParametreService.getParametre({}, {
-                                                			});
-                                                			
-                                                			
 
-                               							$scope.submit = function() {
-                               								// A compléter
-                               								$window.location.href = "../admin/infosutilisateur.jsp";
-                               							};
-                                                		} ]);
+orthotabControllers.controller('ParametreCtrl', function($window, $rootScope,
+		$scope, ParametreService, ParametreMajService) {
+
+	$scope.idUser = ParametreService.idUser;
+
+	$scope.$on("idUserAdded", function() {
+		$scope.idUser = ParametreService.idUser;
+	});
+
+	$scope.submit = function() {
+		
+		var heure = 0;
+		if(angular.isDefined($scope.parametre.heure)){
+			heure = $scope.parametre.heure;
+		}
+		var minute = 0;
+		if(angular.isDefined($scope.parametre.minute)){
+			minute = $scope.parametre.minute;
+		}
+		
+		var parametreNew = {
+			'idUser' : $scope.idUser,
+			'heure' : heure,
+			'minute' : minute
+		};
+				
+		ParametreMajService.update(parametreNew);
+		$rootScope.dspListe = true;
+		//$window.location.href = "../admin/infosutilisateur.jsp";
+	};
+});
+

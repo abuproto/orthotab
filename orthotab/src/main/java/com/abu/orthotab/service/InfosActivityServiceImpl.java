@@ -40,7 +40,7 @@ public class InfosActivityServiceImpl implements InfosActivityService {
 						: user.getPrenom();
 			}
 			ia.setLibUtilisateur(libUtilisateur);
-			ia.setExercice(activity.getType());
+			ia.setExercice(activity.getType() + ("REJEU".equals(activity.getDetails())?" (Rejeu)":""));
 
 			ia.setNoSemaine(activity.getType().startsWith("s") ? activity
 					.getType().substring(1, 2) : "");

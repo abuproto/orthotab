@@ -11,7 +11,7 @@ public class UserDao extends CommonHibernateDao {
 
 	@SuppressWarnings("unchecked")
 	public List<User> findAllUser() {
-		return getCurrentSession().createQuery("from User").list();
+		return getCurrentSession().createQuery("from User where id>0").list();
 	}
 
 	@SuppressWarnings("unchecked")

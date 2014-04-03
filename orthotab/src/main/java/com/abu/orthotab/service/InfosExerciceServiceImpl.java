@@ -51,6 +51,11 @@ public class InfosExerciceServiceImpl implements InfosExerciceService {
 		User user = userDao.findUserByToken(token);
 		
 		if(user!=null){
+			
+			if(user.getNivcourant().intValue() != nojour){
+				LOGGER.warn("Nojour : " + nojour + " et nivcourant : " + user.getNivcourant());
+			}
+			
 			for(Exercice exercice : listExercice){
 				InfosExercice infosExercice = new InfosExercice();
 				infosExercice.setLibelle(exercice.getLibelle());
