@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
@@ -25,8 +26,30 @@ public class Parametre implements Serializable{
 	@Column(name = "IDUSER")
 	private Long idUser;
 
+	@Transient
+	private int heure;
+	
+	@Transient
+	private int minute;
+	
+	public int getHeure() {
+		return heure;
+	}
+
+	public void setHeure(int heure) {
+		this.heure = heure;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+
 	public enum Cle {
-		EX_INTERVALLE
+		EX_INTERVALLE, ECART_TIME
 	}
 	
 	public Long getId() {

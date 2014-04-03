@@ -10,3 +10,8 @@ insert into PARAMETRE values(8,'EX_INTERVALLE','960',11);
 insert into PARAMETRE values(9,'EX_INTERVALLE','960',12);
 insert into PARAMETRE values(10,'EX_INTERVALLE','960',13);
 insert into PARAMETRE values(11,'EX_INTERVALLE','960',14);
+
+insert into PARAMETRE values(12,'EX_INTERVALLE','960',16);
+
+
+insert into PARAMETRE values(13,'ECART_TIME','0',0);

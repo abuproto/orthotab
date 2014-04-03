@@ -31,6 +31,7 @@ public class InfosUtilisateurServiceImpl implements InfosUtilisateurService {
 		
 		for(User user : listUser){
 			InfosUtilisateur iu = new InfosUtilisateur();
+			iu.setIdUser(user.getId());
 			iu.setLibUtilisateur((user.getPrenom()==null?"":user.getPrenom() + " ") + user.getNom() + " (" + user.getId() + ")");
 			iu.setNbTotCac(user.getNbtotcac());
 			iu.setLibNivCourant(String.valueOf(user.getNivcourant()));

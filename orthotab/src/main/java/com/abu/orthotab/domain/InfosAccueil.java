@@ -9,6 +9,9 @@ public class InfosAccueil {
 	// timestamp du prochain niveau
 	private long nbMillisNextJour;
 	
+	// timestamp date et heure courante
+	private long nbMillisNow;
+	
 	private List<String> listeNomObjet = new ArrayList<String>();
 	
 	private int nivcourant;
@@ -47,5 +50,13 @@ public class InfosAccueil {
 
 	public void setNivcourant(int nivcourant) {
 		this.nivcourant = nivcourant;
+	}
+
+	public long getNbMillisNow() {
+		return nbMillisNow;
+	}
+
+	public void setNbMillisNow(long nbMillisNow) {
+		this.nbMillisNow = nbMillisNow;
 	}
 }

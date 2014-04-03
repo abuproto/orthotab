@@ -8,6 +8,8 @@ public class InfosUtilisateur {
 	private Long nbTotCac;
 	
 	private String libNivCourant;
+	
+	private Long idUser;
 
 	public String getLibUtilisateur() {
 		return libUtilisateur;
@@ -39,6 +41,14 @@ public class InfosUtilisateur {
 
 	public void setLibNivCourant(String libNivCourant) {
 		this.libNivCourant = libNivCourant;
+	}
+
+	public Long getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
 	}
 
 }

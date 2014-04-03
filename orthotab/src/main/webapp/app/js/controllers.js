@@ -132,7 +132,8 @@ orthotabControllers
 									var play = true;
 									
 									if(tmsnext>0){
-										var tmsnow = new Date().getTime();
+										//var tmsnow = new Date().getTime();
+										var tmsnow = $scope.infosaccueil.nbMillisNow;
 																				
 										if(tmsnext-tmsnow>0){
 											$scope.message = "Tu pourras faire le prochain niveau " + $filter('date')(tmsnext,"'à partir de ' HH:mm");
@@ -331,7 +332,7 @@ orthotabControllers
 						} ]);
 
 orthotabControllers.controller('InfosUtilisateurCtrl', [ '$window', '$scope',
-                                         		'InfosUtilisateurService', function($window, $scope, InfosUtilisateurService) {
+                                         		'InfosUtilisateurService','ParametreService', function($window, $scope, InfosUtilisateurService, ParametreService) {
 
                                          			$scope.iu = InfosUtilisateurService.query({}, {
                                          			});
@@ -339,6 +340,13 @@ orthotabControllers.controller('InfosUtilisateurCtrl', [ '$window', '$scope',
                         							$scope.home = function() {
                         								$window.location.href = "../main/index.jsp";
                         							};
+                        							
+                        							$scope.majParametre = function(idUser,valeur) {
+                        								var parametre = {'idUser':idUser,'valeur':valeur};
+                        								ParametreService.addParametre(parametre);
+                        								$window.location.href = "../admin/majparametre.jsp";
+                        							};
+                        							
                                          		} ]);
 
 orthotabControllers.controller('InfosActivityCtrl', [ '$window', '$scope',
@@ -353,3 +361,17 @@ orthotabControllers.controller('InfosActivityCtrl', [ '$window', '$scope',
                                  								$window.location.href = "../main/index.jsp";
                                  							};
                                                   		} ]);
+
+orthotabControllers.controller('ParametreCtrl', [ '$window', '$scope',
+                                                		'ParametreService', function($window, $scope, ParametreService) {
+
+                                                			$scope.parametre = ParametreService.getParametre({}, {
+                                                			});
+                                                			
+                                                			
+
+                               							$scope.submit = function() {
+                               								// A compléter
+                               								$window.location.href = "../admin/infosutilisateur.jsp";
+                               							};
+                                                		} ]);

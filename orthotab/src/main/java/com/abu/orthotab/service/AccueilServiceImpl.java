@@ -144,10 +144,12 @@ public class AccueilServiceImpl implements AccueilService {
 					String strinter = parametre.getValeur();
 					int intermin = Integer.valueOf(strinter);
 					
-					Calendar cal = Calendar.getInstance();
-					cal.setTime(dateLastActivite);
-					cal.add(Calendar.MINUTE, intermin);
-					infosAccueil.setNbMillisNextJour(cal.getTimeInMillis());
+					Calendar calNextJour = Calendar.getInstance();
+					calNextJour.setTime(dateLastActivite);
+					calNextJour.add(Calendar.MINUTE, intermin);
+					infosAccueil.setNbMillisNextJour(calNextJour.getTimeInMillis());
+					
+					infosAccueil.setNbMillisNow(parametreDao.calculVraieDateHeure().getTime());
 				}
 			}else{
 				infosAccueil.setNbMillisNextJour(0);
