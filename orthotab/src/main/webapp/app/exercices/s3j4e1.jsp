@@ -6,7 +6,7 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s3j4e1';nbocc=10;optIntrus=true;">
+<body ng-app="orthotabApp" ng-init="niveau='s3j4e1';nbocc=10;optIntrus=true;nbIntrus=2;">
 <div id="page">
 	<div id="bloc-principal">
 <div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s3j4'">
@@ -14,7 +14,10 @@
 <div id="center"><p align="center">Relier des colonnes</p></div>
 </div>
 <%@include file="../includes/inc_messages.htm"%>
-<div class="div-milieu" ng-controller="Technique02Ctrl">
+
+<%@include file="../includes/inc_waitcharge.htm"%>
+
+<div class="div-milieu" ng-controller="Technique02Ctrl" ng-show="niveauFini || !chargementEnCours">
 
 
 <div id="milieu-left">
