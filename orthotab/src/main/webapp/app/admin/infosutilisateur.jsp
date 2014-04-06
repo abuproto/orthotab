@@ -24,7 +24,7 @@
 <div class="div-milieu-accueil" ng-show="!chargementEnCours && dspListe" align="center">
 
 <table class="tabSuivi">
-  <tr><th>Prénom / Nom</th><th>Délai entre 2 niveaux</th><th>Niveau courant</th><th>Nb total cacahuètes</th></tr>
+  <tr><th>Prénom / Nom</th><th>Délai entre 2 niveaux<br/>(jour:heure:minute)</th><th>Niveau courant</th><th>Nb total cacahuètes</th></tr>
   <tr ng-repeat="info in iu">
     <td>{{info.libUtilisateur}}</td>
     <td align="center"><a ng-click="majParametre(info.idUser,info.paramInterjour)" class="lienAdmin">{{info.paramInterjour}}</a></td>

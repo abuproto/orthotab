@@ -167,8 +167,11 @@ orthotabExercicesControllers
 						'$cookies',
 						function($rootScope, $scope, Technique02, Commun01, ActivityService, $cookies) {
 
-							$rootScope.consigne = "Le singe farceur a tout mélangé. Aide moi à relier l'opération et le résultat qui vont "
+							$rootScope.consigne = "Le singe farceur a tout mélangé. Aide-moi à relier l'opération et le résultat qui vont "
 									+ "ensemble. Clique sur l'opération et le résultat pour les relier.";
+							if($scope.optOperation){
+								$rootScope.consigne = $rootScope.consigne + " Parfois, tu dois relier deux opérations.";
+							}
 							if ($scope.optIntrus) {
 								$rootScope.consigne = $rootScope.consigne
 										+ " Attention, il y a des intrus. Tu ne dois pas les relier.";
@@ -301,7 +304,7 @@ orthotabExercicesControllers
 							} else if ($scope.optDouble){
 								$rootScope.consigne = "Les opérations vont apparaître quelques secondes. Retiens bien le calcul. Tu devras cliquer sur le résultat correct qui va apparaître après.";
 							} else if($scope.optSomme){
-								$rootScope.consigne = "Un chiffre va apparaître quelques secondes. Retiens-le bien ! tu devras cliquer sur le chiffre qui complète la dizaine. " +
+								$rootScope.consigne = "Un chiffre va apparaître quelques secondes. Retiens-le bien ! Tu devras cliquer sur le chiffre qui complète la dizaine. " +
 										"Exemple : si tu vois le chiffre 1, tu devras cliquer sur le 9 parce que 1+9 = 10 ! à toi !";
 							}
 
@@ -330,6 +333,7 @@ orthotabExercicesControllers
 								$scope.caseCourant = $scope.casesflash[idx];
 								$scope.nbIt = $scope.casesflash.length;
 								$scope.debut = true;
+								$scope.noIt = idx+1;
 								$timeout(cacheOperation, delaims);
 							};
 							
@@ -338,6 +342,7 @@ orthotabExercicesControllers
 								$scope.message = "";
 								$scope.result = "";
 								$scope.tempsEcoule = false;
+								$scope.noIt = idx+1;
 								$timeout(cacheOperation, delaims);
 							};
 
@@ -381,9 +386,6 @@ orthotabExercicesControllers
 									idx++;
 									$scope.message = "Bravo !";
 									if (idx < $scope.nbIt) {
-										//$scope.caseCourant = $scope.casesflash[idx];
-										//$scope.tempsEcoule = false;
-										//$timeout(cacheOperation, delaims);
 										$scope.dspsuivant = true;
 									} else if (idx == $scope.nbIt) {
 										$rootScope.messageNiveau = "Bravo, tu as réussi ce niveau !";
@@ -401,6 +403,7 @@ orthotabExercicesControllers
 
 								} else {
 									caseflash.cssClass = "boutonCase groupe-case-incorrect";
+									$scope.nbEchec++;
 								}
 							};
 
@@ -535,7 +538,12 @@ orthotabExercicesControllers
 							}else if($scope.optValeur){
 								$rootScope.consigne = "Tu dois reconstruire la suite de dominos en cliquant sur le bon domino qui va dans les pointillés. " +
 										"A chaque fois, il faut que la partie bleue soit collée à une partie jaune, même quand on change de ligne, tu dois continuer de la même façon. " +
-										"Tu dois coller ensemble une opération avec son résultat ou deux opérations qui ont le même résultat.";
+										"Tu dois coller ensemble une opération avec son résultat";
+								if($scope.optConsOp){
+									$rootScope.consigne = $rootScope.consigne + " ou deux opérations qui ont le même résultat.";
+								}else{
+									$rootScope.consigne = $rootScope.consigne + ".";
+								}
 							}
 							if ($scope.optIntrus) {
 								$rootScope.consigne = $rootScope.consigne
@@ -738,6 +746,7 @@ orthotabExercicesControllers
 						$scope.memorymCourant = $scope.memorym[idx];
 						$scope.nbIt = $scope.memorym.length;
 						$scope.debut = true;
+						$scope.noIt = idx+1;
 					};
 	
 					$rootScope.niveauFini = false;
@@ -748,6 +757,7 @@ orthotabExercicesControllers
 						idx++;
 						$scope.memorymCourant = $scope.memorym[idx];
 						$scope.message = "";
+						$scope.noIt = idx+1;
 						$scope.dspsuivant = false;
 						$scope.caseGcourant = null;
 						$scope.caseDcourant = null;
@@ -802,7 +812,7 @@ orthotabExercicesControllers
 								$scope.caseDcourant.backgrdStyle = "blue";
 								$scope.caseDcourant = null;
 								$scope.dspsuivant = false;
-								$scope.message = "Résultat incorrect";
+								$scope.message = "Ce n'est pas ça.";
 							}
 						}
 					}
@@ -821,11 +831,11 @@ orthotabExercicesControllers
 						function($rootScope, $scope, Technique08, ActivityService, $cookies) {
 
 							if($scope.optValeur){
-								$rootScope.consigne = "ces opérations ont quelque chose qui ne va pas, elles sont incomplètes. " +
+								$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas, elles sont incomplètes. " +
 										"Quel chiffre complète l’opération selon toi ? Clique sur le bon.";
 							}else if($scope.optRapide){
 								$rootScope.consigne = "Cette opération est compliquée ! je suis sûr qu’en coupant le morceau jaune, on peut trouver le résultat plus facilement ! " +
-										"mais il faut bien le couper ! trouve la bonne façon et clique dessus.";
+										"mais il faut bien le couper ! Trouve la bonne façon et clique dessus.";
 							}
 							
 							$scope.calculATrou = Technique08.query({}, {
@@ -841,6 +851,7 @@ orthotabExercicesControllers
 								$scope.calculATrouCourant = $scope.calculATrou[idx];
 								$scope.nbIt = $scope.calculATrou.length;
 								$scope.debut = true;
+								$scope.noIt = idx+1;
 							};
 
 							$rootScope.niveauFini = false;
@@ -853,6 +864,7 @@ orthotabExercicesControllers
 								$scope.calculATrouCourant = $scope.calculATrou[idx];
 								$scope.dspsuivant = false;
 								$scope.message = "";
+								$scope.noIt = idx+1;
 							}
 
 							$scope.enregistreCase = function(caseCombi, $event,
@@ -891,7 +903,7 @@ orthotabExercicesControllers
 									caseCombi.backgrdStyle = "red";
 									$scope.nbEchec++;
 									$scope.dspsuivant = false;
-									$scope.message = "Choix incorrect";
+									$scope.message = "Ce n'est pas la bonne case";
 								}
 							}
 						} ]);

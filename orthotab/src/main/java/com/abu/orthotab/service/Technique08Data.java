@@ -104,7 +104,8 @@ public class Technique08Data extends TechniqueDataUtil {
 		
 		for(String prop : tabprop){
 			Case caseChoix = new Case("", prop, evalueExpression(prop));
-			caseChoix.setCssClass(CSS_CASE_NOMBRE);
+			//caseChoix.setCssClass(CSS_CASE_NOMBRE);
+			caseChoix.setCssClass(CSS_ROND_PLEIN);
 			caseChoix.setBackgrdStyle(STYLE_BGRD_GRIS);
 			calculATrou.addCaseChoix(caseChoix);
 		}

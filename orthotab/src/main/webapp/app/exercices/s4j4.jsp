@@ -12,7 +12,7 @@
 <div id="left">
 </div>
 <div id="right"><img src="../images/icone_home.jpg" alt="Retour Accueil" ng-click="home()" style="cursor: hand;cursor: pointer;"/></div>
-<div id="center"><p align="center">Semaine 4 - Jour 5</p></div>
+<div id="center"><p align="center">Semaine 4 - Jour 4</p></div>
 </div>
 
 <div class="div-milieu" align="center">

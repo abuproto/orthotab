@@ -6,7 +6,7 @@
 <%@include file="../includes/inc_head.htm"%>
   
 </head>
-<body ng-app="orthotabApp" ng-init="niveau='s2j2e2';nbocc=10;optIntrus=false;nbIntrus=0;">
+<body ng-app="orthotabApp" ng-init="niveau='s2j2e2';nbocc=10;optIntrus=false;nbIntrus=0;optOperation=true;">
 <div id="page">
 	<div id="bloc-principal">
 <div class="div-haut" ng-controller="ExercicesNavCtrl" ng-init="groupe='s2j2'">
@@ -22,14 +22,14 @@
 
 <div id="milieu-left">
 <div align="right" id="casesg" ng-repeat="case in casesg">
-<button class="{{case.cssClass}}" ng-style="{'border-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">
+<button class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">
 {{case.libelle}}</button>
 </div>
 
 </div>
 <div id="milieu-right">
 <div align="left" id="casesd" ng-repeat="case in casesd">
-<button class="{{case.cssClass}}" ng-style="{'border-color' : case.backgrdStyle}" ng-click="enregistreCaseD(case, $event, $index)">
+<button class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseD(case, $event, $index)">
 {{case.libelle}}</button>
 </div>
 </div>

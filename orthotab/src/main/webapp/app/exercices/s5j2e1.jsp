@@ -17,7 +17,7 @@
 <div class="div-milieu" ng-controller="Technique04Ctrl">
 <div align="center">
 <button class="boutonGeneral2" ng-style="{'background-color' : 'green'}" ng-click="valider()">Valider</button>
-<button class="boutonGeneral2" ng-style="{'background-color' : 'red'}" ng-click="retourner()">Retouner</button>
+<button class="boutonGeneral2" ng-style="{'background-color' : 'red'}" ng-click="retourner()">Retourner</button>
 </div>
 <div align="center">
 <button class="{{case.cssClass}}" ng-repeat="case in cases | filter:{row:1}" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCase(case, $event, $index)">

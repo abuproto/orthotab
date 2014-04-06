@@ -113,9 +113,9 @@ public class Technique02Data extends TechniqueDataUtil {
 			casesBrut.add(construitCase("15+9", pos));
 			break;
 		case "s2j5e2G":
-			casesBrut.add(construitCase("2+10-1", pos));
+			casesBrut.add(construitCase("(2+10)-1", pos));
 			//casesBrut.add(construitCase("13", pos));
-			casesBrut.add(construitCase("5+10-1", pos));
+			casesBrut.add(construitCase("(5+10)-1", pos));
 			//casesBrut.add(construitCase("8+10-1", pos));
 			casesBrut.add(construitCase("13+9", pos));
 			casesBrut.add(construitCase("12", pos));
@@ -126,12 +126,12 @@ public class Technique02Data extends TechniqueDataUtil {
 			break;
 		case "s2j5e2D":
 			//casesBrut.add(construitCase("8+9", pos));
-			casesBrut.add(construitCase("13+10-1", pos));
+			casesBrut.add(construitCase("(13+10)-1", pos));
 			casesBrut.add(construitCase("2+9", pos));
-			casesBrut.add(construitCase("3+10-1", pos));
+			casesBrut.add(construitCase("(3+10)-1", pos));
 			//casesBrut.add(construitCase("4+9", pos));
-			casesBrut.add(construitCase("15+10-2", pos));
-			casesBrut.add(construitCase("6+10-1", pos));
+			casesBrut.add(construitCase("(15+10)-1", pos));
+			casesBrut.add(construitCase("(6+10)-1", pos));
 			//casesBrut.add(construitCase("4+8", pos));
 			//casesBrut.add(construitCase("14", pos));
 			casesBrut.add(construitCase("14", pos));

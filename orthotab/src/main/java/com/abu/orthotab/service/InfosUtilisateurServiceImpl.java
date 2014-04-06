@@ -42,8 +42,8 @@ public class InfosUtilisateurServiceImpl implements InfosUtilisateurService {
 				String valeur = parametre.getValeur();
 				int valnum = Integer.valueOf(valeur);
 				
-				paramInterJour.append(String.format("%d:%02d:%02d", valnum / 3600,
-						(valnum % 3600) / 60, (valnum % 60)));
+				paramInterJour.append(String.format("%dj %02d h %02d mn", valnum / 1440,
+						(valnum % 1440) / 60, (valnum % 60)));
 			}
 			iu.setParamInterjour(paramInterJour.toString());
 			listInfosUtilisateur.add(iu);

@@ -34,3 +34,5 @@ update USER set nivcourant=1 where nivcourant=0;
 insert into USER values(0,'usertechnique','usertechnique','usertechnique','','TECHNIQUE',0,'',null,0);
 
 insert into USER values(17,'stephanie','Duigou','Stephanie','stephanie','PATIENT',1,'05c176e345afe114e7409f5762e7336a',null,0);
+
+ATTENTION, pas d'accent dans le prénom, pb avec cookie pour le moment !

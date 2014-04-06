@@ -390,7 +390,7 @@ orthotabControllers.controller('InfosUtilisateurCtrl', function($window,
 	$rootScope.dspListe = true;
 
 	$scope.iu = InfosUtilisateurService.query({}, {});
-
+	
 	$scope.majParametre = function(idUser, valeur) {
 		var parametre = {
 			'idUser' : idUser,
@@ -444,6 +444,7 @@ orthotabControllers.controller('ParametreCtrl', function($window, $rootScope,
 				
 		ParametreMajService.update(parametreNew);
 		$rootScope.dspListe = true;
+		$rootScope.$apply();
 		//$window.location.href = "../admin/infosutilisateur.jsp";
 	};
 });

@@ -33,22 +33,14 @@ public class Technique04Data extends TechniqueDataUtil {
 		case "s2j1e2":
 			casesBrut.add(construitCase("3+9","OP"));
 			casesBrut.add(construitCase("14","OP"));
-			//casesBrut.add(construitCase("4+9","OP"));
 			casesBrut.add(construitCase("(6+10)-1","OP"));
-			//casesBrut.add(construitCase("(7+10)-1","OP"));
 			casesBrut.add(construitCase("8+9","OP"));
-			//casesBrut.add(construitCase("(6+10)-2","OP"));
-			casesBrut.add(construitCase("12","OP"));
-			//casesBrut.add(construitCase("5+8","OP"));
-			//casesBrut.add(construitCase("(4+10)-1","RES"));
+			casesBrut.add(construitCase("12","RES"));
 			casesBrut.add(construitCase("6+9","RES"));
 			casesBrut.add(construitCase("12","RES"));
 			casesBrut.add(construitCase("5+9","RES"));
-			//casesBrut.add(construitCase("13","RES"));
-			casesBrut.add(construitCase("(4+10)-2","RES"));
-			//casesBrut.add(construitCase("7+9","RES"));
+			casesBrut.add(construitCase("(4+10)-2","OP"));
 			casesBrut.add(construitCase("17","RES"));
-			//casesBrut.add(construitCase("6+8","RES"));
 			break;
 		case "s4j1e2":
 			casesBrut.add(construitCase("3+9","OP"));

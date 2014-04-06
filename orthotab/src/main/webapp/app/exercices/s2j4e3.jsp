@@ -19,7 +19,7 @@
 <div align="center" ng-hide="debut"><button class="boutonGeneral2" ng-click="commencer()">Commencer l'exercice</button></div>
 
 <div ng-show="debut">
-
+<p align="center">{{noIt}} sur {{nbIt}}</p>
 	<div id="milieu-left">
 	<p align="right" ng-repeat="case in memorymCourant.listeCaseG"><button class="case-nombre" ng-style="{'background-color' : case.backgrdStyle}" ng-click="enregistreCaseG(case, $event, $index)">{{case.valeur}}</button></p>
 	</div>

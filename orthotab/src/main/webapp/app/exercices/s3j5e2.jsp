@@ -27,6 +27,8 @@
 <div id="milieu-right">
 <div align="center" ng-show="tempsEcoule">
 <p ng-repeat="case in caseCourant.listeCaseflash"><button ng-click="valider(case)" class="{{case.cssClass}}">{{case.libelle}}</button></p>
+	<span>{{message}}</span>
+	<p ng-show="dspsuivant"><button class="boutonGeneral2" ng-click="suivant()">Suivant</button></p>
 </div>
 </div>
 
