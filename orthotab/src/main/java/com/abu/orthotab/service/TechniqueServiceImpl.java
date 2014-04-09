@@ -269,11 +269,11 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 		case "s1j3e3":
 		case "s2j4e2":
 		case "s2j5e3":
+		case "s3j1e2":
 			nbocc=7;
 			break;
 		case "s1j5e3":
 		case "s2j1e3":
-		case "s3j1e2":
 		case "s3j3e3":
 		case "s4j1e3":
 		case "s4j3e3":

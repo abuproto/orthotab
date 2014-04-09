@@ -621,12 +621,12 @@ orthotabExercicesControllers
 						'$cookies',
 						function($rootScope, $scope, Technique06, ActivityService, $cookies) {
 							if ($scope.optRapide) {
-								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Sur le couvercle il y a marqué combien on peut mettre d’oeufs au maximum. " +
+								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. " +
 										"Dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque caisse avec le bon tas d’oeufs, en choisissant le calcul qui te permet de calculer le plus vite.";
 							} else if ($scope.optCalcul) {
 								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Il y en a des petites et des grandes. " +
-										"Sur le couvercle il y a marqué combien on peut mettre d’oeufs au maximum. " +
-										"Dans la boite il y a déjà quelques oeufs mais elle n’est pas complète ! Aide-moi à compléter chaque boîte avec le bon tas d’oeufs";
+										"Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. " +
+										"Dans la boîte il y a déjà quelques oeufs mais elle n’est pas complète ! Aide-moi à compléter chaque boîte avec le bon tas d’oeufs.";
 							}
 
 							$scope.boites = Technique06.query({}, {
@@ -680,7 +680,7 @@ orthotabExercicesControllers
 										caseCombi.backgrdStyle = "red";
 										$scope.nbEchec++;
 										$scope.dspsuivant = false;
-										$scope.message = "Résultat incorrect";
+										$scope.message = "Ce n'est pas ça";
 									}
 								} else if ($scope.optCalcul && caseCombi.active) {
 									if($scope.boiteCourant.valrestant==caseCombi.valeur){
@@ -703,16 +703,16 @@ orthotabExercicesControllers
 											var activity = {'type':$scope.niveau,'dateActivite':(new Date().getTime()) ,'duree':(fin-debut),'token':token, 'nbEchec':$scope.nbEchec};
 											ActivityService.create(activity);
 										}
-									}else if($scope.boiteCourant.valrestant>caseCombi.valeur){
-										caseCombi.backgrdStyle = "green";
-										caseCombi.active = false;
-										$scope.dspsuivant = false;
-										$scope.boiteCourant.valrestant = $scope.boiteCourant.valrestant - caseCombi.valeur;
+									//}else if($scope.boiteCourant.valrestant>caseCombi.valeur){
+									//	caseCombi.backgrdStyle = "green";
+									//	caseCombi.active = false;
+									//	$scope.dspsuivant = false;
+									//	$scope.boiteCourant.valrestant = $scope.boiteCourant.valrestant - caseCombi.valeur;
 									}else{
 										caseCombi.backgrdStyle = "red";
 										$scope.nbEchec++;
 										$scope.dspsuivant = false;
-										$scope.message = "Résultat incorrect";
+										$scope.message = "Ce n'est pas ça";
 									}
 								}
 							}

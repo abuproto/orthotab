@@ -25,6 +25,7 @@
 	<div align="center" class="emplacement-cible-groupe">
 	<span>Boîte de {{boiteCourant.valmax}} </span><span><button class="emplacement-choix-rond"></button></span>
 	<br/>
+	<hr/>
 	<span>Il y a déjà : {{boiteCourant.valacquis}}</span><span><button class="emplacement-choix-rond"></button></span>
 	<br/>
 	Il en manque : <span class="emplacement-cible-small" align="center">{{boiteCourant.librestant}}</span>
