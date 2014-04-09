@@ -19,6 +19,7 @@
 <div align="center" ng-hide="debut"><button class="boutonGeneral2" ng-click="commencer()">Commencer l'exercice</button></div>
 
 <div ng-show="debut">
+<p align="center">{{noIt}} sur {{nbIt}}</p>
 <div id="milieu-left">
 <div align="center" ng-hide="tempsEcoule">
 <p><button class="boutonCase">{{caseCourant.libelle}}</button></p>
