@@ -19,7 +19,7 @@
 <div align="center" ng-hide="debut"><button class="boutonGeneral2" ng-click="commencer()">Commencer l'exercice</button></div>
 
 <div ng-show="debut">
-
+<p align="center">{{noIt}} sur {{nbIt}}</p>
 <div align="center">
 <button class="{{case.cssClass}}" ng-repeat="case in calculATrouCourant.listeCaseCible" ng-style="{'background-color' : case.backgrdStyle}">
 {{case.libelle}}</button>
