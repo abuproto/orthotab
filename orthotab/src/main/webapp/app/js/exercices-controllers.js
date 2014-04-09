@@ -643,6 +643,7 @@ orthotabExercicesControllers
 								$scope.boiteCourant = $scope.boites[idx];
 								$scope.nbIt = $scope.boites.length;
 								$scope.debut = true;
+								$scope.noIt = idx+1;
 							};
 
 							$rootScope.niveauFini = false;
@@ -653,6 +654,7 @@ orthotabExercicesControllers
 								idx++;
 								$scope.boiteCourant = $scope.boites[idx];
 								$scope.message = "";
+								$scope.noIt = idx+1;
 							}
 
 							$scope.enregistreCase = function(caseCombi) {
@@ -834,8 +836,8 @@ orthotabExercicesControllers
 								$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas, elles sont incomplètes. " +
 										"Quel chiffre complète l’opération selon toi ? Clique sur le bon.";
 							}else if($scope.optRapide){
-								$rootScope.consigne = "Cette opération est compliquée ! je suis sûr qu’en coupant le morceau jaune, on peut trouver le résultat plus facilement ! " +
-										"mais il faut bien le couper ! Trouve la bonne façon et clique dessus.";
+								$rootScope.consigne = "Cette opération est compliquée ! Je suis sûr qu’en coupant le morceau jaune, on peut trouver le résultat plus facilement ! " +
+										"Mais il faut bien le couper ! Trouve la bonne façon et clique dessus.";
 							}
 							
 							$scope.calculATrou = Technique08.query({}, {
@@ -937,6 +939,7 @@ orthotabExercicesControllers
 						$scope.nbIt = $scope.rm.length;
 						$scope.debut = true;
 						$scope.nbCaseCible=$scope.rmCourant.listeCaseCible.length;
+						$scope.noIt = idx+1;
 					};
 
 					$rootScope.niveauFini = false;
@@ -950,6 +953,7 @@ orthotabExercicesControllers
 						$scope.dspsuivant = false;
 						$scope.message = "";
 						$scope.nbCaseCible=$scope.rmCourant.listeCaseCible.length;
+						$scope.noIt = idx+1;
 					}
 										
 					$scope.enregistreCaseH = function(caseCombi, index) {
@@ -989,7 +993,7 @@ orthotabExercicesControllers
 							} else {
 								$scope.nbEchec++;
 								$scope.dspsuivant = false;
-								$scope.message = "Choix incorrect";
+								$scope.message = "Ce n'est pas ça";
 								$scope.caseBcourant.backgrdStyle = "#B5B276";
 								$scope.caseHcourant.backgrdStyle = "white";
 							}
