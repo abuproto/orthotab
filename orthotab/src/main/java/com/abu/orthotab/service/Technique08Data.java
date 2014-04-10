@@ -283,7 +283,7 @@ public class Technique08Data extends TechniqueDataUtil {
 			listeCalculATrou.add(construitCalculATrouRapide(40, 22, 62, 1, new String[]{"20+2","10+10+2"}, 0));
 			listeCalculATrou.add(construitCalculATrouRapide(31, 28, 59, 0, new String[]{"14+15+2","30+1"}, 1));
 			listeCalculATrou.add(construitCalculATrouRapide(25, 43, 68, 1, new String[]{"40+3","15+25+3","35+8"}, 0));
-			listeCalculATrou.add(construitCalculATrouRapide(15, 24, 39, 1, new String[]{"15+5+4","20+4","25+4"}, 0));
+			listeCalculATrou.add(construitCalculATrouRapide(15, 24, 39, 1, new String[]{"15+9","20+4","25+4"}, 1));
 			break;
 		case "s3j4e4":
 			listeCalculATrou.add(construitCalculATrouRapide(38, 14, 52, 1, new String[]{"2+12","5+9"}, 0));

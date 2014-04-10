@@ -107,7 +107,7 @@ public class Technique05Data extends TechniqueDataUtil {
 		mapDominoChoix.put("s3j3e3", Arrays.asList(s3j3e3));
 		
 		String[][] s3j4e3 = { {"35","6x5"},{"30","4x7"},{"28","4x9"},{"36","7x8"},
-				{"56","6x9"},{"54","7x7"},{"49","6x6"},{"36","4x4"},{"16","4x2"} };
+				{"56","6x9"},{"54","7x7"},{"49","4x4"},{"16","4x2"} };
 		mapDominoChoix.put("s3j4e3", Arrays.asList(s3j4e3));
 		
 		String[][] s4j1e3 = { {"16","8x7"},{"56","8x6"},{"48","8x5"},{"40","8x8"},
