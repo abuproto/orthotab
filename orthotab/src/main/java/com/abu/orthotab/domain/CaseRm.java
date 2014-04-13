@@ -8,6 +8,8 @@ public class CaseRm {
 	private boolean active;
 	
 	private String backgrdStyle;
+	
+	private String cssClass;
 
 	public String getLibelle() {
 		return libelle;
@@ -46,5 +48,13 @@ public class CaseRm {
 
 	public void setBackgrdStyle(String backgrdStyle) {
 		this.backgrdStyle = backgrdStyle;
+	}
+
+	public String getCssClass() {
+		return cssClass;
+	}
+
+	public void setCssClass(String cssClass) {
+		this.cssClass = cssClass;
 	}
 }

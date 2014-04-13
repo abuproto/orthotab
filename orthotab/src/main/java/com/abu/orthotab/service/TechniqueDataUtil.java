@@ -18,6 +18,7 @@ public class TechniqueDataUtil {
 	protected final static String CSS_ROND_PLEIN = "rond trou-plein";
 	protected final static String CSS_ROND_SF_PLEIN = "rond-sf trou-plein";
 	protected final static String CSS_CARRE_PLEIN = "carre trou-plein";
+	protected final static String CSS_CARRE_SF_PLEIN = "carre-sf trou-plein";
 	protected final static String CSS_CASE_NOMBRE = "case-nombre";
 	protected final static String STYLE_BGRD_GRIS = "#B5B276";
 	protected final static String STYLE_BGRD_JAUNE = "yellow";

@@ -277,13 +277,11 @@ public class TechniqueServiceImpl extends UtilServiceImpl implements
 		case "s3j3e3":
 		case "s4j1e3":
 		case "s4j3e3":
+		case "s3j4e3":
 			nbocc=8;
 			break;
 		case "s2j3e2":
 			nbocc=6;
-			break;
-		case "s3j4e3":
-			nbocc=9;
 			break;
 		}
 		return Technique05Data.getInstance().listeDominoCible(niveau, nbocc);

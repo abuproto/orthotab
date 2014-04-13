@@ -485,6 +485,15 @@ body {
 	font-size: 24pt;
 }
 
+.carre-sf{
+	border-width: 2px;
+	margin: 5px;
+	width: 60px;
+    height: 60px;
+    font-weight: bold;
+	font-size: 18pt;
+}
+
 .trou{
 	border-width: 2px;
 	border-radius: 16px;
