@@ -19,7 +19,7 @@
 <div class="div-milieu" align="center">
 
 <div id="milieu-left-accueil">
-<p><img alt="jungle" src="../images/page_accueil_appli-300x225.jpg"/></p>
+<p><img alt="jungle" src="../images/page_accueil_appli-10pc.jpg"/></p>
 
 </div>
 

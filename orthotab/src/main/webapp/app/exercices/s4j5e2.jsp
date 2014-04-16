@@ -22,7 +22,7 @@
 <p align="center">{{noIt}} sur {{nbIt}}</p>
 <div id="milieu-left">
 <div align="center" ng-hide="tempsEcoule">
-<p><button class="boutonCase">{{caseCourant.libelle}}</button></p>
+<p><button class="boutonCase-flash">{{caseCourant.libelle}}</button></p>
 </div>
 </div>
 <div id="milieu-right">

@@ -36,7 +36,7 @@
 
 
 <div id="center-relier-colonnes" align="center">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="520">
 <style type="text/css" >
       <![CDATA[
 

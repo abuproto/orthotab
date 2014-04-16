@@ -68,7 +68,7 @@ public class Technique08Data extends TechniqueDataUtil {
 		calculATrou.setIdtrou(idtrou);
 		
 		Case caseTerme = new Case("",String.valueOf(terme),terme);
-		caseTerme.setCssClass(CSS_ROND_PLEIN);
+		caseTerme.setCssClass(CSS_ROND_SF_PLEIN);
 		caseTerme.setBackgrdStyle(STYLE_BGRD_GRIS);
 		
 		Case caseEgal = new Case("","=",0);
@@ -80,11 +80,11 @@ public class Technique08Data extends TechniqueDataUtil {
 		caseSigne.setBackgrdStyle(STYLE_BGRD_GRIS);
 		
 		Case caseTrou = new Case("","...",valTrou);
-		caseTrou.setCssClass(CSS_ROND_PLEIN);
+		caseTrou.setCssClass(CSS_ROND_SF_PLEIN);
 		caseTrou.setBackgrdStyle(STYLE_BGRD_JAUNE);
 		
 		Case caseResultat = new Case("",String.valueOf(resultat),resultat);
-		caseResultat.setCssClass(CSS_ROND_PLEIN);
+		caseResultat.setCssClass(CSS_ROND_SF_PLEIN);
 		caseResultat.setBackgrdStyle(STYLE_BGRD_GRIS);
 
 		
@@ -105,7 +105,7 @@ public class Technique08Data extends TechniqueDataUtil {
 		for(String prop : tabprop){
 			Case caseChoix = new Case("", prop, evalueExpression(prop));
 			//caseChoix.setCssClass(CSS_CASE_NOMBRE);
-			caseChoix.setCssClass(CSS_ROND_PLEIN);
+			caseChoix.setCssClass(CSS_ROND_SF_PLEIN);
 			caseChoix.setBackgrdStyle(STYLE_BGRD_GRIS);
 			calculATrou.addCaseChoix(caseChoix);
 		}
@@ -261,7 +261,7 @@ public class Technique08Data extends TechniqueDataUtil {
 			listeCalculATrou.add(construitCalculATrouParentheses(10,1,14,5, new String[]{"5","7","8"}));
 			listeCalculATrou.add(construitCalculATrou(9, signe, 13, 0, 4, new String[]{"4","8","5"}));
 			//listeCalculATrou.add(construitCalculATrouParentheses(10,1,17,16, new String[]{"8","5","10"}));
-			listeCalculATrou.add(construitCalculATrouParentheses(10,1,26,15, new String[]{"17","19","15"}));
+			listeCalculATrou.add(construitCalculATrouParentheses(10,1,26,17, new String[]{"17","19","15"}));
 			//listeCalculATrou.add(construitCalculATrou(9, signe, 11, 0, 2, new String[]{"2","3","1","5"}));
 			listeCalculATrou.add(construitCalculATrouParentheses(10,1,22,13, new String[]{"16","13","15","12"}));
 			//listeCalculATrou.add(construitCalculATrou(8, signe, 14, 0, 6, new String[]{"6","7","8","9"}));
@@ -304,10 +304,10 @@ public class Technique08Data extends TechniqueDataUtil {
 			break;			
 		case "s5j3e3":
 			signe="+";
-			listeCalculATrou.add(construitCalculATrou(160, signe, 256, 1, 96, new String[]{"92","96","80","16"}));
-			listeCalculATrou.add(construitCalculATrou(160, signe, 384, 0, 224, new String[]{"234","64","234","244"}));
-			listeCalculATrou.add(construitCalculATrou(310, signe, 520, 1, 210, new String[]{"210","320","200","220"}));
-			listeCalculATrou.add(construitCalculATrou(168, signe, 488, 1, 320, new String[]{"330","322","320","220"}));
+			listeCalculATrou.add(construitCalculATrou(160, signe, 256, 2, 96, new String[]{"92","96","80","16"}));
+			listeCalculATrou.add(construitCalculATrou(160, signe, 384, 0, 224, new String[]{"234","64","224","244"}));
+			listeCalculATrou.add(construitCalculATrou(310, signe, 520, 2, 210, new String[]{"210","320","200","220"}));
+			listeCalculATrou.add(construitCalculATrou(168, signe, 488, 2, 320, new String[]{"330","322","320","220"}));
 			listeCalculATrou.add(construitCalculATrou(67, signe, 335, 0, 268, new String[]{"248","268","265","368"}));
 			break;
 		case "s5j4e3":

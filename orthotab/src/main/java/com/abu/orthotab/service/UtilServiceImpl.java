@@ -15,6 +15,7 @@ import com.abu.orthotab.domain.Loc;
 public abstract class UtilServiceImpl {
 
 	protected final static String CSS_BOUTON_CASE = "boutonCase";
+	protected final static String CSS_BOUTON_CASE_FLASH = "boutonCase-flash";
 	protected final static String CSS_BOUTON_CASE_SMALL = "boutonCase-small";
 	protected final static String STYLE_BGRD_GRIS = "#B5B276";
 	
@@ -41,6 +42,10 @@ public abstract class UtilServiceImpl {
 		mapIntrus.put("s2j5e2G", Arrays.asList(s2j5e2G));
 		String[] s2j5e2D = {"10","7"};
 		mapIntrus.put("s2j5e2D", Arrays.asList(s2j5e2D));
+		String[] s5j4e2G = {"4","54","10"};
+		mapIntrus.put("s5j4e2G", Arrays.asList(s5j4e2G));
+		String[] s5j4e2D = {"29","20","1"};
+		mapIntrus.put("s5j4e2D", Arrays.asList(s5j4e2D));
 	}
 
 	protected List<Case> melange(List<Case> listeCase) {

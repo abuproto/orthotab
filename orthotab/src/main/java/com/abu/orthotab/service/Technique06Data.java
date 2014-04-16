@@ -88,7 +88,7 @@ public class Technique06Data extends TechniqueDataUtil{
 			listeBoiteAOeuf.add(construitBoiteAOeuf(116, 70, new String[]{"12+30+4","30+16","15+31"},1));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(125, 60, new String[]{"40+25","22+33+10","20+55"},0));
 			listeBoiteAOeuf.add(construitBoiteAOeuf(104, 92, new String[]{"10+2","14-3","9+4"},0));
-			listeBoiteAOeuf.add(construitBoiteAOeuf(137, 122, new String[]{"5+20","23+2-10","7+19"},0));			
+			listeBoiteAOeuf.add(construitBoiteAOeuf(137, 122, new String[]{"5+20","23+2-10","7+19"},1));			
 			break;
 		case "s4j3e4":
 			listeBoiteAOeuf.add(construitBoiteAOeuf(92, 38, new String[]{"2+52","20+31+3","4+50"},0));

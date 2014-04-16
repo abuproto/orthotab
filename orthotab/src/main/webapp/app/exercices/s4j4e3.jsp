@@ -21,11 +21,11 @@
 <div ng-show="debut">
 <p align="center">{{noIt}} sur {{nbIt}}</p>
 <p align="center">
-<button ng-repeat="case in rmCourant.listeCaseCible" ng-click="enregistreCaseH(case,$index)" class="case-nombre-sf" ng-style="{'background-color' : case.backgrdStyle}">{{case.libelle}}</button>
+<button ng-repeat="case in rmCourant.listeCaseCible" ng-click="enregistreCaseH(case,$index)" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}">{{case.libelle}}</button>
 </p>
 <hr/>
 <p align="center">
-<button ng-repeat="case in rmCourant.listeCaseChoix" ng-click="enregistreCaseB(case)" class="case-nombre-sf" ng-style="{'background-color' : case.backgrdStyle}">{{case.libelle}}</button>
+<button ng-repeat="case in rmCourant.listeCaseChoix" ng-click="enregistreCaseB(case)" class="{{case.cssClass}}" ng-style="{'background-color' : case.backgrdStyle}">{{case.libelle}}</button>
 </p>
 
 <div align="center" ng-hide="niveauFini" ng-style="{'margin-top' : '30px'}">
