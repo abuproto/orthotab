@@ -23,7 +23,7 @@ public class Technique07Data extends TechniqueDataUtil{
 		for(String prop : caseG){
 			Case caseChoix = new Case("", prop, evalueExpression(prop));
 			caseChoix.setCssClass(CSS_BOUTON_CASE_LONG);
-			caseChoix.setBackgrdStyle(STYLE_BGRD_ROUGE);
+			caseChoix.setBackgrdStyle(STYLE_BGRD_BLEU);
 			caseChoix.setActive(true);
 			mm.addCaseG(caseChoix);
 		}
@@ -31,7 +31,7 @@ public class Technique07Data extends TechniqueDataUtil{
 		for(String prop : caseD){
 			Case caseChoix = new Case("", prop, evalueExpression(prop));
 			caseChoix.setCssClass(CSS_BOUTON_CASE_LONG);
-			caseChoix.setBackgrdStyle(STYLE_BGRD_BLEU);
+			caseChoix.setBackgrdStyle(STYLE_BGRD_ROUGE);
 			caseChoix.setActive(true);
 			mm.addCaseD(caseChoix);
 		}

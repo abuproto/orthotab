@@ -65,7 +65,7 @@ public class Technique09Data extends TechniqueDataUtil{
 			listeRemettreOrdre.add(construitRemettreOrdre(new String[][]{{"+","1;3;5"},{"+","1;3;5"},{"+","1;3;5"},{"2","0;2;4;6"},{"86","0;2;4;6"},{"4","0;2;4;6"},{"50","0;2;4;6"},{"=","7"},{"142","8"}},new Integer[]{1,3,5,7}));
 			listeRemettreOrdre.add(construitRemettreOrdre(new String[][]{{"+","1;3;5"},{"+","1;3;5"},{"+","1;3;5"},{"3","0;2;4;6"},{"72","0;2;4;6"},{"30","0;2;4;6"},{"20","0;2;4;6"},{"=","7"},{"125","8"}},new Integer[]{1,3,5,7}));
 			listeRemettreOrdre.add(construitRemettreOrdre(new String[][]{{"+","1;3;5"},{"+","1;3;5"},{"+","1;3;5"},{"94","0;2;4;6"},{"10","0;2;4;6"},{"4","0;2;4;6"},{"20","0;2;4;6"},{"=","7"},{"128","8"}},new Integer[]{1,3,5,7}));
-			listeRemettreOrdre.add(construitRemettreOrdre(new String[][]{{"+","1;3"},{"+","1;3"},{"84","0;2;4"},{"20","0;2;4"},{"10","0;2;4"},{"=","5"},{"117","6"}},new Integer[]{1,3,5}));
+			listeRemettreOrdre.add(construitRemettreOrdre(new String[][]{{"+","1;3;5"},{"+","1;3;5"},{"+","1;3;5"},{"3","0;2;4;6"},{"84","0;2;4;6"},{"20","0;2;4;6"},{"10","0;2;4;6"},{"=","7"},{"117","8"}},new Integer[]{1,3,5,7}));
 			break;
 		case "s4j4e3":
 			listeRemettreOrdre.add(construitRemettreOrdre(new String[][]{{"+","1;3"},{"+","1;3"},{"3","0;2;4"},{"97","0;2;4"},{"32","0;2;4"},{"=","5"},{"132","6"}},new Integer[]{1,3,5}));

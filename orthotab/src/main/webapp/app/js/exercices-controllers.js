@@ -621,11 +621,11 @@ orthotabExercicesControllers
 						'$cookies',
 						function($rootScope, $scope, Technique06, ActivityService, $cookies) {
 							if ($scope.optRapide) {
-								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. " +
-										"Dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide moi à compléter chaque caisse avec le bon tas d’oeufs, en choisissant le calcul qui te permet de calculer le plus vite.";
+								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Sur le couvercle, il est écrit combien on peut mettre d’oeufs au maximum. " +
+										"Dans la boîte, il y a déjà quelques oeufs mais elle n’est pas complète ! Aide-moi à compléter chaque boîte avec le bon tas d’oeufs, en choisissant le calcul qui te permet de calculer le plus vite.";
 							} else if ($scope.optCalcul) {
 								$rootScope.consigne = "Voilà des boîtes d’oeufs que tu dois compléter. Il y en a des petites et des grandes. " +
-										"Sur le couvercle il est écrit combien on peut mettre d’oeufs au maximum. " +
+										"Sur le couvercle, il est écrit combien on peut mettre d’oeufs au maximum. " +
 										"Dans la boîte il y a déjà quelques oeufs mais elle n’est pas complète ! Aide-moi à compléter chaque boîte avec le bon tas d’oeufs.";
 							}
 
@@ -731,7 +731,7 @@ orthotabExercicesControllers
 				'$cookies',
 				function($rootScope, $scope, Technique07, ActivityService, $cookies) {
 					
-					$rootScope.consigne = "La carte grise est le résultat d’une opération. Il faut que tu retrouves les bons chiffres de cette opération. " +
+					$rootScope.consigne = "La carte grise est le résultat d’une opération. Il faut que tu retrouves les bons nombres de cette opération. " +
 							"Pour cela, choisis la bonne carte bleu et multiplie la avec la bonne carte rouge.";
 
 					$scope.memorym = Technique07.query({}, {
@@ -836,8 +836,8 @@ orthotabExercicesControllers
 								$rootScope.consigne = "Ces opérations ont quelque chose qui ne va pas, elles sont incomplètes. " +
 										"Quel chiffre complète l’opération selon toi ? Clique sur le bon.";
 							}else if($scope.optRapide){
-								$rootScope.consigne = "Cette opération est compliquée ! Je suis sûr qu’en coupant le morceau jaune, on peut trouver le résultat plus facilement ! " +
-										"Mais il faut bien le couper ! Trouve la bonne façon et clique dessus.";
+								$rootScope.consigne = "Cette opération est compliquée ! On a dû la couper pour trouver le résultat plus facilement. " +
+								"A ton avis, quelle découpe correspondrait le mieux? Clique sur la bonne réponse.";
 							}
 							
 							$scope.calculATrou = Technique08.query({}, {
