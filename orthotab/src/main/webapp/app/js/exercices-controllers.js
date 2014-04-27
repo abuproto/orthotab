@@ -809,9 +809,9 @@ orthotabExercicesControllers
 								}
 							} else {
 								$scope.nbEchec++;
-								$scope.caseGcourant.backgrdStyle = "red";
+								$scope.caseGcourant.backgrdStyle = "blue";
 								$scope.caseGcourant = null;
-								$scope.caseDcourant.backgrdStyle = "blue";
+								$scope.caseDcourant.backgrdStyle = "red";
 								$scope.caseDcourant = null;
 								$scope.dspsuivant = false;
 								$scope.message = "Ce n'est pas ça.";
