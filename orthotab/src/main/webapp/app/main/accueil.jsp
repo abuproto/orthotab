@@ -21,10 +21,13 @@
 <%@include file="../includes/inc_waitcharge.htm"%>
 
 <div class="div-milieu-accueil" ng-show="!chargementEnCours">
-<div id="milieu-left-accueil">
-<p ng-hide="infosaccueil.nivcourant==26" class="messageExercice" align="center">{{message}}</p>
 
-<p ng-show="infosaccueil.nivcourant==26" class="messageExercice" align="center">Bravo, tu as terminé ! <a target="_blank" href="fin.htm">Clique ici</a></p>
+<div ng-show="infosaccueil.nivcourant==26" id="milieu-left-accueil">
+<p  class="messageExercice" align="center">Bravo, tu as terminé ! <a target="_blank" href="fin.htm">Clique ici</a></p>
+</div>
+
+<div ng-hide="infosaccueil.nivcourant==26" id="milieu-left-accueil">
+<p  class="messageExercice" align="center">{{message}}</p>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
 <style type="text/css" >
