@@ -22,7 +22,9 @@
 
 <div class="div-milieu-accueil" ng-show="!chargementEnCours">
 <div id="milieu-left-accueil">
-<p class="messageExercice" align="center">{{message}}</p>
+<p ng-hide="infosaccueil.nivcourant==26" class="messageExercice" align="center">{{message}}</p>
+
+<p ng-show="infosaccueil.nivcourant==26" class="messageExercice" align="center">Bravo, tu as terminé ! <a target="_blank" href="fin.htm">Clique ici</a></p>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
 <style type="text/css" >
