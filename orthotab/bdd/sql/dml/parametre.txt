@@ -20,3 +20,8 @@ insert into PARAMETRE values(14,'EX_INTERVALLE','3',17);
 
 insert into PARAMETRE values(15,'EX_INTERVALLE','960',18);
 insert into PARAMETRE values(16,'EX_INTERVALLE','960',19);
+
+insert into PARAMETRE values(17,'EX_INTERVALLE','960',20);
+
+insert into PARAMETRE values(18,'EX_INTERVALLE','960',21);
+insert into PARAMETRE values(19,'EX_INTERVALLE','960',22);

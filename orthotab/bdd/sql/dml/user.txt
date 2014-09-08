@@ -38,4 +38,11 @@ insert into USER values(17,'stephanie','Duigou','Stephanie','stephanie','PATIENT
 insert into USER values(18,'shaina','Lejoly','Shaina','shaina','PATIENT',1,'b69e0d5a62640422786da15cff6b37f8',null,0);
 insert into USER values(19,'maiana','Le Cocq','Maiana','maiana','PATIENT',1,'cafb6764611aba2870081f12cdc6eb73',null,0);
 
+insert into USER values(20,'julie','Guillet','Julie','julie','PATIENT',1,'630a176a59c63baa05b45b180431ee65',null,0);
+
+insert into USER values(21,'sophie2','(Etudiante)','Sophie','sophie2','PATIENT',1,'cb2d3ef97438bb875b4eb493b97377f2',null,0);
+
+insert into USER values(22,'claire','(Etudiante)','Claire','claire','PATIENT',1,'fb99fc1cd93b29db10dee483d5a4be11',null,0);
+
+
 ATTENTION, pas d'accent dans le prénom, pb avec cookie pour le moment !
