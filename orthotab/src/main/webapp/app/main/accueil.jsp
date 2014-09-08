@@ -29,7 +29,7 @@
 <div ng-hide="infosaccueil.nivcourant==26" id="milieu-left-accueil">
 <p  class="messageExercice" align="center">{{message}}</p>
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="400">
 <style type="text/css" >
       <![CDATA[
 
