@@ -17,7 +17,7 @@ public class ParametreServiceImpl implements ParametreService {
 	@Transactional
 	public void miseAJourParametreIntervalle(Parametre parametre) {
 		
-		Parametre parametreAMaj = parametreDao.findParametreByCleIdUser(Parametre.Cle.EX_INTERVALLE.name(), parametre.getIdUser());
+		Parametre parametreAMaj = parametreDao.findParametreByCleIdpatient(Parametre.Cle.EX_INTERVALLE.name(), parametre.getIdpatient());
 		
 		if(parametreAMaj!=null){
 			parametreAMaj.setValeur(String.valueOf(parametre.getHeure()*60 + parametre.getMinute()));

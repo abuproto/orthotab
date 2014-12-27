@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.abu.orthotab.dao.ParametreDao;
-import com.abu.orthotab.dao.UserDao;
+import com.abu.orthotab.dao.PatientDao;
 import com.abu.orthotab.domain.Etape;
 import com.abu.orthotab.domain.InfosAccueil;
 import com.abu.orthotab.domain.Parametre;
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.domain.Patient;
 
 @Service
 public class AccueilServiceImpl implements AccueilService {
@@ -23,7 +23,7 @@ public class AccueilServiceImpl implements AccueilService {
 	private final static Logger LOGGER = Logger.getLogger(AccueilServiceImpl.class);
 	
     @Autowired
-    private UserDao userDao;
+    private PatientDao patientDao;
     
     @Autowired
     private ParametreDao parametreDao;
@@ -61,9 +61,9 @@ public class AccueilServiceImpl implements AccueilService {
 		int dm = 0;
 		int dn = 0;
 		
-		User userConnecte = userDao.findUserByToken(token);
-		if(userConnecte!=null){
-			nivcourant = (userConnecte.getNivcourant()==null?0:userConnecte.getNivcourant().intValue());
+		Patient patientConnecte = patientDao.findPatientByToken(token);
+		if(patientConnecte!=null){
+			nivcourant = (patientConnecte.getNivcourant()==null?0:patientConnecte.getNivcourant().intValue());
 			// commence a 1
 			for(int i=1;i<=nbNiveau;i++){
 				Etape etape = new Etape();
@@ -123,9 +123,9 @@ public class AccueilServiceImpl implements AccueilService {
 								
 				etapes.add(etape);
 			}
-			LOGGER.info("nivcourant : "+ nivcourant + " pour userConnecte " + userConnecte.getLogin());
+			LOGGER.info("nivcourant : "+ nivcourant + " pour patientConnecte " + patientConnecte.getLogin());
 		}else{
-			LOGGER.error("userConnecte null pour token " + token);
+			LOGGER.error("patientConnecte null pour token " + token);
 		}
 		return etapes;
 	}
@@ -134,12 +134,12 @@ public class AccueilServiceImpl implements AccueilService {
 	public InfosAccueil getInfosAccueil(String token) {
     	InfosAccueil infosAccueil = new InfosAccueil();
     	
-    	User userConnecte = userDao.findUserByToken(token);
-		if(userConnecte!=null){
+    	Patient patientConnecte = patientDao.findPatientByToken(token);
+		if(patientConnecte!=null){
 		
-			Date dateLastActivite = userConnecte.getDatechgtniv();
+			Date dateLastActivite = patientConnecte.getDatechgtniv();
 			if(dateLastActivite!=null){
-				Parametre parametre = parametreDao.findParametreByCleIdUser(Parametre.Cle.EX_INTERVALLE.name(), userConnecte.getId());
+				Parametre parametre = parametreDao.findParametreByCleIdpatient(Parametre.Cle.EX_INTERVALLE.name(), patientConnecte.getId());
 				if(parametre!=null){
 					String strinter = parametre.getValeur();
 					int intermin = Integer.valueOf(strinter);
@@ -154,16 +154,16 @@ public class AccueilServiceImpl implements AccueilService {
 			}else{
 				infosAccueil.setNbMillisNextJour(0);
 			}
-	    	infosAccueil.setNbcac(userConnecte.getNbtotcac()==null?0:userConnecte.getNbtotcac().intValue());
+	    	infosAccueil.setNbcac(patientConnecte.getNbtotcac()==null?0:patientConnecte.getNbtotcac().intValue());
 	    	
-	    	Long nivcourant = userConnecte.getNivcourant();
+	    	Long nivcourant = patientConnecte.getNivcourant();
 	    	
 	    	// Ajout objets
 	    	int niv = nivcourant.intValue();
 	    	infosAccueil.setNivcourant(niv);
 	    	infosAccueil.setListeNomObjet(contruitListeObjet(niv));
 		}else{
-			LOGGER.error("userConnecte null pour token " + token);
+			LOGGER.error("patientConnecte null pour token " + token);
 		}    	
     	return infosAccueil;
     }

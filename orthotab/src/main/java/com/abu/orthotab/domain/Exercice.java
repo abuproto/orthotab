@@ -11,26 +11,26 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="EXERCICE")
+@Table(name="exercice")
 public class Exercice implements Serializable{
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "CODE")
+	@Column(name = "code")
 	private String code;
 		
-	@Column(name = "SEUILSUP3")
+	@Column(name = "seuilsup3")
 	private Long seuilsup3;
 	
-	@Column(name = "SEUILSUP2")
+	@Column(name = "seuilsup2")
 	private Long seuilsup2;
 	
-	@Column(name = "NOJOUR")
+	@Column(name = "nojour")
 	private Long nojour;
 
-	@Column(name = "IDTECHNIQUE")
+	@Column(name = "idtechnique")
 	private Long idtechnique;
 	
 	

@@ -1,11 +1,11 @@
 package com.abu.orthotab.service;
 
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.domain.Patient;
 
 public interface UserService {
-	User authenticate(User user);
+	Patient authenticate(Patient user);
 	
-	User miseAJourNiveau(int userid, int niveau);
+	Patient miseAJourNiveau(int userid, int niveau);
 	
-	User findByToken(String token);
+	Patient findByToken(String token);
 }

@@ -18,31 +18,31 @@ public class ActivityDao extends CommonHibernateDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Activity findLastActivityByExIdUser(String codeEx, Long idUser) {
+	public Activity findLastActivityByExIdPatient(String codeEx, Long idpatient) {
 		Activity activity = null;
 		Query query = getCurrentSession()
 				.createQuery(
-						"from Activity where type = :type and idUser = :idUser order by dateActivite desc");
+						"from Activity where type = :type and idpatient = :idpatient order by dateActivite desc");
 		query.setString("type", codeEx);
-		query.setLong("idUser", idUser);
+		query.setLong("idpatient", idpatient);
 		List<Activity> listActivity = query.list();
 		if (listActivity != null && !listActivity.isEmpty()) {
 			activity = listActivity.get(0);
 		} else {
 			LOGGER.info("activity nulle pour codeEx :" + codeEx
-					+ " et iduser :" + idUser);
+					+ " et idpatient :" + idpatient);
 		}
 		return activity;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Activity> findActivityByIdUserJour(Long idUser,
+	public List<Activity> findActivityByIdpatientJour(Long idpatient,
 			String codeExPart) {
 		Query query = getCurrentSession()
 				.createQuery(
-						"from Activity where idUser = :idUser and type like :type order by dateActivite desc");
+						"from Activity where idpatient = :idpatient and type like :type order by dateActivite desc");
 		query.setString("type", codeExPart + "%");
-		query.setLong("idUser", idUser);
+		query.setLong("idpatient", idpatient);
 		List<Activity> listActivity = query.list();
 		return listActivity;
 	}

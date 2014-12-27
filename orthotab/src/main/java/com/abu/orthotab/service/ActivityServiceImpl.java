@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.abu.orthotab.dao.ActivityDao;
 import com.abu.orthotab.dao.ExerciceDao;
 import com.abu.orthotab.dao.ParametreDao;
-import com.abu.orthotab.dao.UserDao;
+import com.abu.orthotab.dao.PatientDao;
 import com.abu.orthotab.domain.Activity;
 import com.abu.orthotab.domain.Exercice;
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.domain.Patient;
 
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -21,7 +21,7 @@ public class ActivityServiceImpl implements ActivityService {
 	private final static Logger LOGGER = Logger
 			.getLogger(ActivityServiceImpl.class);
 
-	private final static String ROLE_ADMIN = "ADMIN";
+	//private final static String ROLE_ADMIN = "ADMIN";
 
 	private final static String TYPE_ACT_LOGIN = "LOGIN";
 
@@ -29,7 +29,7 @@ public class ActivityServiceImpl implements ActivityService {
 	private ActivityDao activityDao;
 
 	@Autowired
-	private UserDao userDao;
+	private PatientDao patientDao;
 
 	@Autowired
 	private ExerciceDao exerciceDao;
@@ -43,16 +43,16 @@ public class ActivityServiceImpl implements ActivityService {
 
 		Long idActivity = null;
 
-		if (activity.getIdUser() == null
-				|| activity.getIdUser().intValue() == 0) {
+		if (activity.getIdpatient() == null
+				|| activity.getIdpatient().intValue() == 0) {
 			LOGGER.info("Recherche user par token : " + activity.getToken());
-			User user = userDao.findUserByToken(activity.getToken());
-			if (user != null) {
-				Long idUser = user.getId();
-				LOGGER.info("user par token trouve : " + idUser);
-				if (doitEtreCree(user, activity)) {
-					activity.setIdUser(idUser);
-					LOGGER.info("date et heure cote client : " + activity.getDateActivite().toString() + " pour utilisateur " + user.getLogin() + "(" + idUser + ")");
+			Patient patient = patientDao.findPatientByToken(activity.getToken());
+			if (patient != null) {
+				Long idPatient = patient.getId();
+				LOGGER.info("patient par token trouve : " + idPatient);
+				if (doitEtreCree(patient, activity)) {
+					activity.setIdpatient(idPatient);
+					LOGGER.info("date et heure cote client : " + activity.getDateActivite().toString() + " pour patient " + patient.getLogin() + "(" + idPatient + ")");
 					activity.setDateActivite(parametreDao.calculVraieDateHeure());
 					boolean rejeuExercice = rejeuExercice(activity);
 
@@ -70,18 +70,18 @@ public class ActivityServiceImpl implements ActivityService {
 							int nojour = calculNoJour(activity.getType());
 
 							// maj nbtotcac
-							int nbtotcac = user.getNbtotcac() == null ? 0
-									: user.getNbtotcac().intValue();
+							int nbtotcac = patient.getNbtotcac() == null ? 0
+									: patient.getNbtotcac().intValue();
 							Exercice exerciceCac = exerciceDao
 									.findExerciceByCode(type);
 							int nbCac = exerciceCac.calculNbCac(activity
 									.getNbEchec() == null ? 0 : activity
 									.getNbEchec().intValue());
-							user.setNbtotcac(Long.valueOf(nbtotcac + nbCac));
+							patient.setNbtotcac(Long.valueOf(nbtotcac + nbCac));
 
 							// recherche activity du même jour (niveau)
 							List<Activity> listeActivity = activityDao
-									.findActivityByIdUserJour(idUser,
+									.findActivityByIdpatientJour(idPatient,
 											codeExPart);
 							List<Exercice> listeExercice = exerciceDao
 									.findExerciceByNojour(Long.valueOf(nojour));
@@ -99,19 +99,19 @@ public class ActivityServiceImpl implements ActivityService {
 							}
 
 							if (nbExTermine == listeExercice.size()) {
-								int oldNiveau = (user.getNivcourant() == null ? 0
-										: user.getNivcourant().intValue());
+								int oldNiveau = (patient.getNivcourant() == null ? 0
+										: patient.getNivcourant().intValue());
 								int niveau = oldNiveau + 1;
-								user.setDatechgtniv(activity.getDateActivite());
-								user.setNivcourant(Long.valueOf(niveau));
-								LOGGER.info("Mise a jour niveau courant pour user "
-										+ user
+								patient.setDatechgtniv(activity.getDateActivite());
+								patient.setNivcourant(Long.valueOf(niveau));
+								LOGGER.info("Mise a jour niveau courant pour patient "
+										+ patient
 										+ " , "
 										+ oldNiveau
 										+ "-->"
 										+ niveau);
 							} else {
-								user.setDatechgtniv(null);
+								patient.setDatechgtniv(null);
 							}
 						}
 					}
@@ -153,12 +153,13 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 
 	// pour les ADMIN, on cree uniquement les activites de type LOGIN
-	private boolean doitEtreCree(User user, Activity activity) {
+	private boolean doitEtreCree(Patient patient, Activity activity) {
 		boolean doitEtreCree = true;
-		if (ROLE_ADMIN.equals(user.getRole())
-				&& !TYPE_ACT_LOGIN.equals(activity.getType())) {
-			doitEtreCree = false;
-		}
+		// plus de notion de role ici
+		//if (ROLE_ADMIN.equals(user.getRole())
+		//		&& !TYPE_ACT_LOGIN.equals(activity.getType())) {
+		//	doitEtreCree = false;
+		//}
 		return doitEtreCree;
 	}
 
@@ -167,8 +168,8 @@ public class ActivityServiceImpl implements ActivityService {
 		boolean rejeuExercice = false;
 		if (!TYPE_ACT_LOGIN.equals(activity.getType())) {
 			Activity activityExistante = activityDao
-					.findLastActivityByExIdUser(activity.getType(),
-							activity.getIdUser());
+					.findLastActivityByExIdPatient(activity.getType(),
+							activity.getIdpatient());
 			if (activityExistante != null) {
 				rejeuExercice = true;
 			}

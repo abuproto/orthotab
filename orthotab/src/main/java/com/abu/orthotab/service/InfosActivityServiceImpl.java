@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.abu.orthotab.dao.ActivityDao;
-import com.abu.orthotab.dao.UserDao;
+import com.abu.orthotab.dao.PatientDao;
 import com.abu.orthotab.domain.Activity;
 import com.abu.orthotab.domain.InfosActivity;
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.domain.Patient;
 
 @Service
 public class InfosActivityServiceImpl implements InfosActivityService {
@@ -22,7 +22,7 @@ public class InfosActivityServiceImpl implements InfosActivityService {
 	private ActivityDao activityDao;
 
 	@Autowired
-	private UserDao userDao;
+	private PatientDao patientDao;
 
 	@Override
 	@Transactional
@@ -33,13 +33,13 @@ public class InfosActivityServiceImpl implements InfosActivityService {
 
 		for (Activity activity : listActivity) {
 			InfosActivity ia = new InfosActivity();
-			User user = userDao.finduserById(activity.getIdUser().intValue());
-			String libUtilisateur = "";
-			if (user != null) {
-				libUtilisateur = user.getPrenom() == null ? user.getNom()
-						: user.getPrenom();
+			Patient patient = patientDao.findPatientById(activity.getIdpatient().intValue());
+			String libPatient = "";
+			if (patient != null) {
+				libPatient = patient.getPrenom() == null ? patient.getNom()
+						: patient.getPrenom();
 			}
-			ia.setLibUtilisateur(libUtilisateur);
+			ia.setLibUtilisateur(libPatient);
 			ia.setExercice(activity.getType() + ("REJEU".equals(activity.getDetails())?" (Rejeu)":""));
 
 			ia.setNoSemaine(activity.getType().startsWith("s") ? activity

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.domain.Patient;
 import com.abu.orthotab.service.UserService;
 
 @Controller
@@ -23,20 +23,20 @@ public class UserController {
 	
 	@RequestMapping(value = "authenticate", method = RequestMethod.POST)
     @ResponseBody
-    public User authenticate(@RequestBody User user) {
+    public Patient authenticate(@RequestBody Patient user) {
     	return userService.authenticate(user);
     }
 	
 	@RequestMapping(value = "findByToken/{token}", method = RequestMethod.POST)
     @ResponseBody
-    public User findByToken(@PathVariable String token) {
+    public Patient findByToken(@PathVariable String token) {
     	return userService.findByToken(token);
     }
 	
 	@RequestMapping(value = "authenticate2/{login}/{passw}", method = RequestMethod.POST)
     @ResponseBody
-    public User authenticate2(@PathVariable("login") String login, @PathVariable("passw") String passw) {
-		User user = new User();
+    public Patient authenticate2(@PathVariable("login") String login, @PathVariable("passw") String passw) {
+		Patient user = new Patient();
 		user.setLogin(login);
 		user.setPassword(passw);
     	return userService.authenticate(user);
@@ -44,7 +44,7 @@ public class UserController {
 	
 	@RequestMapping(value = "majniveau/{userid}/{niveau}", method = RequestMethod.POST)
     @ResponseBody
-	public User miseAJourNiveau(@PathVariable("userid") int userid, @PathVariable("niveau") int niveau){
+	public Patient miseAJourNiveau(@PathVariable("userid") int userid, @PathVariable("niveau") int niveau){
 		return userService.miseAJourNiveau(userid, niveau);
 	}
 }

@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.abu.orthotab.dao.UserDao;
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.dao.PatientDao;
+import com.abu.orthotab.domain.Patient;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -15,19 +15,19 @@ public class UserServiceImpl implements UserService {
 			.getLogger(UserServiceImpl.class);
 
 	@Autowired
-	private UserDao userDao;
+	private PatientDao patientDao;
 
 	@Override
 	@Transactional
-	public User authenticate(User user) {
-		User userVerifie = null;
-		User userTemp = userDao.findUserByLogin(user.getLogin());
-		if (userTemp.getPassword().equals(user.getPassword())) {
+	public Patient authenticate(Patient patient) {
+		Patient userVerifie = null;
+		Patient userTemp = patientDao.findPatientByLogin(patient.getLogin());
+		if (userTemp.getPassword().equals(patient.getPassword())) {
 			userVerifie = userTemp;
 			// userVerifie.setPassword(null);
 			LOGGER.info("Authentification OK pour user " + userVerifie);
 		} else {
-			LOGGER.warn("Authentification KO pour login " + user.getLogin());
+			LOGGER.warn("Authentification KO pour login " + patient.getLogin());
 		}
 
 		return userVerifie;
@@ -35,24 +35,24 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User miseAJourNiveau(int userid, int niveau) {
-		User user = userDao.finduserById(userid);
-		if (user == null) {
-			LOGGER.error("User non trouve pour identifiant " + userid);
+	public Patient miseAJourNiveau(int userid, int niveau) {
+		Patient patient = patientDao.findPatientById(userid);
+		if (patient == null) {
+			LOGGER.error("Patient non trouve pour identifiant " + userid);
 		} else {
-			int oldNiveau = (user.getNivcourant()==null?0:user.getNivcourant().intValue());
+			int oldNiveau = (patient.getNivcourant()==null?0:patient.getNivcourant().intValue());
 			if (niveau > oldNiveau) {
-				user.setNivcourant(Long.valueOf(niveau));
-				LOGGER.info("Mise a jour niveau courant pour user " + user + " , " + oldNiveau + "-->" + niveau);
+				patient.setNivcourant(Long.valueOf(niveau));
+				LOGGER.info("Mise a jour niveau courant pour user " + patient + " , " + oldNiveau + "-->" + niveau);
 			}
 		}
-		return user;
+		return patient;
 	}
 
 	@Override
 	@Transactional
-	public User findByToken(String token) {
-		return userDao.findUserByToken(token);
+	public Patient findByToken(String token) {
+		return patientDao.findPatientByToken(token);
 	}
 
 	

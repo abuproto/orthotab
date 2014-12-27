@@ -15,13 +15,13 @@ public class ParametreDao extends CommonHibernateDao {
 	private final static Long ID_USERTECHNIQUE = 0L;
 	
 	@SuppressWarnings("unchecked")
-	public Parametre findParametreByCleIdUser(String cle, Long idUser) {
+	public Parametre findParametreByCleIdpatient(String cle, Long idpatient) {
 
 		Parametre parametre = null;
 		Query query = getCurrentSession().createQuery(
-				"from Parametre where cle = :cle and idUser = :idUser");
+				"from Parametre where cle = :cle and idpatient = :idpatient");
 		query.setString("cle", cle);
-		query.setLong("idUser", idUser);
+		query.setLong("idpatient", idpatient);
 		List<Parametre> listParametre = query.list();
 
 		if (!listParametre.isEmpty()) {
@@ -36,10 +36,11 @@ public class ParametreDao extends CommonHibernateDao {
 	// france
 	public Date calculVraieDateHeure() {
 		Calendar cal = Calendar.getInstance();
-		Parametre parametre = this.findParametreByCleIdUser(
+		Parametre parametre = this.findParametreByCleIdpatient(
 				Parametre.Cle.ECART_TIME.name(), ID_USERTECHNIQUE);
+		String strecart = "0";
 		if (parametre != null) {
-			String strecart = parametre.getValeur();
+			strecart = parametre.getValeur();
 			cal.add(Calendar.HOUR, Integer.valueOf(strecart));
 		}
 		return cal.getTime();

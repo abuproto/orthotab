@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.abu.orthotab.dao.ActivityDao;
 import com.abu.orthotab.dao.ExerciceDao;
-import com.abu.orthotab.dao.UserDao;
+import com.abu.orthotab.dao.PatientDao;
 import com.abu.orthotab.domain.Activity;
 import com.abu.orthotab.domain.Exercice;
 import com.abu.orthotab.domain.InfosExercice;
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.domain.Patient;
 
 @Service
 public class InfosExerciceServiceImpl implements InfosExerciceService {
@@ -30,7 +30,7 @@ public class InfosExerciceServiceImpl implements InfosExerciceService {
 	private ActivityDao activityDao;
 	
 	@Autowired
-	private UserDao userDao;
+	private PatientDao patientDao;
 	
 	@Autowired
 	private ExerciceDao exerciceDao;
@@ -48,19 +48,19 @@ public class InfosExerciceServiceImpl implements InfosExerciceService {
 			return listInfosExercice;
 		}
 		
-		User user = userDao.findUserByToken(token);
+		Patient patient = patientDao.findPatientByToken(token);
 		
-		if(user!=null){
+		if(patient!=null){
 			
-			if(user.getNivcourant().intValue() != nojour){
-				LOGGER.warn("Nojour : " + nojour + " et nivcourant : " + user.getNivcourant());
+			if(patient.getNivcourant().intValue() != nojour){
+				LOGGER.warn("Nojour : " + nojour + " et nivcourant : " + patient.getNivcourant());
 			}
 			
 			for(Exercice exercice : listExercice){
 				InfosExercice infosExercice = new InfosExercice();
 				infosExercice.setLibelle(exercice.getLibelle());
 				
-				Activity activity = activityDao.findLastActivityByExIdUser(exercice.getCode(), user.getId());
+				Activity activity = activityDao.findLastActivityByExIdPatient(exercice.getCode(), patient.getId());
 				if(activity!=null){
 					//infosExercice.setAction("0,0,0");
 					infosExercice.setSemaine(0);

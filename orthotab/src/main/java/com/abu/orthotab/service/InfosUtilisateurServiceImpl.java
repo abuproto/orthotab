@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.abu.orthotab.dao.ParametreDao;
-import com.abu.orthotab.dao.UserDao;
+import com.abu.orthotab.dao.PatientDao;
 import com.abu.orthotab.domain.InfosUtilisateur;
 import com.abu.orthotab.domain.Parametre;
-import com.abu.orthotab.domain.User;
+import com.abu.orthotab.domain.Patient;
 
 @Service
 public class InfosUtilisateurServiceImpl implements InfosUtilisateurService {
 
     @Autowired
-    private UserDao userDao;
+    private PatientDao patientDao;
     
     @Autowired
     private ParametreDao parametreDao;
@@ -27,16 +27,16 @@ public class InfosUtilisateurServiceImpl implements InfosUtilisateurService {
 	public List<InfosUtilisateur> getListInfosUtilisateur() {
 		
 		List<InfosUtilisateur> listInfosUtilisateur = new ArrayList<InfosUtilisateur>();
-		List<User> listUser = userDao.findAllUser();
+		List<Patient> listUser = patientDao.findAllPatient();
 		
-		for(User user : listUser){
+		for(Patient patient : listUser){
 			InfosUtilisateur iu = new InfosUtilisateur();
-			iu.setIdUser(user.getId());
-			iu.setLibUtilisateur((user.getPrenom()==null?"":user.getPrenom() + " ") + user.getNom() + " (" + user.getId() + ")");
-			iu.setNbTotCac(user.getNbtotcac());
-			iu.setLibNivCourant(String.valueOf(user.getNivcourant()));
+			iu.setIdUser(patient.getId());
+			iu.setLibUtilisateur((patient.getPrenom()==null?"":patient.getPrenom() + " ") + patient.getNom() + " (" + patient.getId() + ")");
+			iu.setNbTotCac(patient.getNbtotcac());
+			iu.setLibNivCourant(String.valueOf(patient.getNivcourant()));
 			
-			Parametre parametre = parametreDao.findParametreByCleIdUser(Parametre.Cle.EX_INTERVALLE.name(), user.getId());
+			Parametre parametre = parametreDao.findParametreByCleIdpatient(Parametre.Cle.EX_INTERVALLE.name(), patient.getId());
 			StringBuilder paramInterJour = new StringBuilder("");
 			if(parametre!=null){
 				String valeur = parametre.getValeur();

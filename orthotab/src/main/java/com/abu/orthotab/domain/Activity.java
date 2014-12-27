@@ -12,29 +12,29 @@ import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ACTIVITY")
+@Table(name="activity")
 public class Activity implements Serializable{
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
 	@GeneratedValue
 	private Long id;
 	
-	@Column(name = "TYPE")
+	@Column(name = "type")
 	private String type;
 	
-	@Column(name = "DATEACTIVITE")
+	@Column(name = "dateactivite")
 	private Date dateActivite;
 	
-	@Column(name = "DUREE")
+	@Column(name = "duree")
 	private Long duree;
 	
-	@Column(name = "DETAILS")
+	@Column(name = "details")
 	private String details;
 	
-	@Column(name = "IDUSER")
-	private Long idUser;
+	@Column(name = "idpatient")
+	private Long idpatient;
 	
-	@Column(name = "NBECHEC")
+	@Column(name = "nbechec")
 	private Long nbEchec;
 
 	@Transient
@@ -80,12 +80,12 @@ public class Activity implements Serializable{
 		this.details = details;
 	}
 
-	public Long getIdUser() {
-		return idUser;
+	public Long getIdpatient() {
+		return idpatient;
 	}
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
+	public void setIdpatient(Long idpatient) {
+		this.idpatient = idpatient;
 	}
 
 	public Long getNbEchec() {

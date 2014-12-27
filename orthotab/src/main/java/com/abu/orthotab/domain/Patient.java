@@ -6,43 +6,52 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 
 @Entity
-@Table(name="USER")
-public class User {
+@Table(name="patient")
+public class Patient {
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "LOGIN")
+	@Column(name = "login")
 	private String login;
 	
-	@Column(name = "NOM")
+	@Column(name = "nom")
 	private String nom;
 	
-	@Column(name = "PRENOM")
+	@Column(name = "prenom")
 	private String prenom;
 	
-	@Column(name = "PASSWORD")
+	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "NIVCOURANT")
+	@Column(name = "nivcourant")
 	private Long nivcourant;
-		
-	@Column(name = "ROLE")
-	private String role;
-	
-	@Column(name = "TOKEN")
+			
+	@Column(name = "token")
 	private String token;
 	
-	@Column(name = "DATECHGTNIV")
+	@Column(name = "datechgtniv")
 	private Date datechgtniv;
 	
-	@Column(name = "NBTOTCAC")
+	@Column(name = "nbtotcac")
 	private Long nbtotcac;
 	
+	@Transient
+	private String role = "PATIENT"; // temp : pour éviter impacts côté client
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public Date getDatechgtniv() {
 		return datechgtniv;
 	}
@@ -99,14 +108,6 @@ public class User {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public Long getNivcourant() {
 		return nivcourant;
 	}
@@ -136,8 +137,6 @@ public class User {
 		builder.append(prenom);
 		builder.append(", nivcourant=");
 		builder.append(nivcourant);
-		builder.append(", role=");
-		builder.append(role);
 		builder.append("]");
 		return builder.toString();
 	}

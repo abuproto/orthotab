@@ -10,21 +10,21 @@ import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="PARAMETRE")
+@Table(name="parametre")
 public class Parametre implements Serializable{
 	
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "CLE")
+	@Column(name = "cle")
 	private String cle;
 	
-	@Column(name = "VALEUR")
+	@Column(name = "valeur")
 	private String valeur;
 	
-	@Column(name = "IDUSER")
-	private Long idUser;
+	@Column(name = "idpatient")
+	private Long idpatient;
 
 	@Transient
 	private int heure;
@@ -76,11 +76,13 @@ public class Parametre implements Serializable{
 		this.valeur = valeur;
 	}
 
-	public Long getIdUser() {
-		return idUser;
+	public Long getIdpatient() {
+		return idpatient;
 	}
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
+	public void setIdpatient(Long idpatient) {
+		this.idpatient = idpatient;
 	}
+
+
 }
